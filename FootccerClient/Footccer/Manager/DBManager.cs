@@ -8,5 +8,11 @@ namespace FootccerClient.Footccer.Manager
 {
     public class DBManager
     {
+        public MyPageSQLMaker MyPage { get; }
+        public DBManager()
+        {
+            MyPage = new MyPageSQLMaker();
+        }
+
     }
 }
