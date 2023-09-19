@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 namespace FootccerClient.Footccer
 {
     public class App
-    {
-        public DBManager DB { get; }
-
-        public App Instance
+    { 
+        static private App instance;
+        static public App Instance
         {
             get
             {
@@ -23,8 +22,8 @@ namespace FootccerClient.Footccer
             }
         }
 
-        private App instance;
-
+        public DBManager DB { get; }
+        public MainForm MainForm { get; set; }
 
         public App()
         {

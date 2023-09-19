@@ -1,4 +1,5 @@
-﻿using FootccerClient.Windows.Views;
+﻿using FootccerClient.Footccer;
+using FootccerClient.Windows.Views;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,9 @@ namespace FootccerClient
         {
             InitializeComponent();
             InitializeViews();
+            RegisterToApp();
 
+            //////////////////////////////////////
             void InitializeViews()
             {
                 Views = new List<MasterView>()
@@ -39,8 +42,13 @@ namespace FootccerClient
                     view.Visible = false;
                 }
             }
+            void RegisterToApp()
+            {
+                App.Instance.MainForm = this;
+            }
         }
 
+        
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
