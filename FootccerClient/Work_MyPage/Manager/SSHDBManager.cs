@@ -8,7 +8,7 @@ namespace FootccerClient.Footccer.Manager
     public class SSHDBManager
     {
         static string DefaultServer = "localhost";
-        static string DefaultDatabase = "test";
+        static string DefaultDatabase = "Footccer";
         static string DefaultUid = "root";
         static string DefaultPwd = "1234";
         static int DefaultPort = 3306;

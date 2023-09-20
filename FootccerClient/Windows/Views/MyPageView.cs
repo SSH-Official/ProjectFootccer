@@ -25,7 +25,7 @@ namespace FootccerClient.Windows.Views
 
         private void btn_Testssh_Click(object sender, EventArgs e)
         {
-            UserCredentialDTO User = new UserCredentialDTO(1, "성승현", "ssh");
+            UserCredentialDTO User = new UserCredentialDTO(1, "ssh", "성승현");
             App.Instance.Session.TestSetup(User);
             App.Instance.MainForm.ShowPop<MyPagePop>();            
         }

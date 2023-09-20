@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{66361CE5-5209-4FEC-A4D5-FB8F9243B0DA}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>FootccerClient</RootNamespace>
     <AssemblyName>FootccerClient</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
@@ -71,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
     <Compile Include="Footccer\Manager\DBManager.cs" />
+    <Compile Include="Work_MyPage\Manager\ImageMaker.cs" />
     <Compile Include="Work_MyPage\Manager\MyPageSQLMaker.cs" />
     <Compile Include="Work_MyPage\Manager\SSHDBManager.cs" />
     <Compile Include="Windows\Main\MainForm.Controller.cs">

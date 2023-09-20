@@ -51,7 +51,7 @@
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
             this.panel_Base.Padding = new System.Windows.Forms.Padding(15);
-            this.panel_Base.Size = new System.Drawing.Size(1583, 719);
+            this.panel_Base.Size = new System.Drawing.Size(1249, 719);
             this.panel_Base.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -74,7 +74,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1553, 689);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1219, 689);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -83,7 +83,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(252, 108);
+            this.panel1.Size = new System.Drawing.Size(197, 108);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -98,7 +98,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(252, 108);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(197, 108);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
@@ -107,7 +107,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 57);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(246, 48);
+            this.panel3.Size = new System.Drawing.Size(191, 48);
             this.panel3.TabIndex = 1;
             // 
             // btn_Testssh
@@ -115,7 +115,7 @@
             this.btn_Testssh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Testssh.Location = new System.Drawing.Point(0, 0);
             this.btn_Testssh.Name = "btn_Testssh";
-            this.btn_Testssh.Size = new System.Drawing.Size(246, 48);
+            this.btn_Testssh.Size = new System.Drawing.Size(191, 48);
             this.btn_Testssh.TabIndex = 0;
             this.btn_Testssh.Text = "마이페이지";
             this.btn_Testssh.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(246, 48);
+            this.panel2.Size = new System.Drawing.Size(191, 48);
             this.panel2.TabIndex = 0;
             // 
             // label1
@@ -135,7 +135,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 48);
+            this.label1.Size = new System.Drawing.Size(191, 48);
             this.label1.TabIndex = 2;
             this.label1.Text = "성승현 계정 테스트";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1583, 719);
+            this.ClientSize = new System.Drawing.Size(1249, 719);
             this.Controls.Add(this.panel_Base);
             this.Name = "MyPageView";
             this.Text = "MyPageView";

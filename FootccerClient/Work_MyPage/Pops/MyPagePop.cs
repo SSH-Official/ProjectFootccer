@@ -21,31 +21,29 @@ namespace FootccerClient.Windows.MyPage
         public MyPagePop()
         {
             InitializeComponent();
-            userInfo = App.Instance.DB.MyPage.GetUserInfoAsSession();
-        }
-
-        
-
-        private string GetTestImageURL()
-        {
-            return "https://static.wikia.nocookie.net" +
-            "/pokemon/images/2/20" +
-            "/%EC%9E%A0%EB%A7%8C%EB%B3%B4_%EA%B3%B5%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8.png" +
-            "/revision/latest?cb=20170405085804&path-prefix=ko";
-        }
-        private Image GetImageFromURL(string url)
-        {
-            using (WebClient client = new WebClient())
+            try
             {
-                byte[] imgArray;
-                imgArray = client.DownloadData(url);
-
-                using (MemoryStream memstr = new MemoryStream(imgArray))
-                {
-                    Image img = Image.FromStream(memstr);
-                    return img;
-                }
+                userInfo = App.Instance.DB.MyPage.GetUserInfoAsSession();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                this.DialogResult = DialogResult.Abort; return;
+            }            
+            InitailizeMyPagePop_AsUserInfo();
         }
+
+        private void InitailizeMyPagePop_AsUserInfo()
+        {
+            tbox_Name.Text = userInfo.User.Name;
+            tbox_Gender.Text = userInfo.Gender;
+            tbox_Contact.Text = userInfo.Contact;
+            tbox_Email.Text = userInfo.Email;
+            tbox_PrefAct.Text = userInfo.Prefer.Activity.Name;
+            tbox_PrefCity.Text = userInfo.Prefer.City.Name;
+            panel_Image.BackgroundImage = userInfo.Image;
+            panel_Image.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
     }
 }
