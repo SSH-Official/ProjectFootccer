@@ -17,6 +17,7 @@ namespace FootccerClient.Footccer
                 if(instance == null)
                 {
                     instance = new App();
+
                 }
                 return instance;
             }
