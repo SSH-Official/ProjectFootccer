@@ -31,7 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_register = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_lnit = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -40,6 +40,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.tBox_max = new System.Windows.Forms.TextBox();
             this.cBox_activity = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -101,7 +102,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel2.Controls.Add(this.btn_register, 7, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 6, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_lnit, 6, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 668);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -122,15 +123,16 @@
             this.btn_register.UseVisualStyleBackColor = true;
             this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
             // 
-            // button2
+            // btn_lnit
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(1167, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(188, 42);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "초기화";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_lnit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_lnit.Location = new System.Drawing.Point(1167, 3);
+            this.btn_lnit.Name = "btn_lnit";
+            this.btn_lnit.Size = new System.Drawing.Size(188, 42);
+            this.btn_lnit.TabIndex = 1;
+            this.btn_lnit.Text = "초기화";
+            this.btn_lnit.UseVisualStyleBackColor = true;
+            this.btn_lnit.Click += new System.EventHandler(this.btn_lnit_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -218,12 +220,21 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.tBox_max);
             this.panel4.Controls.Add(this.cBox_activity);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(144, 249);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1408, 76);
             this.panel4.TabIndex = 18;
+            // 
+            // tBox_max
+            // 
+            this.tBox_max.Location = new System.Drawing.Point(145, 29);
+            this.tBox_max.Name = "tBox_max";
+            this.tBox_max.Size = new System.Drawing.Size(164, 21);
+            this.tBox_max.TabIndex = 1;
+            this.tBox_max.Visible = false;
             // 
             // cBox_activity
             // 
@@ -238,6 +249,7 @@
             this.cBox_activity.Name = "cBox_activity";
             this.cBox_activity.Size = new System.Drawing.Size(121, 20);
             this.cBox_activity.TabIndex = 0;
+            this.cBox_activity.SelectedIndexChanged += new System.EventHandler(this.cBox_activity_SelectedIndexChanged);
             // 
             // panel3
             // 
@@ -413,6 +425,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -427,7 +440,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btn_register;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_lnit;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
@@ -453,5 +466,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label_placeAddress;
+        private System.Windows.Forms.TextBox tBox_max;
     }
 }

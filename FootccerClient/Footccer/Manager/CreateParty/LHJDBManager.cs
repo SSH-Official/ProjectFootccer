@@ -1,15 +1,17 @@
 ﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FootccerClient.Footccer.Manager.CreateParty
 {
     public class LHJDBManager
     {
-        private DAO dao { get;}
+        private DAO dao { get; }
 
         public LHJDBManager()
         {
@@ -36,18 +38,46 @@ namespace FootccerClient.Footccer.Manager.CreateParty
             return dao.insertParty(dto);
         }
 
+        public MySqlCommand aa12aaa3123()
+        {
+            MySqlCommand cmd = new MySqlCommand();
+            string sql = $"insert into `Party` (`Activity_idx`, `Leader_idx`, `name`, `Place_idx`, `date`, `max`, `count`) valuse (????)";
+            cmd.CommandText = sql;
+            cmd.Parameters.Add(new MySqlParameter("123", MySqlDbType.VarString, 20));
+            cmd.Parameters.Add(new MySqlParameter());
+            return cmd;
+        }
+
+
+
+        public int setPartyDTO1(CreatePartyDTO dto)
+        {
+            string date = dto.date.ToString("yyyy-MM-dd HH:mm:ss");
+            string sql = $"insert into `Party` (`Activity_idx`, `Leader_idx`, `name`, `Place_idx`, `date`, `max`, `count`) " +
+                         $"values({dto.Activity_idx}, {dto.Leader_idx}, \"{dto.name}\", {dto.Place_idx}, \"{date}\", {dto.max}, {dto.count})";
+            return dao.nonSQL(sql);
+        }
 
         public (string Address, int Idx) getPlaceAddress1(int cityIndex, string name)
         {
             string sql = $"select address, idx from Place where City_idx = {cityIndex} and name = \"{name}\"";
-            MySqlDataReader reader = dao.selectUsingReader(sql);
-            (string Address, int Idx) result = default;
-            if (reader.Read())
+            /*using (MySqlDataReader reader = dao.selectUsingReader(sql))
             {
-                result.Address = reader.GetString("address");
-                result.Idx = reader.GetInt32("idx");
+                (string Address, int Idx) result = default;
+                if (reader.Read())
+                {
+                    result.Address = reader.GetString("address");
+                    result.Idx = reader.GetInt32("idx");
+                }
+                return result;
+            }*/
+            DataSet ds = dao.selectUsingAdapter(sql);
+            (string Address, int Idx) result = default;
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                result.Address = ds.Tables[0].Rows[0]["address"].ToString();
+                result.Idx = Int32.Parse(ds.Tables[0].Rows[0]["idx"].ToString());
             }
-            reader.Close();
             return result;
         }
     }

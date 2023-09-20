@@ -22,10 +22,30 @@ namespace FootccerClient.Windows.Views
             initializeObject();
         }
 
+        private void initializeAllObject() 
+        {
+            tBox_partyName.Text = string.Empty;
+            dateTimePicker.Value = DateTime.Now;
+            cBox_City.Text = string.Empty;
+            cBox_placeName.Items.Clear();
+            cBox_placeName.Text = string.Empty;
+            cBox_activity.Text = string.Empty;
+            tBox_max.Text = string.Empty;
+            label_placeAddress.Text = string.Empty;
+        }
+
+        private void addComboBoxItems(List<string> list, ComboBox cBox)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                cBox.Items.Add(list[i]);
+            }
+        }
+
         private void initializeObject()
         {
             List<string> list = App.Instance.DB.Lhj.getCityName();
-            addComboBox(list, cBox_City);
+            addComboBoxItems(list, cBox_City);
         }
 
         private void cBox_City_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,7 +55,7 @@ namespace FootccerClient.Windows.Views
             label_placeAddress.Text = string.Empty;
             int cityIndex = cBox_City.SelectedIndex + 1;
             List<string> list = App.Instance.DB.Lhj.getPlaceName(cityIndex);
-            addComboBox(list, cBox_placeName);
+            addComboBoxItems(list, cBox_placeName);
         }
 
         private void cBox_placeName_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,9 +68,19 @@ namespace FootccerClient.Windows.Views
             label_placeAddress.Tag = tuple.Item2;
         }
 
+        //생성할때 세션아이디로 글쓴이 넣어줘야함
+        //지금은 그냥 임의로 넣음
         private void btn_register_Click(object sender, EventArgs e)
-        {            
-            CreatePartyDTO dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, 2, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value);            
+        {
+            CreatePartyDTO dto = null;
+            if(cBox_activity.SelectedIndex != 2)
+            {
+                dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, 2, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value);
+            }
+            else if(cBox_activity.SelectedIndex == 2)
+            {
+                dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, 2, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value, Int32.Parse(tBox_max.Text));
+            }
             int result = App.Instance.DB.Lhj.setPartyDTO(dto);
             if (result < 0){
                 MessageBox.Show("오류");
@@ -61,13 +91,21 @@ namespace FootccerClient.Windows.Views
             }
         }
 
-
-        private void addComboBox(List<string> list, ComboBox cBox)
+        private void cBox_activity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < list.Count; i++)
+            if (cBox_activity.SelectedIndex == 2)
             {
-                cBox.Items.Add(list[i]);
+                tBox_max.Visible = true;
             }
+            else
+            {
+                tBox_max.Visible = false;
+            }
+        }
+
+        private void btn_lnit_Click(object sender, EventArgs e)
+        {
+            initializeAllObject();
         }
     }
 }
