@@ -37,8 +37,9 @@ namespace FootccerClient.Footccer.Manager
             {
                 conn = new MySqlConnection(strConn);
                 conn.Open();
-
+                
                 cmd = new MySqlCommand(Query, conn);
+                
                 rdr = cmd.ExecuteReader();
 
                 theResult = ParseMethod(rdr);

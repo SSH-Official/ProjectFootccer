@@ -22,8 +22,8 @@ namespace FootccerClient.Footccer.Manager
                 $"WHERE C.`id` = '{Credential.ID}' ;";
 
             return ExecuteQuery(sql, ParseToUserInfo) as UserInfoDTO;
-            
-            ////
+
+            ////////////////////////////////////////////////////////////
             object ParseToUserInfo(MySqlDataReader rdr)
             {
                 List<UserInfoDTO> _list = new List<UserInfoDTO>();
@@ -40,7 +40,10 @@ namespace FootccerClient.Footccer.Manager
                             case 0: case 6: case 8:
                                 intArgs.Enqueue(rdr.GetInt32(i)); break;
                             case 10:
-                                imgArgs.Enqueue(App.Instance.Image.GetImageFromURL(rdr.GetString(i))); break;
+                                string url = rdr.GetString(i);
+                                Image img = App.Instance.Image.GetImageFromURL(url);
+                                img.Tag = url;
+                                imgArgs.Enqueue(img); break;
                             default:
                                 strArgs.Enqueue(rdr.GetString(i)); break;
                         }
@@ -53,8 +56,8 @@ namespace FootccerClient.Footccer.Manager
                 }
 
                 int _count = _list.Count;
-                if (_count < 1) { return null; }
-                else if (_count > 1) { return null; }
+                if (_count < 1) { throw new Exception("검색 결과가 없습니다.."); }
+                else if (_count > 1) { throw new Exception("DB에 중복 아이디가 있습니다.."); }
                 else { return _list[0]; }
 
             }
