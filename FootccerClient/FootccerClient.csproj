@@ -73,6 +73,7 @@
     <Compile Include="Footccer\DTO\CreatePartyDTO.cs" />
     <Compile Include="Footccer\DAO\CreatePartyDAO.cs" />
     <Compile Include="Footccer\DBExecuter\CreatePartyDBExecuter.cs" />
+    <Compile Include="Footccer\DTO\ListDTO.cs" />
     <Compile Include="Footccer\Manager\DBManager.cs" />
     <Compile Include="Windows\Main\MainForm.Controller.cs">
       <SubType>Form</SubType>
@@ -206,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Work_ELO\" />
     <Folder Include="Work_PartySearch\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

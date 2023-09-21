@@ -81,13 +81,15 @@ namespace FootccerClient.Windows.Views
             {
                 dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, 2, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value, Int32.Parse(tBox_max.Text));
             }
-            int result = App.Instance.DB.CreateParty.setPartyDTO(dto);
-            if (result < 0){
-                MessageBox.Show("오류");
+            int partyIdx = App.Instance.DB.CreateParty.setPartyDTO(dto);
+            if (partyIdx != 0){
+                ListDTO listDTO = new ListDTO(2, partyIdx, Char.Parse(cBox_side.SelectedItem.ToString()), cBox_position.SelectedIndex);
+                App.Instance.DB.CreateParty.setListDTO(listDTO);
+                MessageBox.Show("성공");
             }
             else
             {
-                MessageBox.Show("성공");
+                MessageBox.Show("오류");                
             }
         }
 

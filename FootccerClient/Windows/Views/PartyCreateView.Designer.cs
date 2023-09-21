@@ -36,9 +36,7 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tBox_max = new System.Windows.Forms.TextBox();
             this.cBox_activity = new System.Windows.Forms.ComboBox();
@@ -58,6 +56,8 @@
             this.cBox_City = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tBox_partyName = new System.Windows.Forms.TextBox();
+            this.cBox_side = new System.Windows.Forms.ComboBox();
+            this.cBox_position = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -188,35 +188,21 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.textBox3);
+            this.panel6.Controls.Add(this.cBox_position);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(144, 413);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1408, 76);
             this.panel6.TabIndex = 20;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(3, 26);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 0;
-            // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.cBox_side);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(144, 331);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1408, 76);
             this.panel5.TabIndex = 19;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(3, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 0;
             // 
             // panel4
             // 
@@ -298,7 +284,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(125, 66);
             this.label11.TabIndex = 10;
-            this.label11.Text = "코멘트";
+            this.label11.Text = "포지션*";
             // 
             // label9
             // 
@@ -309,7 +295,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(125, 66);
             this.label9.TabIndex = 8;
-            this.label9.Text = "참가비";
+            this.label9.Text = "팀*";
             // 
             // label7
             // 
@@ -408,6 +394,30 @@
             this.tBox_partyName.Size = new System.Drawing.Size(100, 21);
             this.tBox_partyName.TabIndex = 0;
             // 
+            // cBox_side
+            // 
+            this.cBox_side.FormattingEnabled = true;
+            this.cBox_side.Items.AddRange(new object[] {
+            "A",
+            "B"});
+            this.cBox_side.Location = new System.Drawing.Point(3, 28);
+            this.cBox_side.Name = "cBox_side";
+            this.cBox_side.Size = new System.Drawing.Size(121, 20);
+            this.cBox_side.TabIndex = 0;
+            // 
+            // cBox_position
+            // 
+            this.cBox_position.FormattingEnabled = true;
+            this.cBox_position.Items.AddRange(new object[] {
+            "공격수",
+            "미드필더",
+            "수비수",
+            "골키퍼"});
+            this.cBox_position.Location = new System.Drawing.Point(3, 28);
+            this.cBox_position.Name = "cBox_position";
+            this.cBox_position.Size = new System.Drawing.Size(121, 20);
+            this.cBox_position.TabIndex = 0;
+            // 
             // PartyCreateView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -421,9 +431,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -463,9 +471,9 @@
         private System.Windows.Forms.ComboBox cBox_City;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox tBox_partyName;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label_placeAddress;
         private System.Windows.Forms.TextBox tBox_max;
+        private System.Windows.Forms.ComboBox cBox_side;
+        private System.Windows.Forms.ComboBox cBox_position;
     }
 }

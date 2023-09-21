@@ -61,7 +61,8 @@ namespace FootccerClient.Footccer.DAO
                 conn.Open();
                 string date = dto.date.ToString("yyyy-MM-dd HH:mm:ss");
                 string sql = $"insert into `Party` (`Activity_idx`, `Leader_idx`, `name`, `Place_idx`, `date`, `max`, `count`) " +
-                             $"values(@Activity_idx, @Leader_idx, @name, @Place_idx, @date, @max, @count)";
+                             $"values(@Activity_idx, @Leader_idx, @name, @Place_idx, @date, @max, @count); " +
+                             $"SELECT LAST_INSERT_ID();";
                 using (cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.Add(new MySqlParameter("@Activity_idx", MySqlDbType.Int32, 10)).Value = dto.Activity_idx;
@@ -71,7 +72,7 @@ namespace FootccerClient.Footccer.DAO
                     cmd.Parameters.Add(new MySqlParameter("@date", MySqlDbType.DateTime)).Value = date;
                     cmd.Parameters.Add(new MySqlParameter("@max", MySqlDbType.Int32, 10)).Value = dto.max;
                     cmd.Parameters.Add(new MySqlParameter("@count", MySqlDbType.Int32, 10)).Value = dto.count;
-                    return cmd.ExecuteNonQuery();
+                    return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
         }
@@ -136,6 +137,23 @@ namespace FootccerClient.Footccer.DAO
                         }
                         return result;
                     }
+                }
+            }
+        }
+        public int insertList(ListDTO dto)
+        {
+            using(conn = new MySqlConnection (strConnection))
+            {
+                conn.Open();
+                string sql = $"insert into `List` (`User_idx`, `Party_idx`, `side`, `position`) " +
+                             $"values(@User_idx, @Party_idx, @side, @position)";
+                using(cmd = new MySqlCommand(sql , conn))
+                {
+                    cmd.Parameters.Add(new MySqlParameter("@User_idx", MySqlDbType.Int32, 10)).Value = dto.User_idx;
+                    cmd.Parameters.Add(new MySqlParameter("@Party_idx", MySqlDbType.Int32, 10)).Value = dto.Party_idx;
+                    cmd.Parameters.Add(new MySqlParameter("@side", MySqlDbType.VarChar, 1)).Value = dto.side;
+                    cmd.Parameters.Add(new MySqlParameter("@position", MySqlDbType.Int32, 10)).Value = dto.position;
+                    return cmd.ExecuteNonQuery();
                 }
             }
         }
