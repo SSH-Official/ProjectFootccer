@@ -11,16 +11,16 @@ namespace FootccerClient.Footccer.DBExecuter
     {
         public UserInfoDTO GetUserInfo(UserCredentialDTO Credential)
         {
-            string sql = 
-                "SELECT U.`idx`, C.`id`, U.`name`, I.`gender`, I.`contact`, I.`email`, " +
+            string sql = "SELECT " +
+                "U.`idx`, U.`id`, " +
+                "I.`name`, I.`gender`, I.`contact`, I.`email`, " +
                 "CT.`idx`, CT.`name`, AC.`idx`, AC.`name`, IM.`imageurl` " +
                 "FROM `User` AS U " +
-                "LEFT JOIN `Credential` AS C ON U.`idx` = C.`User_idx` " +
                 "LEFT JOIN `UserInfo` AS I ON U.`idx` = I.`User_idx` " +
                 "LEFT JOIN `City` AS CT ON I.`prefer_City_idx` = CT.`idx` " +
                 "LEFT JOIN `Activity` AS AC ON I.`prefer_Activity_idx` = AC.`idx` " +
-                "LEFT JOIN `Image` AS IM ON I.`Image_idx` = IM.`idx`" +
-                $"WHERE C.`id` = '{Credential.ID}' ;";
+                "LEFT JOIN `Image` AS IM ON I.`Image_idx` = IM.`idx` " +
+                $"WHERE U.`id` = '{Credential.ID}'; ";
 
             return ExecuteQuery(sql, ParseToUserInfo) as UserInfoDTO;
 
