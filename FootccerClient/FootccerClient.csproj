@@ -148,6 +148,9 @@
     <Compile Include="Windows\Pops\UrlRecieverPop.Designer.cs">
       <DependentUpon>UrlRecieverPop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Footccer\Util\ComboItem.cs" />
+    <Compile Include="Footccer\DTO\PartyDTO.cs" />
+    <Compile Include="Footccer\DBExecuter\PartySearchDBExecuter.cs" />
     <EmbeddedResource Include="Lib\Frame\MasterPop.resx">
       <DependentUpon>MasterPop.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Work_PartySearch\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

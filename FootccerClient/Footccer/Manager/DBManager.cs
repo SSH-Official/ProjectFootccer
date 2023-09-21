@@ -11,11 +11,13 @@ namespace FootccerClient.Footccer.Manager
     {
         public CreatePartyDBExecuter CreateParty { get; }
         public MyPageDBExecuter MyPage { get; }
+        public PartySearchDBExecuter PartySearch { get; }
 
         public DBManager() 
         {
             CreateParty = new CreatePartyDBExecuter();
             MyPage = new MyPageDBExecuter();
+            PartySearch = new PartySearchDBExecuter();
         }
     }
 }
