@@ -127,6 +127,27 @@
     <Compile Include="Windows\Views\PartySearchView.Designer.cs">
       <DependentUpon>PartySearchView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Work_MyPage\DTO\ActivityDTO.cs" />
+    <Compile Include="Work_MyPage\DTO\CityDTO.cs" />
+    <Compile Include="Work_MyPage\DTO\PreferenceDTO.cs" />
+    <Compile Include="Work_MyPage\DTO\UserCredentialDTO.cs" />
+    <Compile Include="Work_MyPage\DTO\UserInfoDTO.cs" />
+    <Compile Include="Work_MyPage\Manager\ImageMaker.cs" />
+    <Compile Include="Work_MyPage\Manager\MyPageSQLMaker.cs" />
+    <Compile Include="Work_MyPage\Manager\SessionManager_MyPage.cs" />
+    <Compile Include="Work_MyPage\Manager\SSHDBManager.cs" />
+    <Compile Include="Work_MyPage\Pops\MyPagePop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Work_MyPage\Pops\MyPagePop.Designer.cs">
+      <DependentUpon>MyPagePop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Work_MyPage\Pops\UrlRecieverPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Work_MyPage\Pops\UrlRecieverPop.Designer.cs">
+      <DependentUpon>UrlRecieverPop.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Lib\Frame\MasterPop.resx">
       <DependentUpon>MasterPop.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +180,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartySearchView.resx">
       <DependentUpon>PartySearchView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Work_MyPage\Pops\MyPagePop.resx">
+      <DependentUpon>MyPagePop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Work_MyPage\Pops\UrlRecieverPop.resx">
+      <DependentUpon>UrlRecieverPop.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

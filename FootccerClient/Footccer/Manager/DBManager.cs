@@ -10,10 +10,12 @@ namespace FootccerClient.Footccer.Manager
     public class DBManager
     {
         public LHJDBManager Lhj { get;}
+        public MyPageSQLMaker MyPage { get; }
 
         public DBManager() 
         {
             Lhj = new LHJDBManager();
+            MyPage = new MyPageSQLMaker();
         }
     }
 }

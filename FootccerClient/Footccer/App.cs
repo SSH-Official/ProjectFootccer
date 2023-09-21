@@ -1,4 +1,5 @@
 ﻿using FootccerClient.Footccer.Manager;
+using FootccerClient.Work_MyPage.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,14 @@ namespace FootccerClient.Footccer
 
         public DBManager DB { get; }
         public MainForm MainForm { get; set; }
+        public SessionManager_MyPage Session { get; }
+        public ImageMaker Image { get; }
 
         public App()
         {
             DB = new DBManager();
+            Session = new SessionManager_MyPage();
+            Image = new ImageMaker();
         }
 
 
