@@ -11,11 +11,11 @@ namespace FootccerClient.Footccer.Manager.CreateParty
 {
     public class LHJDBManager
     {
-        private DAO dao { get; }
+        private CreatePartyDAO dao { get; }
 
         public LHJDBManager()
         {
-            dao = new DAO();
+            dao = new CreatePartyDAO();
         }
 
         public (string Address, int Idx) getPlaceAddress(int cityIndex, string name)
