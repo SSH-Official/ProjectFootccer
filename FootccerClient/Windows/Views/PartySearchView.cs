@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,13 +81,17 @@ namespace FootccerClient.Windows.Views
             }
             else if (kind == "날짜")
             {
-                seed = SearchDate.Text;
+                string originalDateString = SearchDate.Text;
+                CultureInfo cultureInfo = new CultureInfo("ko-KR");
+                DateTime originalDate = DateTime.ParseExact(originalDateString, "yyyy'년' M'월' d'일' dddd", cultureInfo);
+                seed = originalDate.ToString("yyyy-M-d");
             }
             else
             {
                 seed=SearchText.Text;
             }
-            List _dt = Footccer.App.Instance.DB.PartySearch.ReadParty(_seed);
+            List<PartyDTO> _dt = Footccer.App.Instance.DB.PartySearch.ReadParty(kind,seed);
+            dataGridView1.DataSource = _dt;
         }
     }
 }
