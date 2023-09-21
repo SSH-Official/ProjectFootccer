@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FootccerClient.Footccer.Manager;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 using System.Data;
+using FootccerClient.Footccer.DTO;
 
-namespace FootccerClient.Footccer.Manager.CreateParty
+namespace FootccerClient.Footccer.DAO
 {
-    public class DAO
+    public class CreatePartyDAO
     {
         private MySqlConnection conn;
         private MySqlCommand cmd;

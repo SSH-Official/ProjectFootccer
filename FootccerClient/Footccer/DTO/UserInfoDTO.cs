@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootccerClient.Work_MyPage.DTO
+namespace FootccerClient.Footccer.DTO
 {
     public class UserInfoDTO
     {

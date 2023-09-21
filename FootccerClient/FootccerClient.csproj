@@ -70,9 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
-    <Compile Include="Footccer\Manager\CreateParty\CreatePartyDTO.cs" />
-    <Compile Include="Footccer\Manager\CreateParty\DAO.cs" />
-    <Compile Include="Footccer\Manager\CreateParty\LHJDBManager.cs" />
+    <Compile Include="Footccer\DTO\CreatePartyDTO.cs" />
+    <Compile Include="Footccer\DAO\CreatePartyDAO.cs" />
+    <Compile Include="Footccer\DBExecuter\CreatePartyDBExecuter.cs" />
     <Compile Include="Footccer\Manager\DBManager.cs" />
     <Compile Include="Windows\Main\MainForm.Controller.cs">
       <SubType>Form</SubType>
@@ -127,25 +127,25 @@
     <Compile Include="Windows\Views\PartySearchView.Designer.cs">
       <DependentUpon>PartySearchView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Work_MyPage\DTO\ActivityDTO.cs" />
-    <Compile Include="Work_MyPage\DTO\CityDTO.cs" />
-    <Compile Include="Work_MyPage\DTO\PreferenceDTO.cs" />
-    <Compile Include="Work_MyPage\DTO\UserCredentialDTO.cs" />
-    <Compile Include="Work_MyPage\DTO\UserInfoDTO.cs" />
-    <Compile Include="Work_MyPage\Manager\ImageMaker.cs" />
-    <Compile Include="Work_MyPage\Manager\MyPageSQLMaker.cs" />
-    <Compile Include="Work_MyPage\Manager\SessionManager_MyPage.cs" />
-    <Compile Include="Work_MyPage\Manager\SSHDBManager.cs" />
-    <Compile Include="Work_MyPage\Pops\MyPagePop.cs">
+    <Compile Include="Footccer\DTO\ActivityDTO.cs" />
+    <Compile Include="Footccer\DTO\CityDTO.cs" />
+    <Compile Include="Footccer\DTO\PreferenceDTO.cs" />
+    <Compile Include="Footccer\DTO\UserCredentialDTO.cs" />
+    <Compile Include="Footccer\DTO\UserInfoDTO.cs" />
+    <Compile Include="Footccer\Util\ImageMaker.cs" />
+    <Compile Include="Footccer\DBExecuter\MyPageDBExecuter.cs" />
+    <Compile Include="Footccer\Manager\SessionManager.cs" />
+    <Compile Include="Footccer\DBExecuter\Functional_DBExecuter_Base.cs" />
+    <Compile Include="Windows\Pops\MyPagePop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Work_MyPage\Pops\MyPagePop.Designer.cs">
+    <Compile Include="Windows\Pops\MyPagePop.Designer.cs">
       <DependentUpon>MyPagePop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Work_MyPage\Pops\UrlRecieverPop.cs">
+    <Compile Include="Windows\Pops\UrlRecieverPop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Work_MyPage\Pops\UrlRecieverPop.Designer.cs">
+    <Compile Include="Windows\Pops\UrlRecieverPop.Designer.cs">
       <DependentUpon>UrlRecieverPop.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Lib\Frame\MasterPop.resx">
@@ -181,10 +181,10 @@
     <EmbeddedResource Include="Windows\Views\PartySearchView.resx">
       <DependentUpon>PartySearchView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Work_MyPage\Pops\MyPagePop.resx">
+    <EmbeddedResource Include="Windows\Pops\MyPagePop.resx">
       <DependentUpon>MyPagePop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Work_MyPage\Pops\UrlRecieverPop.resx">
+    <EmbeddedResource Include="Windows\Pops\UrlRecieverPop.resx">
       <DependentUpon>UrlRecieverPop.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -203,7 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Work_CreateParty\Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

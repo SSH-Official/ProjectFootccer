@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FootccerClient.Footccer.Manager.CreateParty;
 using FootccerClient.Footccer;
 using System.Web;
+using FootccerClient.Footccer.DTO;
 
 namespace FootccerClient.Windows.Views
 {
@@ -44,7 +44,7 @@ namespace FootccerClient.Windows.Views
 
         private void initializeObject()
         {
-            List<string> list = App.Instance.DB.Lhj.getCityName();
+            List<string> list = App.Instance.DB.CreateParty.getCityName();
             addComboBoxItems(list, cBox_City);
         }
 
@@ -54,7 +54,7 @@ namespace FootccerClient.Windows.Views
             cBox_placeName.Text = string.Empty;
             label_placeAddress.Text = string.Empty;
             int cityIndex = cBox_City.SelectedIndex + 1;
-            List<string> list = App.Instance.DB.Lhj.getPlaceName(cityIndex);
+            List<string> list = App.Instance.DB.CreateParty.getPlaceName(cityIndex);
             addComboBoxItems(list, cBox_placeName);
         }
 
@@ -63,7 +63,7 @@ namespace FootccerClient.Windows.Views
             label_placeAddress.Text = string.Empty;
             int cityIndex = cBox_City.SelectedIndex + 1;
             string name = cBox_placeName.SelectedItem.ToString();            
-            (string Address, int Idx) tuple = App.Instance.DB.Lhj.getPlaceAddress(cityIndex, name);            
+            (string Address, int Idx) tuple = App.Instance.DB.CreateParty.getPlaceAddress(cityIndex, name);            
             label_placeAddress.Text = tuple.Item1;
             label_placeAddress.Tag = tuple.Item2;
         }
@@ -81,7 +81,7 @@ namespace FootccerClient.Windows.Views
             {
                 dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, 2, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value, Int32.Parse(tBox_max.Text));
             }
-            int result = App.Instance.DB.Lhj.setPartyDTO(dto);
+            int result = App.Instance.DB.CreateParty.setPartyDTO(dto);
             if (result < 0){
                 MessageBox.Show("오류");
             }

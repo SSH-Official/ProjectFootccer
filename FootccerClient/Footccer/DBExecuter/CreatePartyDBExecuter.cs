@@ -1,4 +1,6 @@
-﻿using MySqlConnector;
+﻿using FootccerClient.Footccer.DAO;
+using FootccerClient.Footccer.DTO;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,15 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FootccerClient.Footccer.Manager.CreateParty
+namespace FootccerClient.Footccer.DBExecuter
 {
-    public class LHJDBManager
+    public class CreatePartyDBExecuter
     {
-        private DAO dao { get; }
+        private CreatePartyDAO dao { get; }
 
-        public LHJDBManager()
+        public CreatePartyDBExecuter()
         {
-            dao = new DAO();
+            dao = new CreatePartyDAO();
         }
 
         public (string Address, int Idx) getPlaceAddress(int cityIndex, string name)

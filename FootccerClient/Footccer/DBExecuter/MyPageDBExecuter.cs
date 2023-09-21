@@ -1,12 +1,13 @@
-﻿using FootccerClient.Work_MyPage.DTO;
+﻿
+using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace FootccerClient.Footccer.Manager
+namespace FootccerClient.Footccer.DBExecuter
 {
-    public class MyPageSQLMaker : SSHDBManager
+    public class MyPageDBExecuter : Functional_DBExecuter_Base
     {
         public UserInfoDTO GetUserInfo(UserCredentialDTO Credential)
         {

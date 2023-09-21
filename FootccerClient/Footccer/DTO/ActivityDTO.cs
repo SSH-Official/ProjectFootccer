@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootccerClient.Work_MyPage.DTO
+namespace FootccerClient.Footccer.DTO
 {
-    public class CityDTO
+    public class ActivityDTO
     {
         public int Index { get; }
         public string Name { get; }
-        public CityDTO(int index, string name)
+        public ActivityDTO(int index, string name)
         {
             Index = index;
             Name = name;
         }
         public override string ToString()
         {
-            return $"CityDTO : {{ Index : {Index}, Name : {Name} }}";
+            return $"ActivityDTO : {{ Index : {Index}, Name : {Name} }}";
         }
     }
 }

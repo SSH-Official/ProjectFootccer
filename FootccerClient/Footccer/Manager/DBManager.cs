@@ -1,4 +1,4 @@
-﻿using FootccerClient.Footccer.Manager.CreateParty;
+﻿using FootccerClient.Footccer.DBExecuter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +9,13 @@ namespace FootccerClient.Footccer.Manager
 {
     public class DBManager
     {
-        public LHJDBManager Lhj { get;}
-        public MyPageSQLMaker MyPage { get; }
+        public CreatePartyDBExecuter CreateParty { get; }
+        public MyPageDBExecuter MyPage { get; }
 
         public DBManager() 
         {
-            Lhj = new LHJDBManager();
-            MyPage = new MyPageSQLMaker();
+            CreateParty = new CreatePartyDBExecuter();
+            MyPage = new MyPageDBExecuter();
         }
     }
 }

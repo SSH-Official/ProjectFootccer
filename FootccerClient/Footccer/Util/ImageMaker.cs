@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootccerClient.Work_MyPage.Manager
+namespace FootccerClient.Footccer.Util
 {
     public class ImageMaker
     {

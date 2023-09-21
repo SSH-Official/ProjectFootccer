@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System;
 
-namespace FootccerClient.Footccer.Manager
+namespace FootccerClient.Footccer.DBExecuter
 {
-    public class SSHDBManager
+    public class Functional_DBExecuter_Base
     {
         static string DefaultServer = "localhost";
         static string DefaultDatabase = "Footccer";

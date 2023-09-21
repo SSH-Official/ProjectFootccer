@@ -1,4 +1,5 @@
-﻿using FootccerClient.Work_MyPage.DTO;
+﻿
+using FootccerClient.Footccer.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace FootccerClient.Work_MyPage.Manager
+namespace FootccerClient.Footccer.Manager
 {
-    public class SessionManager_MyPage
+    public class SessionManager
     {
         public UserCredentialDTO User;
 

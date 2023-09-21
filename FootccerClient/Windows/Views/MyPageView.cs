@@ -1,6 +1,5 @@
 ﻿using FootccerClient.Footccer;
 using FootccerClient.Windows.MyPage;
-using FootccerClient.Work_MyPage.DTO;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FootccerClient.Footccer.DTO;
 
 namespace FootccerClient.Windows.Views
 {
