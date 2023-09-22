@@ -16,6 +16,13 @@ namespace FootccerClient.Footccer.DTO
             City = new CityDTO(cityidx, cityname);
             Activity = new ActivityDTO(actidx, actname);
         }
+
+        public PreferenceDTO(CityDTO city, ActivityDTO activity)
+        {
+            City = city;
+            Activity = activity;
+        }
+
         public override string ToString()
         {
             return $"PreferenceDTO : {{ City : {{{City}}}, Activity : {{{Activity}}} }}";
