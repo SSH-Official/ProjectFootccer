@@ -1,4 +1,5 @@
-﻿using FootccerClient.Footccer.DBExecuter;
+﻿using FootccerClient.Footccer.DAO;
+using FootccerClient.Footccer.DBExecuter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,14 @@ namespace FootccerClient.Footccer.Manager
         public CreatePartyDBExecuter CreateParty { get; }
         public MyPageDBExecuter MyPage { get; }
         public PartySearchDBExecuter PartySearch { get; }
+        public DBLoginDAO Login { get; internal set; }
 
         public DBManager() 
         {
             CreateParty = new CreatePartyDBExecuter();
             MyPage = new MyPageDBExecuter();
             PartySearch = new PartySearchDBExecuter();
+            Login = new DBLoginDAO();
         }
     }
 }

@@ -30,6 +30,9 @@
         {
             this.panel_Base = new System.Windows.Forms.Panel();
             this.panel_Info = new System.Windows.Forms.Panel();
+            this.button_TestFeature = new System.Windows.Forms.Button();
+            this.btn_FindFile = new System.Windows.Forms.Button();
+            this.btn_DeleteFile = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -85,9 +88,6 @@
             this.btn_Apply = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
             this.btn_ChangePassword = new System.Windows.Forms.Button();
-            this.btn_DeleteFile = new System.Windows.Forms.Button();
-            this.btn_FindFile = new System.Windows.Forms.Button();
-            this.button_TestFeature = new System.Windows.Forms.Button();
             this.panel_Base.SuspendLayout();
             this.panel_Info.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -141,6 +141,36 @@
             this.panel_Info.Name = "panel_Info";
             this.panel_Info.Size = new System.Drawing.Size(448, 477);
             this.panel_Info.TabIndex = 1;
+            // 
+            // button_TestFeature
+            // 
+            this.button_TestFeature.Location = new System.Drawing.Point(32, 305);
+            this.button_TestFeature.Name = "button_TestFeature";
+            this.button_TestFeature.Size = new System.Drawing.Size(75, 23);
+            this.button_TestFeature.TabIndex = 4;
+            this.button_TestFeature.Text = "테스트";
+            this.button_TestFeature.UseVisualStyleBackColor = true;
+            this.button_TestFeature.Click += new System.EventHandler(this.button_TestFeature_Click);
+            // 
+            // btn_FindFile
+            // 
+            this.btn_FindFile.Location = new System.Drawing.Point(32, 135);
+            this.btn_FindFile.Name = "btn_FindFile";
+            this.btn_FindFile.Size = new System.Drawing.Size(75, 23);
+            this.btn_FindFile.TabIndex = 3;
+            this.btn_FindFile.Text = "파일";
+            this.btn_FindFile.UseVisualStyleBackColor = true;
+            this.btn_FindFile.Click += new System.EventHandler(this.btn_FindFile_Click);
+            // 
+            // btn_DeleteFile
+            // 
+            this.btn_DeleteFile.Location = new System.Drawing.Point(32, 164);
+            this.btn_DeleteFile.Name = "btn_DeleteFile";
+            this.btn_DeleteFile.Size = new System.Drawing.Size(75, 23);
+            this.btn_DeleteFile.TabIndex = 3;
+            this.btn_DeleteFile.Text = "삭제";
+            this.btn_DeleteFile.UseVisualStyleBackColor = true;
+            this.btn_DeleteFile.Click += new System.EventHandler(this.btn_DeleteFile_Click);
             // 
             // panel1
             // 
@@ -705,36 +735,6 @@
             this.btn_ChangePassword.TabIndex = 0;
             this.btn_ChangePassword.Text = "비밀번호 변경";
             this.btn_ChangePassword.UseVisualStyleBackColor = true;
-            // 
-            // btn_DeleteFile
-            // 
-            this.btn_DeleteFile.Location = new System.Drawing.Point(32, 164);
-            this.btn_DeleteFile.Name = "btn_DeleteFile";
-            this.btn_DeleteFile.Size = new System.Drawing.Size(75, 23);
-            this.btn_DeleteFile.TabIndex = 3;
-            this.btn_DeleteFile.Text = "삭제";
-            this.btn_DeleteFile.UseVisualStyleBackColor = true;
-            this.btn_DeleteFile.Click += new System.EventHandler(this.btn_DeleteFile_Click);
-            // 
-            // btn_FindFile
-            // 
-            this.btn_FindFile.Location = new System.Drawing.Point(32, 135);
-            this.btn_FindFile.Name = "btn_FindFile";
-            this.btn_FindFile.Size = new System.Drawing.Size(75, 23);
-            this.btn_FindFile.TabIndex = 3;
-            this.btn_FindFile.Text = "파일";
-            this.btn_FindFile.UseVisualStyleBackColor = true;
-            this.btn_FindFile.Click += new System.EventHandler(this.btn_FindFile_Click);
-            // 
-            // button_TestFeature
-            // 
-            this.button_TestFeature.Location = new System.Drawing.Point(32, 305);
-            this.button_TestFeature.Name = "button_TestFeature";
-            this.button_TestFeature.Size = new System.Drawing.Size(75, 23);
-            this.button_TestFeature.TabIndex = 4;
-            this.button_TestFeature.Text = "테스트";
-            this.button_TestFeature.UseVisualStyleBackColor = true;
-            this.button_TestFeature.Click += new System.EventHandler(this.button_TestFeature_Click);
             // 
             // MyPagePop
             // 

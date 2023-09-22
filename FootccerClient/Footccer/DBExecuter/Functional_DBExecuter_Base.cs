@@ -9,7 +9,7 @@ namespace FootccerClient.Footccer.DBExecuter
     {
         static string DefaultServer = "localhost";
         static string DefaultDatabase = "Footccer";
-        static string DefaultUid = "root";
+        static string DefaultUid = "Footccer";
         static string DefaultPwd = "1234";
         static int DefaultPort = 3306;
         static string DefaultConnectionString
