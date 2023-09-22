@@ -13,11 +13,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace FootccerClient.Windows.Views
 {
+
     public partial class LoginView : MasterView
     {
-       private DBManager DB 
+        private DBManager DB 
         { 
             get 
             {
@@ -72,10 +74,9 @@ namespace FootccerClient.Windows.Views
         }
 
         private void btn_join_Click(object sender, EventArgs e)
-        {   
-            //회원가입 폼 만들기
-            //Form2 showform2 = new Form2();
-            //showform2.ShowDialog();
+        {
+            JoinmemberPop _pop=new JoinmemberPop();
+            _pop.ShowDialog(this);
         }
     }
 }
