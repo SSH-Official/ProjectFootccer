@@ -41,7 +41,7 @@ namespace FootccerClient.Windows.MyPage
 
         private void InitailizeMyPagePop_AsUserInfo()
         {
-            tbox_Name.Text = userInfo.User.Name;
+            tbox_Name.Text = userInfo.Name;
             tbox_Gender.Text = userInfo.Gender;
             tbox_Contact.Text = userInfo.Contact;
             tbox_Email.Text = userInfo.Email;

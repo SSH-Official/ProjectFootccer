@@ -70,6 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
+    <Compile Include="Footccer\DAO\SSH_DAO.cs" />
+    <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
+    <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
+    <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\CreatePartyDTO.cs" />
     <Compile Include="Footccer\DAO\CreatePartyDAO.cs" />
     <Compile Include="Footccer\DBExecuter\CreatePartyDBExecuter.cs" />
@@ -139,12 +143,12 @@
     <Compile Include="Footccer\DTO\ActivityDTO.cs" />
     <Compile Include="Footccer\DTO\CityDTO.cs" />
     <Compile Include="Footccer\DTO\PreferenceDTO.cs" />
-    <Compile Include="Footccer\DTO\UserCredentialDTO.cs" />
+    <Compile Include="Footccer\DTO\UserDTO.cs" />
     <Compile Include="Footccer\DTO\UserInfoDTO.cs" />
     <Compile Include="Footccer\Util\ImageMaker.cs" />
     <Compile Include="Footccer\DBExecuter\MyPageDBExecuter.cs" />
     <Compile Include="Footccer\Manager\SessionManager.cs" />
-    <Compile Include="Footccer\DBExecuter\Functional_DBExecuter_Base.cs" />
+    <Compile Include="Footccer\DAO\MyPage_DAO.cs" />
     <Compile Include="Windows\Pops\MyPagePop.cs">
       <SubType>Form</SubType>
     </Compile>

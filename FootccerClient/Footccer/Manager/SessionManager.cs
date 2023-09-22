@@ -11,17 +11,17 @@ namespace FootccerClient.Footccer.Manager
 {
     public class SessionManager
     {
-        public UserCredentialDTO User;
+        public UserDTO User;
 
 
-        internal void TestSetup(UserCredentialDTO user)
+        internal void TestSetup(UserDTO user)
         {
             this.User = user;
         }
 
         public void LogOut()
         {
-            User = new UserCredentialDTO(-1, null, null);
+            User = new UserDTO(-1, null);
         }
     }
 }

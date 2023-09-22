@@ -1,18 +1,20 @@
 ﻿using MySqlConnector;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace FootccerClient.Footccer.DBExecuter
+namespace FootccerClient.Footccer.DAO
 {
-    public class Functional_DBExecuter_Base
+    public class SSH_DAO
     {
-        static string DefaultServer = "localhost";
+        static string DefaultServer = "192.168.0.18";
         static string DefaultDatabase = "Footccer";
         static string DefaultUid = "Footccer";
         static string DefaultPwd = "1234";
         static int DefaultPort = 3306;
-        static string DefaultConnectionString
+        public static string DefaultConnectionString
         {
             get
             {
@@ -37,9 +39,9 @@ namespace FootccerClient.Footccer.DBExecuter
             {
                 conn = new MySqlConnection(strConn);
                 conn.Open();
-                
+
                 cmd = new MySqlCommand(Query, conn);
-                
+
                 rdr = cmd.ExecuteReader();
 
                 theResult = ParseMethod(rdr);
@@ -60,8 +62,3 @@ namespace FootccerClient.Footccer.DBExecuter
         }
     }
 }
-
-
-
-
-
