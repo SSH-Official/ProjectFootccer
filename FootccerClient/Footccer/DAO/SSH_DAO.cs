@@ -1,5 +1,6 @@
 ﻿using MySqlConnector;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,38 +28,79 @@ namespace FootccerClient.Footccer.DAO
             }
         }
 
-        protected object ExecuteQuery(string Query, Func<MySqlDataReader, object> ParseMethod)
+        /// <summary>
+        /// 내부에서 새로 호출한 아이들은 꼭 리소스 반환해주세요...
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <param name="ResultMethod"></param>
+        /// <returns></returns>
+        protected object ExecuteQuery(string Query, Func<MySqlCommand, object> ResultMethod)
         {
             string strConn = DefaultConnectionString;
             object theResult = null;
             MySqlConnection conn = null;
-            MySqlCommand cmd = null;
-            MySqlDataReader rdr = null;
 
             try
             {
                 conn = new MySqlConnection(strConn);
                 conn.Open();
 
-                cmd = new MySqlCommand(Query, conn);
+                MySqlCommand cmd = new MySqlCommand(Query, conn);
 
-                rdr = cmd.ExecuteReader();
-
-                theResult = ParseMethod(rdr);
+                theResult = ResultMethod(cmd);
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (cmd != null) { cmd.Dispose(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+            return theResult;
+        }
+
+        /// <summary>
+        /// 내부에서 새로 호출한 아이들은 꼭 리소스 반환해주세요...
+        /// </summary>
+        /// <param name="ResultMethod"></param>
+        /// <returns></returns>
+        protected object ExecuteTransaction(Func<MySqlCommand, object> ResultMethod)
+        {
+            string strConn = DefaultConnectionString;
+            object result = null;
+            MySqlConnection conn = null;
+            MySqlTransaction trans = null;            
+
+            try
+            {
+                conn = new MySqlConnection(strConn);
+                conn.Open();
+                trans = conn.BeginTransaction();
+
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.Transaction = trans;
+                
+                result = ResultMethod(cmd);
+
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                if (trans != null) { trans.Rollback(); }
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
                 if (conn != null) { conn.Close(); }
             }
 
 
-            return theResult;
+            return result;
         }
+
     }
 }

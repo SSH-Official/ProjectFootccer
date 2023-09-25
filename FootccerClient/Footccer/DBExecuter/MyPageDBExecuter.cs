@@ -11,6 +11,10 @@ namespace FootccerClient.Footccer.DBExecuter
 {
     public class MyPageDBExecuter
     {
+        public string GetSQL_SelectUserInfo_ForUser(UserDTO user)
+        {
+            return string.Format(GetSQLFormat_ForUserInfo(), user.ID);
+        }
         public string GetSQLFormat_ForUserInfo()
         {
             string sql = "SELECT " +
@@ -25,7 +29,6 @@ namespace FootccerClient.Footccer.DBExecuter
                 "WHERE U.`id` = '{0}'; ";
             return sql;
         }
-                
 
         public UserInfoDTO ParseToUserInfo(MySqlDataReader rdr)
         {
@@ -36,86 +39,61 @@ namespace FootccerClient.Footccer.DBExecuter
                 Queue<int> intArgs = new Queue<int>();
                 Queue<string> strArgs = new Queue<string>();
                 Queue<Image> imgArgs = new Queue<Image>();
-                for (int i = 0; i < rdr.FieldCount; i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                        case 6:
-                        case 8:
-                            intArgs.Enqueue(rdr.GetInt32(i)); break;
-                        case 10:
-                            string url = rdr.GetString(i);
-                            Image img = App.Instance.Image.GetImageFromURL(url);
-                            img.Tag = url;
-                            imgArgs.Enqueue(img); break;
-                        default:
-                            strArgs.Enqueue(rdr.GetString(i)); break;
-                    }
-                }
-                UserInfoDTO userInfo = new UserInfoDTO(
-                    intArgs.Dequeue(), strArgs.Dequeue(), strArgs.Dequeue(), strArgs.Dequeue(),
-                    strArgs.Dequeue(), strArgs.Dequeue(), intArgs.Dequeue(), strArgs.Dequeue(),
-                    intArgs.Dequeue(), strArgs.Dequeue(), imgArgs.Dequeue());
+
+                EnqueueArgs_IntoQueue();
+
+                UserInfoDTO userInfo = GetNewUserInfo_WithArgsQueue();
 
                 _list.Add(userInfo);
+
+                continue;
+
+                #region <<<inline functions>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                void EnqueueArgs_IntoQueue()
+                {
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                            case 6:
+                            case 8:
+                                intArgs.Enqueue(rdr.GetInt32(i)); break;
+                            case 10:
+                                string url = rdr.GetString(i);
+                                Image img = App.Instance.Image.GetImageFromURL(url);
+                                img.Tag = url;
+                                imgArgs.Enqueue(img); break;
+                            default:
+                                strArgs.Enqueue(rdr.GetString(i)); break;
+                        }
+                    }
+                }
+                UserInfoDTO GetNewUserInfo_WithArgsQueue()
+                {
+                    return new UserInfoDTOBuilder()
+                                        .SetUser(new UserDTO(intArgs.Dequeue(), strArgs.Dequeue()))
+                                        .SetName(strArgs.Dequeue())
+                                        .SetGender(strArgs.Dequeue())
+                                        .SetContact(strArgs.Dequeue())
+                                        .SetEmail(strArgs.Dequeue())
+                                        .SetPrefer(new PreferenceDTO(
+                                            new CityDTO(intArgs.Dequeue(), strArgs.Dequeue()),
+                                            new ActivityDTO(intArgs.Dequeue(), strArgs.Dequeue())))
+                                        .SetImage(imgArgs.Dequeue())
+                                        .Build();
+                }
+                #endregion
             }
 
             int _count = _list.Count;
             if (_count < 1) { throw new Exception("검색 결과가 없습니다.."); }
             else if (_count > 1) { throw new Exception("DB에 중복 아이디가 있습니다.."); }
             else { return _list[0]; }
+
+            
         }
 
-
-        public UserInfoDTO ParseToUserInfo_UsingBuilder(MySqlDataReader rdr)
-        {
-            List<UserInfoDTO> _list = new List<UserInfoDTO>();
-
-            while (rdr.Read())
-            {
-                Queue<int> intArgs = new Queue<int>();
-                Queue<string> strArgs = new Queue<string>();
-                Queue<Image> imgArgs = new Queue<Image>();
-                for (int i = 0; i < rdr.FieldCount; i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                        case 6:
-                        case 8:
-                            intArgs.Enqueue(rdr.GetInt32(i)); break;
-                        case 10:
-                            string url = rdr.GetString(i);
-                            Image img = App.Instance.Image.GetImageFromURL(url);
-                            img.Tag = url;
-                            imgArgs.Enqueue(img); break;
-                        default:
-                            strArgs.Enqueue(rdr.GetString(i)); break;
-                    }
-                }
-
-                UserInfoDTOBuilder _builder = new UserInfoDTOBuilder();
-                UserInfoDTO userInfo = _builder
-                    .SetUser(new UserDTO(intArgs.Dequeue(), strArgs.Dequeue()))
-                    .SetName(strArgs.Dequeue())
-                    .SetGender(strArgs.Dequeue())
-                    .SetContact(strArgs.Dequeue())
-                    .SetEmail(strArgs.Dequeue())
-                    .SetPrefer(new PreferenceDTO(
-                        new CityDTO(intArgs.Dequeue(), strArgs.Dequeue()), 
-                        new ActivityDTO(intArgs.Dequeue(), strArgs.Dequeue())))
-                    .SetImage(imgArgs.Dequeue())
-                    .Build();
-
-                _list.Add(userInfo);
-            }
-
-            int _count = _list.Count;
-            if (_count < 1) { throw new Exception("검색 결과가 없습니다.."); }
-            else if (_count > 1) { throw new Exception("DB에 중복 아이디가 있습니다.."); }
-            else { return _list[0]; }
-        }
-
+        
     }
 }
