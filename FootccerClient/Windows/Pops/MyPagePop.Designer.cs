@@ -735,6 +735,7 @@
             this.btn_ChangePassword.TabIndex = 0;
             this.btn_ChangePassword.Text = "비밀번호 변경";
             this.btn_ChangePassword.UseVisualStyleBackColor = true;
+            this.btn_ChangePassword.Click += new System.EventHandler(this.btn_ChangePassword_Click);
             // 
             // MyPagePop
             // 

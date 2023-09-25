@@ -78,5 +78,10 @@ namespace FootccerClient.Windows.MyPage
                 panel_Image.Tag = url;
             }
         }
+
+        private void btn_ChangePassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

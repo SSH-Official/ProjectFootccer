@@ -33,43 +33,16 @@ namespace FootccerClient.Footccer.DAO
                 MySqlConnection connection = new MySqlConnection(connectionstr);
 
                 connection.Open();
+                string SQL_InsertToUser, SQL_GetUserIndex, SQL_InsertToUserInfo;
+                NewMethod(info, out SQL_InsertToUser, out SQL_GetUserIndex, out SQL_InsertToUserInfo);
 
-                string name = info.Name;
-                string gender = info.Gender;
-                string email = info.Email;
-                string id = info.Id;
-                string password = info.Password;
-                string nickname = info.Nickname;
-                string birthday = info.Birthday;
-                if (DateTime.TryParseExact(birthday, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
-                {
-                   birthday = parsedDate.ToString("yyyy-MM-dd ");
-                }
-                string phone = info.Phone;                
-                string SQL_InsertToUser = 
-                    "INSERT INTO User (id, password) VALUES " 
-                    + $"('{id}','{password}'); ";
-                string SQL_GetUserIndex = $"SELECT idx FROM `User` WHERE id = '{id}'; ";
-                string SQL_InsertToUserInfo = 
-                    "INSERT INTO UserInfo (User_idx, nickname, name, gender, contact, email, birth) VALUES " +
-                    "({0} ,'" + nickname + "','" + name + "', '" + gender + "', '" + phone + "', '" + email + "','" + birthday + "'); ";
-                MySqlTransaction transaction =  connection.BeginTransaction();
+                MySqlTransaction transaction = connection.BeginTransaction();
                 try
                 {
                     MySqlCommand cmd = connection.CreateCommand();
                     cmd.Transaction = transaction;
-
-                    cmd.CommandText = SQL_InsertToUser;
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = SQL_GetUserIndex;
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-                    int User_idx = reader.GetInt32(0);
-                    reader.Close();
-
-                    string FormattedSQL = string.Format(SQL_InsertToUserInfo, User_idx);
-                    cmd.CommandText = FormattedSQL;
-                    cmd.ExecuteNonQuery();
+                    
+                    NewMethod1(SQL_InsertToUser, SQL_GetUserIndex, SQL_InsertToUserInfo, cmd);
 
                     throw new Exception("Testing");
                     transaction.Commit();
@@ -87,6 +60,42 @@ namespace FootccerClient.Footccer.DAO
                 MessageBox.Show(ex.Message);
                 return false;
             }
+        }
+
+        private static void NewMethod1(string SQL_InsertToUser, string SQL_GetUserIndex, string SQL_InsertToUserInfo, MySqlCommand cmd)
+        {
+            cmd.CommandText = SQL_InsertToUser;
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = SQL_GetUserIndex;
+            MySqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            int User_idx = reader.GetInt32(0);
+            reader.Close();
+
+            string FormattedSQL = string.Format(SQL_InsertToUserInfo, User_idx);
+            cmd.CommandText = FormattedSQL;
+            cmd.ExecuteNonQuery();
+        }
+
+        private static void NewMethod(JoinmemberInfoDTO info, out string SQL_InsertToUser, out string SQL_GetUserIndex, out string SQL_InsertToUserInfo)
+        {
+            string name = info.Name;
+            string gender = info.Gender;
+            string email = info.Email;
+            string id = info.Id;
+            string password = info.Password;
+            string nickname = info.Nickname;
+            string birthday = info.Birthday;
+            if (DateTime.TryParseExact(birthday, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+            {
+                birthday = parsedDate.ToString("yyyy-MM-dd ");
+            }
+            string phone = info.Phone;
+            SQL_InsertToUser = "INSERT INTO User (id, password) VALUES "
+                + $"('{id}','{password}'); ";
+            SQL_GetUserIndex = $"SELECT idx FROM `User` WHERE id = '{id}'; ";
+            SQL_InsertToUserInfo = "INSERT INTO UserInfo (User_idx, nickname, name, gender, contact, email, birth) VALUES " +
+                "({0} ,'" + nickname + "','" + name + "', '" + gender + "', '" + phone + "', '" + email + "','" + birthday + "'); ";
         }
 
         internal bool CheckLoginSuccess(UserCredentialDTO_RegisterUser info)

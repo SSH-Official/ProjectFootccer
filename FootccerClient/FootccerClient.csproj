@@ -146,7 +146,6 @@
     <Compile Include="Footccer\DTO\UserDTO.cs" />
     <Compile Include="Footccer\DTO\UserInfoDTO.cs" />
     <Compile Include="Footccer\Util\ImageMaker.cs" />
-    <Compile Include="Footccer\DBExecuter\MyPageDBExecuter.cs" />
     <Compile Include="Footccer\Manager\SessionManager.cs" />
     <Compile Include="Footccer\DAO\MyPage_DAO.cs" />
     <Compile Include="Windows\Pops\MyPagePop.cs">
