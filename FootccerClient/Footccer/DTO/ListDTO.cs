@@ -19,7 +19,7 @@ namespace FootccerClient.Footccer.DTO
 
         }
 
-        //포지션이 정해 지지 않은 자유 포지션 이면 값을 position값을 넣지 않으시면 됩니다.
+        //포지션이 정해 지지 않은 자유 포지션 이면 값을 position값에 넣지 않으시면 됩니다.
         public ListDTO(int user_idx, int party_idx, char side, int position = -1)
         {           
             this.User_idx = user_idx;

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FootccerClient.Work_ELO.View;
 
 namespace FootccerClient
 {
@@ -32,7 +33,8 @@ namespace FootccerClient
                     new MyPageView(),
                     new PartyJoinView(),
                     new PartyCreateView(),
-                    new PartySearchView()
+                    new PartySearchView(),
+                    new RecordView()
                 };
 
                 foreach (MasterView view in this.Views)
@@ -73,6 +75,11 @@ namespace FootccerClient
         private void btn_PartyJoin_Click(object sender, EventArgs e)
         {
             ShowView<PartyJoinView>();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowView<RecordView>();
         }
     }
 }

@@ -21,6 +21,9 @@ namespace FootccerClient.Footccer.DTO
         {
 
         }
+
+        //인원수가 정해지지 않은 파티의 경우 intFree에 입력 받은 값을 넣으시면 됩니다.
+        //이미 정해져 있는 5:5나 11:11의 경우 입력을 안하시면 됩니다.
         public CreatePartyDTO(int Acitvity_idx, int Leader_idx, string name, int Place_idx, DateTime date, int intFree = -99)
         {
             this.Activity_idx = Acitvity_idx;

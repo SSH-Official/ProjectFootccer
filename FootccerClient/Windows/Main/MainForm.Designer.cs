@@ -41,6 +41,7 @@
             this.btn_MyPage = new System.Windows.Forms.Button();
             this.panel_Button1 = new System.Windows.Forms.Panel();
             this.btn_Login = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel_Base.SuspendLayout();
             this.panel_Menu.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -70,6 +71,7 @@
             // 
             // panel_Menu
             // 
+            this.panel_Menu.Controls.Add(this.button1);
             this.panel_Menu.Controls.Add(this.panel4);
             this.panel_Menu.Controls.Add(this.panel3);
             this.panel_Menu.Controls.Add(this.panel2);
@@ -186,6 +188,17 @@
             this.btn_Login.UseVisualStyleBackColor = true;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(0, 335);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 115);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "기록";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -220,6 +233,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_MyPage;
         private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.Button button1;
     }
 }
 

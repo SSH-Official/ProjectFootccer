@@ -36,7 +36,9 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.cBox_position = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.cBox_side = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tBox_max = new System.Windows.Forms.TextBox();
             this.cBox_activity = new System.Windows.Forms.ComboBox();
@@ -56,8 +58,6 @@
             this.cBox_City = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tBox_partyName = new System.Windows.Forms.TextBox();
-            this.cBox_side = new System.Windows.Forms.ComboBox();
-            this.cBox_position = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -195,6 +195,19 @@
             this.panel6.Size = new System.Drawing.Size(1408, 76);
             this.panel6.TabIndex = 20;
             // 
+            // cBox_position
+            // 
+            this.cBox_position.FormattingEnabled = true;
+            this.cBox_position.Items.AddRange(new object[] {
+            "공격수",
+            "미드필더",
+            "수비수",
+            "골키퍼"});
+            this.cBox_position.Location = new System.Drawing.Point(3, 28);
+            this.cBox_position.Name = "cBox_position";
+            this.cBox_position.Size = new System.Drawing.Size(121, 20);
+            this.cBox_position.TabIndex = 0;
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.cBox_side);
@@ -203,6 +216,17 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1408, 76);
             this.panel5.TabIndex = 19;
+            // 
+            // cBox_side
+            // 
+            this.cBox_side.FormattingEnabled = true;
+            this.cBox_side.Items.AddRange(new object[] {
+            "A",
+            "B"});
+            this.cBox_side.Location = new System.Drawing.Point(3, 28);
+            this.cBox_side.Name = "cBox_side";
+            this.cBox_side.Size = new System.Drawing.Size(121, 20);
+            this.cBox_side.TabIndex = 0;
             // 
             // panel4
             // 
@@ -393,30 +417,6 @@
             this.tBox_partyName.Name = "tBox_partyName";
             this.tBox_partyName.Size = new System.Drawing.Size(100, 21);
             this.tBox_partyName.TabIndex = 0;
-            // 
-            // cBox_side
-            // 
-            this.cBox_side.FormattingEnabled = true;
-            this.cBox_side.Items.AddRange(new object[] {
-            "A",
-            "B"});
-            this.cBox_side.Location = new System.Drawing.Point(3, 28);
-            this.cBox_side.Name = "cBox_side";
-            this.cBox_side.Size = new System.Drawing.Size(121, 20);
-            this.cBox_side.TabIndex = 0;
-            // 
-            // cBox_position
-            // 
-            this.cBox_position.FormattingEnabled = true;
-            this.cBox_position.Items.AddRange(new object[] {
-            "공격수",
-            "미드필더",
-            "수비수",
-            "골키퍼"});
-            this.cBox_position.Location = new System.Drawing.Point(3, 28);
-            this.cBox_position.Name = "cBox_position";
-            this.cBox_position.Size = new System.Drawing.Size(121, 20);
-            this.cBox_position.TabIndex = 0;
             // 
             // PartyCreateView
             // 
