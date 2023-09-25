@@ -22,8 +22,8 @@ namespace FootccerClient.Work_ELO.View
         public RecordView()
         {
             InitializeComponent();
-            initializeLabel();
-            initializeButton();
+            initializeLabel_ForRecord();
+            initializeButton_InputDetail();
             setRecordTable();
             updateRecord(1);
             initializePage();
@@ -41,23 +41,21 @@ namespace FootccerClient.Work_ELO.View
             label_previous.Text = 1.ToString();
             label_next.Text = pageSize.ToString();
         }
-        public void initializeButton()
+        public void initializeButton_InputDetail()
         {
             for(int i = 1; i <= 5; i++)
             {
                 string buttonName = "button" + i;
-
-                Control[] controls = this.Controls.Find(buttonName, true);
-
-                if( controls != null && controls[0] is Button)
+                Button button = this.Controls.Find(buttonName, true).FirstOrDefault() as Button;
+                if( button != null )
                 {
-                    Button btn = (Button)controls[0];
-                    btn.Visible = false;
-                    buttons.Add(btn);
+                    button.Visible = true;
+                    buttons.Add(button);
                 }
             }
+            //MessageBox.Show($"{buttons.Count}");
         }
-        public void initializeLabel()
+        public void initializeLabel_ForRecord()
         {
             for(int row = 0; row < 5; row++)
             {
@@ -80,22 +78,32 @@ namespace FootccerClient.Work_ELO.View
                 DataRow dr = null;
                 if(dt.Rows.Count > row * currentPage)
                 {
-                    dr = dt.Rows[row * currentPage];
-                }                
+                    dr = dt.Rows[row * currentPage];                    
+                }
                 for(int col = 0; col < 4; col++)
                 {
                     if(dr != null)
                     {
                         labels[row, col].Text = dr[col].ToString();
+                        /*if(dr[col + 1] == App.Instance.Session.User.Index)
+                        {
+                            
+                        }
+                        if (isPartyLeader())
+                        {
+                            이안에 버튼 만들거나 labes에 승패 표시
+                            updateWL_asPartyLeader();
+                        }*/
                     }
                     else
                     {
                         labels[row, col].Text = string.Empty;
+                        
                     }
                 }
+                buttons[row].Visible = (dr != null);
             }
         }
-
         private void label_previous_Click(object sender, EventArgs e)
         {
             if(this.currentPage > 1)
@@ -104,7 +112,6 @@ namespace FootccerClient.Work_ELO.View
                 updateRecord(this.currentPage);
             }            
         }
-
         private void label_next_Click(object sender, EventArgs e)
         {
             if(this.currentPage < pageSize)
@@ -112,6 +119,11 @@ namespace FootccerClient.Work_ELO.View
                 this.currentPage += 1;
                 updateRecord(this.currentPage);
             }
+        }
+
+        private void tableLayoutPanel1_Resize(object sender, EventArgs e)
+        {
+
         }
     }
 }

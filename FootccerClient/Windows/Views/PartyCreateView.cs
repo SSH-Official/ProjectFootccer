@@ -68,7 +68,7 @@ namespace FootccerClient.Windows.Views
             label_placeAddress.Tag = tuple.Item2;
         }
 
-        //생성할때 세션아이디로 글쓴이 넣어줘야함
+        //(수정)생성할때 세션아이디로 글쓴이 넣어줘야함
         //지금은 그냥 임의로 넣음
         private void btn_register_Click(object sender, EventArgs e)
         {

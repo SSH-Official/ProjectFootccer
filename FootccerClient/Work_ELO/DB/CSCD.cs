@@ -22,7 +22,7 @@ namespace FootccerClient.Work_ELO.DB
         //(수정)session index로 검색해야 합니다.
         public DataTable getRecordTable()
         {            
-            string sql = "select p.date, p.name, l.side, r.result " +
+            string sql = "select p.date, p.name, l.side, r.result, p.Leader_idx " +
                          "from List l " +
                          "join Party p on p.idx = l.Party_idx " +
                          "join Record r on l.idx = r.List_idx " +
