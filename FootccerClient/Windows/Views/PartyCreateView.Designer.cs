@@ -87,7 +87,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1561, 719);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1417, 703);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -104,20 +104,20 @@
             this.tableLayoutPanel2.Controls.Add(this.btn_register, 7, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_lnit, 6, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 668);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 653);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1555, 48);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1411, 47);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btn_register
             // 
             this.btn_register.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_register.Location = new System.Drawing.Point(1361, 3);
+            this.btn_register.Location = new System.Drawing.Point(1235, 3);
             this.btn_register.Name = "btn_register";
-            this.btn_register.Size = new System.Drawing.Size(191, 42);
+            this.btn_register.Size = new System.Drawing.Size(173, 41);
             this.btn_register.TabIndex = 0;
             this.btn_register.Text = "등록완료";
             this.btn_register.UseVisualStyleBackColor = true;
@@ -126,9 +126,9 @@
             // btn_lnit
             // 
             this.btn_lnit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_lnit.Location = new System.Drawing.Point(1167, 3);
+            this.btn_lnit.Location = new System.Drawing.Point(1059, 3);
             this.btn_lnit.Name = "btn_lnit";
-            this.btn_lnit.Size = new System.Drawing.Size(188, 42);
+            this.btn_lnit.Size = new System.Drawing.Size(170, 41);
             this.btn_lnit.TabIndex = 1;
             this.btn_lnit.Text = "초기화";
             this.btn_lnit.UseVisualStyleBackColor = true;
@@ -167,32 +167,32 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1555, 659);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1411, 644);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // panel8
             // 
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(144, 577);
+            this.panel8.Location = new System.Drawing.Point(131, 563);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1408, 79);
+            this.panel8.Size = new System.Drawing.Size(1277, 78);
             this.panel8.TabIndex = 22;
             // 
             // panel7
             // 
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(144, 495);
+            this.panel7.Location = new System.Drawing.Point(131, 483);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1408, 76);
+            this.panel7.Size = new System.Drawing.Size(1277, 74);
             this.panel7.TabIndex = 21;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.textBox3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(144, 413);
+            this.panel6.Location = new System.Drawing.Point(131, 403);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1408, 76);
+            this.panel6.Size = new System.Drawing.Size(1277, 74);
             this.panel6.TabIndex = 20;
             // 
             // textBox3
@@ -206,9 +206,9 @@
             // 
             this.panel5.Controls.Add(this.textBox2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(144, 331);
+            this.panel5.Location = new System.Drawing.Point(131, 323);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1408, 76);
+            this.panel5.Size = new System.Drawing.Size(1277, 74);
             this.panel5.TabIndex = 19;
             // 
             // textBox2
@@ -223,9 +223,9 @@
             this.panel4.Controls.Add(this.tBox_max);
             this.panel4.Controls.Add(this.cBox_activity);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(144, 249);
+            this.panel4.Location = new System.Drawing.Point(131, 243);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1408, 76);
+            this.panel4.Size = new System.Drawing.Size(1277, 74);
             this.panel4.TabIndex = 18;
             // 
             // tBox_max
@@ -255,9 +255,9 @@
             // 
             this.panel3.Controls.Add(this.dateTimePicker);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(144, 85);
+            this.panel3.Location = new System.Drawing.Point(131, 83);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1408, 76);
+            this.panel3.Size = new System.Drawing.Size(1277, 74);
             this.panel3.TabIndex = 17;
             // 
             // dateTimePicker
@@ -271,10 +271,10 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(8, 582);
+            this.label15.Location = new System.Drawing.Point(8, 568);
             this.label15.Margin = new System.Windows.Forms.Padding(8);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(125, 69);
+            this.label15.Size = new System.Drawing.Size(112, 68);
             this.label15.TabIndex = 14;
             this.label15.Text = "임시";
             // 
@@ -282,10 +282,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(8, 500);
+            this.label13.Location = new System.Drawing.Point(8, 488);
             this.label13.Margin = new System.Windows.Forms.Padding(8);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(125, 66);
+            this.label13.Size = new System.Drawing.Size(112, 64);
             this.label13.TabIndex = 12;
             this.label13.Text = "임시";
             // 
@@ -293,10 +293,10 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(8, 418);
+            this.label11.Location = new System.Drawing.Point(8, 408);
             this.label11.Margin = new System.Windows.Forms.Padding(8);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(125, 66);
+            this.label11.Size = new System.Drawing.Size(112, 64);
             this.label11.TabIndex = 10;
             this.label11.Text = "코멘트";
             // 
@@ -304,10 +304,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(8, 336);
+            this.label9.Location = new System.Drawing.Point(8, 328);
             this.label9.Margin = new System.Windows.Forms.Padding(8);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(125, 66);
+            this.label9.Size = new System.Drawing.Size(112, 64);
             this.label9.TabIndex = 8;
             this.label9.Text = "참가비";
             // 
@@ -315,10 +315,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(8, 254);
+            this.label7.Location = new System.Drawing.Point(8, 248);
             this.label7.Margin = new System.Windows.Forms.Padding(8);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 66);
+            this.label7.Size = new System.Drawing.Size(112, 64);
             this.label7.TabIndex = 6;
             this.label7.Text = "유형*";
             // 
@@ -326,10 +326,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(8, 172);
+            this.label5.Location = new System.Drawing.Point(8, 168);
             this.label5.Margin = new System.Windows.Forms.Padding(8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 66);
+            this.label5.Size = new System.Drawing.Size(112, 64);
             this.label5.TabIndex = 4;
             this.label5.Text = "장소*";
             // 
@@ -337,10 +337,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(8, 90);
+            this.label3.Location = new System.Drawing.Point(8, 88);
             this.label3.Margin = new System.Windows.Forms.Padding(8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 66);
+            this.label3.Size = new System.Drawing.Size(112, 64);
             this.label3.TabIndex = 2;
             this.label3.Text = "날짜*";
             // 
@@ -351,7 +351,7 @@
             this.label1.Location = new System.Drawing.Point(8, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 66);
+            this.label1.Size = new System.Drawing.Size(112, 64);
             this.label1.TabIndex = 0;
             this.label1.Text = "파티명*";
             // 
@@ -361,9 +361,9 @@
             this.panel1.Controls.Add(this.cBox_placeName);
             this.panel1.Controls.Add(this.cBox_City);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(144, 167);
+            this.panel1.Location = new System.Drawing.Point(131, 163);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1408, 76);
+            this.panel1.Size = new System.Drawing.Size(1277, 74);
             this.panel1.TabIndex = 15;
             // 
             // label_placeAddress
@@ -396,9 +396,9 @@
             // 
             this.panel2.Controls.Add(this.tBox_partyName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(144, 3);
+            this.panel2.Location = new System.Drawing.Point(131, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1408, 76);
+            this.panel2.Size = new System.Drawing.Size(1277, 74);
             this.panel2.TabIndex = 16;
             // 
             // tBox_partyName
@@ -412,7 +412,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1561, 719);
+            this.ClientSize = new System.Drawing.Size(1417, 703);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PartyCreateView";
             this.Text = "PartyCreateView";

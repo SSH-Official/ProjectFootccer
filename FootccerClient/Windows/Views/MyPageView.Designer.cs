@@ -47,8 +47,8 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.btn_TestInputID = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.tbox_TestID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel_Base.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -72,7 +72,7 @@
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
             this.panel_Base.Padding = new System.Windows.Forms.Padding(15);
-            this.panel_Base.Size = new System.Drawing.Size(1249, 719);
+            this.panel_Base.Size = new System.Drawing.Size(1417, 703);
             this.panel_Base.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -96,7 +96,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1219, 689);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1387, 673);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -105,7 +105,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(237, 223);
+            this.panel1.Size = new System.Drawing.Size(271, 218);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -120,16 +120,16 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(237, 223);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(271, 218);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btn_Testssh);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 114);
+            this.panel3.Location = new System.Drawing.Point(3, 112);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(231, 106);
+            this.panel3.Size = new System.Drawing.Size(265, 103);
             this.panel3.TabIndex = 1;
             // 
             // btn_Testssh
@@ -137,7 +137,7 @@
             this.btn_Testssh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Testssh.Location = new System.Drawing.Point(0, 0);
             this.btn_Testssh.Name = "btn_Testssh";
-            this.btn_Testssh.Size = new System.Drawing.Size(231, 106);
+            this.btn_Testssh.Size = new System.Drawing.Size(265, 103);
             this.btn_Testssh.TabIndex = 0;
             this.btn_Testssh.Text = "마이페이지";
             this.btn_Testssh.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(231, 105);
+            this.panel2.Size = new System.Drawing.Size(265, 103);
             this.panel2.TabIndex = 0;
             // 
             // label1
@@ -157,7 +157,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 105);
+            this.label1.Size = new System.Drawing.Size(265, 103);
             this.label1.TabIndex = 2;
             this.label1.Text = "성승현 계정 테스트";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -166,9 +166,9 @@
             // 
             this.panel4.Controls.Add(this.tableLayoutPanel3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(246, 3);
+            this.panel4.Location = new System.Drawing.Point(280, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(237, 223);
+            this.panel4.Size = new System.Drawing.Size(271, 218);
             this.panel4.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -183,16 +183,16 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(237, 223);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(271, 218);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.btn_TestNotExist);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 114);
+            this.panel5.Location = new System.Drawing.Point(3, 112);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(231, 106);
+            this.panel5.Size = new System.Drawing.Size(265, 103);
             this.panel5.TabIndex = 1;
             // 
             // btn_TestNotExist
@@ -200,7 +200,7 @@
             this.btn_TestNotExist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_TestNotExist.Location = new System.Drawing.Point(0, 0);
             this.btn_TestNotExist.Name = "btn_TestNotExist";
-            this.btn_TestNotExist.Size = new System.Drawing.Size(231, 106);
+            this.btn_TestNotExist.Size = new System.Drawing.Size(265, 103);
             this.btn_TestNotExist.TabIndex = 0;
             this.btn_TestNotExist.Text = "마이페이지";
             this.btn_TestNotExist.UseVisualStyleBackColor = true;
@@ -212,7 +212,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(231, 105);
+            this.panel6.Size = new System.Drawing.Size(265, 103);
             this.panel6.TabIndex = 0;
             // 
             // label2
@@ -220,7 +220,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(231, 105);
+            this.label2.Size = new System.Drawing.Size(265, 103);
             this.label2.TabIndex = 2;
             this.label2.Text = "DB에 등록되지 않은 경우";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -229,9 +229,9 @@
             // 
             this.panel7.Controls.Add(this.tableLayoutPanel4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(489, 3);
+            this.panel7.Location = new System.Drawing.Point(557, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(237, 223);
+            this.panel7.Size = new System.Drawing.Size(271, 218);
             this.panel7.TabIndex = 2;
             // 
             // tableLayoutPanel4
@@ -246,16 +246,16 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(237, 223);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(271, 218);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.btn_TestInputID);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 114);
+            this.panel8.Location = new System.Drawing.Point(3, 112);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(231, 106);
+            this.panel8.Size = new System.Drawing.Size(265, 103);
             this.panel8.TabIndex = 1;
             // 
             // btn_TestInputID
@@ -263,7 +263,7 @@
             this.btn_TestInputID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_TestInputID.Location = new System.Drawing.Point(0, 0);
             this.btn_TestInputID.Name = "btn_TestInputID";
-            this.btn_TestInputID.Size = new System.Drawing.Size(231, 106);
+            this.btn_TestInputID.Size = new System.Drawing.Size(265, 103);
             this.btn_TestInputID.TabIndex = 0;
             this.btn_TestInputID.Text = "마이페이지";
             this.btn_TestInputID.UseVisualStyleBackColor = true;
@@ -276,18 +276,8 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(3, 3);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(231, 105);
+            this.panel9.Size = new System.Drawing.Size(265, 103);
             this.panel9.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(231, 105);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "직접 아이디 입력";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tbox_TestID
             // 
@@ -296,11 +286,21 @@
             this.tbox_TestID.Size = new System.Drawing.Size(98, 21);
             this.tbox_TestID.TabIndex = 4;
             // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(265, 103);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "직접 아이디 입력";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // MyPageView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 719);
+            this.ClientSize = new System.Drawing.Size(1417, 703);
             this.Controls.Add(this.panel_Base);
             this.Name = "MyPageView";
             this.Text = "MyPageView";
