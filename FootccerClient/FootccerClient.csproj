@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
     <Compile Include="Footccer\DAO\SSH_DAO.cs" />
+    <Compile Include="Footccer\DBExecuter\PositionDBExecuter.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilder.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Footccer\DBExecuter\CreatePartyDBExecuter.cs" />
     <Compile Include="Footccer\DAO\DBLoginDAO.cs" />
     <Compile Include="Footccer\DTO\JoinmemberInfoDTO.cs" />
+    <Compile Include="Footccer\DTO\PositionDTO.cs" />
     <Compile Include="Windows\Pops\JoinmemberPop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +112,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\Views\PositionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\PositionView.Designer.cs">
+      <DependentUpon>PositionView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Views\LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +192,9 @@
     </Compile>
     <EmbeddedResource Include="Windows\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\PositionView.resx">
+      <DependentUpon>PositionView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>

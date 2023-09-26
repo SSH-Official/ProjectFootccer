@@ -31,6 +31,8 @@
             this.panel_Base = new System.Windows.Forms.Panel();
             this.panel_ViewSpace = new System.Windows.Forms.Panel();
             this.panel_Menu = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_PositionPoptest = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btn_PartyJoin = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -43,6 +45,7 @@
             this.btn_Login = new System.Windows.Forms.Button();
             this.panel_Base.SuspendLayout();
             this.panel_Menu.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -70,6 +73,7 @@
             // 
             // panel_Menu
             // 
+            this.panel_Menu.Controls.Add(this.panel5);
             this.panel_Menu.Controls.Add(this.panel4);
             this.panel_Menu.Controls.Add(this.panel3);
             this.panel_Menu.Controls.Add(this.panel2);
@@ -80,6 +84,27 @@
             this.panel_Menu.Name = "panel_Menu";
             this.panel_Menu.Size = new System.Drawing.Size(128, 450);
             this.panel_Menu.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btn_PositionPoptest);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 335);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(7);
+            this.panel5.Size = new System.Drawing.Size(128, 67);
+            this.panel5.TabIndex = 5;
+            // 
+            // btn_PositionPoptest
+            // 
+            this.btn_PositionPoptest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_PositionPoptest.Location = new System.Drawing.Point(7, 7);
+            this.btn_PositionPoptest.Name = "btn_PositionPoptest";
+            this.btn_PositionPoptest.Size = new System.Drawing.Size(114, 53);
+            this.btn_PositionPoptest.TabIndex = 1;
+            this.btn_PositionPoptest.Text = "테스트 포지션 팝";
+            this.btn_PositionPoptest.UseVisualStyleBackColor = true;
+            this.btn_PositionPoptest.Click += new System.EventHandler(this.btn_PositionPoptest_Click);
             // 
             // panel4
             // 
@@ -196,6 +221,7 @@
             this.Text = "Footccer";
             this.panel_Base.ResumeLayout(false);
             this.panel_Menu.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -220,6 +246,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_MyPage;
         private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btn_PositionPoptest;
     }
 }
 

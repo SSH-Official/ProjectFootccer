@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 
@@ -92,7 +93,7 @@ namespace FootccerClient.Footccer.DBExecuter
                 {
                     int idx = Convert.ToInt32(rdr["Paridx"]);
                     string Actname = Convert.ToString(rdr["Actname"]);
-                    string Uname = Convert.ToString(rdr["Uname"]);
+                    string Uname = Convert.ToString(rdr["Uiname"]);
                     string Parname = Convert.ToString(rdr["Parname"]);
                     string CTname = Convert.ToString(rdr["CTname"]);
                     string PLname = Convert.ToString(rdr["PLname"]);
@@ -100,7 +101,7 @@ namespace FootccerClient.Footccer.DBExecuter
                     string date = Convert.ToString(rdr["date"]);
                     int max=Convert.ToInt32(rdr["max"]);
                     int count=Convert.ToInt32(rdr["count"]);
-                    int Uidx= Convert.ToInt32(rdr["Uidx"]);
+                    int Uidx= Convert.ToInt32(rdr["Uiidx"]);
                     PartyDTO party = new PartyDTO(idx, Actname, Uname, Parname, CTname, PLname, PLaddress, date, max, count,Uidx);
 
                     result.Add(party);
@@ -117,14 +118,14 @@ namespace FootccerClient.Footccer.DBExecuter
         public string SearchSQL(string kind, string seed)
         {
             string sql =
-                "SELECT Par.`idx` as Paridx, Act.`name` AS Actname,U.`name`AS Uname," +
+                "SELECT Par.`idx` as Paridx, Act.`name` AS Actname,Ui.`name`AS Uiname," +
                 "Par.`name`AS Parname,CT.`name`AS CTname,PL.`name`AS PLname," +
-                "PL.`address` AS PLaddress,`date`,`max`,`count`, U.`idx` as Uidx " +
-                "FROM `Party` AS Par " +
-                "LEFT JOIN `Activity` AS Act ON Par.Activity_idx = Act.idx " +
-                "LEFT JOIN `User` AS U ON Par.Leader_idx=U.idx " +
-                "LEFT JOIN `Place` AS PL ON Par.Place_idx= PL.idx " +
-                "LEFT JOIN `City` AS CT ON PL.City_idx=CT.idx ";
+                "PL.`address` AS PLaddress,`date`,`max`,`count`, Ui.`User_idx` as Uiidx "+
+                "FROM `Party` AS Par "+
+                "LEFT JOIN `Activity` AS Act ON Par.Activity_idx = Act.idx "+
+                "LEFT JOIN `UserInfo` AS Ui ON Par.Leader_idx = Ui.User_idx "+
+                "LEFT JOIN `Place` AS PL ON Par.Place_idx = PL.idx "+
+                "LEFT JOIN `City` AS CT ON PL.City_idx = CT.idx";
             if(seed != "")
             {
                 sql += "WHERE ";
