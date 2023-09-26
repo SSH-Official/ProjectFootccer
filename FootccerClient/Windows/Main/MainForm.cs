@@ -16,23 +16,34 @@ namespace FootccerClient
     public partial class MainForm : Form
     {
         private List<MasterView> Views { get; set; }
-        
+        private List<Label> MenuControls { get; set; }
         public MainForm()
         {
             InitializeComponent();
             InitializeViews();
-            RegisterToApp();
 
             //////////////////////////////////////
             void InitializeViews()
             {
+                MenuControls = new List<Label>()
+                {
+                    label_Club,
+                    label_Config,
+                    label_MyPage,
+                    label_MyParty,
+                    label_FindParty
+                };
+
                 Views = new List<MasterView>()
                 {
                     new LoginView(),
                     new MyPageView(),
                     new PartyJoinView(),
                     new PartyCreateView(),
-                    new PartySearchView()
+                    new PartySearchView(),
+                    new ConfigView(),
+                    new ClubView()
+
                 };
 
                 foreach (MasterView view in this.Views)
@@ -41,38 +52,44 @@ namespace FootccerClient
                     view.Dock = DockStyle.Fill;
                     view.Visible = false;
                 }
-            }
-            void RegisterToApp()
-            {
-                App.Instance.MainForm = this;
+
+                
             }
         }
 
-        
-
-        private void btn_Login_Click(object sender, EventArgs e)
+        private void btn_Logout_Click(object sender, EventArgs e)
         {
-            ShowView<LoginView>();
+            App.Instance.Session.LogOut();
         }
 
-        private void btn_MyPage_Click(object sender, EventArgs e)
+        private void label_MyParty_Click(object sender, EventArgs e)
         {
-            ShowView<MyPageView>();
-        }
-
-        private void btn_PartySearch_Click(object sender, EventArgs e)
-        {
+            SelectMenu(sender as Label);
             ShowView<PartySearchView>();
         }
 
-        private void btn_PartyCreate_Click(object sender, EventArgs e)
+        private void label_FindParty_Click(object sender, EventArgs e)
         {
-            ShowView<PartyCreateView>();
+            SelectMenu(sender as Label);
+            ShowView<PartySearchView>();
         }
 
-        private void btn_PartyJoin_Click(object sender, EventArgs e)
+        private void label_Club_Click(object sender, EventArgs e)
         {
-            ShowView<PartyJoinView>();
+            SelectMenu(sender as Label);
+            ShowView<ClubView>();
+        }
+
+        private void label_MyPage_Click(object sender, EventArgs e)
+        {
+            SelectMenu(sender as Label);
+            ShowView<MyPageView>();
+        }
+
+        private void label_Config_Click(object sender, EventArgs e)
+        {
+            SelectMenu(sender as Label);
+            ShowView<ConfigView>();
         }
     }
 }

@@ -78,5 +78,10 @@ namespace FootccerClient.Windows.Views
             JoinmemberPop _pop=new JoinmemberPop();
             _pop.ShowDialog(this);
         }
+
+        private void btn_find_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

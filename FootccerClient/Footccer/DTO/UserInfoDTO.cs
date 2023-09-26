@@ -14,11 +14,11 @@ namespace FootccerClient.Footccer.DTO
         public string Gender { get; }
         public string Contact { get; }
         public string Email { get; }
-        public DateTime Birth { get; }
+        public DateTime? Birth { get; }
         public PreferenceDTO Prefer { get; }
         public Image Image { get; }
 
-        public UserInfoDTO(UserDTO user,string name, string gender, string contact, string email, DateTime birth,
+        public UserInfoDTO(UserDTO user,string name, string gender, string contact, string email, DateTime? birth,
             PreferenceDTO prefer, Image image)
         {
             this.User = user;

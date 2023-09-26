@@ -24,10 +24,30 @@ namespace FootccerClient.Footccer
             }
         }
 
-        public DBManager DB { get; }
-        public MainForm MainForm { get; set; }
+        private MainForm _MainForm;
+        public MainForm MainForm
+        {
+            get
+            {
+                return _MainForm;
+            }
+            set
+            {
+                _MainForm = value;
+                _MainForm.FormClosed += (sender, e) =>
+                {
+                    App.instance.MainForm = new MainForm();
+                    App.instance.Session.LogOut();
+                };
+            }
+        }
+        public LoginForm LoginForm { get; set; }
+        
+        
+        public DBManager  DB { get; }        
         public SessionManager Session { get; }
         public ImageMaker Image { get; }
+        
 
         public App()
         {

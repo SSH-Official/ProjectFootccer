@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootccerClient.Footccer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,9 @@ namespace FootccerClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            App.Instance.LoginForm = new LoginForm();
+            App.Instance.MainForm = new MainForm();
+            Application.Run(App.Instance.LoginForm);
         }
     }
 }

@@ -15,10 +15,10 @@ namespace FootccerClient.Footccer.DBExecuter
     {
         public UserInfoDTO ReadUserInfoAsSession()
         {
-            return ReadUserInfo(App.Instance.Session.User);
+            return ReadUserInfo(App.Instance.Session.ID);
         }
 
-        public UserInfoDTO ReadUserInfo(UserDTO user)
+        public UserInfoDTO ReadUserInfo(string UID)
         {
             return ExecuteTransaction((cmd) =>
             {
@@ -33,7 +33,7 @@ namespace FootccerClient.Footccer.DBExecuter
                 "WHERE U.`id` = @id; ";
                 cmd.Parameters.Clear();
                 cmd.Parameters.Add("@id", MySqlDbType.VarChar, 50);
-                cmd.Parameters[0].Value = user.ID;
+                cmd.Parameters[0].Value = UID;
 
                 using (MySqlDataReader rdr = cmd.ExecuteReader())
                 {

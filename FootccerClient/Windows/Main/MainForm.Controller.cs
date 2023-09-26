@@ -1,6 +1,7 @@
 ﻿using Lib.Frame;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,17 @@ namespace FootccerClient
         {
             dynamic CurrentPop = Activator.CreateInstance(PopType);
             return CurrentPop.ShowPop(aPopMode, aParam);
+        }
+
+        private void SelectMenu(Label label)
+        {
+            foreach (Label lab in MenuControls)
+            {
+                lab.BackColor = Color.Transparent;
+            }
+
+            label.BackColor = SystemColors.Control;
+            label.Invalidate();
         }
     }
 }

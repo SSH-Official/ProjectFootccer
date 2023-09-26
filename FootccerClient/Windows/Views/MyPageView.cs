@@ -29,21 +29,21 @@ namespace FootccerClient.Windows.Views
         private void btn_Testssh_Click(object sender, EventArgs e)
         {
             UserDTO User = new UserDTO(1, "ssh");
-            App.Instance.Session.TestSetup(User);
+            App.Instance.Session.TestSetup(User.ID);
             App.Instance.MainForm.ShowPop<MyPagePop>();
         }
 
         private void btn_TestNotExist_Click(object sender, EventArgs e)
         {
             UserDTO User = new UserDTO(-999, "!@#@#$");
-            App.Instance.Session.TestSetup(User);
+            App.Instance.Session.TestSetup(User.ID);
             App.Instance.MainForm.ShowPop<MyPagePop>();
         }
 
         private void btn_TestInputID_Click(object sender, EventArgs e)
         {
             UserDTO User = new UserDTO(-999, $"{tbox_TestID.Text}");
-            App.Instance.Session.TestSetup(User);
+            App.Instance.Session.TestSetup(User.ID);
             App.Instance.MainForm.ShowPop<MyPagePop>();
         }
     }
