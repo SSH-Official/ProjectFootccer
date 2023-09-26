@@ -152,6 +152,7 @@
     <Compile Include="Footccer\Util\ComboItem.cs" />
     <Compile Include="Footccer\DTO\PartyDTO.cs" />
     <Compile Include="Footccer\DBExecuter\PartySearchDBExecuter.cs" />
+    <Compile Include="Work_ELO\DB\CalculateEloDTO.cs" />
     <Compile Include="Work_ELO\DB\CSCD.cs" />
     <Compile Include="Work_ELO\DB\LHJDBExecuter.cs" />
     <Compile Include="Work_ELO\View\RecordView.cs">
