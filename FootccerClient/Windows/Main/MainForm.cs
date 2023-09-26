@@ -1,4 +1,5 @@
 ﻿using FootccerClient.Footccer;
+using FootccerClient.Windows.Pops;
 using FootccerClient.Windows.Views;
 using Lib.Frame;
 using System;
@@ -32,7 +33,8 @@ namespace FootccerClient
                     new MyPageView(),
                     new PartyJoinView(),
                     new PartyCreateView(),
-                    new PartySearchView()
+                    new PartySearchView(),
+                    new PositionView()
                 };
 
                 foreach (MasterView view in this.Views)
@@ -73,6 +75,11 @@ namespace FootccerClient
         private void btn_PartyJoin_Click(object sender, EventArgs e)
         {
             ShowView<PartyJoinView>();
+        }
+
+        private void btn_PositionPoptest_Click(object sender, EventArgs e)
+        {
+            ShowView<PositionView>();
         }
     }
 }
