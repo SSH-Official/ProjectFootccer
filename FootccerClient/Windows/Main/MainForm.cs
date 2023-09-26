@@ -21,7 +21,7 @@ namespace FootccerClient
         {
             InitializeComponent();
             InitializeViews();
-
+            ShowView<MyPartyView>();
             //////////////////////////////////////
             void InitializeViews()
             {
@@ -36,14 +36,12 @@ namespace FootccerClient
 
                 Views = new List<MasterView>()
                 {
-                    new LoginView(),
                     new MyPageView(),
+                    new MyPartyView(),
                     new PartyJoinView(),
-                    new PartyCreateView(),
                     new PartySearchView(),
                     new ConfigView(),
                     new ClubView()
-
                 };
 
                 foreach (MasterView view in this.Views)
@@ -52,8 +50,6 @@ namespace FootccerClient
                     view.Dock = DockStyle.Fill;
                     view.Visible = false;
                 }
-
-                
             }
         }
 
@@ -65,7 +61,7 @@ namespace FootccerClient
         private void label_MyParty_Click(object sender, EventArgs e)
         {
             SelectMenu(sender as Label);
-            ShowView<PartySearchView>();
+            ShowView<MyPartyView>();
         }
 
         private void label_FindParty_Click(object sender, EventArgs e)
