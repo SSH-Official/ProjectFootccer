@@ -14,28 +14,19 @@ namespace FootccerClient.Footccer.DTO
         public string Gender { get; }
         public string Contact { get; }
         public string Email { get; }
+        public DateTime Birth { get; }
         public PreferenceDTO Prefer { get; }
         public Image Image { get; }
 
-
-        public UserInfoDTO(int idx, string id, string name, string gender, string contact, string email,
-            int cityidx, string cityname, int activityidx, string activityname, Image image)
-        {
-            this.User = new UserDTO(idx, id);
-            this.Name = name;
-            this.Gender = gender;
-            this.Contact = contact;
-            this.Email = email;
-            this.Prefer = new PreferenceDTO(cityidx, cityname, activityidx, activityname);
-            this.Image = image;
-        }
-        public UserInfoDTO(UserDTO user,string name, string gender, string contact, string email, PreferenceDTO prefer, Image image)
+        public UserInfoDTO(UserDTO user,string name, string gender, string contact, string email, DateTime birth,
+            PreferenceDTO prefer, Image image)
         {
             this.User = user;
             this.Name = name;
             this.Gender = gender;
             this.Contact = contact;
             this.Email = email;
+            this.Birth = birth;
             this.Prefer = prefer;
             this.Image = image;
         }

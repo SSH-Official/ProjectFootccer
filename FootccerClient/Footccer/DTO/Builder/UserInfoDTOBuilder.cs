@@ -14,13 +14,14 @@ namespace FootccerClient.Footccer.DTO.Builder
         private string Gender = null;
         private string Contact = null;
         private string Email = null;
+        private DateTime? Birth = null;
         private PreferenceDTO Prefer = null;
         private Image Image = null;
 
 
         public UserInfoDTO Build()
         {
-            return new UserInfoDTO(User, Name, Gender, Contact, Email, Prefer, Image);
+            return new UserInfoDTO(User, Name, Gender, Contact, Email, Birth, Prefer, Image);
         }        
 
         public UserInfoDTOBuilder SetUser(UserDTO user)
@@ -52,6 +53,8 @@ namespace FootccerClient.Footccer.DTO.Builder
             this.Email = email;
             return this;
         }
+
+        
 
         public UserInfoDTOBuilder SetPrefer(PreferenceDTO prefer)
         {

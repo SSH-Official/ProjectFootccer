@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
+    <Compile Include="Footccer\DAO\Class1.cs" />
     <Compile Include="Footccer\DAO\SSH_DAO.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
@@ -110,6 +111,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\Pops\MyPage_ChangePasswordPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\MyPage_ChangePasswordPop.Designer.cs">
+      <DependentUpon>MyPage_ChangePasswordPop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Views\LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +190,9 @@
     </Compile>
     <EmbeddedResource Include="Windows\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\MyPage_ChangePasswordPop.resx">
+      <DependentUpon>MyPage_ChangePasswordPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>

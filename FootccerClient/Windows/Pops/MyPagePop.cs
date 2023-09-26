@@ -1,6 +1,7 @@
 ﻿using FootccerClient.Footccer;
 using FootccerClient.Footccer.DTO;
 using FootccerClient.Footccer.Util;
+using FootccerClient.Windows.Pops;
 using FootccerClient.Work_MyPage.Pops;
 using Lib.Frame;
 using System;
@@ -28,7 +29,7 @@ namespace FootccerClient.Windows.MyPage
         /// <exception cref="Exception"></exception>
         public MyPagePop()
         {
-            userInfo = App.Instance.DB.MyPage.GetUserInfoAsSession();
+            userInfo = App.Instance.DB.MyPage.ReadUserInfoAsSession();
             if (userInfo == null) 
             { 
                 throw new Exception(
@@ -81,7 +82,12 @@ namespace FootccerClient.Windows.MyPage
 
         private void btn_ChangePassword_Click(object sender, EventArgs e)
         {
+            App.Instance.MainForm.ShowPop<MyPage_ChangePasswordPop>();
+        }
 
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

@@ -51,7 +51,7 @@ namespace FootccerClient.Windows.Views
         }
 
         /// <summary>
-        /// // DB 에서 ID 비밀번호를 입력한대로 DB에서 가져온다
+        /// DB 에서 ID 비밀번호를 입력한대로 DB에서 가져온다
         /// DB저장된 비밀번호와 입력 비밀번호가 맞는지 체크한다
         /// 전부 통과라면 로그인 패스시킨다. 실패시 에러 메시지
         /// </summary>

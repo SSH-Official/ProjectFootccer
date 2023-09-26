@@ -725,6 +725,7 @@
             this.btn_Close.TabIndex = 1;
             this.btn_Close.Text = "닫기";
             this.btn_Close.UseVisualStyleBackColor = true;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // btn_ChangePassword
             // 
