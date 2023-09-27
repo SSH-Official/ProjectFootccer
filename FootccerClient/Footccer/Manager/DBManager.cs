@@ -16,6 +16,8 @@ namespace FootccerClient.Footccer.Manager
         public DBLoginDAO Login { get; internal set; }
         public PositionDBExecuter Position { get;  }
 
+        public teamDAO team { get; }
+
         public DBManager() 
         {
             CreateParty = new CreatePartyDBExecuter();
@@ -23,6 +25,7 @@ namespace FootccerClient.Footccer.Manager
             PartySearch = new PartySearchDBExecuter();
             Login = new DBLoginDAO();
             Position = new PositionDBExecuter();
+            team = new teamDAO();
         }
     }
 }

@@ -72,6 +72,7 @@
     <Compile Include="Footccer\App.cs" />
     <Compile Include="Footccer\DAO\PartyJoinDAO.cs" />
     <Compile Include="Footccer\DAO\SSH_DAO.cs" />
+    <Compile Include="Footccer\DAO\teamDAO.cs" />
     <Compile Include="Footccer\DBExecuter\PositionDBExecuter.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Footccer\DAO\DBLoginDAO.cs" />
     <Compile Include="Footccer\DTO\JoinmemberInfoDTO.cs" />
     <Compile Include="Footccer\DTO\PositionDTO.cs" />
+    <Compile Include="Footccer\DTO\TeamDTO.cs" />
     <Compile Include="Windows\Pops\JoinmemberPop.cs">
       <SubType>Form</SubType>
     </Compile>
