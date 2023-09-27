@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Xml.Linq;
 using System.Data;
 using FootccerClient.Footccer.DTO;
+using FootccerClient.Work_ELO.DB;
 
 namespace FootccerClient.Footccer.DAO
 {
@@ -153,6 +154,19 @@ namespace FootccerClient.Footccer.DAO
                     cmd.Parameters.Add(new MySqlParameter("@Party_idx", MySqlDbType.Int32, 10)).Value = dto.Party_idx;
                     cmd.Parameters.Add(new MySqlParameter("@side", MySqlDbType.VarChar, 1)).Value = dto.side;
                     cmd.Parameters.Add(new MySqlParameter("@position", MySqlDbType.Int32, 10)).Value = dto.position;
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public int insertRecord(RecordDTO dto)
+        {
+            using(conn = new MySqlConnection(strConnection))
+            {
+                conn.Open();
+                string sql = "insert into Record (Party_idx) values (@Party_idx) ";
+                using(cmd = new MySqlCommand(sql , conn))
+                {
+                    cmd.Parameters.Add(new MySqlParameter("@Party_idx", MySqlDbType.Int32, 10)).Value = dto.Party_idx;
                     return cmd.ExecuteNonQuery();
                 }
             }

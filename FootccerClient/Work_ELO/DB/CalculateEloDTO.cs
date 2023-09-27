@@ -30,5 +30,4 @@ namespace FootccerClient.Work_ELO.DB
             return (int)alterElo;
         }
     }
-
 }

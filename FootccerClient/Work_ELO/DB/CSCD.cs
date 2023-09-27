@@ -21,22 +21,21 @@ namespace FootccerClient.Work_ELO.DB
 
         //(수정)session index로 검색해야 합니다.
         public DataTable getRecordTable()
-        {            
-            string sql = "select p.date, p.name, l.side, r.result, p.Leader_idx, p.idx " +
-                         "from List l " +
-                         "join Party p on p.idx = l.Party_idx " +
-                         "join Record r on l.idx = r.List_idx " +
-                         "where l.User_idx = @User_idx and p.date < Sysdate() ";
+        {
+            string sql = "select p.date, p.name, l.side, r.result, p.Leader_idx, p.idx, l.idx " +
+                         "from Party p " +
+                         "join Record r on p.idx = r.Party_idx " +
+                         "join List l on l.Party_idx = p.idx " +
+                         "where l.User_idx = @User_idx and p.date < sysdate() ";              
             using (MySqlCommand cmd = new MySqlCommand(sql))
             {
-                cmd.Parameters.Add(new MySqlParameter("@User_idx", MySqlDbType.Int32, 10)).Value = 2;//App.Instance.Session.User.Index;
+                cmd.Parameters.Add(new MySqlParameter("@User_idx", MySqlDbType.Int32, 10)).Value = 2;// App.Instance.Session.User.Index;
 
                 DataSet ds = dao.selectUsingAdapter(cmd);
                 DataTable dt = ds.Tables[0];
                 return dt;
             }
         }
-
         public CalculateEloDTO getPartyAverageELO(int idx)
         {
             string sql = "select avg(u.elo), l.side " +
@@ -54,6 +53,37 @@ namespace FootccerClient.Work_ELO.DB
                 DataRow drB = dt.Rows[1];
                 CalculateEloDTO dto = new CalculateEloDTO(Convert.ToInt32(drA[0]), Convert.ToInt32(drB[0]));
                 return dto;
+            }
+        }
+        public int updateRecord(RecordDTO dto)
+        {
+            string sql = "update Record set result = @result, " +
+                                        "score = @score, " +
+                                        "alter_elo = @alter_elo " +
+                                        "where Party_idx = @idx ";
+            using(MySqlCommand cmd = new MySqlCommand(sql))
+            {
+                cmd.Parameters.Add(new MySqlParameter("@result", MySqlDbType.VarChar, 1)).Value = dto.result;
+                cmd.Parameters.Add(new MySqlParameter("@score", MySqlDbType.VarChar, 50)).Value = dto.score;
+                cmd.Parameters.Add(new MySqlParameter("@alter_elo", MySqlDbType.Int32, 10)).Value = dto.alter_elo;
+                cmd.Parameters.Add(new MySqlParameter("@idx", MySqlDbType.Int32, 10)).Value = dto.Party_idx;
+                return dao.nonSQL(cmd);
+            }
+        }
+
+        public int updateElo(int Party_idx, int alter_elo, char side)
+        {
+            string sql = "update Party p " +
+                         "join List l on p.idx = l.Party_idx " +
+                         "join UserInfo u on l.User_idx = u.User_idx " +
+                         "set u.elo = u.elo + @alter_elo " +
+                         "where p.idx = @Party_idx and l.side = @side";
+            using(MySqlCommand cmd = new MySqlCommand(sql))
+            {
+                cmd.Parameters.Add(new MySqlParameter("@alter_elo", MySqlDbType.Int32, 10)).Value = alter_elo;
+                cmd.Parameters.Add(new MySqlParameter("@Party_idx", MySqlDbType.Int32, 10)).Value = Party_idx;
+                cmd.Parameters.Add(new MySqlParameter("@side", MySqlDbType.VarChar, 1)).Value = side;
+                return dao.nonSQL(cmd);
             }
         }
     }

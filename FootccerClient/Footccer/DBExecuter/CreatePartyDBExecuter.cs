@@ -1,5 +1,6 @@
 ﻿using FootccerClient.Footccer.DAO;
 using FootccerClient.Footccer.DTO;
+using FootccerClient.Work_ELO.DB;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,10 @@ namespace FootccerClient.Footccer.DBExecuter
         {
             return dao.insertList(listDTO);
         }
-
+        public int setRecordDTO(RecordDTO recordDTO)
+        {
+            return dao.insertRecord(recordDTO);
+        }
 
 
 

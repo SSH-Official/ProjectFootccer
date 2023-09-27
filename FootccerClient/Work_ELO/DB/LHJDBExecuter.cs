@@ -45,5 +45,38 @@ namespace FootccerClient.Work_ELO.DB
                 }
             }
         }
+        public int transactionUpdateElo(List<int> idx, int alter_elo)
+        {
+            using(conn = new MySqlConnection(strConnection))
+            {
+                conn.Open();
+                using (MySqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (int i in idx)
+                        {
+                            string eloSql = "update UserInfo set elo = @alter_elo where User_idx = @idx ";
+
+                            using(MySqlCommand cmd = new MySqlCommand(eloSql, conn, transaction)) 
+                            {
+                                cmd.Parameters.Add(new MySqlParameter("@alter_elo", MySqlDbType.Int32, 10)).Value = alter_elo;
+                                cmd.Parameters.Add(new MySqlParameter("@idx", MySqlDbType.Int32, 10)).Value = i;
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        transaction.Commit();
+                        return 1;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();                        
+                        Console.WriteLine(ex.ToString());
+                        return -1;
+                    }
+                }
+            }
+        }
     }
 }

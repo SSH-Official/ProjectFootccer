@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using FootccerClient.Footccer;
 using System.Web;
 using FootccerClient.Footccer.DTO;
+using FootccerClient.Work_ELO.DB;
 
 namespace FootccerClient.Windows.Views
 {
@@ -73,23 +74,26 @@ namespace FootccerClient.Windows.Views
         private void btn_register_Click(object sender, EventArgs e)
         {
             CreatePartyDTO dto = null;
+            int SamepleIndex = 2;
             if(cBox_activity.SelectedIndex != 2)
             {
-                dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, 2, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value);
+                dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, SamepleIndex, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value);
             }
             else if(cBox_activity.SelectedIndex == 2)
             {
-                dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, 2, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value, Int32.Parse(tBox_max.Text));
+                dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, SamepleIndex, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value, Int32.Parse(tBox_max.Text));
             }
             int partyIdx = App.Instance.DB.CreateParty.setPartyDTO(dto);
             if (partyIdx != 0){
                 ListDTO listDTO = new ListDTO(2, partyIdx, Char.Parse(cBox_side.SelectedItem.ToString()), cBox_position.SelectedIndex);
                 App.Instance.DB.CreateParty.setListDTO(listDTO);
+                RecordDTO recordDTO = new RecordDTO(partyIdx);
+                App.Instance.DB.CreateParty.setRecordDTO(recordDTO);
                 MessageBox.Show("성공");
             }
             else
             {
-                MessageBox.Show("오류");                
+                MessageBox.Show("오류");
             }
         }
 

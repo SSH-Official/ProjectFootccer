@@ -155,6 +155,19 @@
     <Compile Include="Work_ELO\DB\CalculateEloDTO.cs" />
     <Compile Include="Work_ELO\DB\CSCD.cs" />
     <Compile Include="Work_ELO\DB\LHJDBExecuter.cs" />
+    <Compile Include="Work_ELO\DB\RecordDTO.cs" />
+    <Compile Include="Work_ELO\View\InsertResultPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Work_ELO\View\InsertResultPop.Designer.cs">
+      <DependentUpon>InsertResultPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Work_ELO\View\InsertStatsPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Work_ELO\View\InsertStatsPop.Designer.cs">
+      <DependentUpon>InsertStatsPop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Work_ELO\View\RecordView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +212,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Pops\UrlRecieverPop.resx">
       <DependentUpon>UrlRecieverPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Work_ELO\View\InsertResultPop.resx">
+      <DependentUpon>InsertResultPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Work_ELO\View\InsertStatsPop.resx">
+      <DependentUpon>InsertStatsPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Work_ELO\View\RecordView.resx">
       <DependentUpon>RecordView.cs</DependentUpon>

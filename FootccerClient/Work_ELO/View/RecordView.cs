@@ -21,6 +21,7 @@ namespace FootccerClient.Work_ELO.View
         private DataTable dt;
         private int currentPage = 1;
         private int pageSize;
+        List<Control> CreatedControls { get; set; } = new List<Control>();
 
         void setRecordTable()
         {
@@ -31,7 +32,8 @@ namespace FootccerClient.Work_ELO.View
             }
         }
         public void updateRecord(int currentPage)
-        {
+        { 
+            ClearCreatedConrols();
             for (int row = 0; row < 5; row++)
             {
                 DataRow dr = null;
@@ -50,10 +52,11 @@ namespace FootccerClient.Work_ELO.View
         {
             if (dr != null)
             {
+                labels[row, col].Visible = true;
                 labels[row, col].Text = dr[col].ToString();
                 if (col == 3 &&  String.IsNullOrEmpty(dr["result"].ToString()))
-                {
-                    if (Convert.ToInt32(dr["Leader_idx"].ToString()) != 3)//App.Instance.Session.User.Index)(수정)
+                {                                        
+                    if (Convert.ToInt32(dr["Leader_idx"].ToString()) != 2)//App.Instance.Session.User.Index)//(수정)
                     {
                         labels[row, col].Text = "입력대기중";
                     }
@@ -69,8 +72,6 @@ namespace FootccerClient.Work_ELO.View
                 labels[row, col].Text = string.Empty;
             }
         }
-
-
 
 
         public RecordView()
@@ -128,7 +129,6 @@ namespace FootccerClient.Work_ELO.View
         }
         
 
-        
 
         //팀원인데 결과 없으면 label text 변경
         //팀장인데 결과 없으면 버튼생성
@@ -153,6 +153,8 @@ namespace FootccerClient.Work_ELO.View
             btn.Name = "dynamicButton" + row;
             btn.Text = "결과입력";
             btn.Dock = DockStyle.Fill;
+            CreatedControls.Add(tableLayoutPanel);
+            CreatedControls.Add(btn);
 
             //btn.Click += new EventHandler(btn_Click);
             btn.Click += (sender, e) => { btn_Click(sender, e, row, col); }; //클로저
@@ -164,32 +166,19 @@ namespace FootccerClient.Work_ELO.View
             CalculateEloDTO dto = App.Instance.DB.LHJDB.getPartyAverageELO(Party_idx);
             int alterElo = dto.calculator();
 
-            MessageBox.Show(alterElo.ToString());
-
-            MasterPop pop = new MasterPop();
+            InsertResultPop pop = new InsertResultPop(Party_idx, alterElo);
             if (pop.ShowDialog() == DialogResult.OK) {
                 this.setRecordTable();
-                this.updateRecord(1);
-                removeButton(row, col);
+                this.updateRecord(this.currentPage);
             }
         }
-        private void removeButton(int row, int col)
+        private void ClearCreatedConrols()
         {
-            string buttonName = "dynamicButton" + row;
-            string tableLayoutPanelName = "tableLayoutPanel" + row;
-            TableLayoutPanel tableLayoutPanel = this.Controls.Find(tableLayoutPanelName, true).FirstOrDefault() as TableLayoutPanel;
-            Button btn = this.Controls.Find(buttonName, true).FirstOrDefault() as Button;
-            if(btn != null)
+            foreach (var con in CreatedControls)
             {
-                labels[row, col].Visible = true;
-                this.Controls.Remove(btn);
-                btn.Dispose();
+                con.Dispose();
             }
-            if(tableLayoutPanel != null)
-            {
-                this.Controls.Remove(tableLayoutPanel);
-                tableLayoutPanel.Dispose();
-            }
+            CreatedControls.Clear();
         }
         private void label_previous_Click(object sender, EventArgs e)
         {
@@ -208,6 +197,11 @@ namespace FootccerClient.Work_ELO.View
                 updateRecord(this.currentPage);
                 label_page.Text = currentPage.ToString() + " page";
             }
+        }
+
+        private void label_page_Click(object sender, EventArgs e)
+        {
+            updateRecord(this.currentPage);
         }
     }
 }
