@@ -11,13 +11,13 @@ using FootccerClient.Footccer.DTO;
 
 namespace FootccerClient.Footccer.DAO
 {
-    public class CreatePartyDAO
+    public class CreatePartyDAO : DAO_Base
     {
         private MySqlConnection conn;
         private MySqlCommand cmd;
         private MySqlDataReader reader;
         private MySqlDataAdapter dataAdapter;
-        string strConnection = "Server=192.168.0.18;Database=Footccer;Uid=root;Pwd=1234;Port=3306";
+        string strConnection { get { return App.Instance.DB.Settings.ConnectionString; } }
         
         public int nonSQL(string sql)
         {
@@ -54,6 +54,28 @@ namespace FootccerClient.Footccer.DAO
             }
         }
 
+
+        public int test(CreatePartyDTO dto)
+        {
+            object result = ExecuteTransaction((cmd) =>
+            {
+                string date = dto.date.ToString("yyyy-MM-dd HH:mm:ss");
+                string sql = $"insert into `Party` (`Activity_idx`, `Leader_idx`, `name`, `Place_idx`, `date`, `max`, `count`) " +
+                             $"values(@Activity_idx, @Leader_idx, @name, @Place_idx, @date, @max, @count)";
+                cmd.CommandText = sql;
+                cmd.Parameters.Add(new MySqlParameter("@Activity_idx", MySqlDbType.Int32, 10)).Value = dto.Activity_idx;
+                cmd.Parameters.Add(new MySqlParameter("@Leader_idx", MySqlDbType.Int32, 10)).Value = dto.Leader_idx;
+                cmd.Parameters.Add(new MySqlParameter("@name", MySqlDbType.VarChar, 50)).Value = dto.name;
+                cmd.Parameters.Add(new MySqlParameter("@Place_idx", MySqlDbType.Int32, 10)).Value = dto.Place_idx;
+                cmd.Parameters.Add(new MySqlParameter("@date", MySqlDbType.DateTime)).Value = date;
+                cmd.Parameters.Add(new MySqlParameter("@max", MySqlDbType.Int32, 10)).Value = dto.max;
+                cmd.Parameters.Add(new MySqlParameter("@count", MySqlDbType.Int32, 10)).Value = dto.count;
+                return cmd.ExecuteNonQuery();
+            }
+            );
+
+            return (result != null) ? (int)result : -1;
+        }
         public int insertParty(CreatePartyDTO dto)
         {
             using (conn = new MySqlConnection(strConnection))
@@ -62,6 +84,7 @@ namespace FootccerClient.Footccer.DAO
                 string date = dto.date.ToString("yyyy-MM-dd HH:mm:ss");
                 string sql = $"insert into `Party` (`Activity_idx`, `Leader_idx`, `name`, `Place_idx`, `date`, `max`, `count`) " +
                              $"values(@Activity_idx, @Leader_idx, @name, @Place_idx, @date, @max, @count)";
+
                 using (cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.Add(new MySqlParameter("@Activity_idx", MySqlDbType.Int32, 10)).Value = dto.Activity_idx;

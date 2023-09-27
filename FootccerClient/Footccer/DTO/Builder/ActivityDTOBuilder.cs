@@ -8,14 +8,9 @@ namespace FootccerClient.Footccer.DTO.Builder
 {
     public class ActivityDTOBuilder
     {
-        private int? index;
-        private string name;
+        private int? index = null;
+        private string name = null;
 
-        public ActivityDTOBuilder()
-        {
-            this.index = null;
-            this.name = null;
-        }
 
         public ActivityDTO Build()
         {

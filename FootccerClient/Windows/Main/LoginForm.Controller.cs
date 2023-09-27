@@ -21,7 +21,8 @@ namespace FootccerClient
             bool isSuccess = App.Instance.DB.Login.CheckLoginSuccess(info);
             if (isSuccess)
             {
-                App.Instance.Session.Login(tbox_id.Text);
+                UserDTO user = App.Instance.DB.Login.GetUser(info);
+                App.Instance.Session.Login(user);
             }
             else
             {

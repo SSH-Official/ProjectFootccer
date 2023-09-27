@@ -41,7 +41,8 @@ namespace FootccerClient
                     new PartyJoinView(),
                     new PartySearchView(),
                     new ConfigView(),
-                    new ClubView()
+                    new ClubView(),
+                    new PartyCreateView()
                 };
 
                 foreach (MasterView view in this.Views)

@@ -11,23 +11,24 @@ namespace FootccerClient.Footccer.Manager
 {
     public class SessionManager
     {
-        public string ID { get; private set; }
+        public string ID { get { return User.ID; } }
+        public UserDTO User { get; private set; }
 
-        internal void TestSetup(string UID)
+        internal void TestSetup(UserDTO user)
         {
-            this.ID = UID;
+            this.User = user;
         }
 
-        public void Login(string UID)
+        public void Login(UserDTO user)
         {
-            this.ID = UID;
+            this.User = user;
             App.Instance.LoginForm.Visible = false;
             App.Instance.MainForm.Visible = true;            
         }
 
         public void LogOut()
         {
-            this.ID = null;
+            this.User = null;
             App.Instance.MainForm.Visible = false;
             App.Instance.LoginForm.Visible = true;
         }

@@ -66,7 +66,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.panel2.Size = new System.Drawing.Size(699, 98);
+            this.panel2.Size = new System.Drawing.Size(1249, 98);
             this.panel2.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -84,7 +84,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(689, 88);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1239, 88);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel6
@@ -93,7 +93,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(103, 47);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(583, 38);
+            this.panel6.Size = new System.Drawing.Size(1133, 38);
             this.panel6.TabIndex = 3;
             // 
             // tbox_pwd
@@ -101,7 +101,7 @@
             this.tbox_pwd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbox_pwd.Location = new System.Drawing.Point(0, 0);
             this.tbox_pwd.Name = "tbox_pwd";
-            this.tbox_pwd.Size = new System.Drawing.Size(583, 21);
+            this.tbox_pwd.Size = new System.Drawing.Size(1133, 21);
             this.tbox_pwd.TabIndex = 1;
             // 
             // panel5
@@ -129,7 +129,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(103, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(583, 38);
+            this.panel4.Size = new System.Drawing.Size(1133, 38);
             this.panel4.TabIndex = 1;
             // 
             // tbox_id
@@ -137,7 +137,7 @@
             this.tbox_id.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbox_id.Location = new System.Drawing.Point(0, 0);
             this.tbox_id.Name = "tbox_id";
-            this.tbox_id.Size = new System.Drawing.Size(583, 21);
+            this.tbox_id.Size = new System.Drawing.Size(1133, 21);
             this.tbox_id.TabIndex = 0;
             // 
             // panel3
@@ -193,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 719);
+            this.ClientSize = new System.Drawing.Size(1249, 719);
             this.Controls.Add(this.btn_join);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btn_find);

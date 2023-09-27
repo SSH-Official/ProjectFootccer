@@ -32,16 +32,18 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SearchBtn = new System.Windows.Forms.Button();
             this.S_Date_P = new System.Windows.Forms.Panel();
             this.SearchDate = new System.Windows.Forms.DateTimePicker();
             this.S_Combo_P = new System.Windows.Forms.Panel();
             this.SearchCombo = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.SearchBtn = new System.Windows.Forms.Button();
+            this.btn_Create = new System.Windows.Forms.Button();
             this.S_Text_P = new System.Windows.Forms.Panel();
             this.SearchText = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Search_kind = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -51,6 +53,7 @@
             this.panel4.SuspendLayout();
             this.S_Text_P.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -63,7 +66,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1239, 709);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "파티검색";
+            this.groupBox1.Text = "파티 검색";
             // 
             // panel5
             // 
@@ -86,6 +89,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.S_Date_P);
             this.panel1.Controls.Add(this.S_Combo_P);
             this.panel1.Controls.Add(this.panel4);
@@ -96,6 +100,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1233, 38);
             this.panel1.TabIndex = 0;
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Location = new System.Drawing.Point(3, 7);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(82, 27);
+            this.SearchBtn.TabIndex = 0;
+            this.SearchBtn.Text = "검색";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // S_Date_P
             // 
@@ -144,22 +158,22 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.SearchBtn);
+            this.panel4.Controls.Add(this.btn_Create);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1126, 0);
+            this.panel4.Location = new System.Drawing.Point(1139, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(107, 38);
+            this.panel4.Size = new System.Drawing.Size(94, 38);
             this.panel4.TabIndex = 2;
             // 
-            // SearchBtn
+            // btn_Create
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(12, 5);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(82, 27);
-            this.SearchBtn.TabIndex = 0;
-            this.SearchBtn.Text = "검색";
-            this.SearchBtn.UseVisualStyleBackColor = true;
-            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            this.btn_Create.Location = new System.Drawing.Point(3, 7);
+            this.btn_Create.Name = "btn_Create";
+            this.btn_Create.Size = new System.Drawing.Size(82, 27);
+            this.btn_Create.TabIndex = 1;
+            this.btn_Create.Text = "새로 모집";
+            this.btn_Create.UseVisualStyleBackColor = true;
+            this.btn_Create.Click += new System.EventHandler(this.btn_Create_Click);
             // 
             // S_Text_P
             // 
@@ -208,6 +222,15 @@
             this.Search_kind.TabIndex = 0;
             this.Search_kind.SelectedIndexChanged += new System.EventHandler(this.Search_kind_SelectedIndexChanged);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.SearchBtn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(1019, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(94, 38);
+            this.panel3.TabIndex = 5;
+            // 
             // PartySearchView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -227,6 +250,7 @@
             this.S_Text_P.ResumeLayout(false);
             this.S_Text_P.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -247,5 +271,7 @@
         private System.Windows.Forms.Panel S_Date_P;
         private System.Windows.Forms.DateTimePicker SearchDate;
         private System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.Button btn_Create;
+        private System.Windows.Forms.Panel panel3;
     }
 }

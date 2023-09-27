@@ -1,4 +1,5 @@
 ﻿
+using FootccerClient.Footccer.DBExecuter;
 using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 using System;
@@ -14,131 +15,53 @@ namespace FootccerClient.Footccer.DAO
 {   
     
    
-    public class DBLoginDAO
+    public class DBLoginDAO : DAO_Base
     {
-        public string connectionstr = "Server = 192.168.0.18;" +
-                        "Database=Footccer;" +
-                        "Uid=root;" +
-                        "Pwd=1234;";
+        public string connectionstr { get { return App.Instance.DB.Settings.ConnectionString; } }
 
-        public void funci()
-        {
-            MySqlConnection conn = null;
-        }
 
-        internal bool Checkjoinmember(JoinmemberInfoDTO info)
+        public bool Checkjoinmember(JoinmemberInfoDTO info)
         {
-            try
+            object result = ExecuteTransaction((cmd) =>
             {
-                MySqlConnection connection = new MySqlConnection(connectionstr);
+                LoginDBExecuter DBE = new LoginDBExecuter(cmd);
 
-                connection.Open();
-                string SQL_InsertToUser, SQL_GetUserIndex, SQL_InsertToUserInfo;
-                NewMethod(info, out SQL_InsertToUser, out SQL_GetUserIndex, out SQL_InsertToUserInfo);
+                DBE.SetSQL_InsertTOUser(info).ExecuteNonQuery();
+                int User_idx = DBE.SetSQL_ReadUserIndex(info).ReadUserIndex();
+                DBE.SetSQL_InsertToUserInfo(info, User_idx).ExecuteNonQuery();
 
-                MySqlTransaction transaction = connection.BeginTransaction();
-                try
-                {
-                    MySqlCommand cmd = connection.CreateCommand();
-                    cmd.Transaction = transaction;
-                    
-                    NewMethod1(SQL_InsertToUser, SQL_GetUserIndex, SQL_InsertToUserInfo, cmd);
-
-                    throw new Exception("Testing");
-                    transaction.Commit();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return false;
-                }
                 return true;
-            }
+            }) ?? false;
 
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
+            return (bool)result;
+           
         }
 
-        private static void NewMethod1(string SQL_InsertToUser, string SQL_GetUserIndex, string SQL_InsertToUserInfo, MySqlCommand cmd)
+        public bool CheckLoginSuccess(UserCredentialDTO_RegisterUser info)
         {
-            cmd.CommandText = SQL_InsertToUser;
-            cmd.ExecuteNonQuery();
-            cmd.CommandText = SQL_GetUserIndex;
-            MySqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            int User_idx = reader.GetInt32(0);
-            reader.Close();
+            object result = ExecuteTransaction((cmd) =>
+            {
+                LoginDBExecuter DBE = new LoginDBExecuter(cmd);
 
-            string FormattedSQL = string.Format(SQL_InsertToUserInfo, User_idx);
-            cmd.CommandText = FormattedSQL;
-            cmd.ExecuteNonQuery();
+                int login_status = DBE.SetSQL_CheckLoginSuccess(info).CheckLoginSuccess(info);
+
+                return (login_status == 1);
+            }) ?? false;
+
+            return (bool)result;
         }
 
-        private static void NewMethod(JoinmemberInfoDTO info, out string SQL_InsertToUser, out string SQL_GetUserIndex, out string SQL_InsertToUserInfo)
+        public UserDTO GetUser(UserCredentialDTO_RegisterUser info)
         {
-            string name = info.Name;
-            string gender = info.Gender;
-            string email = info.Email;
-            string id = info.Id;
-            string password = info.Password;
-            string nickname = info.Nickname;
-            string birthday = info.Birthday;
-            if (DateTime.TryParseExact(birthday, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+            object result = ExecuteTransaction((cmd) =>
             {
-                birthday = parsedDate.ToString("yyyy-MM-dd ");
-            }
-            string phone = info.Phone;
-            SQL_InsertToUser = "INSERT INTO User (id, password) VALUES "
-                + $"('{id}','{password}'); ";
-            SQL_GetUserIndex = $"SELECT idx FROM `User` WHERE id = '{id}'; ";
-            SQL_InsertToUserInfo = "INSERT INTO UserInfo (User_idx, nickname, name, gender, contact, email, birth) VALUES " +
-                "({0} ,'" + nickname + "','" + name + "', '" + gender + "', '" + phone + "', '" + email + "','" + birthday + "'); ";
-        }
+                LoginDBExecuter DBE = new LoginDBExecuter(cmd);
 
-        internal bool CheckLoginSuccess(UserCredentialDTO_RegisterUser info)
-        {
-            try
-            {              
-                MySqlConnection connection = new MySqlConnection(connectionstr);
+                return DBE.SetSQL_ReadUser(info).ReadUser();
+            });
 
-                connection.Open();
-
-                int login_status = 0;
-
-                string loginid = info.ID;
-                string loginpwd = info.Password;
-
-                string selectQuery = "SELECT * FROM `User` WHERE id = \'" + loginid + "\' ";
-
-                MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-                MySqlDataReader userAccount = Selectcommand.ExecuteReader();
-
-                while (userAccount.Read())
-                {
-                    if (loginid == (string)userAccount["id"] && loginpwd == (string)userAccount["password"])
-                    {
-                        login_status = 1;
-                    }
-                }
-                connection.Close();
-
-                if (login_status == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
+            if (result == null) throw new Exception("유저 정보 얻기에 실패했습니다..");
+            return (UserDTO)result;
         }
     }
 

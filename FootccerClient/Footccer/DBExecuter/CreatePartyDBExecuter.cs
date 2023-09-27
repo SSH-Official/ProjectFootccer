@@ -37,7 +37,7 @@ namespace FootccerClient.Footccer.DBExecuter
 
         public int setPartyDTO(CreatePartyDTO dto)
         {
-            return dao.insertParty(dto);
+            return dao.test(dto);
         }
 
         public MySqlCommand aa12aaa3123()

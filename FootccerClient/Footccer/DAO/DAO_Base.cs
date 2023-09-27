@@ -8,35 +8,11 @@ using System.Threading.Tasks;
 
 namespace FootccerClient.Footccer.DAO
 {
-    public class SSH_DAO
+    public abstract class DAO_Base
     {
-        static string DefaultServer = "192.168.0.18";
-        static string DefaultDatabase = "Footccer";
-        static string DefaultUid = "Footccer";
-        static string DefaultPwd = "1234";
-        static int DefaultPort = 3306;
-        public static string DefaultConnectionString
-        {
-            get
-            {
-                return
-                    $"Server={DefaultServer};" +
-                    $"Database={DefaultDatabase};" +
-                    $"Uid={DefaultUid};" +
-                    $"Pwd={DefaultPwd};" +
-                    $"Port={DefaultPort}";
-            }
-        }
-
-        /// <summary>
-        /// 내부에서 새로 호출한 아이들은 꼭 리소스 반환해주세요...
-        /// </summary>
-        /// <param name="Query"></param>
-        /// <param name="ResultMethod"></param>
-        /// <returns></returns>
         protected object ExecuteQuery(string Query, Func<MySqlCommand, object> ResultMethod)
         {
-            string strConn = DefaultConnectionString;
+            string strConn = App.Instance.DB.Settings.ConnectionString;
             object theResult = null;
             MySqlConnection conn = null;
 
@@ -62,14 +38,10 @@ namespace FootccerClient.Footccer.DAO
             return theResult;
         }
 
-        /// <summary>
-        /// 내부에서 새로 호출한 아이들은 꼭 리소스 반환해주세요...
-        /// </summary>
-        /// <param name="ResultMethod"></param>
-        /// <returns></returns>
+
         protected object ExecuteTransaction(Func<MySqlCommand, object> ResultMethod)
         {
-            string strConn = DefaultConnectionString;
+            string strConn = App.Instance.DB.Settings.ConnectionString;
             object result = null;
             MySqlConnection conn = null;
             MySqlTransaction trans = null;            
@@ -80,10 +52,11 @@ namespace FootccerClient.Footccer.DAO
                 conn.Open();
                 trans = conn.BeginTransaction();
 
-                MySqlCommand cmd = conn.CreateCommand();
-                cmd.Transaction = trans;
-                
-                result = ResultMethod(cmd);
+                using (MySqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.Transaction = trans;
+                    result = ResultMethod(cmd);
+                }
 
                 trans.Commit();
             }

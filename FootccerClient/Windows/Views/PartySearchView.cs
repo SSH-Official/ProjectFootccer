@@ -93,5 +93,10 @@ namespace FootccerClient.Windows.Views
             List<PartyDTO> _dt = Footccer.App.Instance.DB.PartySearch.ReadParty(kind,seed);
             dataGridView1.DataSource = _dt;
         }
+
+        private void btn_Create_Click(object sender, EventArgs e)
+        {
+            App.Instance.MainForm.ShowView<PartyCreateView>();
+        }
     }
 }
