@@ -19,7 +19,7 @@ namespace FootccerClient.Work_ELO.View
         private Label[,] labels = new Label[5, 4];
         private List<Panel> panels = new List<Panel>();
         private DataTable dt;
-        private int currentPage = 1;
+        private int currentPage = 0;
         private int pageSize;
         List<Control> CreatedControls { get; set; } = new List<Control>();
 
@@ -32,20 +32,21 @@ namespace FootccerClient.Work_ELO.View
             }
         }
         public void updateRecord(int currentPage)
-        { 
+        {
+            int startIndex = currentPage * 5;
             ClearCreatedConrols();
             for (int row = 0; row < 5; row++)
             {
                 DataRow dr = null;
-                if (dt.Rows.Count > row * currentPage)
+                if (dt.Rows.Count > startIndex + row)
                 {
-                    dr = dt.Rows[row * currentPage];
+                    dr = dt.Rows[startIndex + row];
                 }
                 for (int col = 0; col < 4; col++)
                 {
                     setLabelText(dr, row, col, labels);
                 }
-                buttons[row].Visible = (dr != null);
+                buttons[row].Visible = (dr != null);                
             }
         }
         private void setLabelText(DataRow dr, int row, int col, Label[,] labels)
@@ -81,7 +82,7 @@ namespace FootccerClient.Work_ELO.View
             initializeButton_InputDetail();
             initializePanel();
             setRecordTable();
-            updateRecord(1);
+            updateRecord(currentPage);
             initializePage();
         }        
         void initializePage()
@@ -98,10 +99,14 @@ namespace FootccerClient.Work_ELO.View
                 Button button = this.Controls.Find(buttonName, true).FirstOrDefault() as Button;
                 if( button != null )
                 {
+                    button.Tag = i - 1;
+                    button.Click += statBtn_Click;
                     button.Visible = true;
                     buttons.Add(button);
+                    
                 }
             }
+            
         }
         void initializeLabel_ForRecord()
         {
@@ -161,7 +166,8 @@ namespace FootccerClient.Work_ELO.View
         }
         private void btn_Click(object sender, EventArgs e, int row, int col)
         {
-            DataRow dr = dt.Rows[row * currentPage];
+            int startIndex = currentPage * 5;
+            DataRow dr = dt.Rows[startIndex + row];
             int Party_idx = Convert.ToInt32(dr["idx"]);
             CalculateEloDTO dto = App.Instance.DB.LHJDB.getPartyAverageELO(Party_idx);
             int alterElo = dto.calculator();
@@ -182,11 +188,11 @@ namespace FootccerClient.Work_ELO.View
         }
         private void label_previous_Click(object sender, EventArgs e)
         {
-            if(this.currentPage > 1)
+            if(this.currentPage > 0)
             {
                 this.currentPage -= 1;
                 updateRecord(this.currentPage);
-                label_page.Text = currentPage.ToString() + " page";
+                label_page.Text = (currentPage + 1).ToString() + "/" + pageSize.ToString() + " page";
             }            
         }
         private void label_next_Click(object sender, EventArgs e)
@@ -195,13 +201,21 @@ namespace FootccerClient.Work_ELO.View
             {
                 this.currentPage += 1;
                 updateRecord(this.currentPage);
-                label_page.Text = currentPage.ToString() + " page";
+                label_page.Text = (currentPage + 1).ToString() + "/" + pageSize.ToString() + " page";
             }
         }
-
         private void label_page_Click(object sender, EventArgs e)
         {
             updateRecord(this.currentPage);
+        }
+        private void statBtn_Click(object sender, EventArgs e)
+        {
+            int row = (int)(sender as Button).Tag;
+            int startIndex = currentPage * 5;
+            DataRow dr = dt.Rows[startIndex + row];
+            int List_idx = Convert.ToInt32(dr["idx1"]);
+            InsertStatsPop insertStatsPop = new InsertStatsPop(List_idx);
+            insertStatsPop.ShowDialog();
         }
     }
 }

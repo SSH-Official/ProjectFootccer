@@ -156,6 +156,7 @@
     <Compile Include="Work_ELO\DB\CSCD.cs" />
     <Compile Include="Work_ELO\DB\LHJDBExecuter.cs" />
     <Compile Include="Work_ELO\DB\RecordDTO.cs" />
+    <Compile Include="Work_ELO\DB\StatDTO.cs" />
     <Compile Include="Work_ELO\View\InsertResultPop.cs">
       <SubType>Form</SubType>
     </Compile>

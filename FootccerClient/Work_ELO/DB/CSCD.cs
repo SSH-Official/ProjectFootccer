@@ -86,5 +86,60 @@ namespace FootccerClient.Work_ELO.DB
                 return dao.nonSQL(cmd);
             }
         }
+
+        public int insertStat(StatDTO dto)
+        {
+            string sql = "insert into Stat (List_idx, score, assist, distance, heartRate)" +
+                         "values (@List_idx, @score, @assist, @distance, @heartRate)";
+            using(MySqlCommand cmd = new MySqlCommand(sql))
+            {
+                cmd.Parameters.Add(new MySqlParameter("@List_idx", MySqlDbType.Int32, 10)).Value = dto.List_idx;
+                cmd.Parameters.Add(new MySqlParameter("@score", MySqlDbType.Int32, 10)).Value = dto.score;
+                cmd.Parameters.Add(new MySqlParameter("@assist", MySqlDbType.Int32, 10)).Value = dto.assist;
+                cmd.Parameters.Add(new MySqlParameter("@distance", MySqlDbType.Int32, 10)).Value = dto.distance;
+                cmd.Parameters.Add(new MySqlParameter("@heartRate", MySqlDbType.Int32, 10)).Value = dto.heartRate;
+                return dao.nonSQL(cmd);
+            }
+        }
+
+        public StatDTO getStat(int List_idx)
+        {
+            string sql = "select score, assist, distance, heartRate from Stat where List_idx = @List_idx ";
+            
+            using(MySqlCommand cmd = new MySqlCommand(sql))
+            {
+                cmd.Parameters.Add(new MySqlParameter("@List_idx", MySqlDbType.Int32, 10)).Value = List_idx;
+
+                DataSet ds = dao.selectUsingAdapter(cmd);
+                DataTable dt = ds.Tables[0];
+                DataRow dr = null;
+                if(dt.Rows.Count > 0)
+                {
+                    dr = dt.Rows[0];
+                    StatDTO dto = new StatDTO(Convert.ToInt32(dr[0]), Convert.ToInt32(dr[1]), Convert.ToInt32(dr[2]), Convert.ToInt32(dr[3]));
+                    return dto;
+                }                
+                else
+                {
+                    return null;
+                }                
+            }
+        }
+
+        public int updateStat(StatDTO dto)
+        {
+            string sql = "update Stat set score = @score, assist = @assist, distance = @distance, heartRate = @heartRate where List_idx = @List_idx ";
+
+            using(MySqlCommand cmd = new MySqlCommand(sql))
+            {
+                cmd.Parameters.Add(new MySqlParameter("@score", MySqlDbType.Int32, 10)).Value = dto.score;
+                cmd.Parameters.Add(new MySqlParameter("@assist", MySqlDbType.Int32, 10)).Value = dto.assist;
+                cmd.Parameters.Add(new MySqlParameter("@distance", MySqlDbType.Int32, 10)).Value = dto.distance;
+                cmd.Parameters.Add(new MySqlParameter("@heartRate", MySqlDbType.Int32, 10)).Value = dto.heartRate;
+                cmd.Parameters.Add(new MySqlParameter("@List_idx", MySqlDbType.Int32, 10)).Value = dto.List_idx;
+
+                return dao.nonSQL(cmd);
+            }
+        }
     }
 }

@@ -927,6 +927,7 @@
             this.label_page.TabIndex = 1;
             this.label_page.Text = "page";
             this.label_page.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_page.Click += new System.EventHandler(this.label_page_Click);
             // 
             // panel27
             // 

@@ -8,9 +8,9 @@ namespace FootccerClient.Work_ELO.DB
 {
     public class CalculateEloDTO
     {
-        public int AteamAverageELO;
-        public int BteamAverageELO;
-        public const int Kconstant = 20;
+        private int AteamAverageELO;
+        private int BteamAverageELO;
+        private const int Kconstant = 20;
 
         public CalculateEloDTO() 
         {
