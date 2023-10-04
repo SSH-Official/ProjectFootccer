@@ -35,6 +35,11 @@ namespace FootccerClient.Footccer.DBExecuter
             return dao.selectCity();
         }
 
+        public List<string> getActivityName()
+        {
+            return dao.selectActivity();
+        }
+
         public int setPartyDTO(CreatePartyDTO dto)
         {
             return dao.insertParty(dto);
@@ -94,5 +99,6 @@ namespace FootccerClient.Footccer.DBExecuter
             }
             return result;
         }
+
     }
 }

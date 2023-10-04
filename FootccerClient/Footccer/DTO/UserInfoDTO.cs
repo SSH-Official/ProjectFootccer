@@ -31,6 +31,7 @@ namespace FootccerClient.Footccer.DTO
             this.Image = image;
         }
 
+
         public override string ToString()
         {
             return $"UserInformation : {{ {User}, {Gender}, {Contact}, {Email}, {Prefer}, {Image} }}";

@@ -66,6 +66,8 @@ namespace FootccerClient.Windows.Views
             if (isSuccess)
             {
                MessageBox.Show("성공");
+                UserDTO saveuser = new UserDTO(1, info.ID);
+                App.Instance.Session.Login(saveuser);
             }
             else
             {

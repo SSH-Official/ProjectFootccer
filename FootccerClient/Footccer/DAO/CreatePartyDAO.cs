@@ -97,6 +97,26 @@ namespace FootccerClient.Footccer.DAO
                 }
             }
         }
+        public List<string> selectActivity()
+        {
+            using (conn = new MySqlConnection(strConnection))
+            {
+                conn.Open();
+                string sql = "select name from Activity ";
+                List<string> list = new List<string>();
+                using (cmd = new MySqlCommand(sql, conn))
+                {
+                    using (reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(reader.GetString("name"));
+                        }
+                        return list;
+                    }
+                }
+            }
+        }
         public List<string> selectPlaceName(int cityIndex)
         {
             using (conn = new MySqlConnection(strConnection))
