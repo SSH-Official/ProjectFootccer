@@ -40,6 +40,18 @@ namespace FootccerClient.Footccer.DBExecuter
             return dao.insertParty(dto);
         }
 
+        public int setListDTO(ListDTO listDTO)
+        {
+            return dao.insertList(listDTO);
+        }
+        public int setRecordDTO(RecordDTO recordDTO)
+        {
+            return dao.insertRecord(recordDTO);
+        }
+
+
+
+
         public MySqlCommand aa12aaa3123()
         {
             MySqlCommand cmd = new MySqlCommand();

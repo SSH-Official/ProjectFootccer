@@ -81,6 +81,7 @@
     <Compile Include="Footccer\DBExecuter\CreatePartyDBExecuter.cs" />
     <Compile Include="Footccer\DAO\DBLoginDAO.cs" />
     <Compile Include="Footccer\DTO\JoinmemberInfoDTO.cs" />
+    <Compile Include="Footccer\DTO\ListDTO.cs" />
     <Compile Include="Footccer\DTO\PositionDTO.cs" />
     <Compile Include="Windows\Pops\JoinmemberPop.cs">
       <SubType>Form</SubType>
@@ -179,6 +180,29 @@
     <Compile Include="Windows\Views\PositionView.Designer.cs">
       <DependentUpon>PositionView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Footccer\DTO\CalculateEloDTO.cs" />
+    <Compile Include="Footccer\DAO\CSCD.cs" />
+    <Compile Include="Footccer\DBExecuter\LHJDBExecuter.cs" />
+    <Compile Include="Footccer\DTO\RecordDTO.cs" />
+    <Compile Include="Footccer\DTO\StatDTO.cs" />
+    <Compile Include="Windows\Pops\InsertResultPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\InsertResultPop.Designer.cs">
+      <DependentUpon>InsertResultPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Pops\InsertStatsPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Pops\InsertStatsPop.Designer.cs">
+      <DependentUpon>InsertStatsPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Views\RecordView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\RecordView.Designer.cs">
+      <DependentUpon>RecordView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Windows\Pops\JoinmemberPop.resx">
       <DependentUpon>JoinmemberPop.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +250,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PositionView.resx">
       <DependentUpon>PositionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\InsertResultPop.resx">
+      <DependentUpon>InsertResultPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Pops\InsertStatsPop.resx">
+      <DependentUpon>InsertStatsPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\RecordView.resx">
+      <DependentUpon>RecordView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
