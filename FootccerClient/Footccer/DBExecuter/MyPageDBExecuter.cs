@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Security.Policy;
+using FootccerClient.Footccer.Util;
 
 namespace FootccerClient.Footccer.DBExecuter
 {
@@ -23,7 +24,7 @@ namespace FootccerClient.Footccer.DBExecuter
                             "U.`idx` AS `UserIdx`, " +
                             "U.`id` AS `UserID`, I.`name` AS `UserName`, " +
                             "I.`gender`, I.`contact`, I.`email`, " +
-                            "CT.`idx` AS `CityIdx`, CT.`name` AS `CityName, " +
+                            "CT.`idx` AS `CityIdx`, CT.`name` AS `CityName`, " +
                             "AC.`idx` AS `ActIdx`, AC.`name` AS `ActName`, " +
                             "IM.`imageurl` " +
                             "FROM `User` AS U " +
@@ -54,6 +55,7 @@ namespace FootccerClient.Footccer.DBExecuter
         }
         private static UserInfoDTO ParseToUserInfo(MySqlDataReader rdr)
         {
+            ImageMaker IM = new ImageMaker();
             return new UserInfoDTOBuilder()
                 .SetUser(new UserDTO(rdr.GetInt32("UserIdx"), rdr.GetString("UserID")))
                 .SetName(rdr.GetString("UserName"))
@@ -64,7 +66,7 @@ namespace FootccerClient.Footccer.DBExecuter
                     new CityDTO(rdr.GetInt32("CityIdx"), rdr.GetString("CityName")),
                     new ActivityDTO(rdr.GetInt32("ActIdx"), rdr.GetString("ActName"))
                     ))
-                .SetImage(App.Instance.Image.GetImageFromURL(rdr.GetString("imageurl")))
+                .SetImage(IM.GetImageFromURL(rdr.GetString("imageurl")))
                 .Build();
         }
         private UserInfoDTO GetUserInfo_IfOnlyOne(List<UserInfoDTO> _list)
