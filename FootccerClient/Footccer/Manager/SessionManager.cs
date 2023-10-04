@@ -1,5 +1,6 @@
 ﻿
 using FootccerClient.Footccer.DTO;
+using FootccerClient.Windows.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,15 @@ namespace FootccerClient.Footccer.Manager
             this.User = user;
         }
 
+        public void Login(UserDTO user)
+        {
+            this.User = user;
+            App.Instance.MainForm.ShowView<PartyCreateView>();
+        }
         public void LogOut()
         {
             User = new UserDTO(-1, null);
+            App.Instance.MainForm.ShowView<LoginView>();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace FootccerClient.Footccer.DBExecuter
                 }
             }) as UserInfoDTO;
         }
-
+            
         private string GetSQL_SelectUserInfo_ForUser(UserDTO user)
         {
             return string.Format(GetSQLFormat_ForUserInfo(), user.ID);
@@ -110,13 +110,90 @@ namespace FootccerClient.Footccer.DBExecuter
             else if (_count > 1) { throw new Exception("DB에 중복 아이디가 있습니다.."); }
             else { return _list[0]; }
 
+        }
+        public bool UpdateUserPassword(UserDTO user, string oldPwd, string newPwd)
+        {
+            object result = ExecuteTransaction((cmd) =>
+            {
+                cmd.CommandText =
+                "SELECT CASE WHEN U.`password` = @oldPwd THEN TRUE ELSE FALSE END " +
+                "FROM `User` AS U " +
+                "WHERE U.`id` = @id ";
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add("@oldPwd", MySqlDbType.VarChar, 50);
+                cmd.Parameters.Add("@id", MySqlDbType.VarChar, 50);
+                cmd.Parameters[0].Value = oldPwd;
+                cmd.Parameters[1].Value = user.ID;
+                bool isCorrectPassword = false;
+                using (MySqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    rdr.Read();
+                    isCorrectPassword = rdr.GetBoolean(0);
+                }
 
+                if (isCorrectPassword == false) { throw new Exception("기존 비밀번호가 틀립니다."); }
+                else
+                {
+                    cmd.CommandText =
+                    "UPDATE `User` " +
+                    "SET `password` = @pwd " +
+                    "WHERE `id` = @id; ";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.Add("@pwd", MySqlDbType.VarChar, 50);
+                    cmd.Parameters.Add("@id", MySqlDbType.VarChar, 50);
+                    cmd.Parameters[0].Value = newPwd;
+                    cmd.Parameters[1].Value = user.ID;
+
+                    cmd.ExecuteNonQuery();
+
+                    return true;
+                }
+            });
+
+            return (result != null) && (bool)result;
+        }
+
+        public bool UpdateUserinfo(UserInfoDTO updateinfo)
+        {
+            object result = ExecuteTransaction((cmd) =>
+                {
+                    string _userid = updateinfo.User.ID;
+
+                    /*int _useridx;
+                    cmd.CommandText = $"SELECT idx FROM `User` WHERE id = '{_userid}'; ";
+                    using (MySqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        rdr.Read();
+                        _useridx = rdr.GetInt32("idx");
+                    }*/
+
+
+                    int _useridx = updateinfo.User.Index;
+                    
+                    string _name = updateinfo.Name;
+                    string _gender=updateinfo.Gender;
+                    string _contact = updateinfo.Contact;
+                    string _email = updateinfo.Email;
+                    int _cityidx = updateinfo.Prefer.City.Index;
+                    string _cityname=updateinfo.Prefer.City.Name;
+                    int _activityidx=updateinfo.Prefer.Activity.Index;
+                    string _activityname = updateinfo.Prefer.Activity.Name;
+
+                    cmd.CommandText =
+                     "UPDATE `UserInfo` " +
+                     "SET `contact` = ('" + _contact + "')," +
+                     "`email`=('" + _email + "')," +
+                     "`prefer_City_idx`=('" + _cityidx + "')," +
+                     "`prefer_Activity_idx`=('" + _activityidx + "') "+
+                     "WHERE `UserInfo`.`User_idx`= ('"+_useridx+"'); ";
+                
+                    cmd.Parameters.Clear();
+                    cmd.ExecuteNonQuery();
+                   return true;
+                 }
+                ); return (result != null) && (bool)result;
         }
 
     }
 }
-
-
-
-
 

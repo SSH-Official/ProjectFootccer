@@ -30,6 +30,7 @@
         {
             this.panel_Base = new System.Windows.Forms.Panel();
             this.panel_Info = new System.Windows.Forms.Panel();
+            this.btn_modi = new System.Windows.Forms.Button();
             this.button_TestFeature = new System.Windows.Forms.Button();
             this.btn_FindFile = new System.Windows.Forms.Button();
             this.btn_DeleteFile = new System.Windows.Forms.Button();
@@ -39,7 +40,7 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel29 = new System.Windows.Forms.Panel();
             this.panel30 = new System.Windows.Forms.Panel();
-            this.tbox_PrefAct = new System.Windows.Forms.TextBox();
+            this.cBox_City = new System.Windows.Forms.ComboBox();
             this.panel31 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,7 +48,7 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel26 = new System.Windows.Forms.Panel();
             this.panel27 = new System.Windows.Forms.Panel();
-            this.tbox_PrefCity = new System.Windows.Forms.TextBox();
+            this.cBox_activity = new System.Windows.Forms.ComboBox();
             this.panel28 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -131,6 +132,7 @@
             // 
             // panel_Info
             // 
+            this.panel_Info.Controls.Add(this.btn_modi);
             this.panel_Info.Controls.Add(this.button_TestFeature);
             this.panel_Info.Controls.Add(this.btn_FindFile);
             this.panel_Info.Controls.Add(this.btn_DeleteFile);
@@ -141,6 +143,16 @@
             this.panel_Info.Name = "panel_Info";
             this.panel_Info.Size = new System.Drawing.Size(448, 477);
             this.panel_Info.TabIndex = 1;
+            // 
+            // btn_modi
+            // 
+            this.btn_modi.Location = new System.Drawing.Point(32, 351);
+            this.btn_modi.Name = "btn_modi";
+            this.btn_modi.Size = new System.Drawing.Size(103, 23);
+            this.btn_modi.TabIndex = 5;
+            this.btn_modi.Text = "개인정보수정";
+            this.btn_modi.UseVisualStyleBackColor = true;
+            this.btn_modi.Click += new System.EventHandler(this.btn_modi_Click);
             // 
             // button_TestFeature
             // 
@@ -248,20 +260,21 @@
             // 
             // panel30
             // 
-            this.panel30.Controls.Add(this.tbox_PrefAct);
+            this.panel30.Controls.Add(this.cBox_City);
             this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel30.Location = new System.Drawing.Point(3, 20);
             this.panel30.Name = "panel30";
             this.panel30.Size = new System.Drawing.Size(120, 24);
             this.panel30.TabIndex = 1;
             // 
-            // tbox_PrefAct
+            // cBox_City
             // 
-            this.tbox_PrefAct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbox_PrefAct.Location = new System.Drawing.Point(0, 0);
-            this.tbox_PrefAct.Name = "tbox_PrefAct";
-            this.tbox_PrefAct.Size = new System.Drawing.Size(120, 21);
-            this.tbox_PrefAct.TabIndex = 4;
+            this.cBox_City.Enabled = false;
+            this.cBox_City.FormattingEnabled = true;
+            this.cBox_City.Location = new System.Drawing.Point(0, 0);
+            this.cBox_City.Name = "cBox_City";
+            this.cBox_City.Size = new System.Drawing.Size(120, 20);
+            this.cBox_City.TabIndex = 1;
             // 
             // panel31
             // 
@@ -287,7 +300,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 65);
             this.label6.TabIndex = 1;
-            this.label6.Text = "선호 경기";
+            this.label6.Text = "선호 지역";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel13
@@ -327,20 +340,21 @@
             // 
             // panel27
             // 
-            this.panel27.Controls.Add(this.tbox_PrefCity);
+            this.panel27.Controls.Add(this.cBox_activity);
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel27.Location = new System.Drawing.Point(3, 19);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(120, 24);
             this.panel27.TabIndex = 1;
             // 
-            // tbox_PrefCity
+            // cBox_activity
             // 
-            this.tbox_PrefCity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbox_PrefCity.Location = new System.Drawing.Point(0, 0);
-            this.tbox_PrefCity.Name = "tbox_PrefCity";
-            this.tbox_PrefCity.Size = new System.Drawing.Size(120, 21);
-            this.tbox_PrefCity.TabIndex = 4;
+            this.cBox_activity.Enabled = false;
+            this.cBox_activity.FormattingEnabled = true;
+            this.cBox_activity.Location = new System.Drawing.Point(0, 3);
+            this.cBox_activity.Name = "cBox_activity";
+            this.cBox_activity.Size = new System.Drawing.Size(120, 20);
+            this.cBox_activity.TabIndex = 1;
             // 
             // panel28
             // 
@@ -366,7 +380,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(125, 62);
             this.label5.TabIndex = 1;
-            this.label5.Text = "선호 지역";
+            this.label5.Text = "선호 경기";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel11
@@ -725,6 +739,7 @@
             this.btn_Close.TabIndex = 1;
             this.btn_Close.Text = "닫기";
             this.btn_Close.UseVisualStyleBackColor = true;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // btn_ChangePassword
             // 
@@ -752,12 +767,10 @@
             this.panel15.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel30.ResumeLayout(false);
-            this.panel30.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.panel27.ResumeLayout(false);
-            this.panel27.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -814,12 +827,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Panel panel29;
         private System.Windows.Forms.Panel panel30;
-        private System.Windows.Forms.TextBox tbox_PrefAct;
         private System.Windows.Forms.Panel panel31;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.Panel panel27;
-        private System.Windows.Forms.TextBox tbox_PrefCity;
         private System.Windows.Forms.Panel panel28;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel23;
@@ -846,5 +857,8 @@
         private System.Windows.Forms.Button btn_FindFile;
         private System.Windows.Forms.Button btn_DeleteFile;
         private System.Windows.Forms.Button button_TestFeature;
+        private System.Windows.Forms.ComboBox cBox_City;
+        private System.Windows.Forms.ComboBox cBox_activity;
+        private System.Windows.Forms.Button btn_modi;
     }
 }
