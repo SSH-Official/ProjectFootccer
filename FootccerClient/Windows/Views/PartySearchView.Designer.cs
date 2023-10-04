@@ -32,6 +32,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.S_Date_P = new System.Windows.Forms.Panel();
             this.SearchDate = new System.Windows.Forms.DateTimePicker();
@@ -43,17 +44,16 @@
             this.SearchText = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Search_kind = new System.Windows.Forms.ComboBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.S_Date_P.SuspendLayout();
             this.S_Combo_P.SuspendLayout();
             this.panel4.SuspendLayout();
             this.S_Text_P.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -63,7 +63,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(5, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1239, 709);
+            this.groupBox1.Size = new System.Drawing.Size(1227, 707);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "파티 검색";
@@ -74,7 +74,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 55);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1233, 651);
+            this.panel5.Size = new System.Drawing.Size(1221, 649);
             this.panel5.TabIndex = 2;
             // 
             // dataGridView1
@@ -84,7 +84,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1233, 651);
+            this.dataGridView1.Size = new System.Drawing.Size(1221, 649);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel1
@@ -98,8 +98,17 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1233, 38);
+            this.panel1.Size = new System.Drawing.Size(1221, 38);
             this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.SearchBtn);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(1019, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(94, 38);
+            this.panel3.TabIndex = 5;
             // 
             // SearchBtn
             // 
@@ -160,7 +169,7 @@
             // 
             this.panel4.Controls.Add(this.btn_Create);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1139, 0);
+            this.panel4.Location = new System.Drawing.Point(1127, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(94, 38);
             this.panel4.TabIndex = 2;
@@ -222,20 +231,11 @@
             this.Search_kind.TabIndex = 0;
             this.Search_kind.SelectedIndexChanged += new System.EventHandler(this.Search_kind_SelectedIndexChanged);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.SearchBtn);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(1019, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(94, 38);
-            this.panel3.TabIndex = 5;
-            // 
             // PartySearchView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 719);
+            this.ClientSize = new System.Drawing.Size(1237, 717);
             this.Controls.Add(this.groupBox1);
             this.Name = "PartySearchView";
             this.Padding = new System.Windows.Forms.Padding(5);
@@ -244,13 +244,13 @@
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.S_Date_P.ResumeLayout(false);
             this.S_Combo_P.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.S_Text_P.ResumeLayout(false);
             this.S_Text_P.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

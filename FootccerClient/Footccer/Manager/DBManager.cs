@@ -17,6 +17,9 @@ namespace FootccerClient.Footccer.Manager
         public PartySearch_DAO PartySearch { get; }
         public DBLoginDAO Login { get; }
 
+        public PositionDBExecuter Position { get; }
+        public CSCD LHJDB { get; }
+
         public DBManager()
         {
             Settings = DBSettings.KB_Default;
@@ -24,7 +27,9 @@ namespace FootccerClient.Footccer.Manager
             CreateParty = new CreatePartyDBExecuter();
             MyPage = new MyPage_DAO();
             PartySearch = new PartySearch_DAO();
-            Login = new DBLoginDAO();            
+            Login = new DBLoginDAO();
+            Position = new PositionDBExecuter();
+            LHJDB = new CSCD();            
         }
 
 

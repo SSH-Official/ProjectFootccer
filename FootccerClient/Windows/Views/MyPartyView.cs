@@ -1,4 +1,5 @@
-﻿using Lib.Frame;
+﻿using FootccerClient.Windows.Pops;
+using Lib.Frame;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,12 @@ namespace FootccerClient.Windows.Views
         public MyPartyView()
         {
             InitializeComponent();
+        }
+
+        private void btn_Record_Click(object sender, EventArgs e)
+        {
+            ViewPop<RecordView> pop = new ViewPop<RecordView>();
+            pop.ShowDialog();
         }
     }
 }
