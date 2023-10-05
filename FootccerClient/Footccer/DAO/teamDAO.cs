@@ -44,7 +44,7 @@ namespace FootccerClient.Footccer.DAO
                     string username = Convert.ToString(rdr["username"]);
                     string side = Convert.ToString(rdr["side"]);
                     int elo = Convert.ToInt32(rdr["elo"]);
-                    TeamDTO theCity = new TeamDTO(idx, username,side, elo);
+                    TeamDTO theCity = new TeamDTO(idx, username, side, elo);
 
                     result.Add(theCity);
                 }

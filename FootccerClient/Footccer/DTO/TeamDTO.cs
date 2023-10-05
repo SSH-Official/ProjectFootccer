@@ -9,11 +9,16 @@ namespace FootccerClient.Footccer.DTO
     public class TeamDTO
     {
         private int idx { get; }
-        public string 유저 { get; }
+        private string 유저 { get; }
+        public string UserWithTag { get { return $"{this.유저}#{this.idx}"; } }
         public string side { get; }
 
         public int elo { get; }
         
+        public int getidx()
+        {
+            return idx;
+        }
 
         public TeamDTO(int idx,string username,string side, int elo)
         {

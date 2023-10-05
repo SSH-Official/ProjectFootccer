@@ -87,10 +87,29 @@ namespace FootccerClient.Windows.Views
         {
             List_team();
         }
-
+        public void clearMember()
+        {
+            mbr_name.Text = "";
+            mbr_gender.Text = "";
+            mbr_email.Text = "";
+            mbr_phone.Text = "";
+            mbr_position.Text = "";
+            mbr_residence.Text = "";
+        }
         private void Team_A_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("Hi");
+            clearMember();
+            if (e.RowIndex >= 0)
+            {
+                TeamDTO selectedPersonnel = (Team_A.DataSource as List<TeamDTO>)[e.RowIndex];
+                MessageBox.Show(selectedPersonnel.getidx().ToString());
+
+
+                /*string IDwithTag = Team_A[0, e.RowIndex].Value.ToString();      
+                int idx = Int32.Parse(IDwithTag.Split('#')[1]);
+                MessageBox.Show(idx.ToString());*/
+            }
+            
         }
     }
 }
