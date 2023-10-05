@@ -10,50 +10,46 @@ using System.Drawing;
 using System.Security.Policy;
 using FootccerClient.Footccer.Util;
 
-namespace FootccerClient.Footccer.DBExecuter
+namespace FootccerClient.Footccer.DAO.CRUD
 {
-    public class MyPageDBExecuter : DBExecture_Base
+    /// <summary>
+    /// 마이페이지에 사용되는 CRUD 기능을 관리하는 객체입니다. <br/>
+    /// MySqlCommand 자원을 사용하므로 필요시에만 생성해서 사용해주세요.
+    /// </summary>
+    public class MyPageCRUD : CRUD_Base
     {
-        public MyPageDBExecuter(MySqlCommand cmd) : base(cmd)
+        /// <summary>
+        /// 마이페이지에 사용되는 CRUD 기능을 관리하는 객체입니다. <br/>
+        /// MySqlCommand 자원을 사용하므로 필요시에만 생성해서 사용해주세요.
+        /// </summary>
+        public MyPageCRUD(MySqlCommand cmd) : base(cmd)
         {
         }
 
-        public MyPageDBExecuter SetSQL_ReadUserInfo(string UID)
+        public UserInfoDTO ReadUserInfo(string UID)
+        {
+            SetSQL_ReadUserInfo(UID);
+            return ReadData(ParseData_ToUserInfo);
+        }
+        private void SetSQL_ReadUserInfo(string UID)
         {
             cmd.CommandText = "SELECT " +
-                            "U.`idx` AS `UserIdx`, " +
-                            "U.`id` AS `UserID`, I.`name` AS `UserName`, " +
-                            "I.`gender`, I.`contact`, I.`email`, " +
-                            "CT.`idx` AS `CityIdx`, CT.`name` AS `CityName`, " +
-                            "AC.`idx` AS `ActIdx`, AC.`name` AS `ActName`, " +
-                            "IM.`imageurl` " +
-                            "FROM `User` AS U " +
-                            "LEFT JOIN `UserInfo` AS I ON U.`idx` = I.`User_idx` " +
-                            "LEFT JOIN `City` AS CT ON I.`prefer_City_idx` = CT.`idx` " +
-                            "LEFT JOIN `Activity` AS AC ON I.`prefer_Activity_idx` = AC.`idx` " +
-                            "LEFT JOIN `Image` AS IM ON I.`Image_idx` = IM.`idx` " +
-                            "WHERE U.`id` = @id; ";
+                "U.`idx` AS `UserIdx`, " +
+                "U.`id` AS `UserID`, I.`name` AS `UserName`, " +
+                "I.`gender`, I.`contact`, I.`email`, " +
+                "CT.`idx` AS `CityIdx`, CT.`name` AS `CityName`, " +
+                "AC.`idx` AS `ActIdx`, AC.`name` AS `ActName`, " +
+                "IM.`imageurl` " +
+                "FROM `User` AS U " +
+                "LEFT JOIN `UserInfo` AS I ON U.`idx` = I.`User_idx` " +
+                "LEFT JOIN `City` AS CT ON I.`prefer_City_idx` = CT.`idx` " +
+                "LEFT JOIN `Activity` AS AC ON I.`prefer_Activity_idx` = AC.`idx` " +
+                "LEFT JOIN `Image` AS IM ON I.`Image_idx` = IM.`idx` " +
+                "WHERE U.`id` = @id; ";
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@id", MySqlDbType.VarChar, 50).Value = UID;
-            return this;
         }
-
-        public UserInfoDTO ReadUserInfo()
-        {
-            using (MySqlDataReader rdr = cmd.ExecuteReader())
-            {
-                List<UserInfoDTO> _list = new List<UserInfoDTO>();
-
-                while (rdr.Read())
-                {
-                    UserInfoDTO userInfo = ParseToUserInfo(rdr);
-                    _list.Add(userInfo);
-                }
-
-                return GetUserInfo_IfOnlyOne(_list);
-            }
-        }
-        private static UserInfoDTO ParseToUserInfo(MySqlDataReader rdr)
+        private UserInfoDTO ParseData_ToUserInfo(MySqlDataReader rdr)
         {
             ImageMaker IM = new ImageMaker();
             return new UserInfoDTOBuilder()
@@ -69,16 +65,9 @@ namespace FootccerClient.Footccer.DBExecuter
                 .SetImage(IM.GetImageFromURL(rdr.GetString("imageurl")))
                 .Build();
         }
-        private UserInfoDTO GetUserInfo_IfOnlyOne(List<UserInfoDTO> _list)
-        {
-            int _count = _list.Count;
-            if (_count < 1) { throw new Exception("검색 결과가 없습니다.."); }
-            else if (_count > 1) { throw new Exception("DB에 중복 아이디가 있습니다.."); }
-            else { return _list[0]; }
-        }
 
 
-        public MyPageDBExecuter SetSQL_CheckPassword(UserDTO user, string oldPwd)
+        public bool CheckPassword(UserDTO user, string oldPwd)
         {
             cmd.CommandText =
                 "SELECT CASE WHEN U.`password` = @oldPwd THEN TRUE ELSE FALSE END " +
@@ -87,22 +76,19 @@ namespace FootccerClient.Footccer.DBExecuter
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@oldPwd", MySqlDbType.VarChar, 50).Value = oldPwd;
             cmd.Parameters.Add("@id", MySqlDbType.VarChar, 50).Value = user.ID;
-            return this;
-        }
 
-        public bool CheckPassword()
-        {
             bool isCorrectPassword = false;
             using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
                 rdr.Read();
                 isCorrectPassword = rdr.GetBoolean(0);
             }
+
             return isCorrectPassword;
         }
 
 
-        public MyPageDBExecuter SetSQL_UpdatePassword(UserDTO user, string newPwd)
+        public int UpdatePassword(UserDTO user, string newPwd)
         {
             cmd.CommandText =
                     "UPDATE `User` " +
@@ -111,7 +97,8 @@ namespace FootccerClient.Footccer.DBExecuter
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@pwd", MySqlDbType.VarChar, 50).Value = newPwd;
             cmd.Parameters.Add("@id", MySqlDbType.VarChar, 50).Value = user.ID;
-            return this;
+            
+            return cmd.ExecuteNonQuery();
         }
     }
 }

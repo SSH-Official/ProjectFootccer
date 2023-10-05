@@ -63,7 +63,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(5, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1227, 707);
+            this.groupBox1.Size = new System.Drawing.Size(1227, 702);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "파티 검색";
@@ -74,7 +74,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 55);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1221, 649);
+            this.panel5.Size = new System.Drawing.Size(1221, 644);
             this.panel5.TabIndex = 2;
             // 
             // dataGridView1
@@ -84,7 +84,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1221, 649);
+            this.dataGridView1.Size = new System.Drawing.Size(1221, 644);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel1
@@ -235,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1237, 717);
+            this.ClientSize = new System.Drawing.Size(1237, 712);
             this.Controls.Add(this.groupBox1);
             this.Name = "PartySearchView";
             this.Padding = new System.Windows.Forms.Padding(5);

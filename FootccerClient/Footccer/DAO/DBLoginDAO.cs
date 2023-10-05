@@ -1,5 +1,5 @@
 ﻿
-using FootccerClient.Footccer.DBExecuter;
+using FootccerClient.Footccer.DAO.CRUD;
 using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 using System;
@@ -22,16 +22,17 @@ namespace FootccerClient.Footccer.DAO
 
         public bool Checkjoinmember(JoinmemberInfoDTO info)
         {
-            object result = ExecuteTransaction((cmd) =>
+            bool result = ExecuteTransaction((cmd) =>
             {
-                LoginDBExecuter DBE = new LoginDBExecuter(cmd);
+                LoginCRUD CRUD = new LoginCRUD(cmd);
 
-                DBE.SetSQL_InsertTOUser(info).ExecuteNonQuery();
-                int User_idx = DBE.SetSQL_ReadUserIndex(info).ReadUserIndex();
-                DBE.SetSQL_InsertToUserInfo(info, User_idx).ExecuteNonQuery();
+                CRUD.CreateUser(info);
+                CRUD.CreateUserInfo(info);
 
                 return true;
-            }) ?? false;
+            });
+
+            
 
             return (bool)result;
            
@@ -39,29 +40,26 @@ namespace FootccerClient.Footccer.DAO
 
         public bool CheckLoginSuccess(UserCredentialDTO_RegisterUser info)
         {
-            object result = ExecuteTransaction((cmd) =>
+            return ExecuteTransaction<bool>((cmd) =>
             {
-                LoginDBExecuter DBE = new LoginDBExecuter(cmd);
+                LoginCRUD DBE = new LoginCRUD(cmd);
 
-                int login_status = DBE.SetSQL_CheckLoginSuccess(info).CheckLoginSuccess(info);
+                int login_status = DBE.CheckLoginSuccess(info);
 
                 return (login_status == 1);
-            }) ?? false;
-
-            return (bool)result;
+            });
         }
 
         public UserDTO GetUser(UserCredentialDTO_RegisterUser info)
         {
-            object result = ExecuteTransaction((cmd) =>
+            UserDTO result = ExecuteTransaction((cmd) =>
             {
-                LoginDBExecuter DBE = new LoginDBExecuter(cmd);
-
-                return DBE.SetSQL_ReadUser(info).ReadUser();
+                LoginCRUD DBE = new LoginCRUD(cmd);
+                return DBE.ReadUser(info);
             });
 
             if (result == null) throw new Exception("유저 정보 얻기에 실패했습니다..");
-            return (UserDTO)result;
+            return result;
         }
     }
 

@@ -74,10 +74,10 @@
     <Compile Include="Footccer\DAO\PartyJoinDAO.cs" />
     <Compile Include="Footccer\DAO\PartySearch_DAO.cs" />
     <Compile Include="Footccer\DAO\DAO_Base.cs" />
-    <Compile Include="Footccer\DBExecuter\DBExecture_Base.cs" />
+    <Compile Include="Footccer\DAO\CRUD\CRUD_Base.cs" />
     <Compile Include="Footccer\DBExecuter\LHJDBExecuter.cs" />
-    <Compile Include="Footccer\DBExecuter\LoginDBExecuter.cs" />
-    <Compile Include="Footccer\DBExecuter\MyPageDBExecuter.cs" />
+    <Compile Include="Footccer\DAO\CRUD\LoginCRUD.cs" />
+    <Compile Include="Footccer\DAO\CRUD\MyPageCRUD.cs" />
     <Compile Include="Footccer\DBExecuter\PositionDBExecuter.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
@@ -336,7 +336,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Footccer\DAO\DAOCommand\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

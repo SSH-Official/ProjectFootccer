@@ -1,4 +1,5 @@
-﻿using FootccerClient.Footccer.DTO;
+﻿using FootccerClient.Footccer.DAO.CRUD;
+using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace FootccerClient.Footccer.DBExecuter
 {
-    public class PartySearchDBExecuter : DBExecture_Base
+    public class PartySearchDBExecuter : CRUD_Base
     {
         public PartySearchDBExecuter(MySqlCommand cmd) : base(cmd)
         {

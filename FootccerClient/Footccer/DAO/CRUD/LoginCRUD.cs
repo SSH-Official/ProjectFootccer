@@ -6,32 +6,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootccerClient.Footccer.DBExecuter
+namespace FootccerClient.Footccer.DAO.CRUD
 {
-    public class LoginDBExecuter : DBExecture_Base
+    /// <summary>
+    /// 로그인 CRUD 인터페이스 제공 객체입니다. <br/>
+    /// MySqlCommand 자원을 사용하므로 필요시에만 생성해서 사용해주세요.
+    /// </summary>
+    public class LoginCRUD : CRUD_Base
     {
-        public LoginDBExecuter(MySqlCommand cmd) : base(cmd)
+        /// <summary>
+        /// 로그인 CRUD 인터페이스 제공 객체입니다. <br/>
+        /// MySqlCommand 자원을 사용하므로 필요시에만 생성해서 사용해주세요.
+        /// </summary>
+        public LoginCRUD(MySqlCommand cmd) : base(cmd)
         {
         }
 
-        public LoginDBExecuter SetSQL_InsertTOUser(JoinmemberInfoDTO info)
+
+        public int CreateUser(JoinmemberInfoDTO info)
         {
             string Query = "INSERT INTO User (id, password) VALUES " + 
                 $"('{info.Id}','{info.Password}'); ";
             cmd.CommandText = Query;
-            return this;
+            return cmd.ExecuteNonQuery();
+
+            
         }
 
-        public LoginDBExecuter SetSQL_ReadUserIndex(JoinmemberInfoDTO info)
-        {
-            string Query = $"SELECT idx FROM `User` WHERE id = '{info.Id}'; ";
-            cmd.CommandText = Query;
-            return this;
-        }
 
-        public int ReadUserIndex()
+        public int ReadUserIndex(JoinmemberInfoDTO info)
         {
             int User_idx;
+
+            string Query = $"SELECT idx FROM `User` WHERE id = '{info.Id}'; ";
+            cmd.CommandText = Query;
             using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
                 rdr.Read();
@@ -40,17 +48,20 @@ namespace FootccerClient.Footccer.DBExecuter
             return User_idx;
         }
 
-        public LoginDBExecuter SetSQL_InsertToUserInfo(JoinmemberInfoDTO info, int user_idx)
+
+        public int CreateUserInfo(JoinmemberInfoDTO info) => CreateUserInfo(info, ReadUserIndex(info));
+        public int CreateUserInfo(JoinmemberInfoDTO info, int user_idx)
         {
             string SQL_InsertToUserInfo = 
                 "INSERT INTO UserInfo (User_idx, nickname, name, gender, contact, email, birth) " +
                 "VALUES " +
                 "({0} ,'" + info.Nickname + "','" + info.Name + "', '" + info.Gender + "', '" + info.Phone + "', '" + info.Email + "','" + GetBirthday(info) + "'); ";
             string FormattedSQL = string.Format(SQL_InsertToUserInfo, user_idx);
-
             cmd.CommandText = FormattedSQL;
-            return this;
+
+            return cmd.ExecuteNonQuery();
         }
+
         private string GetBirthday(JoinmemberInfoDTO info)
         {
             string birthday = info.Birthday;
@@ -63,23 +74,18 @@ namespace FootccerClient.Footccer.DBExecuter
             return birthday;
         }
 
-        internal LoginDBExecuter SetSQL_CheckLoginSuccess(UserCredentialDTO_RegisterUser info)
+
+        public int CheckLoginSuccess(UserCredentialDTO_RegisterUser info)
         {
             string loginid = info.ID;
+            string loginpwd = info.Password;
 
             string selectQuery = "SELECT * FROM `User` WHERE id = \'" + loginid + "\' ";
             cmd.CommandText = selectQuery;
-            return this;
-        }
-
-        internal int CheckLoginSuccess(UserCredentialDTO_RegisterUser info)
-        {
             int login_status = 0;
 
             using (MySqlDataReader userAccount = cmd.ExecuteReader())
             {
-                string loginid = info.ID;
-                string loginpwd = info.Password;
                 while (userAccount.Read())
                 {
                     if (loginid == (string)userAccount["id"] && loginpwd == (string)userAccount["password"])
@@ -92,7 +98,8 @@ namespace FootccerClient.Footccer.DBExecuter
             return login_status;
         }
 
-        internal LoginDBExecuter SetSQL_ReadUser(UserCredentialDTO_RegisterUser info)
+
+        public UserDTO ReadUser(UserCredentialDTO_RegisterUser info)
         {
             cmd.CommandText = 
                 "SELECT idx, id " +
@@ -100,16 +107,12 @@ namespace FootccerClient.Footccer.DBExecuter
                 "WHERE U.id = @id; ";
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@id", MySqlDbType.VarChar, 50).Value = info.ID;
-            return this;
+
+            return ReadData((reader) =>
+            {
+                return new UserDTO(reader.GetInt32("idx"), reader.GetString("id"));
+            });
         }
 
-        internal UserDTO ReadUser()
-        {
-            using (MySqlDataReader reader = cmd.ExecuteReader())
-            {
-                reader.Read();
-                return new UserDTO(reader.GetInt32("idx"), reader.GetString("id"));
-            }
-        }
     }
 }
