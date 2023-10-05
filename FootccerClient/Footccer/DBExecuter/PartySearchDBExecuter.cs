@@ -125,7 +125,7 @@ namespace FootccerClient.Footccer.DBExecuter
                 "LEFT JOIN `Activity` AS Act ON Par.Activity_idx = Act.idx "+
                 "LEFT JOIN `UserInfo` AS Ui ON Par.Leader_idx = Ui.User_idx "+
                 "LEFT JOIN `Place` AS PL ON Par.Place_idx = PL.idx "+
-                "LEFT JOIN `City` AS CT ON PL.City_idx = CT.idx";
+                "LEFT JOIN `City` AS CT ON PL.City_idx = CT.idx ";
             if(seed != "")
             {
                 sql += "WHERE ";
@@ -134,7 +134,7 @@ namespace FootccerClient.Footccer.DBExecuter
                         sql += $"Par.`name` LIKE \"%{seed}%\"";
                         break;
                     case "작성자":
-                        sql += $"U.`name` LIKE \"%{seed}%\"";
+                        sql += $"Ui.`name` LIKE \"%{seed}%\"";
                         break;
                     case "지역":
                         sql += $"CT.`idx` = {seed}";

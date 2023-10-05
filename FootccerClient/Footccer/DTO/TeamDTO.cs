@@ -13,6 +13,7 @@ namespace FootccerClient.Footccer.DTO
         public string side { get; }
 
         public int elo { get; }
+        
 
         public TeamDTO(int idx,string username,string side, int elo)
         {

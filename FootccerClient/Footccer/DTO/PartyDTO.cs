@@ -21,6 +21,10 @@ namespace FootccerClient.Footccer.DTO
         public int max { get; set; }
         public int count { get; set; }
         private string phone { get; }
+        public string getphone()
+        {
+            return phone;
+        }
         public PartyDTO() { }
         public PartyDTO(int idx, string Actname, string Uname, string Parname, string CTname, string PLname, string PLaddress, string date, int max, int count, int Uidx)
         {

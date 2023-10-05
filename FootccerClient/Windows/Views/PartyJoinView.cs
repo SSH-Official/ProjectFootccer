@@ -21,25 +21,26 @@ namespace FootccerClient.Windows.Views
             initializeAllObject();
         }
 
-        public void List_Ateam()
+        public void List_team()
         {
-            List<TeamDTO> _dt = Footccer.App.Instance.DB.team.Readmember();
-            Team_A.DataSource = _dt;
-        }
+            List<TeamDTO> _dtA = Footccer.App.Instance.DB.team.Readmember("'A'");
+            Team_A.DataSource = _dtA;
+            a_count.Text = _dtA.Count.ToString();
 
+            List<TeamDTO> _dtB = Footccer.App.Instance.DB.team.Readmember("'B'");
+            Team_B.DataSource = _dtB;
+            b_count.Text = _dtB.Count.ToString();
+        }
+        
         public void initializeAllObject()
         {
             PartyDTO pd = Footccer.App.Instance.DB.team.readPartyInfo();
             party_name.Text = pd.Parname;
-        }
-
-        public void initializeLeader()
-        {
-            //leader_name.Text = 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            leader_name.Text = pd.UserWithTag;
+            leader_phone.Text = pd.getphone();
+            match_kind.Text = pd.Actname;
+            match_time.Text = pd.date;
+            match_place.Text = pd.PLname;
 
         }
 
@@ -84,7 +85,12 @@ namespace FootccerClient.Windows.Views
 
         private void PartyJoinView_Load(object sender, EventArgs e)
         {
-            List_Ateam();
+            List_team();
+        }
+
+        private void Team_A_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("Hi");
         }
     }
 }

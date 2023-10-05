@@ -23,12 +23,13 @@ namespace FootccerClient.Footccer.DAO
         MySqlConnection conn = null;
 
 
-        public List<TeamDTO> Readmember()
+        public List<TeamDTO> Readmember(string Team)
         {
             conn = new MySqlConnection(strConn);
-            string sql = "SELECT L.idx AS idx, Ui.name AS username, side, Ui.elo as elo FROM `List` AS L " +
+            string sql = "SELECT L.idx AS idx, COUNT(*) AS count, Ui.name AS username, side, Ui.elo as elo FROM `List` AS L " +
                          "LEFT JOIN `UserInfo` AS Ui ON L.User_idx = Ui.User_idx " +
-                         "WHERE Party_idx = 14 AND L.idx = 1";
+                         "WHERE Party_idx = 14 AND side = " + Team +
+                         " GROUP BY L.idx, Ui.name, side, Ui.elo ";
             List<TeamDTO> result = new List<TeamDTO>();
             MySqlDataReader rdr = null;
             try
