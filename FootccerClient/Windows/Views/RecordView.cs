@@ -107,7 +107,6 @@ namespace FootccerClient.Windows.Views
                     
                 }
             }
-            
         }
         void initializeLabel_ForRecord()
         {

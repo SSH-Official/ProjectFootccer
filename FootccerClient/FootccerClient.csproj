@@ -87,6 +87,7 @@
     <Compile Include="Footccer\DAO\CreatePartyDAO.cs" />
     <Compile Include="Footccer\DBExecuter\CreatePartyDBExecuter.cs" />
     <Compile Include="Footccer\DAO\DBLoginDAO.cs" />
+    <Compile Include="Footccer\DTO\FormationDTO.cs" />
     <Compile Include="Footccer\DTO\JoinmemberInfoDTO.cs" />
     <Compile Include="Footccer\DTO\ListDTO.cs" />
     <Compile Include="Footccer\DTO\PositionDTO.cs" />
@@ -243,6 +244,12 @@
     <Compile Include="Windows\Views\RecordView.Designer.cs">
       <DependentUpon>RecordView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Views\testView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\testView.Designer.cs">
+      <DependentUpon>testView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Windows\Main\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +276,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Windows\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -318,6 +326,9 @@
     <EmbeddedResource Include="Windows\Views\RecordView.resx">
       <DependentUpon>RecordView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\testView.resx">
+      <DependentUpon>testView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -338,6 +349,9 @@
   <ItemGroup>
     <Folder Include="Footccer\DAO\DAOCommand\" />
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\uniform.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
