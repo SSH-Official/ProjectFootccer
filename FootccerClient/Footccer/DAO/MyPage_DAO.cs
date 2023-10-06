@@ -17,118 +17,58 @@ namespace FootccerClient.Footccer.DBExecuter
     /// </summary>
     public partial class MyPage_DAO : DAO_Base
     {
-        public UserInfoDTO ReadUserInfoAsSession()
+        public UserInfoDTO ReadUserInfoAsSession() => ReadUserInfo(App.Instance.Session.ID);
+        public UserInfoDTO ReadUserInfo(string UID) => ExecuteTransaction((cmd) =>
         {
-            return ReadUserInfo(App.Instance.Session.ID);
-        }
+            var CRUD = new MyPageCRUD(cmd);
+            return CRUD.ReadUserInfo(UID);
+        });
 
-        public UserInfoDTO ReadUserInfo(string UID)
+
+        public bool UpdateUserInfo(UserInfoDTO userinfo) => ExecuteTransaction((cmd) =>
         {
-            UserInfoDTO result = ExecuteTransaction((cmd) =>
+            cmd.CommandText = "UPDATE ... ";
+            cmd.Parameters.Clear();
+            cmd.ExecuteNonQuery();
+
+            return true;
+        });
+
+
+        public bool UpdateUserPassword(UserDTO user, string oldPwd, string newPwd) => ExecuteTransaction((cmd) =>
+        {
+            var CRUD = new MyPageCRUD(cmd);
+            bool isCorrectPassword = CRUD.CheckPassword(user, oldPwd);
+
+            if (isCorrectPassword == false) { throw new Exception("기존 비밀번호가 틀립니다."); }
+            else
             {
-                MyPageCRUD CRUD = new MyPageCRUD(cmd);
-                return CRUD.ReadUserInfo(UID);
-            });
-
-            return result;
-        }
-
-
-        public bool UpdateUserInfo(UserInfoDTO userinfo)
-        {
-            bool result = ExecuteTransaction((cmd) =>
-            {
-                cmd.CommandText = "UPDATE ... ";
-                cmd.Parameters.Clear();
-                cmd.ExecuteNonQuery();
-
-                return true;
-            });
-
-            return result;
-        }
-
-
-        public bool UpdateUserPassword(UserDTO user, string oldPwd, string newPwd)
-        {
-            int result = ExecuteTransaction((cmd) =>
-            {
-                MyPageCRUD DBE = new MyPageCRUD(cmd);
-                bool isCorrectPassword = DBE.CheckPassword(user, oldPwd);
-
-                if (isCorrectPassword == false) { throw new Exception("기존 비밀번호가 틀립니다."); }
-                else
-                {
-                    return DBE.UpdatePassword(user, newPwd);
-                }
-            });
-
-            // 실행된 NonQuery가 양수임 -> 제대로 SQL이 실행되었음.
-            return result > 0;
-        }
-
-
-        public UserInfoDTO GetUserInfoAsSession()
-        {
-            return GetUserInfo(App.Instance.Session.User);
-        }
-
-        public UserInfoDTO GetUserInfo(UserDTO user)
-        {
-            return ExecuteTransaction((cmd) =>
-            {
-                MyPageCRUD CRUD = new MyPageCRUD(cmd);
-                return CRUD.ReadUserInfo(user.ID);
-                /*cmd.CommandText = GetSQL_SelectUserInfo_ForUser(user);
-                return 
-                using (MySqlDataReader rdr = cmd.ExecuteReader())
-                {
-                    return ParseToUserInfo(rdr);
-                }*/
-            });
-        }
-        
-
-        public bool UpdateUserinfo(UserInfoDTO updateinfo)
-        {
-            object result = ExecuteTransaction((cmd) =>
-            {
-                string _userid = updateinfo.User.ID;
-
-                /*int _useridx;
-                cmd.CommandText = $"SELECT idx FROM `User` WHERE id = '{_userid}'; ";
-                using (MySqlDataReader rdr = cmd.ExecuteReader())
-                {
-                    rdr.Read();
-                    _useridx = rdr.GetInt32("idx");
-                }*/
-
-
-                int _useridx = updateinfo.User.Index;
-
-                string _name = updateinfo.Name;
-                string _gender = updateinfo.Gender;
-                string _contact = updateinfo.Contact;
-                string _email = updateinfo.Email;
-                int _cityidx = updateinfo.Prefer.City.Index;
-                string _cityname = updateinfo.Prefer.City.Name;
-                int _activityidx = updateinfo.Prefer.Activity.Index;
-                string _activityname = updateinfo.Prefer.Activity.Name;
-
-                cmd.CommandText =
-                 "UPDATE `UserInfo` " +
-                 "SET `contact` = ('" + _contact + "')," +
-                 "`email`=('" + _email + "')," +
-                 "`prefer_City_idx`=('" + _cityidx + "')," +
-                 "`prefer_Activity_idx`=('" + _activityidx + "') " +
-                 "WHERE `UserInfo`.`User_idx`= ('" + _useridx + "'); ";
-
-                cmd.Parameters.Clear();
-                cmd.ExecuteNonQuery();
-                return true;
+                return CRUD.UpdatePassword(user, newPwd);
             }
-                ); return (result != null) && (bool)result;
-        }
+        }) > 0; // 실행된 NonQuery가 양수임 -> 제대로 실행되었음
+
+
+        /// <summary>
+        /// 세션 User 정보를 토대로 UserInfo를 가져옵니다.
+        /// </summary>
+        /// <returns></returns>
+        public UserInfoDTO GetUserInfoAsSession() => GetUserInfo(App.Instance.Session.User);
+        public UserInfoDTO GetUserInfo(UserDTO user) => ExecuteTransaction((cmd) =>
+        {
+            var CRUD = new MyPageCRUD(cmd);
+
+            return CRUD.ReadUserInfo(user.ID);
+        });
+
+
+
+        public bool UpdateUserinfo(UserInfoDTO updateinfo) => ExecuteTransaction((cmd) =>
+        {
+            var CRUD = new MyPageCRUD(cmd);
+
+            return CRUD.UpdateUserInfo(updateinfo);
+        });
+
     }
 
 

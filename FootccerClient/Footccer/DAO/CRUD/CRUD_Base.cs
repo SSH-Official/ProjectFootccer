@@ -1,9 +1,13 @@
 ﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.CodeDom;
 
 namespace FootccerClient.Footccer.DAO.CRUD
 {
@@ -39,7 +43,6 @@ namespace FootccerClient.Footccer.DAO.CRUD
             }
         }
 
-
         /// <summary>
         /// MySqlDataReader를 받아 결과값 목록을 반환합니다. <br/>
         /// <br> 내부에서 MySqlDataReader.Read()를 실행하므로 중복작성하지 말아주세요. </br>
@@ -53,6 +56,38 @@ namespace FootccerClient.Footccer.DAO.CRUD
             }
         }
 
+        /// <summary>
+        /// MySqlCommand를 받아서 DataTable을 반환합니다. <br/>
+        /// 반환할 DataTable이 단 한개가 아닌 경우 예외를 던집니다.
+        /// </summary>
+        /// <param name="_cmd"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        protected DataTable ReadDataTable(MySqlCommand _cmd)
+        {
+            DataSet ds = ReadDataSet(_cmd);
+            if (ds.Tables.Count == 1)
+            {
+                return ds.Tables[0];
+            }
+            throw new Exception("테이블이 단 한개가 아닙니다...");
+        }
+
+        /// <summary>
+        /// MySqlCommand를 받아서 쿼리문을 실행한 결과를 DataSet으로 반환합니다.
+        /// </summary>
+        /// <param name="mySqlCommand"></param>
+        /// <returns></returns>
+        protected DataSet ReadDataSet(MySqlCommand _cmd)
+        {
+            DataSet ds = new DataSet();
+            using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(_cmd))
+            {
+                dataAdapter.Fill(ds);
+                return ds;
+            }            
+        }
+        
 
         /// <summary>
         /// 생성된 MySqlDataReader에 대해 가능한 모든 Read마다 ParseMethod를 실행하여 _list에 추가하여 반환합니다.

@@ -12,24 +12,25 @@ namespace FootccerClient.Footccer.Manager
     public class DBManager
     {
         public DBSettings Settings { get; }
-        public CreatePartyDBExecuter CreateParty { get; }
+
+        public CreateParty_DAO CreateParty { get; }
         public MyPage_DAO MyPage { get; }
         public PartySearch_DAO PartySearch { get; }
-        public DBLoginDAO Login { get; }
+        public DBLogin_DAO Login { get; }
 
-        public PositionDBExecuter Position { get; }
-        public CSCD LHJDB { get; }
+        public Position_DAO Position { get; }
+        public LHJDB_DAO LHJDB { get; }
 
         public DBManager()
         {
             Settings = DBSettings.KB_Default;
 
-            CreateParty = new CreatePartyDBExecuter();
+            CreateParty = new CreateParty_DAO();
             MyPage = new MyPage_DAO();
             PartySearch = new PartySearch_DAO();
-            Login = new DBLoginDAO();
-            Position = new PositionDBExecuter();
-            LHJDB = new CSCD();            
+            Login = new DBLogin_DAO();
+            Position = new Position_DAO();
+            LHJDB = new LHJDB_DAO();
         }
 
 

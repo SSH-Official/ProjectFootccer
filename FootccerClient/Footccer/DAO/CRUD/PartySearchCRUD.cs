@@ -1,5 +1,4 @@
-﻿using FootccerClient.Footccer.DAO.CRUD;
-using FootccerClient.Footccer.DTO;
+﻿using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
@@ -8,23 +7,18 @@ using System.Data.Common;
 using System.Windows.Forms;
 
 
-namespace FootccerClient.Footccer.DBExecuter
+namespace FootccerClient.Footccer.DAO.CRUD
 {
-    public class PartySearchDBExecuter : CRUD_Base
+    public class PartySearchCRUD : CRUD_Base
     {
-        public PartySearchDBExecuter(MySqlCommand cmd) : base(cmd)
+        public PartySearchCRUD(MySqlCommand cmd) : base(cmd)
         {
         }
 
-        internal PartySearchDBExecuter SetSQL_ReadAllCity()
+        public List<CityDTO> ReadAllCity()
         {
             string sql = "SELECT * FROM `City`;";
             cmd.CommandText = sql;
-            return this;
-        }
-
-        internal List<CityDTO> ReadAllCity()
-        {
             List<CityDTO> result = new List<CityDTO>();
             using (MySqlDataReader rdr = cmd.ExecuteReader())
             {
@@ -37,19 +31,13 @@ namespace FootccerClient.Footccer.DBExecuter
                     result.Add(theCity);
                 }
             }
-
-            return result;            
+            return result;
         }
 
-        internal PartySearchDBExecuter SetSQL_ReadAllActivities()
+        public List<ActivityDTO> ReadAllActivities()
         {
             string sql = "SELECT * FROM `Activity`;";
             cmd.CommandText = sql;
-            return this;
-        }
-
-        internal List<ActivityDTO> ReadAllActivities()
-        {
             List<ActivityDTO> result = new List<ActivityDTO>();
             using (MySqlDataReader rdr = cmd.ExecuteReader())
 
@@ -64,11 +52,35 @@ namespace FootccerClient.Footccer.DBExecuter
             return result;
         }
 
-        internal PartySearchDBExecuter SetSQL_ReadParty(string kind, string seed)
+        
+
+        public List<PartyDTO> ReadParty(string kind, string seed)
         {
             string sql = SearchSQL(kind, seed);
             cmd.CommandText = sql;
-            return this;
+
+            List<PartyDTO> result = new List<PartyDTO>();
+            using (MySqlDataReader rdr = cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    int idx = Convert.ToInt32(rdr["Paridx"]);
+                    string Actname = Convert.ToString(rdr["Actname"]);
+                    string Uname = Convert.ToString(rdr["Uname"]);
+                    string Parname = Convert.ToString(rdr["Parname"]);
+                    string CTname = Convert.ToString(rdr["CTname"]);
+                    string PLname = Convert.ToString(rdr["PLname"]);
+                    string PLaddress = Convert.ToString(rdr["PLaddress"]);
+                    string date = Convert.ToString(rdr["date"]);
+                    int max = Convert.ToInt32(rdr["max"]);
+                    int count = Convert.ToInt32(rdr["count"]);
+                    int Uidx = Convert.ToInt32(rdr["Uidx"]);
+                    PartyDTO party = new PartyDTO(idx, Actname, Uname, Parname, CTname, PLname, PLaddress, date, max, count, Uidx);
+
+                    result.Add(party);
+                }
+            }
+            return result;
         }
         private string SearchSQL(string kind, string seed)
         {
@@ -106,30 +118,5 @@ namespace FootccerClient.Footccer.DBExecuter
             return sql;
         }
 
-        internal List<PartyDTO> ReadParty()
-        {
-            List<PartyDTO> result = new List<PartyDTO>();
-            using (MySqlDataReader rdr = cmd.ExecuteReader())
-            {
-                while (rdr.Read())
-                {
-                    int idx = Convert.ToInt32(rdr["Paridx"]);
-                    string Actname = Convert.ToString(rdr["Actname"]);
-                    string Uname = Convert.ToString(rdr["Uname"]);
-                    string Parname = Convert.ToString(rdr["Parname"]);
-                    string CTname = Convert.ToString(rdr["CTname"]);
-                    string PLname = Convert.ToString(rdr["PLname"]);
-                    string PLaddress = Convert.ToString(rdr["PLaddress"]);
-                    string date = Convert.ToString(rdr["date"]);
-                    int max = Convert.ToInt32(rdr["max"]);
-                    int count = Convert.ToInt32(rdr["count"]);
-                    int Uidx = Convert.ToInt32(rdr["Uidx"]);
-                    PartyDTO party = new PartyDTO(idx, Actname, Uname, Parname, CTname, PLname, PLaddress, date, max, count, Uidx);
-
-                    result.Add(party);
-                }
-            }
-            return result;
-        }
     }
 }

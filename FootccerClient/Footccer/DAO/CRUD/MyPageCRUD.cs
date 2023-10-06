@@ -100,5 +100,26 @@ namespace FootccerClient.Footccer.DAO.CRUD
             
             return cmd.ExecuteNonQuery();
         }
+
+        public bool UpdateUserInfo(UserInfoDTO updateinfo)
+        {
+            int _useridx = updateinfo.User.Index;
+            string _contact = updateinfo.Contact;
+            string _email = updateinfo.Email;
+            int _cityidx = updateinfo.Prefer.City.Index;
+            int _activityidx = updateinfo.Prefer.Activity.Index;
+
+            cmd.CommandText =
+             "UPDATE `UserInfo` " +
+             "SET `contact` = ('" + _contact + "')," +
+             "`email`=('" + _email + "')," +
+             "`prefer_City_idx`=('" + _cityidx + "')," +
+             "`prefer_Activity_idx`=('" + _activityidx + "') " +
+             "WHERE `UserInfo`.`User_idx`= ('" + _useridx + "'); ";
+
+            cmd.Parameters.Clear();
+            cmd.ExecuteNonQuery();
+            return true;
+        }
     }
 }

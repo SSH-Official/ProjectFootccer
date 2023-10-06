@@ -1,4 +1,4 @@
-﻿using FootccerClient.Footccer.DBExecuter;
+﻿using FootccerClient.Footccer.DAO.CRUD;
 using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 using System;
@@ -12,46 +12,29 @@ namespace FootccerClient.Footccer.DAO
 {
     public class PartySearch_DAO : DAO_Base
     {
-        string strConn { get { return App.Instance.DB.Settings.ConnectionString; } }
-        MySqlConnection conn = null;
-
-
-        public List<CityDTO> ReadAllCity()
+        public List<CityDTO> ReadAllCity() => ExecuteTransaction((cmd) =>
         {
-            List<CityDTO> result = ExecuteTransaction((cmd) =>{
-                
-                PartySearchDBExecuter DBE = new PartySearchDBExecuter(cmd);
-                
-                return DBE.SetSQL_ReadAllCity().ReadAllCity();
+            var CRUD = new PartySearchCRUD(cmd);
 
-            }) as List<CityDTO>;
-
-            return result;
-        }
-
-
-        public List<ActivityDTO> ReadAllActivities()
-        {
-            return ExecuteTransaction((cmd) => {
-
-                PartySearchDBExecuter DBE = new PartySearchDBExecuter(cmd);
-
-                return DBE.SetSQL_ReadAllActivities().ReadAllActivities();
-
-            }) as List<ActivityDTO>;
-        }
+            return CRUD.ReadAllCity();
+        });
         
-        
-        public List<PartyDTO> ReadParty(string kind, string seed)
+
+        public List<ActivityDTO> ReadAllActivities() => ExecuteTransaction((cmd) =>
         {
-            return ExecuteTransaction((cmd) =>
-            {
-                PartySearchDBExecuter DBE = new PartySearchDBExecuter (cmd);
+            var CRUD = new PartySearchCRUD(cmd);
+            
+            return CRUD.ReadAllActivities();
+        });
 
-                return DBE.SetSQL_ReadParty(kind, seed).ReadParty();
 
-            }) as List<PartyDTO>;
-        }
+        public List<PartyDTO> ReadParty(string kind, string seed) => ExecuteTransaction((cmd) =>
+        {
+            var CRUD = new PartySearchCRUD(cmd);
+        
+            return CRUD.ReadParty(kind, seed);
+        });
+        
         
     }
 }

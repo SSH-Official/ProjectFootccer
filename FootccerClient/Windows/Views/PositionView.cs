@@ -39,7 +39,7 @@ namespace FootccerClient.Windows.Pops
         {
             int x = 100;
             int y = 10;
-            List<PositionDTO> PS = Footccer.App.Instance.DB.Position.PSget();
+            List<PositionDTO> PS = Footccer.App.Instance.DB.Position.getPositionList();
             for (int i = 0; i < 4; i++)
             {
                 string position = PS[i].position;

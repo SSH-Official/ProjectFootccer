@@ -70,12 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
-    <Compile Include="Footccer\DAO\CSCD.cs" />
+    <Compile Include="Footccer\DAO\CRUD\LHJDB_CRUD.cs" />
     <Compile Include="Footccer\DAO\PartyJoinDAO.cs" />
     <Compile Include="Footccer\DAO\PartySearch_DAO.cs" />
     <Compile Include="Footccer\DAO\DAO_Base.cs" />
     <Compile Include="Footccer\DAO\CRUD\CRUD_Base.cs" />
-    <Compile Include="Footccer\DBExecuter\LHJDBExecuter.cs" />
+    <Compile Include="Footccer\DAO\LHJDB_DAO.cs" />
     <Compile Include="Footccer\DAO\CRUD\LoginCRUD.cs" />
     <Compile Include="Footccer\DAO\CRUD\MyPageCRUD.cs" />
     <Compile Include="Footccer\DBExecuter\PositionDBExecuter.cs" />
@@ -84,9 +84,9 @@
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\CalculateEloDTO.cs" />
     <Compile Include="Footccer\DTO\CreatePartyDTO.cs" />
-    <Compile Include="Footccer\DAO\CreatePartyDAO.cs" />
-    <Compile Include="Footccer\DBExecuter\CreatePartyDBExecuter.cs" />
-    <Compile Include="Footccer\DAO\DBLoginDAO.cs" />
+    <Compile Include="Footccer\DAO\CreateParty_DAO.cs" />
+    <Compile Include="Footccer\DAO\CRUD\CreatePartyCRUD.cs" />
+    <Compile Include="Footccer\DAO\DBLogin_DAO.cs" />
     <Compile Include="Footccer\DTO\JoinmemberInfoDTO.cs" />
     <Compile Include="Footccer\DTO\ListDTO.cs" />
     <Compile Include="Footccer\DTO\PositionDTO.cs" />
@@ -230,7 +230,7 @@
     </Compile>
     <Compile Include="Footccer\Util\ComboItem.cs" />
     <Compile Include="Footccer\DTO\PartyDTO.cs" />
-    <Compile Include="Footccer\DBExecuter\PartySearchDBExecuter.cs" />
+    <Compile Include="Footccer\DAO\CRUD\PartySearchCRUD.cs" />
     <Compile Include="Windows\Views\PositionView.cs">
       <SubType>Form</SubType>
     </Compile>
