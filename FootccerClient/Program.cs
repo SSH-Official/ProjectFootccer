@@ -22,7 +22,7 @@ namespace FootccerClient
             Application.SetCompatibleTextRenderingDefault(false);
             App.Instance.LoginForm = new LoginForm();
             App.Instance.MainForm = new MainForm();
-            Application.Run(App.Instance.MainForm);
+            Application.Run(new ViewPop<testView>());
         }
     }
 }

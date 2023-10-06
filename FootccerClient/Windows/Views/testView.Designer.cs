@@ -38,6 +38,7 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(1561, 719);
             this.panel.TabIndex = 0;
+            this.panel.Resize += new System.EventHandler(this.panel_Resize);
             // 
             // testView
             // 

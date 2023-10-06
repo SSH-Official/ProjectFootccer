@@ -44,6 +44,6 @@ namespace FootccerClient.Footccer.DBExecuter
                     }
                 }
             }
-        }        
+        }
     }
 }
