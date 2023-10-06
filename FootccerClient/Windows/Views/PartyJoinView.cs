@@ -111,5 +111,26 @@ namespace FootccerClient.Windows.Views
             }
             
         }
+
+        public void ShowMemberInfo(int idx)
+        {
+            var DataRead = ReadUserInfo_FromDB(idx);
+            // 이름 성별 거주지 연락처 이메일 포지션
+            // 각각 TextBox에 뿌려야함....
+            
+            //mbr_name.Text = DataRead.Name;
+            // ...
+        }
+
+        private object ReadUserInfo_FromDB(int idx)
+        {
+            string sql = $"SELECT * FROM UserInfo WHERE User_idx = {idx};";
+            // 밑의 주석은 연습용입니다..
+            /*App.Instance.DB.PartyJoin.ReadUserInfo(idx);
+
+            return List<string>*/
+            throw new NotImplementedException();
+            
+        }
     }
 }

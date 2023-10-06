@@ -8,7 +8,7 @@ using MySqlConnector;
 
 namespace FootccerClient.Footccer.DAO
 {
-    internal class PartyJoinDAO
+    public class PartyJoinDAO
     {
         private MySqlConnection conn;
         private MySqlCommand cmd;

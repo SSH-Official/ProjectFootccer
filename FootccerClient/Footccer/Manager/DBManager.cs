@@ -18,6 +18,8 @@ namespace FootccerClient.Footccer.Manager
 
         public teamDAO team { get; }
 
+        
+
         public DBManager() 
         {
             CreateParty = new CreatePartyDBExecuter();
