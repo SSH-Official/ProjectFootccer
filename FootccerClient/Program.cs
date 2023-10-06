@@ -24,6 +24,7 @@ namespace FootccerClient
             App.Instance.MainForm = new MainForm();
             Application.Run(App.Instance.LoginForm);
             //Application.Run(new ViewPop<PartyJoinView>());
+            //Application.Run(new ViewPop<testView>());
 
         }
     }

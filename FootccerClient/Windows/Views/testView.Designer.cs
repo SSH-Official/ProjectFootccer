@@ -1,6 +1,6 @@
-﻿namespace FootccerClient.Windows.Pops
+﻿namespace FootccerClient.Windows.Views
 {
-    partial class PositionView
+    partial class testView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // PositionView
+            // panel
+            // 
+            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel.Location = new System.Drawing.Point(0, 0);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(1561, 719);
+            this.panel.TabIndex = 0;
+            this.panel.Resize += new System.EventHandler(this.panel_Resize);
+            // 
+            // testView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1561, 719);
-            this.Name = "PositionView";
-            this.Text = "PositionView";
+            this.Controls.Add(this.panel);
+            this.Name = "testView";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panel;
     }
 }
