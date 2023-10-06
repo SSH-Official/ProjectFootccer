@@ -20,6 +20,11 @@ namespace FootccerClient.Footccer.DTO
         public string date { get; set; }
         public int max { get; set; }
         public int count { get; set; }
+        private string phone { get; }
+        public string getphone()
+        {
+            return phone;
+        }
         public PartyDTO() { }
         public PartyDTO(int idx, string Actname, string Uname, string Parname, string CTname, string PLname, string PLaddress, string date, int max, int count, int Uidx)
         {
@@ -34,6 +39,17 @@ namespace FootccerClient.Footccer.DTO
             this.max=max;
             this.count=count;
             this.Uidx=Uidx;
+        }
+        public PartyDTO(string Parname,string Uname,string phone, string Actname,   string CTname, string PLname, string PLaddress, string date)
+        {
+            this.Actname = Actname;
+            this.phone = phone;
+            this.Uname = Uname;
+            this.Parname = Parname;
+            this.CTname = CTname;
+            this.PLname = PLname;
+            this.PLaddress = PLaddress;
+            this.date = date;
         }
         public string toString()
         {

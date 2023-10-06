@@ -18,6 +18,8 @@ namespace FootccerClient.Footccer.DTO
         public PreferenceDTO Prefer { get; }
         public Image Image { get; }
 
+        
+
         public UserInfoDTO(UserDTO user,string name, string gender, string contact, string email, DateTime? birth,
             PreferenceDTO prefer, Image image)
         {

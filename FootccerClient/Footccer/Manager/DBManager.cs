@@ -20,6 +20,9 @@ namespace FootccerClient.Footccer.Manager
 
         public Position_DAO Position { get; }
         public LHJDB_DAO LHJDB { get; }
+        public teamDAO Team { get; }
+
+        public PartyJoinDAO PartyJoin { get; }
 
         public DBManager()
         {
@@ -31,6 +34,8 @@ namespace FootccerClient.Footccer.Manager
             Login = new DBLogin_DAO();
             Position = new Position_DAO();
             LHJDB = new LHJDB_DAO();
+            Team = new teamDAO();
+            PartyJoin = new PartyJoinDAO();
         }
 
 

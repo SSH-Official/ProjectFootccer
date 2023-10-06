@@ -1,4 +1,6 @@
 ﻿using FootccerClient.Footccer;
+using FootccerClient.Windows.Pops;
+using FootccerClient.Windows.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,8 @@ namespace FootccerClient
             App.Instance.LoginForm = new LoginForm();
             App.Instance.MainForm = new MainForm();
             Application.Run(App.Instance.LoginForm);
+            //Application.Run(new ViewPop<PartyJoinView>());
+
         }
     }
 }

@@ -4,73 +4,25 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 
 namespace FootccerClient.Footccer.DAO
 {
-    internal class PartyJoinDAO
+    public class PartyJoinDAO : DAO_Base
     {
-        private MySqlConnection conn;
-        private MySqlCommand cmd;
-        private MySqlDataReader reader;
-        private MySqlDataAdapter dataAdapter;
-        string strConnection = "Server=192.168.0.18;Database=Footccer;Uid=root;Pwd=1234;Port=3306";
+        internal (UserInfoDTO, PositionDTO) ReadUserInfo(int idx)
+        {
+            // 이름 성별 거주지 연락처 이메일 -> UserInfo DTO에서 읽을 수 있음
+            // 포지션-> 파티에 내가 할당된 포지션.. 다른 DTO(DB테이블)에서..
 
-        public int nonSQL(string sql)
-        {
-            using (conn = new MySqlConnection(strConnection))
-            {
-                conn.Open();
-                using (cmd = new MySqlCommand(sql, conn))
-                {
-                    return cmd.ExecuteNonQuery();
-                }
-            }
-        }
-        public MySqlDataReader selectUsingReader(string sql)
-        {
-            using (conn = new MySqlConnection(strConnection))
-            {
-                conn.Open();
-                using (cmd = new MySqlCommand(sql, conn))
-                {
-                    reader = cmd.ExecuteReader();
-                    return reader;
-                }
-            }
-        }
-        public DataSet selectUsingAdapter(string sql)
-        {
-            DataSet ds = new DataSet();
-            using (conn = new MySqlConnection(strConnection))
-            {
-                conn.Open();
-                dataAdapter = new MySqlDataAdapter(sql, conn);
-                dataAdapter.Fill(ds);
-                return ds;
-            }
-        }
+            string sql = $"SELECT * FROM UserInfo WHERE User_idx = {idx};";
+            // 밑의 주석은 연습용입니다..
+            /*App.Instance.DB.PartyJoin.ReadUserInfo(idx);
 
-        public List<string> selectPosition(int positionIndex)
-        {
-            using (conn = new MySqlConnection(strConnection))
-            {
-                conn.Open();
-                string sql = $"select position from Position p where p.Position_idx = @positionIndex";
-                List<string> list = new List<string>();
-                using (cmd = new MySqlCommand(sql, conn))
-                {
-                    cmd.Parameters.Add(new MySqlParameter("@positionIndex", MySqlDbType.Int32, 10)).Value = positionIndex;
-                    using (reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            list.Add(reader.GetString("position"));
-                        }
-                        return list;
-                    }
-                }
-            }
+            return List<string>*/
+            throw new NotImplementedException();
+
         }
     }
 }
