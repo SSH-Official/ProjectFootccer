@@ -43,11 +43,11 @@ namespace FootccerClient.Windows.Views
         }
 
         
-        UserCredentialDTO_RegisterUser GetCredential_FromTextBox()
+        UserCredentialDTO GetCredential_FromTextBox()
         {
             string id = tbox_id.Text;
             string password = tbox_pwd.Text;
-            return new UserCredentialDTO_RegisterUser(id, password);
+            return new UserCredentialDTO(id, password);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace FootccerClient.Windows.Views
             // DB저장된 비밀번호와 입력 비밀번호가 맞는지 체크한다
             // 전부 통과라면 로그인 패스시킨다. 실패시 에러 메시지
             
-            UserCredentialDTO_RegisterUser info = GetCredential_FromTextBox();
+            UserCredentialDTO info = GetCredential_FromTextBox();
             bool isSuccess = DB.Login.CheckLoginSuccess(info);
             if (isSuccess)
             {
@@ -83,7 +83,7 @@ namespace FootccerClient.Windows.Views
 
         private void btn_find_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

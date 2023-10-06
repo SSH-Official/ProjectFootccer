@@ -15,6 +15,9 @@ namespace FootccerClient
 {
     public partial class MainForm : Form
     {
+        public object test() {
+            return null;
+        }
         private List<MasterView> Views { get; set; }
         private List<Label> MenuControls { get; set; }
         public MainForm()

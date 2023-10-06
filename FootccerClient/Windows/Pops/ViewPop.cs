@@ -22,7 +22,6 @@ namespace FootccerClient.Windows.Pops
             View.Parent = panel_Base;
             View.Dock = DockStyle.Fill;
             View.Visible = true;
-
         }
     }
 }

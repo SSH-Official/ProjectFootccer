@@ -52,7 +52,7 @@ namespace FootccerClient.Footccer.DAO
                 if (conn != null) { conn.Close(); }
             }
 
-            return default(T);
+            return default;
         }
 
 
@@ -69,7 +69,7 @@ namespace FootccerClient.Footccer.DAO
         protected T ExecuteTransaction<T>(Func<MySqlCommand, T> ResultMethod)
         {
             string strConn = App.Instance.DB.Settings.ConnectionString;
-            T result = default(T);
+            T result = default;
             MySqlConnection conn = null;
             MySqlTransaction trans = null;
 

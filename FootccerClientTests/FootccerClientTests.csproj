@@ -57,7 +57,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Footccer\DAO\Position_DAOTests.cs" />
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilderTests.cs" />
+    <Compile Include="Footccer\TestClass.cs" />
     <Compile Include="Footccer\Util\ImageMakerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

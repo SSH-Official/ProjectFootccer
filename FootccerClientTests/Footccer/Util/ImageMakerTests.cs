@@ -32,7 +32,7 @@ namespace FootccerClient.Footccer.Util.Tests
                 Image img = im.GetImageFromURL(url);
             }
 
-            Assert.AreEqual(im.ImageCache.Count, im.Threshold);            
+            Assert.AreEqual(im.ImageCache.Count, Math.Min(im.Threshold, urls.Count));
         }
 
         [TestMethod()]

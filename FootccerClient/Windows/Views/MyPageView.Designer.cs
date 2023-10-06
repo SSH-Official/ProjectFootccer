@@ -31,9 +31,9 @@
             this.panel_Base = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel_MyPageBase = new System.Windows.Forms.Panel();
-            this.btn_MyPage = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_MyPage = new System.Windows.Forms.Button();
             this.panel_Base.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel_MyPageBase.SuspendLayout();
@@ -72,17 +72,6 @@
             this.panel_MyPageBase.Size = new System.Drawing.Size(1229, 685);
             this.panel_MyPageBase.TabIndex = 0;
             // 
-            // btn_MyPage
-            // 
-            this.btn_MyPage.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_MyPage.Location = new System.Drawing.Point(1112, 0);
-            this.btn_MyPage.Name = "btn_MyPage";
-            this.btn_MyPage.Size = new System.Drawing.Size(117, 301);
-            this.btn_MyPage.TabIndex = 0;
-            this.btn_MyPage.Text = "내 정보 수정";
-            this.btn_MyPage.UseVisualStyleBackColor = true;
-            this.btn_MyPage.Click += new System.EventHandler(this.btn_MyPage_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
@@ -102,6 +91,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "대충 내 정보 표시";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_MyPage
+            // 
+            this.btn_MyPage.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_MyPage.Location = new System.Drawing.Point(1112, 0);
+            this.btn_MyPage.Name = "btn_MyPage";
+            this.btn_MyPage.Size = new System.Drawing.Size(117, 301);
+            this.btn_MyPage.TabIndex = 0;
+            this.btn_MyPage.Text = "내 정보 수정";
+            this.btn_MyPage.UseVisualStyleBackColor = true;
+            this.btn_MyPage.Click += new System.EventHandler(this.btn_MyPage_Click);
             // 
             // MyPageView
             // 

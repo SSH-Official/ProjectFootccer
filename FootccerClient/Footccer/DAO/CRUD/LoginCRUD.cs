@@ -75,7 +75,7 @@ namespace FootccerClient.Footccer.DAO.CRUD
         }
 
 
-        public int CheckLoginSuccess(UserCredentialDTO_RegisterUser info)
+        public int CheckLoginSuccess(UserCredentialDTO info)
         {
             string loginid = info.ID;
             string loginpwd = info.Password;
@@ -99,7 +99,7 @@ namespace FootccerClient.Footccer.DAO.CRUD
         }
 
 
-        public UserDTO ReadUser(UserCredentialDTO_RegisterUser info)
+        public UserDTO ReadUser(UserCredentialDTO info)
         {
             cmd.CommandText = 
                 "SELECT idx, id " +

@@ -28,7 +28,7 @@ namespace FootccerClient.Footccer.DAO
         });
 
 
-        public bool CheckLoginSuccess(UserCredentialDTO_RegisterUser info) => ExecuteTransaction((cmd) =>
+        public bool CheckLoginSuccess(UserCredentialDTO info) => ExecuteTransaction((cmd) =>
         {
             var CRUD = new LoginCRUD(cmd);
 
@@ -38,7 +38,7 @@ namespace FootccerClient.Footccer.DAO
         });
 
 
-        public UserDTO GetUser(UserCredentialDTO_RegisterUser info) => ExecuteTransaction((cmd) =>
+        public UserDTO GetUser(UserCredentialDTO info) => ExecuteTransaction((cmd) =>
         {
             var CRUD = new LoginCRUD(cmd);
 

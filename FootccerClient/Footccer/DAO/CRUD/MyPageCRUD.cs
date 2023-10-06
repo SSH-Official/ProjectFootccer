@@ -51,7 +51,7 @@ namespace FootccerClient.Footccer.DAO.CRUD
         }
         private UserInfoDTO ParseData_ToUserInfo(MySqlDataReader rdr)
         {
-            ImageMaker IM = new ImageMaker();
+            ImageMaker IM = App.Instance.Image;
             return new UserInfoDTOBuilder()
                 .SetUser(new UserDTO(rdr.GetInt32("UserIdx"), rdr.GetString("UserID")))
                 .SetName(rdr.GetString("UserName"))

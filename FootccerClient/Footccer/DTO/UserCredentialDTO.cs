@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace FootccerClient.Footccer.DTO
 {
-    public class UserCredentialDTO_RegisterUser
+    public class UserCredentialDTO
     {
         public string ID { get; }
         public string Password { get; }
 
-        public UserCredentialDTO_RegisterUser(string iD, string password)
+        public UserCredentialDTO(string iD, string password)
         {
             ID = iD;
             Password = password;
