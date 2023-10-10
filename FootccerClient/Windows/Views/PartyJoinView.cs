@@ -44,16 +44,6 @@ namespace FootccerClient.Windows.Views
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel16_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void addComboBoxItems(List<string> list, ComboBox cBox)
         {
             for (int i = 0; i < list.Count; i++)
@@ -78,11 +68,6 @@ namespace FootccerClient.Windows.Views
             //포지션은popup창 이용
         }
 
-        private void panel27_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void PartyJoinView_Load(object sender, EventArgs e)
         {
             List_team();
@@ -96,40 +81,24 @@ namespace FootccerClient.Windows.Views
             mbr_position.Text = "";
             mbr_residence.Text = "";
         }
-        private void Team_A_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void Team_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             clearMember();
             if (e.RowIndex >= 0)
             {
-                TeamDTO selectedPersonnel = (Team_A.DataSource as List<TeamDTO>)[e.RowIndex];
-                ShowMemberInfo(selectedPersonnel.getidx());                
+                TeamDTO selectedPersonnel = ((sender as DataGridView).DataSource as List<TeamDTO>)[e.RowIndex];
+                ShowMemberInfo(selectedPersonnel.getidx(),14);                
             }            
         }
 
-        public void ShowMemberInfo(int idx)
+        public void ShowMemberInfo(int idx,int Pidx)
         {
-            var DataRead = App.Instance.DB.PartyJoin.ReadUserInfo(idx);
-
-            //DataRead.Item1
-            //mbr_name.Text = DataRead.Name;
-
-            // 1. 여기서 쓸 전용 DTO를 만든다...
-            //      1.1 PJDTO -> Name Gender ... 가지게. > 1.1
-            //          PJDTO.Name;
-            //      1.2 PJDTO -> UserInfo, Position
-            //          PJDTO.UserInfo.Name;
-
-            // 2. 튜플로 가져온다
-            //  (UserInfoDTO userinfo, PositionDTO position)
-
-
-
-            // 이름 성별 거주지 연락처 이메일 -> UserInfo DTO에서 읽을 수 있음
-            // 포지션-> 파티에 내가 할당된 포지션.. 다른 DTO(DB테이블)에서..
-
-            // 각각 TextBox에 뿌려야함....
-            //mbr_name.Text = DataRead.Name;
-            // ...
+            var DataRead = App.Instance.DB.PartyJoin.ReadUserInfo(idx, Pidx);
+            mbr_name.Text=DataRead.UserWithTag.ToString();
+            mbr_gender.Text = DataRead.gender.ToString();
+            mbr_phone.Text = DataRead.contact.ToString();
+            mbr_email.Text = DataRead.email.ToString();
+            mbr_position.Text = DataRead.position.ToString();
         }
 
 

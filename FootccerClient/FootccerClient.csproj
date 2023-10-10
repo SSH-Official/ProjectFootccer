@@ -72,6 +72,7 @@
     <Compile Include="Footccer\App.cs" />
     <Compile Include="Footccer\DAO\CRUD\LHJDB_CRUD.cs" />
     <Compile Include="Footccer\DAO\CRUD\Position_CRUD.cs" />
+    <Compile Include="Footccer\DAO\CRUD\teammemberCRUD.cs" />
     <Compile Include="Footccer\DAO\PartyJoinDAO.cs" />
     <Compile Include="Footccer\DAO\PartySearch_DAO.cs" />
     <Compile Include="Footccer\DAO\DAO_Base.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Footccer\DTO\RecordDTO.cs" />
     <Compile Include="Footccer\DTO\StatDTO.cs" />
     <Compile Include="Footccer\DTO\TeamDTO.cs" />
+    <Compile Include="Footccer\DTO\TeamMemberDTO.cs" />
     <Compile Include="Footccer\Manager\DBSettings.cs" />
     <Compile Include="Windows\Main\LoginForm.cs">
       <SubType>Form</SubType>
