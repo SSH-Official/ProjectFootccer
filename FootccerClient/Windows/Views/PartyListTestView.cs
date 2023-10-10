@@ -1,6 +1,4 @@
 ﻿using FootccerClient.Footccer.Component;
-using FootccerClient.Footccer.DTO;
-using FootccerClient.Windows.Pops;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;
@@ -14,30 +12,15 @@ using System.Windows.Forms;
 
 namespace FootccerClient.Windows.Views
 {
-    public partial class MyPartyView : MasterView
+    public partial class PartyListTestView : MasterView
     {
-        List<PartyDTO> MyPartyList = new List<PartyDTO>();
-
-        public MyPartyView()
+        public PartyListTestView()
         {
             InitializeComponent();
-
-
             var indicator = new PartyIndicator(
                 40, panel_MyPartyList,
-                new Footccer.DTO.PartyDTO(1,"2","3","4","5","6","7","8",10,9,11));
+                new Footccer.DTO.PartyDTO(1, "2", "3", "4", "5", "6", "7", "8", 10, 9, 11));            
             panel_MyPartyList.Controls.Add(indicator);
         }
-
-        private void btn_Record_Click(object sender, EventArgs e)
-        {
-            ViewPop<RecordView> pop = new ViewPop<RecordView>();
-            pop.ShowDialog();
-        }
-
-    }
-
-    partial class MyPageView
-    {
     }
 }

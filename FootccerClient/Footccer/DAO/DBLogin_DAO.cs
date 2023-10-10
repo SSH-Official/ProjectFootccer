@@ -1,5 +1,5 @@
 ﻿
-using FootccerClient.Footccer.DAO.CRUD;
+using FootccerClient.Footccer.DAO.Base;
 using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 using System;
@@ -15,37 +15,21 @@ namespace FootccerClient.Footccer.DAO
 {   
     
    
-    public class DBLogin_DAO : DAO_Base
+    public partial class DBLogin_DAO : DAO_Base
     {
-        public bool Checkjoinmember(JoinmemberInfoDTO info) => ExecuteTransaction((cmd) =>
+        public bool Checkjoinmember(JoinmemberInfoDTO info) => ExecuteTransaction(new CRUD(), (CRUD) =>
         {
-            var CRUD = new LoginCRUD(cmd);
-
             CRUD.CreateUser(info);
             CRUD.CreateUserInfo(info);
 
             return true;
         });
+        public bool CheckLoginSuccess(UserCredentialDTO_RegisterUser info) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.CheckLoginSuccess(info));
+        public UserDTO GetUser(UserCredentialDTO_RegisterUser info) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.ReadUser(info) ?? throw new Exception("유저 정보 얻기에 실패했습니다.."));
 
-
-        public bool CheckLoginSuccess(UserCredentialDTO_RegisterUser info) => ExecuteTransaction((cmd) =>
-        {
-            var CRUD = new LoginCRUD(cmd);
-
-            int login_status = CRUD.CheckLoginSuccess(info);
-
-            return (login_status == 1);
-        });
-
-
-        public UserDTO GetUser(UserCredentialDTO_RegisterUser info) => ExecuteTransaction((cmd) =>
-        {
-            var CRUD = new LoginCRUD(cmd);
-
-            return CRUD.ReadUser(info);
-        })
-            ?? throw new Exception("유저 정보 얻기에 실패했습니다..");
-
+        
     }
+
+    
 
 }

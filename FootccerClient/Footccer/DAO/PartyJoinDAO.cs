@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FootccerClient.Footccer.DAO.Base;
 using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 

@@ -1,5 +1,4 @@
 ﻿using FootccerClient.Footccer.DAO;
-using FootccerClient.Footccer.DBExecuter;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,6 +22,7 @@ namespace FootccerClient.Footccer.Manager
         public teamDAO Team { get; }
 
         public PartyJoinDAO PartyJoin { get; }
+        public MyParty_DAO MyParty { get; internal set; }
 
         public DBManager()
         {
@@ -36,6 +36,7 @@ namespace FootccerClient.Footccer.Manager
             LHJDB = new LHJDB_DAO();
             Team = new teamDAO();
             PartyJoin = new PartyJoinDAO();
+            MyParty = new MyParty_DAO();
         }
 
 
