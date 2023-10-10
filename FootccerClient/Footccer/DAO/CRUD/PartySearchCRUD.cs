@@ -19,80 +19,68 @@ namespace FootccerClient.Footccer.DAO.CRUD
         {
             string sql = "SELECT * FROM `City`;";
             cmd.CommandText = sql;
-            List<CityDTO> result = new List<CityDTO>();
-            using (MySqlDataReader rdr = cmd.ExecuteReader())
-            {
-                while (rdr.Read())
-                {
-                    int idx = Convert.ToInt32(rdr["idx"]);
-                    string name = Convert.ToString(rdr["name"]);
-                    CityDTO theCity = new CityDTO(idx, name);
 
-                    result.Add(theCity);
-                }
-            }
-            return result;
+            return ReadDataList((rdr) =>
+            {
+                int idx = Convert.ToInt32(rdr["idx"]);
+                string name = Convert.ToString(rdr["name"]);
+                CityDTO theCity = new CityDTO(idx, name);
+
+                return theCity;
+            });
         }
 
         public List<ActivityDTO> ReadAllActivities()
         {
             string sql = "SELECT * FROM `Activity`;";
             cmd.CommandText = sql;
-            List<ActivityDTO> result = new List<ActivityDTO>();
-            using (MySqlDataReader rdr = cmd.ExecuteReader())
 
-                while (rdr.Read())
-                {
-                    int idx = Convert.ToInt32(rdr["idx"]);
-                    string name = Convert.ToString(rdr["name"]);
-                    ActivityDTO Activity = new ActivityDTO(idx, name);
+            return ReadDataList((rdr) =>
+            {
+                int idx = Convert.ToInt32(rdr["idx"]);
+                string name = Convert.ToString(rdr["name"]);
+                ActivityDTO Activity = new ActivityDTO(idx, name);
 
-                    result.Add(Activity);
-                }
-            return result;
+                return Activity;
+            });                    
         }
-
-        
 
         public List<PartyDTO> ReadParty(string kind, string seed)
         {
             string sql = SearchSQL(kind, seed);
             cmd.CommandText = sql;
 
-            List<PartyDTO> result = new List<PartyDTO>();
-            using (MySqlDataReader rdr = cmd.ExecuteReader())
+            return ReadDataList((rdr) =>
             {
-                while (rdr.Read())
-                {
-                    int idx = Convert.ToInt32(rdr["Paridx"]);
-                    string Actname = Convert.ToString(rdr["Actname"]);
-                    string Uname = Convert.ToString(rdr["Uname"]);
-                    string Parname = Convert.ToString(rdr["Parname"]);
-                    string CTname = Convert.ToString(rdr["CTname"]);
-                    string PLname = Convert.ToString(rdr["PLname"]);
-                    string PLaddress = Convert.ToString(rdr["PLaddress"]);
-                    string date = Convert.ToString(rdr["date"]);
-                    int max = Convert.ToInt32(rdr["max"]);
-                    int count = Convert.ToInt32(rdr["count"]);
-                    int Uidx = Convert.ToInt32(rdr["Uidx"]);
-                    PartyDTO party = new PartyDTO(idx, Actname, Uname, Parname, CTname, PLname, PLaddress, date, max, count, Uidx);
+                int idx = Convert.ToInt32(rdr["Paridx"]);
+                string Actname = Convert.ToString(rdr["Actname"]);
+                string Uname = Convert.ToString(rdr["Uiname"]);
+                string Parname = Convert.ToString(rdr["Parname"]);
+                string CTname = Convert.ToString(rdr["CTname"]);
+                string PLname = Convert.ToString(rdr["PLname"]);
+                string PLaddress = Convert.ToString(rdr["PLaddress"]);
+                string date = Convert.ToString(rdr["date"]);
+                int max = Convert.ToInt32(rdr["max"]);
+                int count = Convert.ToInt32(rdr["count"]);
+                int Uidx = Convert.ToInt32(rdr["Uiidx"]);
+                PartyDTO party = new PartyDTO(idx, Actname, Uname, Parname, CTname, PLname, PLaddress, date, max, count, Uidx);
 
-                    result.Add(party);
-                }
-            }
-            return result;
+                return party;
+            });
+
         }
+
         private string SearchSQL(string kind, string seed)
         {
             string sql =
-                "SELECT Par.`idx` as Paridx, Act.`name` AS Actname,U.`name`AS Uname," +
+                "SELECT Par.`idx` as Paridx, Act.`name` AS Actname,Ui.`name`AS Uiname," +
                 "Par.`name`AS Parname,CT.`name`AS CTname,PL.`name`AS PLname," +
-                "PL.`address` AS PLaddress,`date`,`max`,`count`, U.`idx` as Uidx " +
+                "PL.`address` AS PLaddress,`date`,`max`,`count`, Ui.`User_idx` as Uiidx " +
                 "FROM `Party` AS Par " +
                 "LEFT JOIN `Activity` AS Act ON Par.Activity_idx = Act.idx " +
-                "LEFT JOIN `User` AS U ON Par.Leader_idx=U.idx " +
-                "LEFT JOIN `Place` AS PL ON Par.Place_idx= PL.idx " +
-                "LEFT JOIN `City` AS CT ON PL.City_idx=CT.idx ";
+                "LEFT JOIN `UserInfo` AS Ui ON Par.Leader_idx = Ui.User_idx " +
+                "LEFT JOIN `Place` AS PL ON Par.Place_idx = PL.idx " +
+                "LEFT JOIN `City` AS CT ON PL.City_idx = CT.idx ";
             if (seed != "")
             {
                 sql += "WHERE ";
@@ -102,7 +90,7 @@ namespace FootccerClient.Footccer.DAO.CRUD
                         sql += $"Par.`name` LIKE \"%{seed}%\"";
                         break;
                     case "작성자":
-                        sql += $"U.`name` LIKE \"%{seed}%\"";
+                        sql += $"Ui.`name` LIKE \"%{seed}%\"";
                         break;
                     case "지역":
                         sql += $"CT.`idx` = {seed}";

@@ -33,8 +33,7 @@ namespace FootccerClient.Footccer.DAO
             var CRUD = new PartySearchCRUD(cmd);
         
             return CRUD.ReadParty(kind, seed);
-        });
-        
+        });        
         
     }
 }
