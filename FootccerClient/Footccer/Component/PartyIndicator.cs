@@ -27,19 +27,25 @@ namespace FootccerClient.Footccer.Component
             label_HeadCount.Text = $"{party.count}/{party.max}";
         }
 
-        public PartyIndicator(int height, Control parent, PartyDTO party , bool isSessionUserLeader = false)
+        public PartyIndicator(int height, Control parent, PartyDTO party = null , bool isSessionUserLeader = false)
         {
             InitializeComponent();
-            
-            InitializeValues(party);
+
+            if (party != null)
+            {
+                InitializeValues(party);
+            }
+
             pictureBox_PartyLeader.Visible = isSessionUserLeader;
+
+
+            this.Dock = DockStyle.Top;
+            this.Height = height;
 
             this.Parent = parent;
             parent.Controls.Add(this);
             this.BringToFront();
 
-            this.Dock = DockStyle.Top;
-            this.Height = height;
 
             
 

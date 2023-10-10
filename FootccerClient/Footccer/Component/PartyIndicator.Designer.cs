@@ -37,20 +37,20 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label_Location = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox_PartyLeader = new System.Windows.Forms.PictureBox();
             this.label_PartyName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label_Activity = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label_Date = new System.Windows.Forms.Label();
-            this.pictureBox_PartyLeader = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PartyLeader)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PartyLeader)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -115,7 +115,7 @@
             this.label_PartyLeaderName.Name = "label_PartyLeaderName";
             this.label_PartyLeaderName.Size = new System.Drawing.Size(132, 45);
             this.label_PartyLeaderName.TabIndex = 1;
-            this.label_PartyLeaderName.Text = "파티장#인덱스";
+            this.label_PartyLeaderName.Text = "파티장";
             this.label_PartyLeaderName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
@@ -149,6 +149,19 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(352, 45);
             this.panel3.TabIndex = 2;
+            // 
+            // pictureBox_PartyLeader
+            // 
+            this.pictureBox_PartyLeader.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_PartyLeader.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PartyLeader.Image")));
+            this.pictureBox_PartyLeader.Location = new System.Drawing.Point(6, 6);
+            this.pictureBox_PartyLeader.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox_PartyLeader.Name = "pictureBox_PartyLeader";
+            this.pictureBox_PartyLeader.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox_PartyLeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_PartyLeader.TabIndex = 8;
+            this.pictureBox_PartyLeader.TabStop = false;
+            this.pictureBox_PartyLeader.Visible = false;
             // 
             // label_PartyName
             // 
@@ -204,18 +217,6 @@
             this.label_Date.Text = "일시";
             this.label_Date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox_PartyLeader
-            // 
-            this.pictureBox_PartyLeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_PartyLeader.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox_PartyLeader.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_PartyLeader.Image")));
-            this.pictureBox_PartyLeader.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_PartyLeader.Name = "pictureBox_PartyLeader";
-            this.pictureBox_PartyLeader.Size = new System.Drawing.Size(24, 45);
-            this.pictureBox_PartyLeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_PartyLeader.TabIndex = 8;
-            this.pictureBox_PartyLeader.TabStop = false;
-            // 
             // PartyIndicator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -229,9 +230,9 @@
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PartyLeader)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PartyLeader)).EndInit();
             this.ResumeLayout(false);
 
         }

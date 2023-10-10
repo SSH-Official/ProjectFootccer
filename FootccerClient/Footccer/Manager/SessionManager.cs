@@ -11,8 +11,26 @@ namespace FootccerClient.Footccer.Manager
 {
     public class SessionManager
     {
-        public string ID { get { return User.ID; } }
+        public string ID { get { return User?.ID; } }
         public UserDTO User { get; private set; }
+
+        public bool Offline
+        {
+            get 
+            { 
+                return ID == null
+                    || User == null; 
+            }
+        }
+        public bool Online
+        {
+            get
+            {
+                return !Offline;
+            }
+        }
+
+
 
         internal void TestSetup(UserDTO user)
         {
