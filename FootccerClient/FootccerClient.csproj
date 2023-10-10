@@ -103,6 +103,7 @@
     <Compile Include="Footccer\DTO\StatDTO.cs" />
     <Compile Include="Footccer\DTO\TeamDTO.cs" />
     <Compile Include="Footccer\Manager\DBSettings.cs" />
+    <Compile Include="Footccer\DAO\MyParty_DAO.cs" />
     <Compile Include="Windows\Main\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,12 +213,6 @@
     <Compile Include="Windows\Views\PartyJoinView.Designer.cs">
       <DependentUpon>PartyJoinView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\PartyListTestView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Windows\Views\PartyListTestView.Designer.cs">
-      <DependentUpon>PartyListTestView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Views\PartySearchView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,9 +321,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartyJoinView.resx">
       <DependentUpon>PartyJoinView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\PartyListTestView.resx">
-      <DependentUpon>PartyListTestView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartySearchView.resx">
       <DependentUpon>PartySearchView.cs</DependentUpon>

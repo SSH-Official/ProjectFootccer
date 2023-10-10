@@ -1,4 +1,5 @@
-﻿using FootccerClient.Footccer.Component;
+﻿using FootccerClient.Footccer;
+using FootccerClient.Footccer.Component;
 using FootccerClient.Footccer.DTO;
 using FootccerClient.Windows.Pops;
 using Lib.Frame;
@@ -16,17 +17,21 @@ namespace FootccerClient.Windows.Views
 {
     public partial class MyPartyView : MasterView
     {
-        List<PartyDTO> MyPartyList = new List<PartyDTO>();
+        List<PartyDTO> MyPartyList;
 
         public MyPartyView()
         {
             InitializeComponent();
-
+            this.Visible = true;
+            MyPartyList = App.Instance.DB.MyParty.ReadPartyListAsSession();
 
             var indicator = new PartyIndicator(
                 40, panel_MyPartyList,
-                new Footccer.DTO.PartyDTO(1,"2","3","4","5","6","7","8",10,9,11));
-            panel_MyPartyList.Controls.Add(indicator);
+                new Footccer.DTO.PartyDTO(1,"첫번째","3","4","5","6","7","8",10,9,11));
+
+            indicator = new PartyIndicator(
+                40, panel_MyPartyList,
+                new Footccer.DTO.PartyDTO(2, "두번째", "3", "4", "5", "6", "7", "8", 10, 9, 11));
         }
 
         private void btn_Record_Click(object sender, EventArgs e)

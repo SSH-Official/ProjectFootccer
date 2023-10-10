@@ -116,7 +116,7 @@ namespace FootccerClient.Footccer.DAO.Base
 
             return _list;
         }
-
+        
 
         /// <summary>
         /// 리스트를 입력받아 단 하나만 있을 때 반환합니다. <br/>

@@ -30,8 +30,10 @@ namespace FootccerClient
         private void ShowView(Type aType)
         {
             HideAllView();
-            GetView(aType).Visible = true;
-            GetView(aType).Refresh_View();
+
+            MasterView view = GetView(aType);
+            view.Visible = true;
+            view.Refresh_View();
         }
         private void HideAllView()
         {

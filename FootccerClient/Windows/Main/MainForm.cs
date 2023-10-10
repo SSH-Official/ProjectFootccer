@@ -47,12 +47,19 @@ namespace FootccerClient
 
                 foreach (MasterView view in this.Views)
                 {
-                    view.Parent = panel_ViewSpace;
-                    view.Dock = DockStyle.Fill;
-                    view.Visible = false;
+                    InitializeView(view);
                 }
             }
         }
+        
+        private void InitializeView(MasterView view)
+        {
+            view.Parent = panel_ViewSpace;
+            view.Dock = DockStyle.Fill;
+            view.Visible = false;
+        }
+
+
 
         private void btn_Logout_Click(object sender, EventArgs e)
         {

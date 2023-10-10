@@ -20,11 +20,9 @@ namespace FootccerClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            App.Instance.LoginForm = new LoginForm();
-            App.Instance.MainForm = new MainForm();
-            //Application.Run(App.Instance.LoginForm);
+            Application.Run(App.Instance.LoginForm);
             //Application.Run(new ViewPop<PartyJoinView>());
-            Application.Run(new ViewPop<PartyListTestView>());
+            //Application.Run(new ViewPop<PartyListTestView>());
 
         }
     }
