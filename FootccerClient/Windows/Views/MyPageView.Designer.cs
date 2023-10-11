@@ -47,7 +47,7 @@
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
             this.panel_Base.Padding = new System.Windows.Forms.Padding(5);
-            this.panel_Base.Size = new System.Drawing.Size(1249, 719);
+            this.panel_Base.Size = new System.Drawing.Size(1178, 719);
             this.panel_Base.TabIndex = 0;
             // 
             // groupBox1
@@ -58,7 +58,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(1239, 709);
+            this.groupBox1.Size = new System.Drawing.Size(1168, 709);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "마이페이지";
@@ -69,7 +69,7 @@
             this.panel_MyPageBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_MyPageBase.Location = new System.Drawing.Point(5, 19);
             this.panel_MyPageBase.Name = "panel_MyPageBase";
-            this.panel_MyPageBase.Size = new System.Drawing.Size(1229, 685);
+            this.panel_MyPageBase.Size = new System.Drawing.Size(1158, 685);
             this.panel_MyPageBase.TabIndex = 0;
             // 
             // panel1
@@ -79,7 +79,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1229, 301);
+            this.panel1.Size = new System.Drawing.Size(1158, 301);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -95,7 +95,7 @@
             // btn_MyPage
             // 
             this.btn_MyPage.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_MyPage.Location = new System.Drawing.Point(1112, 0);
+            this.btn_MyPage.Location = new System.Drawing.Point(1041, 0);
             this.btn_MyPage.Name = "btn_MyPage";
             this.btn_MyPage.Size = new System.Drawing.Size(117, 301);
             this.btn_MyPage.TabIndex = 0;
@@ -107,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 719);
+            this.ClientSize = new System.Drawing.Size(1178, 719);
             this.Controls.Add(this.panel_Base);
             this.Name = "MyPageView";
             this.Text = "MyPageView";

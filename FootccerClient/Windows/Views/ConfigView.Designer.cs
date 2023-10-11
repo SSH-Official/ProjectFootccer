@@ -42,7 +42,7 @@
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
             this.panel_Base.Padding = new System.Windows.Forms.Padding(5);
-            this.panel_Base.Size = new System.Drawing.Size(1249, 719);
+            this.panel_Base.Size = new System.Drawing.Size(1178, 719);
             this.panel_Base.TabIndex = 0;
             // 
             // groupBox1
@@ -51,7 +51,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(5, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1239, 709);
+            this.groupBox1.Size = new System.Drawing.Size(1168, 709);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "환경설정";
@@ -67,14 +67,14 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1233, 689);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1162, 689);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ConfigView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 719);
+            this.ClientSize = new System.Drawing.Size(1178, 719);
             this.Controls.Add(this.panel_Base);
             this.Name = "ConfigView";
             this.Text = "ConfigView";

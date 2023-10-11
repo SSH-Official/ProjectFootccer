@@ -20,6 +20,11 @@ namespace FootccerClient.Footccer.Component
 
         public void InitializeValues(PartyDTO party)
         {
+            if (party == null)
+            {
+                return;
+            }
+
             label_Date.Text = party.date;
             label_Activity.Text = GetActivityNameText(party.Actname);
             label_PartyName.Text = party.Parname;
@@ -44,11 +49,7 @@ namespace FootccerClient.Footccer.Component
         public PartyIndicator(int height, Control parent, PartyDTO party = null , bool isSessionUserLeader = false)
         {
             InitializeComponent();
-
-            if (party != null)
-            {
-                InitializeValues(party);
-            }
+            InitializeValues(party);            
 
             pictureBox_PartyLeader.Visible = isSessionUserLeader;
 
@@ -59,11 +60,6 @@ namespace FootccerClient.Footccer.Component
             this.Parent = parent;
             parent.Controls.Add(this);
             this.BringToFront();
-
-
-            
-
-
         }
 
         

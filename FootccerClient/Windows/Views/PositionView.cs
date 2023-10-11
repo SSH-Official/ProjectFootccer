@@ -20,29 +20,15 @@ namespace FootccerClient.Windows.Pops
             InitializeComponent();
             Initialize();
         }
-        public void createLabel(int x, int y, string position)
-        {
-            Label dynamicLabel = new Label();
-            dynamicLabel.Location = new Point(x,y); // 위치 설정
-            dynamicLabel.Size = new Size(100, 100);    // 크기 설정
-            dynamicLabel.BackColor = Color.Red;
-            dynamicLabel.Text = position;
-            dynamicLabel.Font = new Font("Arial", 12, FontStyle.Bold);
-            dynamicLabel.TextAlign = ContentAlignment.MiddleCenter;
-            dynamicLabel.Click += (sender, e) =>
-            {
-                MessageBox.Show("버튼이 클릭되었습니다.");
-            };
-            this.Controls.Add(dynamicLabel);
-        }
+        
         public void Initialize()
         {
             int x = 100;
             int y = 10;
             List<PositionDTO> PS = Footccer.App.Instance.DB.Position.getPositionList();
-            for (int i = 0; i < 4; i++)
+            foreach(var posDTO in PS)
             {
-                string position = PS[i].position;
+                string position = posDTO.position;
                 if (position == "FW")
                 {
                     for(int j = 0; j < 3; j++)
@@ -79,6 +65,21 @@ namespace FootccerClient.Windows.Pops
                 }
                 
             }
+        }
+        public void createLabel(int x, int y, string position)
+        {
+            Label dynamicLabel = new Label();
+            dynamicLabel.Location = new Point(x, y); // 위치 설정
+            dynamicLabel.Size = new Size(100, 100);    // 크기 설정
+            dynamicLabel.BackColor = Color.Red;
+            dynamicLabel.Text = position;
+            dynamicLabel.Font = new Font("Arial", 12, FontStyle.Bold);
+            dynamicLabel.TextAlign = ContentAlignment.MiddleCenter;
+            dynamicLabel.Click += (sender, e) =>
+            {
+                MessageBox.Show("버튼이 클릭되었습니다.");
+            };
+            this.Controls.Add(dynamicLabel);
         }
 
     }
