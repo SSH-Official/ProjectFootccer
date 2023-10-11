@@ -19,6 +19,7 @@ namespace FootccerClient.Footccer.DTO.Builder.Tests
             var Builder = new UserInfoDTOBuilder();
             var UserInfo = Builder.Build();
 
+            Console.WriteLine(UserInfo);
             Assert.AreEqual(UserInfo.User, null);
             Assert.AreEqual(UserInfo.Name, null);
             Assert.AreEqual(UserInfo.Gender, null);
@@ -47,6 +48,7 @@ namespace FootccerClient.Footccer.DTO.Builder.Tests
                 .SetImage(Image.GetImageFromURL("https://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg"))
                 .Build();
 
+            Console.WriteLine(UserInfo);
             Assert.AreEqual(UserInfo.User.Index, 77);
             Assert.AreEqual(UserInfo.User.ID, "ID");
             Assert.AreEqual(UserInfo.Name, "Name");

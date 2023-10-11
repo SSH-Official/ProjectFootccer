@@ -11,11 +11,13 @@ using FootccerClient.Footccer.DAO.Base;
 namespace FootccerClient.Footccer.DAO.Tests
 {
     [TestClass()]
-    public class Position_DAOTests : TestClass<Position_DAO, DAO_Base>
+    public class Position_DAOTests : TestClass_Custom<Position_DAO>
     {
         [TestMethod()]
         public void getPositionListTest()
         {
+            Console.WriteLine("DB에서 Position 값들을 읽어오는지 테스트합니다.");
+
             var list = TheClass.getPositionList();
 
             Assert.IsTrue(list.Count > 0);

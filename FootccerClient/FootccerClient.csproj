@@ -79,6 +79,7 @@
     <Compile Include="Footccer\DAO\CreateParty_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\LHJDB_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\MyPage_DAO.CRUD.cs" />
+    <Compile Include="Footccer\DAO\MyParty_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\PartyJoinDAO.cs" />
     <Compile Include="Footccer\DAO\PartySearch_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\PartySearch_DAO.cs" />

@@ -15,7 +15,12 @@ namespace FootccerClient.Footccer.Util
     {
         public Dictionary<string, Image> ImageCache { get; set; } = new Dictionary<string, Image>();
         public Queue<string> URLQueue { get; set; } = new Queue<string>();
-        public int Threshold { get; set; } = 5;
+        public int Threshold { get; set; }
+
+        public ImageMaker(int threshold = 5)
+        {
+            this.Threshold = threshold;
+        }
 
         public Image GetImageFromURL(string url)
         {
@@ -28,7 +33,6 @@ namespace FootccerClient.Footccer.Util
                 using (MemoryStream memstr = new MemoryStream(imgArray))
                 {
                     Image img = Image.FromStream(memstr);
-                    Console.WriteLine("Loading New Image...");
                     EnqueueCache(url, img);
                     return img;
                 }
