@@ -24,8 +24,8 @@ namespace FootccerClient.Footccer.DAO
 
             return true;
         });
-        public bool CheckLoginSuccess(UserCredentialDTO_RegisterUser info) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.CheckLoginSuccess(info));
-        public UserDTO GetUser(UserCredentialDTO_RegisterUser info) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.ReadUser(info) ?? throw new Exception("유저 정보 얻기에 실패했습니다.."));
+        public bool CheckLoginSuccess(UserCredentialDTO info) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.CheckLoginSuccess(info));
+        public UserDTO GetUser(UserCredentialDTO info) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.ReadUser(info) ?? throw new Exception("유저 정보 얻기에 실패했습니다.."));
 
         
     }

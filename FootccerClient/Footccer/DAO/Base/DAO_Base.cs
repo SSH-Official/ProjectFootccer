@@ -52,7 +52,7 @@ namespace FootccerClient.Footccer.DAO.Base
                 if (conn != null) { conn.Close(); }
             }
 
-            return default(T);
+            return default;
         }
         /// <summary>
         /// DB에 연결을 얻어 트랜잭션을 열고, ResultMethod를 실행합니다.<br/>
@@ -67,7 +67,7 @@ namespace FootccerClient.Footccer.DAO.Base
         protected T ExecuteTransaction<T>(Func<MySqlCommand, T> ResultMethod)
         {
             string strConn = App.Instance.DB.Settings.ConnectionString;
-            T result = default(T);
+            T result = default;
             MySqlConnection conn = null;
             MySqlTransaction trans = null;
 

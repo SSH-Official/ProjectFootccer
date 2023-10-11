@@ -32,7 +32,7 @@ namespace FootccerClient.Footccer.Util.Tests
                 Image img = im.GetImageFromURL(url);
             }
 
-            Assert.AreEqual(im.ImageCache.Count, im.Threshold);            
+            Assert.AreEqual(im.ImageCache.Count, Math.Min(im.Threshold, urls.Count));
         }
 
         [TestMethod()]
@@ -40,7 +40,7 @@ namespace FootccerClient.Footccer.Util.Tests
         {
             Assert.ThrowsException<ArgumentException>(() =>
             {
-                ImageMaker im = new ImageMaker();
+                FootccerClient.Footccer.Util.ImageMaker im = new ImageMaker();
                 List<string> urls = new List<string>
             {
                 "https://naver.com",

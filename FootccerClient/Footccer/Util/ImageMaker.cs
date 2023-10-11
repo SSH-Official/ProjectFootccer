@@ -28,6 +28,7 @@ namespace FootccerClient.Footccer.Util
                 using (MemoryStream memstr = new MemoryStream(imgArray))
                 {
                     Image img = Image.FromStream(memstr);
+                    Console.WriteLine("Loading New Image...");
                     EnqueueCache(url, img);
                     return img;
                 }

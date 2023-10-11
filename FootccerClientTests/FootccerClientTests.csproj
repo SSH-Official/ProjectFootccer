@@ -57,7 +57,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Footccer\DAO\Position_DAOTests.cs" />
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilderTests.cs" />
+    <Compile Include="Footccer\TestClass.cs" />
     <Compile Include="Footccer\Util\ImageMakerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FootccerClient\FootccerClient.csproj">
-      <Project>{66361CE5-5209-4FEC-A4D5-FB8F9243B0DA}</Project>
+      <Project>{66361ce5-5209-4fec-a4d5-fb8f9243b0da}</Project>
       <Name>FootccerClient</Name>
     </ProjectReference>
   </ItemGroup>

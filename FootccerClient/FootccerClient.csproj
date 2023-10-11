@@ -88,6 +88,7 @@
     <Compile Include="Footccer\DAO\Position_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\Position_DAO.cs" />
     <Compile Include="Footccer\DAO\teamDAO.cs" />
+    <Compile Include="Footccer\DTO\UserCredentialDTO_RegisterUser.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilder.cs" />
@@ -128,7 +129,6 @@
     <Compile Include="Windows\Pops\JoinmemberPop.Designer.cs">
       <DependentUpon>JoinmemberPop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Footccer\DTO\UserCredentialDTO_RegisterUser.cs" />
     <Compile Include="Footccer\Manager\DBManager.cs" />
     <Compile Include="Windows\Main\MainForm.Controller.cs">
       <SubType>Form</SubType>
