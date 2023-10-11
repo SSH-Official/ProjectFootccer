@@ -21,10 +21,24 @@ namespace FootccerClient.Footccer.Component
         public void InitializeValues(PartyDTO party)
         {
             label_Date.Text = party.date;
-            label_Activity.Text = party.Actname;
+            label_Activity.Text = GetActivityNameText(party.Actname);
             label_PartyName.Text = party.Parname;
             label_PartyLeaderName.Text = party.UserWithTag;
             label_HeadCount.Text = $"{party.count}/{party.max}";
+        }
+
+        private string GetActivityNameText(string actname)
+        {
+            string[] strArr = actname.Split('_');
+            switch (strArr[0])
+            {
+                case "축구":
+                    return $"{actname}({11}:{11})";
+                case "풋살":
+                    return $"{actname}({5}:{5})";
+                default:
+                    return actname;
+            }
         }
 
         public PartyIndicator(int height, Control parent, PartyDTO party = null , bool isSessionUserLeader = false)

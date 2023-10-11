@@ -19,9 +19,9 @@ namespace FootccerClient.Windows.Views
     {
         private List<(PartyDTO, bool)> MyPartyList { get; set; }
 
-        private int _CurrentPageNum;
-        private int TotalPages;
-        private int PageViewCount;
+        private int TotalPages { get; set; }
+        private int PageViewCount { get; set; }
+        private int _CurrentPageNum { get; set; }
 
         private int CurrentPageNum
         {
@@ -33,9 +33,8 @@ namespace FootccerClient.Windows.Views
             {
                 _CurrentPageNum = value;
                 label_CurrentPage.Text = $"{_CurrentPageNum}/{TotalPages}";
-                ShowPage(_CurrentPageNum);
+                ShowPage(_CurrentPageNum, 20, 40);
             }
-
         }
 
 
@@ -50,11 +49,41 @@ namespace FootccerClient.Windows.Views
             if (App.Instance.Session.Offline) return;
 
             MyPartyList = App.Instance.DB.MyParty.ReadPartyListAsSession();
-            TotalPages = 1 + (MyPartyList.Count - 1) / PageViewCount;
+            TotalPages = GetTotalPages();
 
             CurrentPageNum = 1;
         }
-        
+
+        private int GetTotalPages() => 1 + (MyPartyList.Count - 1) / PageViewCount;
+
+        private void ShowPage(int pageNum, int heightCategory, int heightItems)
+        {
+            ValidatePageNum_InBoundary(pageNum);
+
+            panel_MyPartyList.Controls.Clear();
+            new PartyIndicator(heightCategory, panel_MyPartyList);
+
+            for (int i = GetStartIndex(pageNum), end = GetEndIndex(i); i < end; i++)
+            {
+                var item = MyPartyList[i];
+                new PartyIndicator(heightItems, panel_MyPartyList, item.Item1, item.Item2);
+            }
+
+            label_Previous.Enabled = IsFirstPage(pageNum) ? false : true;
+            label_Next.Enabled = IsLastPage(pageNum) ? false : true;
+        }
+        private void ValidatePageNum_InBoundary(int pageNum)
+        {
+            if (IsPageOutOfBoundary(pageNum))
+            {
+                throw new Exception($"pageNum out of bound : pageNum was {pageNum} not between (1, {TotalPages})");
+            }
+        }
+        private bool IsPageOutOfBoundary(int pageNum) => (pageNum < 1) || (TotalPages < pageNum);
+        private int GetStartIndex(int pageNum) => (pageNum - 1) * PageViewCount;
+        private int GetEndIndex(int startIndex) => Math.Min(MyPartyList.Count, startIndex + PageViewCount);
+        private bool IsFirstPage(int pageNum) => (pageNum == 1);
+        private bool IsLastPage(int pageNum) => (pageNum == TotalPages);
 
 
         private void btn_Record_Click(object sender, EventArgs e)
@@ -74,31 +103,5 @@ namespace FootccerClient.Windows.Views
         }
     }
 
-    partial class MyPartyView
-    {
-        private void ShowPage(int pageNum)
-        {
-            ValidatePageNum_InBoundary(pageNum);
-
-            int startIndex = (pageNum - 1) * PageViewCount;
-            int endIndex = Math.Min(MyPartyList.Count, startIndex + PageViewCount);
-
-            panel_MyPartyList.Controls.Clear();
-            new PartyIndicator(20, panel_MyPartyList);
-
-            for (int i = startIndex; i < endIndex; i++)
-            {
-                var item = MyPartyList[i];
-                new PartyIndicator(40, panel_MyPartyList, item.Item1, item.Item2);
-            }
-
-            label_Previous.Enabled = (pageNum != 1);
-            label_Next.Enabled = (pageNum != TotalPages);
-        }
-        private void ValidatePageNum_InBoundary(int pageNum)
-        {
-            if (pageNum < 1 || TotalPages < pageNum) throw new Exception($"pageNum out of bound : pageNum was {pageNum} not between (1, {TotalPages})");
-        }
-
-    }
+    
 }

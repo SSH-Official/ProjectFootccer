@@ -56,9 +56,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -72,7 +72,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(880, 45);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -144,10 +144,10 @@
             this.panel3.Controls.Add(this.pictureBox_PartyLeader);
             this.panel3.Controls.Add(this.label_PartyName);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(176, 0);
+            this.panel3.Location = new System.Drawing.Point(264, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(352, 45);
+            this.panel3.Size = new System.Drawing.Size(264, 45);
             this.panel3.TabIndex = 2;
             // 
             // pictureBox_PartyLeader
@@ -170,7 +170,7 @@
             this.label_PartyName.Location = new System.Drawing.Point(0, 0);
             this.label_PartyName.Name = "label_PartyName";
             this.label_PartyName.Padding = new System.Windows.Forms.Padding(3);
-            this.label_PartyName.Size = new System.Drawing.Size(352, 45);
+            this.label_PartyName.Size = new System.Drawing.Size(264, 45);
             this.label_PartyName.TabIndex = 1;
             this.label_PartyName.Text = "파티명";
             this.label_PartyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -179,7 +179,7 @@
             // 
             this.panel2.Controls.Add(this.label_Activity);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(88, 0);
+            this.panel2.Location = new System.Drawing.Point(176, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(88, 45);
@@ -203,7 +203,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(88, 45);
+            this.panel1.Size = new System.Drawing.Size(176, 45);
             this.panel1.TabIndex = 0;
             // 
             // label_Date
@@ -212,7 +212,7 @@
             this.label_Date.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_Date.Location = new System.Drawing.Point(0, 0);
             this.label_Date.Name = "label_Date";
-            this.label_Date.Size = new System.Drawing.Size(88, 45);
+            this.label_Date.Size = new System.Drawing.Size(176, 45);
             this.label_Date.TabIndex = 1;
             this.label_Date.Text = "일시";
             this.label_Date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
