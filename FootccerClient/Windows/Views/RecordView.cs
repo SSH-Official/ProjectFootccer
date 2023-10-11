@@ -58,7 +58,7 @@ namespace FootccerClient.Windows.Views
                 labels[row, col].Text = dr[col].ToString();
                 if (col == 3 &&  String.IsNullOrEmpty(dr["result"].ToString()))
                 {                                        
-                    if (Convert.ToInt32(dr["Leader_idx"].ToString()) != 2)//App.Instance.Session.User.Index)//(수정)
+                    if (Convert.ToInt32(dr["Leader_idx"].ToString()) != App.Instance.Session.User.Index)
                     {
                         labels[row, col].Text = "입력대기중";
                     }
@@ -164,6 +164,7 @@ namespace FootccerClient.Windows.Views
             //btn.Click += new EventHandler(btn_Click);
             btn.Click += (sender, e) => { btn_Click(sender, e, row, col); }; //클로저
         }
+        //(수정) 지금 무조건 B팀이 이길 경우만 계산하고 있음
         private void btn_Click(object sender, EventArgs e, int row, int col)
         {
             int startIndex = currentPage * 5;

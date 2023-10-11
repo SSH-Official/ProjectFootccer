@@ -22,7 +22,9 @@ namespace FootccerClient
             Application.SetCompatibleTextRenderingDefault(false);
             App.Instance.LoginForm = new LoginForm();
             App.Instance.MainForm = new MainForm();
-            Application.Run(App.Instance.LoginForm);
+            App.Instance.Session.User = new Footccer.DTO.UserDTO(2, "elon");
+            //App.Instance.Session.User.Index = 2;
+            Application.Run(new ViewPop<PartyCreateView>());
             //Application.Run(new ViewPop<PartyJoinView>());
             //Application.Run(new ViewPop<testView>());
 

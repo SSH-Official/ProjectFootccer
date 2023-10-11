@@ -21,7 +21,7 @@ namespace FootccerClient
         {
             InitializeComponent();
             InitializeViews();
-            ShowView<MyPartyView>();
+            ShowView<MyPartyView>();            
             //////////////////////////////////////
             void InitializeViews()
             {

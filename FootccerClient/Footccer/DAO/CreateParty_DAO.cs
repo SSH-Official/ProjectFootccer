@@ -47,7 +47,7 @@ namespace FootccerClient.Footccer.DAO
             return CRUD.selectActivity();
         });
 
-        public int setPartyDTO(CreatePartyDTO dto) => ExecuteTransaction((cmd) =>
+        public int setPartyDTO(PartyInfoDTO dto) => ExecuteTransaction((cmd) =>
         {
             var CRUD = new CreatePartyCRUD(cmd);
 
@@ -69,5 +69,12 @@ namespace FootccerClient.Footccer.DAO
             return CRUD.insertRecord(recordDTO);
         });
 
+
+        public int setFormationDTO(FormationDTO formationDTO) => ExecuteTransaction((cmd) =>
+        {
+            var CRUD = new CreatePartyCRUD(cmd);
+            
+            return CRUD.insertFormation(formationDTO);
+        });
     }
 }

@@ -43,7 +43,7 @@ namespace FootccerClient.Footccer.DAO.CRUD
         //(수정)session index로 검색해야 합니다.
         public DataTable getRecordTable()
         {
-            int testidx = 2; // App.Instance.Session.User.Index;
+            int testidx = App.Instance.Session.User.Index;
 
             string sql = "select p.date, p.name, l.side, r.result, p.Leader_idx, p.idx, l.idx " +
                          "from Party p " +
@@ -138,6 +138,6 @@ namespace FootccerClient.Footccer.DAO.CRUD
             cmd.Parameters.Add(new MySqlParameter("@List_idx", MySqlDbType.Int32, 10)).Value = dto.List_idx;
 
             return cmd.ExecuteNonQuery();
-        }
+        }        
     }
 }
