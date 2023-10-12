@@ -39,6 +39,7 @@ namespace FootccerClient.Windows.MyPage
             }
             InitializeComponent();
             InitailizeMyPagePop_AsUserInfo();
+
         }
 
 

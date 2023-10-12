@@ -63,7 +63,7 @@
             this.panel_Base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
-            this.panel_Base.Size = new System.Drawing.Size(971, 506);
+            this.panel_Base.Size = new System.Drawing.Size(1055, 555);
             this.panel_Base.TabIndex = 0;
             // 
             // panel6
@@ -73,7 +73,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 39);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(971, 467);
+            this.panel6.Size = new System.Drawing.Size(1055, 516);
             this.panel6.TabIndex = 3;
             // 
             // panel_ViewSpace
@@ -81,7 +81,7 @@
             this.panel_ViewSpace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_ViewSpace.Location = new System.Drawing.Point(121, 0);
             this.panel_ViewSpace.Name = "panel_ViewSpace";
-            this.panel_ViewSpace.Size = new System.Drawing.Size(850, 467);
+            this.panel_ViewSpace.Size = new System.Drawing.Size(934, 516);
             this.panel_ViewSpace.TabIndex = 1;
             // 
             // panel_Menu
@@ -95,7 +95,7 @@
             this.panel_Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(121, 467);
+            this.panel_Menu.Size = new System.Drawing.Size(121, 516);
             this.panel_Menu.TabIndex = 0;
             // 
             // panel7
@@ -103,7 +103,7 @@
             this.panel7.BackColor = System.Drawing.Color.Transparent;
             this.panel7.Controls.Add(this.label_MyPage);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 333);
+            this.panel7.Location = new System.Drawing.Point(0, 382);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(121, 67);
@@ -149,7 +149,7 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.label_Config);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 400);
+            this.panel3.Location = new System.Drawing.Point(0, 449);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(121, 67);
@@ -220,13 +220,13 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(971, 39);
+            this.panel5.Size = new System.Drawing.Size(1055, 39);
             this.panel5.TabIndex = 2;
             // 
             // btn_Logout
             // 
             this.btn_Logout.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_Logout.Location = new System.Drawing.Point(866, 0);
+            this.btn_Logout.Location = new System.Drawing.Point(950, 0);
             this.btn_Logout.Name = "btn_Logout";
             this.btn_Logout.Size = new System.Drawing.Size(105, 39);
             this.btn_Logout.TabIndex = 2;
@@ -240,7 +240,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(971, 39);
+            this.label1.Size = new System.Drawing.Size(1055, 39);
             this.label1.TabIndex = 1;
             this.label1.Text = "메뉴스트립 자리(필요하면...)";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -249,7 +249,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(971, 506);
+            this.ClientSize = new System.Drawing.Size(1055, 555);
             this.Controls.Add(this.panel_Base);
             this.Font = new System.Drawing.Font("HY견고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Name = "MainForm";
