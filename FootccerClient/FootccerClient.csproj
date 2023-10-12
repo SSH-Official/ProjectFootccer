@@ -33,6 +33,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.3.5\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.3.5\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.1.0\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>packages\MySqlConnector.2.2.7\lib\net471\MySqlConnector.dll</HintPath>
     </Reference>
@@ -40,10 +61,18 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Core" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -67,27 +96,38 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
-    <Compile Include="Footccer\DAO\CRUD\LHJDB_CRUD.cs" />
-    <Compile Include="Footccer\DAO\CRUD\Position_CRUD.cs" />
+    <Compile Include="Footccer\Component\PartyIndicator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Footccer\Component\PartyIndicator.Designer.cs">
+      <DependentUpon>PartyIndicator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Footccer\DAO\CreateParty_DAO.CRUD.cs" />
+    <Compile Include="Footccer\DAO\LHJDB_DAO.CRUD.cs" />
+    <Compile Include="Footccer\DAO\MyPage_DAO.CRUD.cs" />
+    <Compile Include="Footccer\DAO\MyParty_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\PartyJoinDAO.cs" />
+    <Compile Include="Footccer\DAO\PartySearch_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\PartySearch_DAO.cs" />
-    <Compile Include="Footccer\DAO\DAO_Base.cs" />
-    <Compile Include="Footccer\DAO\CRUD\CRUD_Base.cs" />
+    <Compile Include="Footccer\DAO\Base\DAO_Base.cs" />
+    <Compile Include="Footccer\DAO\Base\CRUD_Base.cs" />
     <Compile Include="Footccer\DAO\LHJDB_DAO.cs" />
-    <Compile Include="Footccer\DAO\CRUD\LoginCRUD.cs" />
-    <Compile Include="Footccer\DAO\CRUD\MyPageCRUD.cs" />
+    <Compile Include="Footccer\DAO\Position_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\Position_DAO.cs" />
     <Compile Include="Footccer\DAO\teamDAO.cs" />
+    <Compile Include="Footccer\DTO\UserCredentialDTO_RegisterUser.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\CalculateEloDTO.cs" />
     <Compile Include="Footccer\DTO\PartyInfoDTO.cs" />
     <Compile Include="Footccer\DAO\CreateParty_DAO.cs" />
-    <Compile Include="Footccer\DAO\CRUD\CreatePartyCRUD.cs" />
     <Compile Include="Footccer\DAO\DBLogin_DAO.cs" />
     <Compile Include="Footccer\DTO\FormationDTO.cs" />
     <Compile Include="Footccer\DTO\JoinmemberInfoDTO.cs" />
@@ -97,6 +137,7 @@
     <Compile Include="Footccer\DTO\StatDTO.cs" />
     <Compile Include="Footccer\DTO\TeamDTO.cs" />
     <Compile Include="Footccer\Manager\DBSettings.cs" />
+    <Compile Include="Footccer\DAO\MyParty_DAO.cs" />
     <Compile Include="Windows\Main\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,7 +162,6 @@
     <Compile Include="Windows\Pops\JoinmemberPop.Designer.cs">
       <DependentUpon>JoinmemberPop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Footccer\DTO\UserCredentialDTO_RegisterUser.cs" />
     <Compile Include="Footccer\Manager\DBManager.cs" />
     <Compile Include="Windows\Main\MainForm.Controller.cs">
       <SubType>Form</SubType>
@@ -175,12 +215,6 @@
     </Compile>
     <Compile Include="Windows\Views\ConfigView.Designer.cs">
       <DependentUpon>ConfigView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Views\LoginView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Windows\Views\LoginView.Designer.cs">
-      <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Views\MyPageView.cs">
       <SubType>Form</SubType>
@@ -240,7 +274,6 @@
     </Compile>
     <Compile Include="Footccer\Util\ComboItem.cs" />
     <Compile Include="Footccer\DTO\PartyDTO.cs" />
-    <Compile Include="Footccer\DAO\CRUD\PartySearchCRUD.cs" />
     <Compile Include="Windows\Views\PositionView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +292,9 @@
     <Compile Include="Windows\Views\FormationView.Designer.cs">
       <DependentUpon>FormationView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Footccer\Component\PartyIndicator.resx">
+      <DependentUpon>PartyIndicator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Main\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,9 +340,6 @@
     <EmbeddedResource Include="Windows\Views\ConfigView.resx">
       <DependentUpon>ConfigView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\LoginView.resx">
-      <DependentUpon>LoginView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\MyPageView.resx">
       <DependentUpon>MyPageView.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,6 +373,7 @@
     <EmbeddedResource Include="Windows\Views\FormationView.resx">
       <DependentUpon>FormationView.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Footccer\DAO\DBLogin_DAO.CRUD.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -358,6 +392,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Lib\DB\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

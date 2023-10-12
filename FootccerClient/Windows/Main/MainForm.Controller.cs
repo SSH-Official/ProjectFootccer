@@ -1,4 +1,5 @@
-﻿using Lib.Frame;
+﻿using FootccerClient.Windows.Views;
+using Lib.Frame;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -30,8 +31,10 @@ namespace FootccerClient
         private void ShowView(Type aType)
         {
             HideAllView();
-            GetView(aType).Visible = true;
-            GetView(aType).Refresh_View();
+
+            MasterView view = GetView(aType);
+            view.Visible = true;
+            view.Refresh_View();
         }
         private void HideAllView()
         {
@@ -63,6 +66,41 @@ namespace FootccerClient
 
             label.BackColor = SystemColors.Control;
             label.Invalidate();
+        }
+
+        private void InitializeViews()
+        {
+            MenuControls = new List<Label>()
+                {
+                    label_Club,
+                    label_Config,
+                    label_MyPage,
+                    label_MyParty,
+                    label_FindParty
+                };
+
+            Views = new List<MasterView>()
+                {
+                    new MyPageView(),
+                    new MyPartyView(),
+                    new PartyJoinView(),
+                    new PartySearchView(),
+                    new ConfigView(),
+                    new ClubView(),
+                    new PartyCreateView()
+                };
+
+            foreach (MasterView view in this.Views)
+            {
+                InitializeView(view);
+            }
+        }
+
+        private void InitializeView(MasterView view)
+        {
+            view.Parent = panel_ViewSpace;
+            view.Dock = DockStyle.Fill;
+            view.Visible = false;
         }
     }
 }

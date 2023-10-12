@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1561, 719);
+            this.ClientSize = new System.Drawing.Size(1127, 719);
             this.Name = "PositionView";
             this.Text = "PositionView";
             this.ResumeLayout(false);

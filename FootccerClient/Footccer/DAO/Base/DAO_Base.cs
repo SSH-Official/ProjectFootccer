@@ -1,4 +1,4 @@
-﻿using FootccerClient.Footccer.DBExecuter;
+﻿using FootccerClient.Footccer;
 using MySqlConnector;
 using System;
 using System.Collections;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootccerClient.Footccer.DAO
+namespace FootccerClient.Footccer.DAO.Base
 {
     /// <summary>
     /// DB에 대한 연결을 얻어온 후, 
@@ -52,10 +52,8 @@ namespace FootccerClient.Footccer.DAO
                 if (conn != null) { conn.Close(); }
             }
 
-            return default(T);
+            return default;
         }
-
-
         /// <summary>
         /// DB에 연결을 얻어 트랜잭션을 열고, ResultMethod를 실행합니다.<br/>
         /// 도중에 예외가 발생하면 트랜잭션을 롤백하고, Message와 StackTrace를 콘솔에 입력하고 연결을 닫습니다.
@@ -69,7 +67,7 @@ namespace FootccerClient.Footccer.DAO
         protected T ExecuteTransaction<T>(Func<MySqlCommand, T> ResultMethod)
         {
             string strConn = App.Instance.DB.Settings.ConnectionString;
-            T result = default(T);
+            T result = default;
             MySqlConnection conn = null;
             MySqlTransaction trans = null;
 
@@ -99,7 +97,25 @@ namespace FootccerClient.Footccer.DAO
             }
 
             return result;
-        }        
-        
+        }
+        /// <summary>
+        /// DB에 연결을 얻어 트랜잭션을 열고, 생성된 CRUD 객체를 통해 ResultMethod를 실행합니다. <br/>
+        /// 도중에 예외가 발생하면 트랜잭션을 롤백하고, Message와 StackTrace를 콘솔에 입력하고 연결을 닫습니다.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="CRUD">CRUD_Base를 상속받은 객체입니다.</typeparam>
+        /// <param name="crud">CRUD_Base를 상속받은 객체입니다.</param>
+        /// <param name="ResultMethod">결과 값을 반환할 함수입니다.</param>
+        /// <returns>
+        /// 성공 : 입력받은 ResultMethod의 반환값이 반환됩니다. <br/>
+        /// 실패 : 참조 형식일 경우 null, 값 형식일 경우 기본값이 반환됩니다. (int : 0, bool : false 등..)</returns>
+        protected T ExecuteTransaction<CRUD, T>(CRUD crud, Func<CRUD, T> ResultMethod) where CRUD : CRUD_Base => ExecuteTransaction((cmd) =>
+            {
+                crud.Initiate(cmd);
+
+                return ResultMethod(crud);
+            });
+
+
     }
 }

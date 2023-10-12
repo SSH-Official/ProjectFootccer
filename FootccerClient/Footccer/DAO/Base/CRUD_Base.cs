@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.CodeDom;
 
-namespace FootccerClient.Footccer.DAO.CRUD
+namespace FootccerClient.Footccer.DAO.Base
 {
     /// <summary>
     /// MySqlCommand를 사용한 CRUD 인터페이스를 제공합니다. <br/>
@@ -20,12 +20,22 @@ namespace FootccerClient.Footccer.DAO.CRUD
         protected static string DefaultMsg_NoResult = "검색 결과가 없습니다..";
         protected static string DefaultMsg_DuplicateResults = "DB 검색 결과가 중복 발견되었습니다..";
 
-        protected MySqlCommand cmd { get; }
+        protected MySqlCommand cmd { get; set; } = null;
 
-        public CRUD_Base(MySqlCommand cmd) 
-        { 
+        public CRUD_Base(MySqlCommand cmd)
+        {
             this.cmd = cmd;
         }
+
+        public CRUD_Base()
+        {
+        }
+
+        public void Initiate(MySqlCommand cmd)
+        {
+            this.cmd = cmd;
+        }
+
 
 
         /// <summary>
@@ -106,7 +116,7 @@ namespace FootccerClient.Footccer.DAO.CRUD
 
             return _list;
         }
-
+        
 
         /// <summary>
         /// 리스트를 입력받아 단 하나만 있을 때 반환합니다. <br/>

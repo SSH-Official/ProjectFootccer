@@ -64,7 +64,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 639);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1561, 80);
+            this.panel1.Size = new System.Drawing.Size(1127, 80);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -88,15 +88,15 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1561, 80);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1127, 80);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btn_regist
             // 
             this.btn_regist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_regist.Location = new System.Drawing.Point(1407, 3);
+            this.btn_regist.Location = new System.Drawing.Point(1011, 3);
             this.btn_regist.Name = "btn_regist";
-            this.btn_regist.Size = new System.Drawing.Size(151, 74);
+            this.btn_regist.Size = new System.Drawing.Size(113, 74);
             this.btn_regist.TabIndex = 0;
             this.btn_regist.Text = "등록완료";
             this.btn_regist.UseVisualStyleBackColor = true;
@@ -104,9 +104,9 @@
             // btn_init
             // 
             this.btn_init.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_init.Location = new System.Drawing.Point(1251, 3);
+            this.btn_init.Location = new System.Drawing.Point(899, 3);
             this.btn_init.Name = "btn_init";
-            this.btn_init.Size = new System.Drawing.Size(150, 74);
+            this.btn_init.Size = new System.Drawing.Size(106, 74);
             this.btn_init.TabIndex = 1;
             this.btn_init.Text = "초기화";
             this.btn_init.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1561, 639);
+            this.panel2.Size = new System.Drawing.Size(1127, 639);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -127,7 +127,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1086, 639);
+            this.panel4.Size = new System.Drawing.Size(652, 639);
             this.panel4.TabIndex = 1;
             // 
             // groupBox1
@@ -136,7 +136,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1086, 639);
+            this.groupBox1.Size = new System.Drawing.Size(652, 639);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "파티 정보";
@@ -146,14 +146,14 @@
             this.partyInfoSpace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.partyInfoSpace.Location = new System.Drawing.Point(3, 17);
             this.partyInfoSpace.Name = "partyInfoSpace";
-            this.partyInfoSpace.Size = new System.Drawing.Size(1080, 619);
+            this.partyInfoSpace.Size = new System.Drawing.Size(646, 619);
             this.partyInfoSpace.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1086, 0);
+            this.panel3.Location = new System.Drawing.Point(652, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(475, 639);
             this.panel3.TabIndex = 0;
@@ -263,7 +263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1561, 719);
+            this.ClientSize = new System.Drawing.Size(1127, 719);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "PartyCreateView";

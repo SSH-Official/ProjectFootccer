@@ -14,9 +14,11 @@ namespace FootccerClient.Footccer.Util.Tests
     public class ImageMakerTests
     {
         [TestMethod()]
-        public void GetImageFromURLTest()
+        public void GetImageFromURLTest_Cache()
         {
-            ImageMaker im = new ImageMaker();
+            Console.WriteLine("이미지 변환기의 캐시 제한이 제대로 작동하는지에 대한 테스트");
+            int testThreshold = 5;
+            ImageMaker im = new ImageMaker(testThreshold);
             List<string> urls = new List<string>
             {
                 "https://static.wikia.nocookie.net/pokemon/images/5/57/%EC%9D%B4%EC%83%81%ED%95%B4%EC%94%A8_%EA%B3%B5%EC%8B%9D_%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8.png/revision/latest/scale-to-width-down/1000?cb=20170404232618&path-prefix=ko",
@@ -32,12 +34,13 @@ namespace FootccerClient.Footccer.Util.Tests
                 Image img = im.GetImageFromURL(url);
             }
 
-            Assert.AreEqual(im.ImageCache.Count, im.Threshold);            
+            Assert.AreEqual(im.ImageCache.Count, Math.Min(im.Threshold, urls.Count));
         }
 
         [TestMethod()]
         public void GetImageFromURLTest_InvalidLink()
         {
+            Console.WriteLine("Image로 변환할 수 없는 링크를 입력받으면 예외가 발생하는지에 대한 테스트");
             Assert.ThrowsException<ArgumentException>(() =>
             {
                 ImageMaker im = new ImageMaker();

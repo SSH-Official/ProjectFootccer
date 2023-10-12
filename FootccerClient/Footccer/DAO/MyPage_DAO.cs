@@ -8,9 +8,9 @@ using System.Collections;
 using System.Windows.Forms;
 using FootccerClient.Footccer.DTO.Builder;
 using System.Drawing;
-using FootccerClient.Footccer.DAO.CRUD;
+using FootccerClient.Footccer.DAO.Base;
 
-namespace FootccerClient.Footccer.DBExecuter
+namespace FootccerClient.Footccer.DAO
 {
     /// <summary>
     /// 마이페이지에 사용되는 DAO 객체입니다.
@@ -18,13 +18,8 @@ namespace FootccerClient.Footccer.DBExecuter
     public partial class MyPage_DAO : DAO_Base
     {
         public UserInfoDTO ReadUserInfoAsSession() => ReadUserInfo(App.Instance.Session.ID);
-        public UserInfoDTO ReadUserInfo(string UID) => ExecuteTransaction((cmd) =>
-        {
-            var CRUD = new MyPageCRUD(cmd);
-            return CRUD.ReadUserInfo(UID);
-        });
-
-
+        public UserInfoDTO ReadUserInfo(string UID) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.ReadUserInfo(UID));
+        
         public bool UpdateUserInfo(UserInfoDTO userinfo) => ExecuteTransaction((cmd) =>
         {
             cmd.CommandText = "UPDATE ... ";
@@ -35,9 +30,8 @@ namespace FootccerClient.Footccer.DBExecuter
         });
 
 
-        public bool UpdateUserPassword(UserDTO user, string oldPwd, string newPwd) => ExecuteTransaction((cmd) =>
+        public bool UpdateUserPassword(UserDTO user, string oldPwd, string newPwd) => ExecuteTransaction(new CRUD(), (CRUD) =>
         {
-            var CRUD = new MyPageCRUD(cmd);
             bool isCorrectPassword = CRUD.CheckPassword(user, oldPwd);
 
             if (isCorrectPassword == false) { throw new Exception("기존 비밀번호가 틀립니다."); }
@@ -47,27 +41,9 @@ namespace FootccerClient.Footccer.DBExecuter
             }
         }) > 0; // 실행된 NonQuery가 양수임 -> 제대로 실행되었음
 
-
-        /// <summary>
-        /// 세션 User 정보를 토대로 UserInfo를 가져옵니다.
-        /// </summary>
-        /// <returns></returns>
         public UserInfoDTO GetUserInfoAsSession() => GetUserInfo(App.Instance.Session.User);
-        public UserInfoDTO GetUserInfo(UserDTO user) => ExecuteTransaction((cmd) =>
-        {
-            var CRUD = new MyPageCRUD(cmd);
-
-            return CRUD.ReadUserInfo(user.ID);
-        });
-
-
-
-        public bool UpdateUserinfo(UserInfoDTO updateinfo) => ExecuteTransaction((cmd) =>
-        {
-            var CRUD = new MyPageCRUD(cmd);
-
-            return CRUD.UpdateUserInfo(updateinfo);
-        });
+        public UserInfoDTO GetUserInfo(UserDTO user) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.ReadUserInfo(user.ID));
+        public bool UpdateUserinfo(UserInfoDTO updateinfo) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.UpdateUserInfo(updateinfo));
 
     }
 

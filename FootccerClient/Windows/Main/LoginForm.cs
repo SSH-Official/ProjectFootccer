@@ -19,12 +19,6 @@ namespace FootccerClient
         public LoginForm()
         {
             InitializeComponent();
-
-            MasterView view = new LoginView();
-
-            view.Parent = panel_ViewSpace;
-            view.Dock = DockStyle.Fill;
-            view.Visible = true;
         }
 
         private void btn_Login_Click(object sender, EventArgs e)

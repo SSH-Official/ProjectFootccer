@@ -17,42 +17,14 @@ namespace FootccerClient
     {
         private List<MasterView> Views { get; set; }
         private List<Label> MenuControls { get; set; }
+        
+        
         public MainForm()
         {
             InitializeComponent();
             InitializeViews();
-            ShowView<MyPartyView>();            
-            //////////////////////////////////////
-            void InitializeViews()
-            {
-                MenuControls = new List<Label>()
-                {
-                    label_Club,
-                    label_Config,
-                    label_MyPage,
-                    label_MyParty,
-                    label_FindParty
-                };
-
-                Views = new List<MasterView>()
-                {
-                    new MyPageView(),
-                    new MyPartyView(),
-                    new PartyJoinView(),
-                    new PartySearchView(),
-                    new ConfigView(),
-                    new ClubView(),
-                    new PartyCreateView()
-                };
-
-                foreach (MasterView view in this.Views)
-                {
-                    view.Parent = panel_ViewSpace;
-                    view.Dock = DockStyle.Fill;
-                    view.Visible = false;
-                }
-            }
         }
+
 
         private void btn_Logout_Click(object sender, EventArgs e)
         {

@@ -161,7 +161,6 @@ namespace FootccerClient.Windows.Views
             CreatedControls.Add(tableLayoutPanel);
             CreatedControls.Add(btn);
 
-            //btn.Click += new EventHandler(btn_Click);
             btn.Click += (sender, e) => { btn_Click(sender, e, row, col); }; //클로저
         }
         //(수정) 지금 무조건 B팀이 이길 경우만 계산하고 있음

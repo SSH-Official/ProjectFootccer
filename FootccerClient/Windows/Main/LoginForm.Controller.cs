@@ -1,4 +1,5 @@
 ﻿using FootccerClient.Footccer;
+using FootccerClient.Footccer.DAO;
 using FootccerClient.Footccer.DTO;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace FootccerClient
             // DB저장된 비밀번호와 입력 비밀번호가 맞는지 체크한다
             // 전부 통과라면 로그인 패스시킨다. 실패시 에러 메시지
 
-            UserCredentialDTO_RegisterUser info = GetCredential_FromTextBox();
+            UserCredentialDTO info = GetCredential_FromTextBox();
             bool isSuccess = App.Instance.DB.Login.CheckLoginSuccess(info);
             if (isSuccess)
             {
@@ -29,11 +30,11 @@ namespace FootccerClient
                 MessageBox.Show("다시 확인해주세요.?");
             }
         }
-        UserCredentialDTO_RegisterUser GetCredential_FromTextBox()
+        UserCredentialDTO GetCredential_FromTextBox()
         {
             string id = tbox_id.Text;
             string password = tbox_pwd.Text;
-            return new UserCredentialDTO_RegisterUser(id, password);
+            return new UserCredentialDTO(id, password);
         }
     }
 }

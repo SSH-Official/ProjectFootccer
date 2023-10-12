@@ -45,8 +45,11 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\FootccerClient\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,16 +60,22 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Footccer\Component\PartyIndicatorTests.cs" />
+    <Compile Include="Footccer\DAO\DAOTests.cs" />
+    <Compile Include="Footccer\DAO\DBLogin_DAOTests.cs" />
+    <Compile Include="Footccer\DAO\Position_DAOTests.cs" />
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilderTests.cs" />
+    <Compile Include="Footccer\TestClass_Custom.cs" />
     <Compile Include="Footccer\Util\ImageMakerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FootccerClient\FootccerClient.csproj">
-      <Project>{66361CE5-5209-4FEC-A4D5-FB8F9243B0DA}</Project>
+      <Project>{66361ce5-5209-4fec-a4d5-fb8f9243b0da}</Project>
       <Name>FootccerClient</Name>
     </ProjectReference>
   </ItemGroup>
