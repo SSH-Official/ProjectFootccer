@@ -25,6 +25,7 @@ namespace FootccerClient.Windows.Views
         List<NumericUpDown> numericUpDownList = new List<NumericUpDown>();
 
         //기본 생성자에는 컨트롤을 생성하는 매서드가 없습니다.
+        //파티 참가에 쓰실 경우 panel7의 visible항목을 false로 해주세요. (panel7에는 FormationDTO를 수정 하는 컨트롤들이 있습니다.)
         public FormationView()
         {
             InitializeComponent();
@@ -92,7 +93,6 @@ namespace FootccerClient.Windows.Views
         {
             updateBtnImage(Int32.Parse((sender as Button).Tag.ToString()));
             selectedPositionIndex = Int32.Parse((sender as Button).Tag.ToString());
-            MessageBox.Show(selectedPositionIndex.ToString());
         }
         //버튼 이미지를 갱신 해주는 메서드입니다.
         private void updateBtnImage(int position)

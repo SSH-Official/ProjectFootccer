@@ -127,7 +127,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1004, 639);
+            this.panel4.Size = new System.Drawing.Size(1086, 639);
             this.panel4.TabIndex = 1;
             // 
             // groupBox1
@@ -136,7 +136,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1004, 639);
+            this.groupBox1.Size = new System.Drawing.Size(1086, 639);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "파티 정보";
@@ -146,16 +146,16 @@
             this.partyInfoSpace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.partyInfoSpace.Location = new System.Drawing.Point(3, 17);
             this.partyInfoSpace.Name = "partyInfoSpace";
-            this.partyInfoSpace.Size = new System.Drawing.Size(998, 619);
+            this.partyInfoSpace.Size = new System.Drawing.Size(1080, 619);
             this.partyInfoSpace.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1004, 0);
+            this.panel3.Location = new System.Drawing.Point(1086, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(557, 639);
+            this.panel3.Size = new System.Drawing.Size(475, 639);
             this.panel3.TabIndex = 0;
             // 
             // groupBox2
@@ -165,7 +165,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(557, 639);
+            this.groupBox2.Size = new System.Drawing.Size(475, 639);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "팀 정보";
@@ -175,7 +175,7 @@
             this.formationSpace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.formationSpace.Location = new System.Drawing.Point(3, 68);
             this.formationSpace.Name = "formationSpace";
-            this.formationSpace.Size = new System.Drawing.Size(551, 568);
+            this.formationSpace.Size = new System.Drawing.Size(469, 568);
             this.formationSpace.TabIndex = 1;
             // 
             // panel5
@@ -184,7 +184,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(3, 17);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(551, 51);
+            this.panel5.Size = new System.Drawing.Size(469, 51);
             this.panel5.TabIndex = 0;
             // 
             // panel6
@@ -194,7 +194,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(551, 51);
+            this.panel6.Size = new System.Drawing.Size(469, 51);
             this.panel6.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -214,16 +214,16 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(551, 51);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(469, 51);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // rBtn_teamB
             // 
             this.rBtn_teamB.AutoSize = true;
             this.rBtn_teamB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rBtn_teamB.Location = new System.Drawing.Point(277, 3);
+            this.rBtn_teamB.Location = new System.Drawing.Point(237, 3);
             this.rBtn_teamB.Name = "rBtn_teamB";
-            this.rBtn_teamB.Size = new System.Drawing.Size(131, 45);
+            this.rBtn_teamB.Size = new System.Drawing.Size(111, 45);
             this.rBtn_teamB.TabIndex = 11;
             this.rBtn_teamB.Text = "teamB";
             this.rBtn_teamB.UseVisualStyleBackColor = true;
@@ -234,9 +234,9 @@
             this.rBtn_teamA.AutoSize = true;
             this.rBtn_teamA.Checked = true;
             this.rBtn_teamA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rBtn_teamA.Location = new System.Drawing.Point(140, 3);
+            this.rBtn_teamA.Location = new System.Drawing.Point(120, 3);
             this.rBtn_teamA.Name = "rBtn_teamA";
-            this.rBtn_teamA.Size = new System.Drawing.Size(131, 45);
+            this.rBtn_teamA.Size = new System.Drawing.Size(111, 45);
             this.rBtn_teamA.TabIndex = 10;
             this.rBtn_teamA.TabStop = true;
             this.rBtn_teamA.Text = "teamA";
@@ -248,15 +248,15 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(3, 3);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(131, 45);
+            this.panel10.Size = new System.Drawing.Size(111, 45);
             this.panel10.TabIndex = 9;
             // 
             // panel8
             // 
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(414, 3);
+            this.panel8.Location = new System.Drawing.Point(354, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(134, 45);
+            this.panel8.Size = new System.Drawing.Size(112, 45);
             this.panel8.TabIndex = 7;
             // 
             // PartyCreateView
