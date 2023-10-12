@@ -49,5 +49,10 @@ namespace Lib.Frame
         }
 
         public virtual void Refresh_View() { }
+
+        internal void UpdateCommand(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

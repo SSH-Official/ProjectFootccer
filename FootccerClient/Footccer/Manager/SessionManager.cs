@@ -12,7 +12,7 @@ namespace FootccerClient.Footccer.Manager
     public class SessionManager
     {
         public string ID { get { return User.ID; } }
-        public UserDTO User { get; private set; }
+        public UserDTO User { get; set; }
 
         internal void TestSetup(UserDTO user)
         {

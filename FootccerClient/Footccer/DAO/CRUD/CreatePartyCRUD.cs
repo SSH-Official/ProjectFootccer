@@ -68,7 +68,7 @@ namespace FootccerClient.Footccer.DAO.CRUD
             });
         }
 
-        public int insertParty(CreatePartyDTO dto)
+        public int insertParty(PartyInfoDTO dto)
         {
             string date = dto.date.ToString("yyyy-MM-dd HH:mm:ss");
             string sql = $"insert into `Party` (`Activity_idx`, `Leader_idx`, `name`, `Place_idx`, `date`, `max`, `count`) " +
@@ -106,6 +106,21 @@ namespace FootccerClient.Footccer.DAO.CRUD
             string sql = "insert into Record (Party_idx) values (@Party_idx) ";
             cmd.CommandText = sql;
             cmd.Parameters.Add("@Party_idx", MySqlDbType.Int32, 10).Value = dto.Party_idx;
+
+            return cmd.ExecuteNonQuery();
+        }
+
+        public int insertFormation(FormationDTO formationDTO)
+        {
+            string sql = "insert into Formation (Party_idx, side, maxFW, maxMF, maxDF, maxGK) values (@Party_idx, @side, @maxFW, @maxMF, @maxDF, @maxGK) ";
+
+            cmd.CommandText = sql;
+            cmd.Parameters.Add("@Party_idx", MySqlDbType.Int32, 10).Value = formationDTO.Party_idx;
+            cmd.Parameters.Add("@side", MySqlDbType.VarChar, 1).Value = formationDTO.side;
+            cmd.Parameters.Add("@maxFW", MySqlDbType.Int32, 10).Value = formationDTO.maxFW;
+            cmd.Parameters.Add("@maxMF", MySqlDbType.Int32, 10).Value = formationDTO.maxMF;
+            cmd.Parameters.Add("@maxDF", MySqlDbType.Int32, 10).Value = formationDTO.maxDF;
+            cmd.Parameters.Add("@maxGK", MySqlDbType.Int32, 10).Value = formationDTO.maxGK;
 
             return cmd.ExecuteNonQuery();
         }

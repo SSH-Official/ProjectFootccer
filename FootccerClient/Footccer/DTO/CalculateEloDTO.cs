@@ -29,5 +29,13 @@ namespace FootccerClient.Footccer.DTO
             double alterElo = Kconstant * (1.0 - expectWinRate);
             return (int)alterElo;
         }
+
+        public int calculator(int winTeamAverageELO, int loseTeamAverageELO)
+        {
+            double eloGap = (winTeamAverageELO - loseTeamAverageELO) / 400.0;
+            double expectWinRate = 1.0 / (Math.Pow(10, eloGap) + 1.0);
+            double alterElo = Kconstant * (1.0 - expectWinRate);
+            return (int)alterElo;
+        }
     }
 }

@@ -11,83 +11,63 @@ using System.Windows.Forms;
 using FootccerClient.Footccer;
 using System.Web;
 using FootccerClient.Footccer.DTO;
+using System.Runtime.CompilerServices;
 
 namespace FootccerClient.Windows.Views
 {
     public partial class PartyCreateView : MasterView
     {
+        PartyInfoView partyInfoView;
+        FormationView formationViewA;
+        FormationView formationViewB;
+
         public PartyCreateView()
         {
             InitializeComponent();
-            initializeObject();
+            createView();
+            connectEvent();
         }
-
-        private void initializeAllObject() 
+       
+        private void createView()
         {
-            tBox_partyName.Text = string.Empty;
-            dateTimePicker.Value = DateTime.Now;
-            cBox_City.Text = string.Empty;
-            cBox_placeName.Items.Clear();
-            cBox_placeName.Text = string.Empty;
-            cBox_activity.Text = string.Empty;
-            tBox_max.Text = string.Empty;
-            label_placeAddress.Text = string.Empty;
+            this.partyInfoView = new PartyInfoView();
+            partyInfoSpace.Controls.Add(this.partyInfoView);
+            this.partyInfoView.Visible = true;
+            this.formationViewA = new FormationView('A');
+            formationSpace.Controls.Add(this.formationViewA);
+            this.formationViewA.Visible = true;
+            this.formationViewB = new FormationView('B');
+            formationSpace.Controls.Add(this.formationViewB);
+            this.formationViewB.Visible = false;
         }
-
-        private void addComboBoxItems(List<string> list, ComboBox cBox)
+        private void connectEvent()
         {
-            for (int i = 0; i < list.Count; i++)
+            btn_init.Click += (sender, e) => {
+                partyInfoView.objectAllClear();
+            };
+            btn_regist.Click += (sender, e) =>
             {
-                cBox.Items.Add(list[i]);
-            }
-        }
-
-        private void initializeObject()
+                partyInfoView.createPartyInfoDTO(); 
+                registParty();
+            };            
+        }        
+        private void registParty()
         {
-            List<string> list = App.Instance.DB.CreateParty.getCityName();
-            addComboBoxItems(list, cBox_City);
-        }
-
-        private void cBox_City_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cBox_placeName.Items.Clear();
-            cBox_placeName.Text = string.Empty;
-            label_placeAddress.Text = string.Empty;
-            int cityIndex = cBox_City.SelectedIndex + 1;
-            List<string> list = App.Instance.DB.CreateParty.getPlaceName(cityIndex);
-            addComboBoxItems(list, cBox_placeName);
-        }
-
-        private void cBox_placeName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            label_placeAddress.Text = string.Empty;
-            int cityIndex = cBox_City.SelectedIndex + 1;
-            string name = cBox_placeName.SelectedItem.ToString();            
-            (string Address, int Idx) tuple = App.Instance.DB.CreateParty.getPlaceAddress(cityIndex, name);            
-            label_placeAddress.Text = tuple.Item1;
-            label_placeAddress.Tag = tuple.Item2;
-        }
-
-        //(수정)생성할때 세션아이디로 글쓴이 넣어줘야함
-        //지금은 그냥 임의로 넣음
-        private void btn_register_Click(object sender, EventArgs e)
-        {
-            CreatePartyDTO dto = null;
-            int SamepleIndex = 2;
-            if(cBox_activity.SelectedIndex != 2)
+            //(수정)
+            PartyInfoDTO partyInfoDTO = partyInfoView.partyInfoDTO;
+            partyInfoDTO.idx = App.Instance.DB.CreateParty.setPartyDTO(partyInfoDTO);
+            if (partyInfoDTO.idx != 0)
             {
-                dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, SamepleIndex, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value);
-            }
-            else if(cBox_activity.SelectedIndex == 2)
-            {
-                dto = new CreatePartyDTO(cBox_activity.SelectedIndex + 1, SamepleIndex, tBox_partyName.Text, Int32.Parse(label_placeAddress.Tag.ToString()), dateTimePicker.Value, Int32.Parse(tBox_max.Text));
-            }
-            int partyIdx = App.Instance.DB.CreateParty.setPartyDTO(dto);
-            if (partyIdx != 0){
-                ListDTO listDTO = new ListDTO(2, partyIdx, Char.Parse(cBox_side.SelectedItem.ToString()), cBox_position.SelectedIndex);
+                ListDTO listDTO = new ListDTO(App.Instance.Session.User.Index, partyInfoDTO.idx, judgeSide(), formationViewA.selectedPositionIndex);
                 App.Instance.DB.CreateParty.setListDTO(listDTO);
-                RecordDTO recordDTO = new RecordDTO(partyIdx);
+                RecordDTO recordDTO = new RecordDTO(partyInfoDTO.idx);
                 App.Instance.DB.CreateParty.setRecordDTO(recordDTO);
+                FormationDTO teamAFormationDTO = formationViewA.formationDTO;
+                FormationDTO teamBFormationDTO = formationViewB.formationDTO;                
+                teamAFormationDTO.Party_idx = partyInfoDTO.idx;
+                teamBFormationDTO.Party_idx = partyInfoDTO.idx;
+                App.Instance.DB.CreateParty.setFormationDTO(teamAFormationDTO);
+                App.Instance.DB.CreateParty.setFormationDTO(teamBFormationDTO);
                 MessageBox.Show("성공");
             }
             else
@@ -95,22 +75,36 @@ namespace FootccerClient.Windows.Views
                 MessageBox.Show("오류");
             }
         }
-
-        private void cBox_activity_SelectedIndexChanged(object sender, EventArgs e)
+        private char judgeSide()
         {
-            if (cBox_activity.SelectedIndex == 2)
+            if(rBtn_teamA.Checked)
             {
-                tBox_max.Visible = true;
+                return 'A';
             }
             else
             {
-                tBox_max.Visible = false;
+                return 'B';
             }
         }
-
-        private void btn_lnit_Click(object sender, EventArgs e)
+        private void rBtn_teamA_Click(object sender, EventArgs e)
         {
-            initializeAllObject();
+            this.formationViewA.Visible = true;
+            this.formationViewB.Visible = false;
+            initSelecedPositionIndex(formationViewB, formationViewA);
+        }
+        private void rBtn_teamB_Click(object sender, EventArgs e)
+        {
+            this.formationViewA.Visible = false;
+            this.formationViewB.Visible = true;
+            initSelecedPositionIndex(formationViewA, formationViewB);
+        }
+        private void initSelecedPositionIndex(FormationView dto1, FormationView dto2)
+        {
+            if(dto1.selectedPositionIndex != -1)
+            {
+                dto2.initSelectedPositionIndex();
+                dto2.selectedPositionIndex = -1;
+            }
         }
     }
 }

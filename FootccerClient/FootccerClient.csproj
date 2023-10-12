@@ -85,7 +85,7 @@
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\CalculateEloDTO.cs" />
-    <Compile Include="Footccer\DTO\CreatePartyDTO.cs" />
+    <Compile Include="Footccer\DTO\PartyInfoDTO.cs" />
     <Compile Include="Footccer\DAO\CreateParty_DAO.cs" />
     <Compile Include="Footccer\DAO\CRUD\CreatePartyCRUD.cs" />
     <Compile Include="Footccer\DAO\DBLogin_DAO.cs" />
@@ -200,6 +200,12 @@
     <Compile Include="Windows\Views\PartyCreateView.Designer.cs">
       <DependentUpon>PartyCreateView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Views\PartyInfoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\PartyInfoView.Designer.cs">
+      <DependentUpon>PartyInfoView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Views\PartyJoinView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,11 +253,11 @@
     <Compile Include="Windows\Views\RecordView.Designer.cs">
       <DependentUpon>RecordView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\testView.cs">
+    <Compile Include="Windows\Views\FormationView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Views\testView.Designer.cs">
-      <DependentUpon>testView.cs</DependentUpon>
+    <Compile Include="Windows\Views\FormationView.Designer.cs">
+      <DependentUpon>FormationView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Windows\Main\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -310,6 +316,9 @@
     <EmbeddedResource Include="Windows\Views\PartyCreateView.resx">
       <DependentUpon>PartyCreateView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\PartyInfoView.resx">
+      <DependentUpon>PartyInfoView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartyJoinView.resx">
       <DependentUpon>PartyJoinView.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,8 +337,8 @@
     <EmbeddedResource Include="Windows\Views\RecordView.resx">
       <DependentUpon>RecordView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\testView.resx">
-      <DependentUpon>testView.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\Views\FormationView.resx">
+      <DependentUpon>FormationView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
