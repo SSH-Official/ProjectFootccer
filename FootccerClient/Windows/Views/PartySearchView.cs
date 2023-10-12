@@ -96,20 +96,27 @@ namespace FootccerClient.Windows.Views
                 seed = SearchText.Text;
             }
             List<PartyDTO> _dt = Footccer.App.Instance.DB.PartySearch.ReadParty(kind, seed);
-            dataGridView1.DataSource = _dt;
+            dataGridView1.DataSource = _dt
+                .Select(item => new { Idx = item.idx,
+                    Name = item.Parname })
+                .ToList();
+            dataGridView1.Columns[0].Visible = false;
         }
 
         private void btn_Create_Click(object sender, EventArgs e)
         {
             App.Instance.MainForm.ShowView<PartyCreateView>();
         }
-
+        
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == 0)
+            int Ridx=e.RowIndex;
+            if (Ridx >= 0)
             {
-                MasterView view = new PartyJoinView();
-                App.Instance.MainForm.ShowView(view);
+                int pidx = Convert.ToInt32(dataGridView1.Rows[Ridx].Cells[0].Value.ToString());
+                PartyJoinView.Pidx = pidx;
+
+                App.Instance.MainForm.ShowView<PartyJoinView>();
             }
         }
     }

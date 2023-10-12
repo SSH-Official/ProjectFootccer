@@ -21,6 +21,8 @@ namespace FootccerClient.Footccer.DTO
         public int max { get; set; }
         public int count { get; set; }
         private string phone { get; }
+
+        
         public string getphone()
         {
             return phone;

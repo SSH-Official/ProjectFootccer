@@ -17,6 +17,7 @@ namespace FootccerClient
             view.Parent = panel_ViewSpace;
             view.Dock = DockStyle.Fill;
             view.Visible = true;
+            view.Refresh_View();
         }
 
         public void ShowView<T>()

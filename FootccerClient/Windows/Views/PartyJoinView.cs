@@ -15,26 +15,33 @@ namespace FootccerClient.Windows.Views
 {
     public partial class PartyJoinView : MasterView
     {
+        public static int Pidx { get; set; }
+
         public PartyJoinView()
         {
             InitializeComponent();
+        }
+        public override void Refresh_View()
+        {
+            clearMember();
             initializeAllObject();
+            List_team();
         }
 
         public void List_team()
         {
-            List<TeamDTO> _dtA = Footccer.App.Instance.DB.Team.Readmember("'A'");
+            List<TeamDTO> _dtA = Footccer.App.Instance.DB.Team.Readmember("'A'",Pidx);
             Team_A.DataSource = _dtA;
             a_count.Text = _dtA.Count.ToString();
 
-            List<TeamDTO> _dtB = Footccer.App.Instance.DB.Team.Readmember("'B'");
+            List<TeamDTO> _dtB = Footccer.App.Instance.DB.Team.Readmember("'B'",Pidx);
             Team_B.DataSource = _dtB;
             b_count.Text = _dtB.Count.ToString();
         }
         
         public void initializeAllObject()
         {
-            PartyDTO pd = Footccer.App.Instance.DB.Team.readPartyInfo();
+            PartyDTO pd = Footccer.App.Instance.DB.Team.readPartyInfo(Pidx);
             party_name.Text = pd.Parname;
             leader_name.Text = pd.UserWithTag;
             leader_phone.Text = pd.getphone();
@@ -68,10 +75,6 @@ namespace FootccerClient.Windows.Views
             //포지션은popup창 이용
         }
 
-        private void PartyJoinView_Load(object sender, EventArgs e)
-        {
-            List_team();
-        }
         public void clearMember()
         {
             mbr_name.Text = "";
@@ -87,7 +90,7 @@ namespace FootccerClient.Windows.Views
             if (e.RowIndex >= 0)
             {
                 TeamDTO selectedPersonnel = ((sender as DataGridView).DataSource as List<TeamDTO>)[e.RowIndex];
-                ShowMemberInfo(selectedPersonnel.getidx(),14);                
+                ShowMemberInfo(selectedPersonnel.getidx(),Pidx);                
             }            
         }
 
@@ -101,6 +104,14 @@ namespace FootccerClient.Windows.Views
             mbr_position.Text = DataRead.position.ToString();
         }
 
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            App.Instance.MainForm.ShowView<PartySearchView>();
+        }
 
+        private void btn_join_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

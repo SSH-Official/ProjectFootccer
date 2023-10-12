@@ -23,12 +23,12 @@ namespace FootccerClient.Footccer.DAO
         MySqlConnection conn = null;
 
 
-        public List<TeamDTO> Readmember(string Team)
+        public List<TeamDTO> Readmember(string Team,int Pidx)
         {
             conn = new MySqlConnection(strConn);
             string sql = "SELECT L.User_idx AS idx, COUNT(*) AS count, Ui.name AS username, side, Ui.elo as elo FROM `List` AS L " +
                          "LEFT JOIN `UserInfo` AS Ui ON L.User_idx = Ui.User_idx " +
-                         "WHERE Party_idx = 14 AND side = " + Team +
+                         "WHERE Party_idx = "+Pidx+" AND side = " + Team +
                          " GROUP BY L.idx, Ui.name, side, Ui.elo ";
             List<TeamDTO> result = new List<TeamDTO>();
             MySqlDataReader rdr = null;
@@ -59,7 +59,7 @@ namespace FootccerClient.Footccer.DAO
             return result;
         }
 
-        public PartyDTO readPartyInfo()
+        public PartyDTO readPartyInfo(int Pidx)
         {
             conn = new MySqlConnection(strConn);
             string sql = "SELECT Par.`name` as name, Ui.`name` as Uiname," +
@@ -70,7 +70,7 @@ namespace FootccerClient.Footccer.DAO
                 "LEFT JOIN `Activity` AS Act ON Par.Activity_idx = Act.idx " +
                 "LEFT JOIN `Place` AS Pl ON Par.Place_idx = Pl.idx " +
                 "LEFT JOIN `City` AS Ci ON Pl.City_idx = Ci.idx "+
-                "WHERE Par.idx = 4";
+                "WHERE Par.idx = "+Pidx;
             PartyDTO result = new PartyDTO();
             MySqlDataReader dr = null;
             try
