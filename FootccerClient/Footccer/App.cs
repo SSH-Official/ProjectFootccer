@@ -35,7 +35,6 @@ namespace FootccerClient.Footccer
                     _MainForm = new MainForm();
                     _MainForm.FormClosed += (sender, e) =>
                     {
-                        _MainForm = null;
                         App.instance.Session.LogOut();
                     };
                 }

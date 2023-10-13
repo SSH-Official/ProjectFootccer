@@ -135,6 +135,24 @@ namespace FootccerClient.Footccer.DAO
 
                 return cmd.ExecuteNonQuery();
             }
+
+            public DataTable getELORecordTable()
+            {
+                int testidx = 2; // App.Instance.Session.User.Index;
+
+                string sql = "select p.date, u.elo, l.side, r.result, r.alter_elo " +
+                             "from UserInfo u " +
+                             "join List l on l.User_idx = u.User_idx " +
+                             "join Party p on p.idx = l.Party_idx " +
+                             "join Record r on r.Party_idx = p.idx and r.result is not null " +
+                             "where u.User_idx = @User_idx " +
+                             "order by p.date desc ";
+
+                cmd.CommandText = sql;
+                cmd.Parameters.Add(new MySqlParameter("@User_idx", MySqlDbType.Int32, 10)).Value = testidx;
+
+                return ReadDataTable(cmd);
+            }
         }
     }
 }

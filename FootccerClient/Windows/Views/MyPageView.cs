@@ -31,7 +31,7 @@ namespace FootccerClient.Windows.Views
             }
             InitializeComponent();
             Createview();
-            //Createview1();
+            Createview1();
             InitializeGetMyinfo();
         }
 
@@ -55,13 +55,13 @@ namespace FootccerClient.Windows.Views
             return mpav;
         }
 
-        /*private ELORecordView Createview1()
+        private void Createview1()
         {
-            *//*ELORecordView erv = new ELORecordView();
+            ELORecordView erv = new ELORecordView();
             panel8.Controls.Add(erv);
             erv.Visible = true;
-            erv.Dock = DockStyle.Fill;*//*
-        }*/
+            erv.Dock = DockStyle.Fill;
+        }
 
 
         private void panel9_Paint_1(object sender, EventArgs e)
