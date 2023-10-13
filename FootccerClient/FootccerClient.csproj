@@ -71,8 +71,9 @@
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
     <Compile Include="Footccer\DAO\CRUD\LHJDB_CRUD.cs" />
+    <Compile Include="Footccer\DAO\CRUD\PartyJoinCRUD.cs" />
     <Compile Include="Footccer\DAO\CRUD\Position_CRUD.cs" />
-    <Compile Include="Footccer\DAO\CRUD\teammemberCRUD.cs" />
+    <Compile Include="Footccer\DAO\CRUD\TeamMemberCRUD.cs" />
     <Compile Include="Footccer\DAO\PartyJoinDAO.cs" />
     <Compile Include="Footccer\DAO\PartySearch_DAO.cs" />
     <Compile Include="Footccer\DAO\DAO_Base.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="Footccer\DAO\CRUD\LoginCRUD.cs" />
     <Compile Include="Footccer\DAO\CRUD\MyPageCRUD.cs" />
     <Compile Include="Footccer\DAO\Position_DAO.cs" />
-    <Compile Include="Footccer\DAO\teamDAO.cs" />
+    <Compile Include="Footccer\DAO\TeamDAO.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\UserInfoDTOBuilder.cs" />

@@ -49,6 +49,7 @@ namespace FootccerClient
                 {
                     view.Parent = panel_ViewSpace;
                     view.Dock = DockStyle.Fill;
+                    view.Size = panel_ViewSpace.Size;
                     view.Visible = false;
                 }
             }

@@ -12,9 +12,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace FootccerClient.Footccer.DAO.CRUD
 {
-    public class teammemberCRUD : CRUD_Base
+    public class TeamMemberCRUD : CRUD_Base
     {
-        public teammemberCRUD(MySqlCommand cmd) : base(cmd)
+        public TeamMemberCRUD(MySqlCommand cmd) : base(cmd)
         {
         }
 
@@ -29,7 +29,8 @@ namespace FootccerClient.Footccer.DAO.CRUD
             cmd.Parameters.Add("@id", MySqlDbType.VarChar, 50).Value = idx;
             cmd.Parameters.Add("@Pidx", MySqlDbType.VarChar, 50).Value = Pidx;
             return ReadData(ParseData_ToUserInfo);
-        }
+        }//파티원 정보 읽어오는 코드
+
         private TeamMemberDTO ParseData_ToUserInfo(MySqlDataReader rdr)
         {
             string nickname = rdr.GetString(0);

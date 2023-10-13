@@ -1,4 +1,5 @@
-﻿using FootccerClient.Footccer.DTO;
+﻿using FootccerClient.Footccer.DAO.CRUD;
+using FootccerClient.Footccer.DTO;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Xml.Linq;
 
 namespace FootccerClient.Footccer.DAO
 {
-    public class teamDAO
+    public class TeamDAO : DAO_Base
     {
         string strConn =
             "Server = 192.168.0.18;" +
@@ -22,42 +23,12 @@ namespace FootccerClient.Footccer.DAO
             "Pwd = 1234;";
         MySqlConnection conn = null;
 
-
-        public List<TeamDTO> Readmember(string Team,int Pidx)
+        public List<TeamDTO> ReadMember(int Pidx, char Team) => ExecuteTransaction((cmd) =>
         {
-            conn = new MySqlConnection(strConn);
-            string sql = "SELECT L.User_idx AS idx, COUNT(*) AS count, Ui.name AS username, side, Ui.elo as elo FROM `List` AS L " +
-                         "LEFT JOIN `UserInfo` AS Ui ON L.User_idx = Ui.User_idx " +
-                         "WHERE Party_idx = "+Pidx+" AND side = " + Team +
-                         " GROUP BY L.idx, Ui.name, side, Ui.elo ";
-            List<TeamDTO> result = new List<TeamDTO>();
-            MySqlDataReader rdr = null;
-            try
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                rdr = cmd.ExecuteReader();
+            var CRUD = new PartyJoinCRUD(cmd);
 
-                while (rdr.Read())
-                {
-                    int idx = Convert.ToInt32(rdr["idx"]);
-                    string username = Convert.ToString(rdr["username"]);
-                    string side = Convert.ToString(rdr["side"]);
-                    int elo = Convert.ToInt32(rdr["elo"]);
-                    TeamDTO theCity = new TeamDTO(idx, username, side, elo);
-
-                    result.Add(theCity);
-                }
-                rdr.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally { conn.Close(); }
-
-            return result;
-        }
+            return CRUD.ReadTeamMember(Pidx,Team);
+        });
 
         public PartyDTO readPartyInfo(int Pidx)
         {

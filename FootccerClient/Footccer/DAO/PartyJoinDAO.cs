@@ -14,23 +14,9 @@ namespace FootccerClient.Footccer.DAO
     {
         public TeamMemberDTO ReadUserInfo(int idx,int Pidx) => ExecuteTransaction((cmd) =>
             {
-                var CRUD = new teammemberCRUD(cmd);
+                var CRUD = new TeamMemberCRUD(cmd);
 
                 return CRUD.Readmemberone(idx, Pidx);
-            });
- /*       public (UserInfoDTO, PositionDTO) ReadUserInfo(int idx)
-        {
-            // 이름 성별 거주지 연락처 이메일 -> UserInfo DTO에서 읽을 수 있음
-            // 포지션-> 파티에 내가 할당된 포지션.. 다른 DTO(DB테이블)에서..
-
-            string sql = $"SELECT * FROM UserInfo WHERE User_idx = {idx};";
-            // 밑의 주석은 연습용입니다..
-            *//*App.Instance.DB.PartyJoin.ReadUserInfo(idx);
-
-            return List<string>*//*
-            throw new NotImplementedException();
-            
-
-        }*/
+            });//파티원 정보 읽어오는 코드
     }
 }
