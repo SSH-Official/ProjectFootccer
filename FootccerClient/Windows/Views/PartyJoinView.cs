@@ -13,125 +13,71 @@ using FootccerClient.Footccer.DTO;
 
 namespace FootccerClient.Windows.Views
 {
+    
     public partial class PartyJoinView : MasterView
     {
+        //FormationView formationViewA;
+
+        public static int Pidx { get; set; }
+
         public PartyJoinView()
         {
             InitializeComponent();
+        }
+        public override void Refresh_View()
+        {
             initializeAllObject();
         }
 
         public void List_team()
         {
-            List<TeamDTO> _dtA = Footccer.App.Instance.DB.Team.Readmember("'A'");
-            Team_A.DataSource = _dtA;
-            a_count.Text = _dtA.Count.ToString();
-
-            List<TeamDTO> _dtB = Footccer.App.Instance.DB.Team.Readmember("'B'");
-            Team_B.DataSource = _dtB;
-            b_count.Text = _dtB.Count.ToString();
+            char team = rbtn_A.Checked ? 'A' : 'B';
+            List<TeamDTO> _dtA = Footccer.App.Instance.DB.Team.ReadMember(Pidx, team);
+            Team_A.DataSource = _dtA.Select(item => new {
+                유저 = item.UserWithTag,
+                팀 = item.side,
+                ELO = item.elo
+            })
+                .ToList();
+            /*this.formationViewA = new FormationView('A');
+            formationSpace.Controls.Add(this.formationViewA);
+            this.formationViewA.Visible = true;
+            this.formationViewB = new FormationView('B');
+            formationSpace.Controls.Add(this.formationViewB);
+            this.formationViewB.Visible = false;*/
+            //a_count.Text = _dtA.Count.ToString(); 현재 인원수 가져오기인데 필요한가?
         }
         
         public void initializeAllObject()
         {
-            PartyDTO pd = Footccer.App.Instance.DB.Team.readPartyInfo();
+            PartyDTO pd = Footccer.App.Instance.DB.Team.readPartyInfo(Pidx);
             party_name.Text = pd.Parname;
             leader_name.Text = pd.UserWithTag;
             leader_phone.Text = pd.getphone();
             match_kind.Text = pd.Actname;
             match_time.Text = pd.date;
             match_place.Text = pd.PLname;
-
+            rbtn_A.Select();
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel16_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void addComboBoxItems(List<string> list, ComboBox cBox)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                cBox.Items.Add(list[i]);
-            }
-        }
-
-        /*private void cbox_position_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbox_position.Items.Clear();
-            cbox_position.Text = string.Empty;
-            int positionIndex = cbox_position.SelectedIndex + 1;
-            List<string> list = App.Instance.DB.CreateParty.getPlaceName(positionIndex);
-            addComboBoxItems(list, cbox_position);
-        }*/
 
         private void btn_join_Click(object sender, EventArgs e)
         {
-            //팝업창 띄워서 팀,포지션 정하게 하기
-            //팀은 radiobox이용
-            //포지션은popup창 이용
+            MessageBox.Show("참가하는 코드 작성");
         }
 
-        private void panel27_Paint(object sender, PaintEventArgs e)
+        public void ShowMemberInfo(int idx, int Pidx)
         {
+            var DataRead = App.Instance.DB.PartyJoin.ReadUserInfo(idx, Pidx);
+        }//파티원 정보 읽어오는 코드
 
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            App.Instance.MainForm.ShowView<PartySearchView>();
         }
 
-        private void PartyJoinView_Load(object sender, EventArgs e)
+        private void rbtn_CheckedChanged(object sender, EventArgs e)
         {
             List_team();
         }
-        public void clearMember()
-        {
-            mbr_name.Text = "";
-            mbr_gender.Text = "";
-            mbr_email.Text = "";
-            mbr_phone.Text = "";
-            mbr_position.Text = "";
-            mbr_residence.Text = "";
-        }
-        private void Team_A_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            clearMember();
-            if (e.RowIndex >= 0)
-            {
-                TeamDTO selectedPersonnel = (Team_A.DataSource as List<TeamDTO>)[e.RowIndex];
-                ShowMemberInfo(selectedPersonnel.getidx());                
-            }            
-        }
-
-        public void ShowMemberInfo(int idx)
-        {
-            var DataRead = App.Instance.DB.PartyJoin.ReadUserInfo(idx);
-
-            //DataRead.Item1
-            //mbr_name.Text = DataRead.Name;
-
-            // 1. 여기서 쓸 전용 DTO를 만든다...
-            //      1.1 PJDTO -> Name Gender ... 가지게. > 1.1
-            //          PJDTO.Name;
-            //      1.2 PJDTO -> UserInfo, Position
-            //          PJDTO.UserInfo.Name;
-
-            // 2. 튜플로 가져온다
-            //  (UserInfoDTO userinfo, PositionDTO position)
-
-
-
-            // 이름 성별 거주지 연락처 이메일 -> UserInfo DTO에서 읽을 수 있음
-            // 포지션-> 파티에 내가 할당된 포지션.. 다른 DTO(DB테이블)에서..
-
-            // 각각 TextBox에 뿌려야함....
-            //mbr_name.Text = DataRead.Name;
-            // ...
-        }
-
-
     }
 }

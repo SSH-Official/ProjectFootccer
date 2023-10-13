@@ -12,6 +12,15 @@ namespace FootccerClient
 {
     partial class MainForm
     {
+        public void ShowView(MasterView view)
+        {
+            HideAllView();
+            view.Parent = panel_ViewSpace;
+            view.Dock = DockStyle.Fill;
+            view.Visible = true;
+            view.Refresh_View();
+        }
+
         public void ShowView<T>()
         {
             ShowView(typeof(T));
