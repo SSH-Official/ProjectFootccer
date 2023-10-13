@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using FootccerClient.Footccer;
 using Lib.Frame;
 
@@ -24,6 +25,15 @@ namespace FootccerClient.Windows.Views
 
         public void initializeChart()
         {
+            chart1.Titles.Add("ELO 변경");
+            chart1.Series[0].Name = "ELO";
+            /*ChartArea chartArea = new ChartArea();
+            chart1.ChartAreas.Add(chartArea);
+            chartArea.AxisX.Minimum = 0;
+            chartArea.AxisX.Maximum = 4;
+            chartArea.AxisY.Minimum = 0;
+            chartArea.AxisY.Maximum = 25;*/
+            
             dt = App.Instance.DB.LHJDB.getELORecordTable();
             DataRow dr = dt.Rows[0];
             int currentELO = Int32.Parse(dr["elo"].ToString());

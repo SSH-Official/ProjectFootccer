@@ -1,4 +1,6 @@
-﻿namespace FootccerClient.Windows.Views
+﻿using System.Windows.Forms.DataVisualization.Charting;
+
+namespace FootccerClient.Windows.Views
 {
     partial class ELORecordView
     {
@@ -38,6 +40,9 @@
             // chart1
             // 
             chartArea1.Name = "ChartArea1";
+            chartArea1.AxisX.IntervalType = DateTimeIntervalType.Months;
+            chartArea1.AxisX.Interval = 1;
+            chartArea1.AxisX.LabelStyle.Format = "MM/dd";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
