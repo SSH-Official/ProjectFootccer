@@ -14,7 +14,7 @@ using System.Windows.Forms;
 namespace FootccerClient.Windows.Views
 {
     public partial class FormationView : MasterView
-    {     
+    {
         public FormationDTO formationDTO { get; set; }
         private List<int> positionList = new List<int>();
         private List<TableLayoutPanel> tableLayouts = new List<TableLayoutPanel>();
@@ -31,8 +31,13 @@ namespace FootccerClient.Windows.Views
             InitializeComponent();
             selectedPositionIndex = -1;
         }
+        /*public override void Refresh_View()
+        {
+            placeFormation();
+        }*/
         public FormationView(FormationDTO formationDTO, List<int> positionList) : this()
         {
+            panel7.Visible = false;
             this.formationDTO = formationDTO;
             this.positionList = positionList;
             initializeNumeric();
@@ -47,7 +52,7 @@ namespace FootccerClient.Windows.Views
         }
         public void placeFormation()
         {
-            if(formationDTO.maxFW + formationDTO.maxMF + formationDTO.maxDF + formationDTO.maxGK == 11)
+            if (formationDTO.maxFW + formationDTO.maxMF + formationDTO.maxDF + formationDTO.maxGK == 11)
             {
                 if (tableLayouts.Count > 0)
                 {
@@ -59,17 +64,17 @@ namespace FootccerClient.Windows.Views
                 createTableLayout(formationDTO.maxDF);
                 createTableLayout(formationDTO.maxMF);
                 createTableLayout(formationDTO.maxFW);
-            }            
+            }
         }
         private void disposeControls<T>(List<T> list)
         {
             foreach (var item in list)
             {
-                if(item is TableLayoutPanel)
+                if (item is TableLayoutPanel)
                 {
                     (item as TableLayoutPanel).Dispose();
                 }
-                else if(item is Button)
+                else if (item is Button)
                 {
                     (item as Button).Dispose();
                 }
@@ -97,7 +102,7 @@ namespace FootccerClient.Windows.Views
         //버튼 이미지를 갱신 해주는 메서드입니다.
         private void updateBtnImage(int position)
         {
-            for(int i = 0; i < buttons.Count; i++)
+            for (int i = 0; i < buttons.Count; i++)
             {
                 if (Int32.Parse(buttons[i].Tag.ToString()) == position)
                 {
@@ -105,21 +110,21 @@ namespace FootccerClient.Windows.Views
                     buttons[i].Enabled = false;
                     initBtnImage();
                     break;
-                }                
+                }
             }
         }
         private void initBtnImage()
         {
-            if(selectedPositionIndex != -1)
+            if (selectedPositionIndex != -1)
             {
                 buttons[selectedPositionIndex].BackgroundImage = App.Instance.Image.GetImageFromURL("https://cdn-icons-png.flaticon.com/128/1452/1452036.png");
                 buttons[selectedPositionIndex].Enabled = true;
             }
-        }        
+        }
         //이미 자리가 있는 포지션 갱신 해주는 메서드 입니다 positionList에 값 넣으시고 사용하시면 됩니다. 버튼을 클릭하고 나서 이 메서드가 실행 된다면 의도와 다르게 흘러 갈 수도....
         public void updatePartyPosition()
         {
-            for(int i = 0; i < positionList.Count; i++)
+            for (int i = 0; i < positionList.Count; i++)
             {
                 updateBtnImage(positionList[i]);
             }
@@ -134,16 +139,16 @@ namespace FootccerClient.Windows.Views
             {
                 item.ValueChanged += (sender, e) =>
                 {
-                    if (judgeCount11()) 
-                    { 
-                        saveFormationDTO(); 
-                        placeFormation(); 
+                    if (judgeCount11())
+                    {
+                        saveFormationDTO();
+                        placeFormation();
                     }
                 };
             }
         }
         private void saveFormationDTO()
-        {              
+        {
             formationDTO.maxFW = Int32.Parse(numer_FW.Value.ToString());
             formationDTO.maxMF = Int32.Parse(numer_MF.Value.ToString());
             formationDTO.maxDF = Int32.Parse(numer_DF.Value.ToString());
@@ -166,13 +171,12 @@ namespace FootccerClient.Windows.Views
         }
         public void initSelectedPositionIndex()
         {
-            if(selectedPositionIndex != -1)
+            if (selectedPositionIndex != -1)
             {
                 buttons[selectedPositionIndex].BackgroundImage = App.Instance.Image.GetImageFromURL("https://cdn-icons-png.flaticon.com/128/1452/1452036.png");
                 buttons[selectedPositionIndex].Enabled = true;
                 selectedPositionIndex = -1;
             }
-            
         }
 
         #region 컨트롤들을 생성/리사이즈 하는 메서드입니다.

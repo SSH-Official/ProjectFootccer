@@ -63,7 +63,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Team_A = new System.Windows.Forms.DataGridView();
+            this.Team = new System.Windows.Forms.DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -105,7 +105,7 @@
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Team_A)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Team)).BeginInit();
             this.panel8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -486,7 +486,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.Team_A);
+            this.groupBox2.Controls.Add(this.Team);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(5, 5);
             this.groupBox2.Name = "groupBox2";
@@ -495,15 +495,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Team";
             // 
-            // Team_A
+            // Team
             // 
-            this.Team_A.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Team_A.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Team_A.Location = new System.Drawing.Point(3, 17);
-            this.Team_A.Name = "Team_A";
-            this.Team_A.RowTemplate.Height = 23;
-            this.Team_A.Size = new System.Drawing.Size(257, 569);
-            this.Team_A.TabIndex = 1;
+            this.Team.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Team.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Team.Location = new System.Drawing.Point(3, 17);
+            this.Team.Name = "Team";
+            this.Team.RowTemplate.Height = 23;
+            this.Team.Size = new System.Drawing.Size(257, 569);
+            this.Team.TabIndex = 1;
             // 
             // panel8
             // 
@@ -672,10 +672,12 @@
             this.rbtn_B.TabStop = true;
             this.rbtn_B.Text = "B";
             this.rbtn_B.UseVisualStyleBackColor = true;
+            this.rbtn_B.CheckedChanged += new System.EventHandler(this.rbtn_CheckedChanged);
             // 
             // rbtn_A
             // 
             this.rbtn_A.AutoSize = true;
+            this.rbtn_A.Checked = true;
             this.rbtn_A.Dock = System.Windows.Forms.DockStyle.Left;
             this.rbtn_A.Location = new System.Drawing.Point(3, 3);
             this.rbtn_A.Name = "rbtn_A";
@@ -684,7 +686,6 @@
             this.rbtn_A.TabStop = true;
             this.rbtn_A.Text = "A";
             this.rbtn_A.UseVisualStyleBackColor = true;
-            this.rbtn_A.CheckedChanged += new System.EventHandler(this.rbtn_CheckedChanged);
             // 
             // panel3
             // 
@@ -767,7 +768,7 @@
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Team_A)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Team)).EndInit();
             this.panel8.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
@@ -823,7 +824,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView Team_A;
+        private System.Windows.Forms.DataGridView Team;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;

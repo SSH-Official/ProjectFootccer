@@ -10,13 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FootccerClient.Footccer.DTO;
+using FootccerClient.Footccer.DAO;
 
 namespace FootccerClient.Windows.Views
 {
-    
     public partial class PartyJoinView : MasterView
     {
-        //FormationView formationViewA;
+        FormationView formationViewA;
+        FormationView formationViewB;
+        List<TeamDTO> TeamListA;
+        List<TeamDTO> TeamListB;
 
         public static int Pidx { get; set; }
 
@@ -26,29 +29,85 @@ namespace FootccerClient.Windows.Views
         }
         public override void Refresh_View()
         {
-            initializeAllObject();
+            if (formationViewA != null&&formationViewB != null)
+            {
+                formationViewA.Close();
+                formationViewB.Close();
+            }
+            ReadSQL();
+            PartyInfoRead();
+            FormationCreate();
+            List_team();
+        }
+
+
+        public void ReadSQL()
+        {
+            TeamListA = Footccer.App.Instance.DB.Team.ReadMember(Pidx, 'A');
+            TeamListB = Footccer.App.Instance.DB.Team.ReadMember(Pidx, 'B');
+        }
+
+        public void FormationCreate()
+        {
+            char team = rbtn_A.Checked ? 'A' : 'B';
+
+            FormationDTO ATeamformationDTO = App.Instance.DB.PartyJoin.ReadFormationInfo(Pidx, 'A');
+            FormationDTO BTeamformationDTO = App.Instance.DB.PartyJoin.ReadFormationInfo(Pidx, 'B');
+
+            List<int> positionList = new List<int>();
+            List<int> positionList2 = new List<int>();
+
+            foreach (var Team in TeamListA)
+            {
+                int formation = Team.formation;
+                positionList.Add(formation);
+            }
+
+            if (ATeamformationDTO == null)
+            {
+                ATeamformationDTO = new FormationDTO(Pidx, 'A', 3, 3, 4, 1);
+            }
+            if (BTeamformationDTO == null)
+            {
+                BTeamformationDTO = new FormationDTO(Pidx, 'A', 3, 3, 4, 1);
+            }
+
+            this.formationViewA = new FormationView(ATeamformationDTO, positionList);
+            PositionView.Controls.Add(this.formationViewA);
+
+            foreach (var Team in TeamListB)
+            {
+                int formation = Team.formation;
+                positionList2.Add(formation);
+            }
+
+            this.formationViewB = new FormationView(BTeamformationDTO, positionList2);
+            PositionView.Controls.Add(this.formationViewB);
+            if (team.Equals('A'))
+            {
+                formationViewA.Visible = true;
+                formationViewB.Visible = false;
+            }
+            else
+            {
+                formationViewA.Visible = false;
+                formationViewB.Visible = true;
+            }
         }
 
         public void List_team()
         {
-            char team = rbtn_A.Checked ? 'A' : 'B';
-            List<TeamDTO> _dtA = Footccer.App.Instance.DB.Team.ReadMember(Pidx, team);
-            Team_A.DataSource = _dtA.Select(item => new {
+            var list = rbtn_A.Checked? TeamListA : TeamListB;
+            Team.DataSource = list.Select(item => new
+            {
                 유저 = item.UserWithTag,
                 팀 = item.side,
                 ELO = item.elo
             })
                 .ToList();
-            /*this.formationViewA = new FormationView('A');
-            formationSpace.Controls.Add(this.formationViewA);
-            this.formationViewA.Visible = true;
-            this.formationViewB = new FormationView('B');
-            formationSpace.Controls.Add(this.formationViewB);
-            this.formationViewB.Visible = false;*/
-            //a_count.Text = _dtA.Count.ToString(); 현재 인원수 가져오기인데 필요한가?
         }
-        
-        public void initializeAllObject()
+
+        public void PartyInfoRead()
         {
             PartyDTO pd = Footccer.App.Instance.DB.Team.readPartyInfo(Pidx);
             party_name.Text = pd.Parname;
@@ -57,12 +116,31 @@ namespace FootccerClient.Windows.Views
             match_kind.Text = pd.Actname;
             match_time.Text = pd.date;
             match_place.Text = pd.PLname;
-            rbtn_A.Select();
         }
 
         private void btn_join_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("참가하는 코드 작성");
+            char team = rbtn_A.Checked ? 'A' : 'B';
+            int position=-1;
+            if (team.Equals('A'))
+            {
+                position = formationViewA.selectedPositionIndex;
+            }
+            else
+            {
+                position = formationViewB.selectedPositionIndex;
+            }
+            ListDTO joinParty = new ListDTO(App.Instance.Session.User.Index, Pidx, team, position);
+            int result=Footccer.App.Instance.DB.PartyJoin.JoinParty(joinParty);
+            if (result > 0)
+            {
+                MessageBox.Show("성공");
+                App.Instance.MainForm.ShowView<MyPartyView>();
+            }
+            else
+            {
+                MessageBox.Show("실패");
+            }
         }
 
         public void ShowMemberInfo(int idx, int Pidx)
@@ -77,7 +155,27 @@ namespace FootccerClient.Windows.Views
 
         private void rbtn_CheckedChanged(object sender, EventArgs e)
         {
+            if (rbtn_A.Checked)
+            {
+                formationViewB.Visible = false;
+                formationViewA.Visible = true;
+                initSelecedPositionIndex(formationViewB, formationViewA);
+            }
+            else
+            {
+                formationViewB.Visible = true;
+                formationViewA.Visible = false;
+                initSelecedPositionIndex(formationViewA, formationViewB);
+            }
             List_team();
+        }
+        private void initSelecedPositionIndex(FormationView dto1, FormationView dto2)
+        {
+            if (dto1.selectedPositionIndex != -1)
+            {
+                dto2.initSelectedPositionIndex();
+                dto2.selectedPositionIndex = -1;
+            }
         }
     }
 }

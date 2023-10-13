@@ -14,18 +14,22 @@ namespace FootccerClient.Footccer.DTO
         public string side { get; }
 
         public int elo { get; }
-        
+
+        public int formation { get; }
+
+
         public int getidx()
         {
             return idx;
         }
 
-        public TeamDTO(int idx,string username,string side, int elo)
+        public TeamDTO(int idx,string username,string side, int elo, int formation)
         {
             this.idx = idx;
             this.유저 = username;
             this.side = side;
             this.elo = elo;
+            this.formation = formation;
         }
     }
 }

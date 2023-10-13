@@ -18,5 +18,23 @@ namespace FootccerClient.Footccer.DAO
 
                 return CRUD.Readmemberone(idx, Pidx);
             });//파티원 정보 읽어오는 코드
+
+        public FormationDTO ReadFormationInfo(int pidx, char team) => ExecuteTransaction((cmd) =>
+        {
+            var CRUD = new PartyJoinCRUD(cmd);
+
+            return CRUD.ReadFormationInfo(pidx, team);
+        });
+
+        public int JoinParty(ListDTO joinParty) => ExecuteTransaction((cmd) =>
+        {
+            var CRUD = new PartyJoinCRUD(cmd);
+
+            int result = 0;
+            result+=CRUD.InsertList(joinParty);
+            result += CRUD.UpdateCount(joinParty);
+
+            return result;
+        });
     }
 }
