@@ -552,6 +552,7 @@
             this.btn_NewParty.TabIndex = 10;
             this.btn_NewParty.Text = "새로 모집";
             this.btn_NewParty.UseVisualStyleBackColor = true;
+            this.btn_NewParty.Click += new System.EventHandler(this.btn_NewParty_Click);
             // 
             // button1
             // 

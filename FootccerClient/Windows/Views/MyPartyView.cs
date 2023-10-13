@@ -66,7 +66,7 @@ namespace FootccerClient.Windows.Views
             for (int i = GetStartIndex(pageNum), end = GetEndIndex(i); i < end; i++)
             {
                 var item = MyPartyList[i];
-                new PartyIndicator(heightItems, panel_MyPartyList, item.Item1, item.Item2);
+                new PartyIndicator(heightItems, panel_MyPartyList, party : item.Item1, isSessionUserLeader : item.Item2);
             }
 
             label_Previous.Enabled = IsFirstPage(pageNum) ? false : true;
@@ -100,6 +100,11 @@ namespace FootccerClient.Windows.Views
         private void label_Next_Click(object sender, EventArgs e)
         {
             CurrentPageNum++;
+        }
+
+        private void btn_NewParty_Click(object sender, EventArgs e)
+        {
+            App.Instance.MainForm.ShowView<PartyCreateView>();
         }
     }
 
