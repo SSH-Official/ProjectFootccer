@@ -31,10 +31,11 @@ namespace FootccerClient.Windows.Views
             InitializeComponent();
             selectedPositionIndex = -1;
         }
-        public FormationView(FormationDTO formationDTO, List<int> positionList) : this()
+        public FormationView(FormationDTO formationDTO, List<int> positionList, char side) : this()
         {
             this.formationDTO = formationDTO;
             this.positionList = positionList;
+            this.formationDTO.side = side;
             initializeNumeric();
             placeFormation();
             updatePartyPosition();

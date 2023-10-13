@@ -108,6 +108,7 @@
     <Compile Include="Footccer\Component\PartyIndicator.Designer.cs">
       <DependentUpon>PartyIndicator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Footccer\DAO\PersonalStat_DAO.cs" />
     <Compile Include="Footccer\DAO\CreateParty_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\LHJDB_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\MyPage_DAO.CRUD.cs" />
@@ -118,9 +119,11 @@
     <Compile Include="Footccer\DAO\Base\DAO_Base.cs" />
     <Compile Include="Footccer\DAO\Base\CRUD_Base.cs" />
     <Compile Include="Footccer\DAO\LHJDB_DAO.cs" />
+    <Compile Include="Footccer\DAO\PersonalSta_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\Position_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\Position_DAO.cs" />
     <Compile Include="Footccer\DAO\teamDAO.cs" />
+    <Compile Include="Footccer\DTO\PersonalStatDTO.cs" />
     <Compile Include="Footccer\DTO\UserCredentialDTO_RegisterUser.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
@@ -221,6 +224,12 @@
     </Compile>
     <Compile Include="Windows\Views\MyPageView.Designer.cs">
       <DependentUpon>MyPageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Views\MyPage_activityView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\MyPage_activityView.Designer.cs">
+      <DependentUpon>MyPage_activityView.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Views\MyPartyView.cs">
       <SubType>Form</SubType>
@@ -342,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\MyPageView.resx">
       <DependentUpon>MyPageView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\MyPage_activityView.resx">
+      <DependentUpon>MyPage_activityView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\MyPartyView.resx">
       <DependentUpon>MyPartyView.cs</DependentUpon>

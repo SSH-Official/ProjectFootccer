@@ -9,7 +9,7 @@ namespace FootccerClient.Footccer.DTO
     public class UserDTO
     {
         public int Index { get; set; }
-        public string ID { get; }
+        public string ID { get; set; }
 
         public UserDTO(int index, string iD)
         {

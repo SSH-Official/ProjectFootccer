@@ -24,6 +24,8 @@ namespace FootccerClient.Footccer.Manager
         public PartyJoinDAO PartyJoin { get; }
         public MyParty_DAO MyParty { get; internal set; }
 
+        public PersonalStat_DAO personalstat{get;}
+
         public DBManager()
         {
             Settings = DBSettings.KB_Default;
@@ -37,6 +39,7 @@ namespace FootccerClient.Footccer.Manager
             Team = new teamDAO();
             PartyJoin = new PartyJoinDAO();
             MyParty = new MyParty_DAO();
+            personalstat = new PersonalStat_DAO();
         }
 
 

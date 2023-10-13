@@ -47,7 +47,4 @@ namespace FootccerClient.Footccer.DAO
 
     }
 
-
-
-
 }
