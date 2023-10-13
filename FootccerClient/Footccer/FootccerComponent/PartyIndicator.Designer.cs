@@ -1,4 +1,4 @@
-﻿namespace FootccerClient.Footccer.Component
+﻿namespace FootccerClient.Footccer.FootccerComponent
 {
     partial class PartyIndicator
     {

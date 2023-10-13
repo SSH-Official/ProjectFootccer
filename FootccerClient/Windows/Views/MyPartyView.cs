@@ -1,5 +1,5 @@
 ﻿using FootccerClient.Footccer;
-using FootccerClient.Footccer.Component;
+using FootccerClient.Footccer.FootccerComponent;
 using FootccerClient.Footccer.DTO;
 using FootccerClient.Windows.Pops;
 using Lib.Frame;

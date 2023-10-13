@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FootccerClient.Footccer.Component;
+using FootccerClient.Footccer.FootccerComponent;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FootccerClient.Footccer.Component.Tests
+namespace FootccerClient.Footccer.FootccerComponent.Tests
 {
     [TestClass()]
     public class PartyIndicatorTests

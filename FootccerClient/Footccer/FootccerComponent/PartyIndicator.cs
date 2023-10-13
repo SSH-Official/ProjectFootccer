@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FootccerClient.Footccer.Component
+namespace FootccerClient.Footccer.FootccerComponent
 {
     public partial class PartyIndicator : UserControl
     {
