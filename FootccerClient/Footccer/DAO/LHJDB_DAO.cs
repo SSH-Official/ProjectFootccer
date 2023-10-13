@@ -21,5 +21,7 @@ namespace FootccerClient.Footccer.DAO
         public StatDTO getStat(int List_idx) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.getStat(List_idx));
         public int updateStat(StatDTO dto) => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.updateStat(dto));
 
+        public DataTable getELORecordTable() => ExecuteTransaction(new CRUD(), (CRUD) => CRUD.getELORecordTable());
+
     }
 }
