@@ -102,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
+    <Compile Include="Footccer\DAO\TemporaryDAO.cs" />
+    <Compile Include="Footccer\DTO\Builder\PartyDTOBuilder.cs" />
+    <Compile Include="Footccer\FootccerComponent\FootccerExtensions.cs" />
     <Compile Include="Footccer\FootccerComponent\PartyIndicator.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -315,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Footccer\FootccerComponent\IncidatorSpace.resx">
       <DependentUpon>IncidatorSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Footccer\FootccerComponent\PartyIndicatorItem.resx">
+      <DependentUpon>PartyIndicatorItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Main\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

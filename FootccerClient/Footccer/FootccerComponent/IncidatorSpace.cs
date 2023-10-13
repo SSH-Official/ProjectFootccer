@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootccerClient.Footccer.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,12 +19,72 @@ namespace FootccerClient.Footccer.FootccerComponent
         public Padding itemPadding { get; set; }
         private Random random { get; set; } = new Random();
 
+        private List<PartyDTO> partyData { get; set; } = null;
+        public List<PartyDTO> PartyList 
+        {
+            get
+            {
+                return partyData;
+            }
+            set
+            {
+                partyData = value;
+                int PageShowCount = Count.X * Count.Y;
+                
+                _maxPage = PageShowCount == 0? 0 :
+                    (1 + (partyData.Count - 1) / PageShowCount);
+            }
+        }
+        
+        private int _currentPage;
+        private int _maxPage;
+        public int PageCursor 
+        {
+            get
+            {
+                return _currentPage;
+            }
+
+            set
+            {
+                if (value <= 0 || value > _maxPage)
+                {
+                    throw new ArgumentOutOfRangeException($"value Out Of Range [0,{_maxPage}]");
+                }
+                _currentPage = value;
+                ShowPage(_currentPage);
+            }
+        }
+
+        private ControlCollection CustomControls { get { return flowLayoutPanel_Base.Controls; } }
+
+        private void ShowPage(int currentPage)
+        {
+            int length = CustomControls.Count;
+            int startIndex_thisPage = (currentPage - 1) * Count.X * Count.Y;
+            for (int i = 0; i < length; i++)
+            {
+                if (! (CustomControls[i] is PartyIndicatorItem)) continue;
+                var control = (CustomControls[i] as PartyIndicatorItem);
+                control.UpdateInfo(PartyList[i + startIndex_thisPage]);
+            }
+        }
+
         public void ShowDebugLog()
         {
             string log = GetLog();
             MessageBox.Show(log);
         }
+
         private string GetLog()
+        {
+            return 
+                $"CurrentPage : {_currentPage}\r\n" +
+                $"MaxPage : {_maxPage}\r\n" +
+                $"Count : {partyData.Count}";
+        }
+
+        private string GetSizeLog()
         {
             return $"itemSize = {itemSize}\r\n" +
                 $"Count = {Count}\r\n" +
@@ -54,6 +115,7 @@ namespace FootccerClient.Footccer.FootccerComponent
             CreateNewLabels_ForCount(horizontalCount, verticalCount);
 
             ResizeItems();
+            
         }
         private void SetMemberParameters(int horizontalCount, int verticalCount, int itemPadding)
         {

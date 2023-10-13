@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootccerClient.Footccer.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,37 @@ namespace FootccerClient.Footccer.FootccerComponent
 {
     public partial class PartyIndicatorItem : UserControl
     {
-        public object Value { get; set; }
+        public PartyDTO Value { get; set; }
         public PartyIndicatorItem()
         {
             InitializeComponent();
+        }
 
+        public void UpdateInfo(PartyDTO partyDTO)
+        {
+            MessageBox.Show($"UpdateInfo Called! for {partyDTO}");
+            Value = partyDTO;
 
-            
+            panel_Base.BackColor = GetBorderColor();
+            label_Information.Text = GetInfoText();
+        }
+
+        private string GetInfoText()
+        {
+            return Value.date.ParseToString_FromDateString(false);
+        }
+
+        private Color GetBorderColor()
+        {
+            switch (Value.Actname.Substring(0,2))
+            {
+                case "축구":
+                    return Color.YellowGreen;
+                case "풋살":
+                    return Color.Cyan;
+                default:
+                    return Color.Magenta;
+            }
         }
     }
 }

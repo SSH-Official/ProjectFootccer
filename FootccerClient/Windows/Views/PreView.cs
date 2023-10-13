@@ -1,4 +1,5 @@
-﻿using FootccerClient.Footccer.FootccerComponent;
+﻿using FootccerClient.Footccer.DAO;
+using FootccerClient.Footccer.FootccerComponent;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,9 @@ namespace FootccerClient.Windows.Views
         {
             panel_Base.Controls.Clear();
             TestObject = new IncidatorSpace(7, 4, panel_Base, 2);
+            TestObject.PartyList = new TemporaryDAO().ReadAllPartyList();
+            TestObject.PageCursor = 1;
+            TestObject.ShowDebugLog();
         }
 
         private void PreView_KeyDown(object sender, KeyEventArgs e)
