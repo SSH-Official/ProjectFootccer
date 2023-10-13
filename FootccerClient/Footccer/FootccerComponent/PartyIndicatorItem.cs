@@ -21,7 +21,6 @@ namespace FootccerClient.Footccer.FootccerComponent
 
         public void UpdateInfo(PartyDTO partyDTO)
         {
-            MessageBox.Show($"UpdateInfo Called! for {partyDTO}");
             Value = partyDTO;
 
             panel_Base.BackColor = GetBorderColor();
@@ -30,7 +29,12 @@ namespace FootccerClient.Footccer.FootccerComponent
 
         private string GetInfoText()
         {
-            return Value.date.ParseToString_FromDateString(false);
+            return
+                $"{Value.Actname.Substring(0, 2)}\r\n" +
+                $"{Value.date.ParseToString_FromDateString(false)}\r\n" +
+                $"{Value.PLname}\r\n" +
+                $"{Value.Parname} ({Value.UserWithTag})";
+                ;
         }
 
         private Color GetBorderColor()
@@ -45,5 +49,6 @@ namespace FootccerClient.Footccer.FootccerComponent
                     return Color.Magenta;
             }
         }
+
     }
 }

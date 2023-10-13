@@ -56,16 +56,17 @@ namespace FootccerClient.Footccer.FootccerComponent
             }
         }
 
-        private ControlCollection CustomControls { get { return flowLayoutPanel_Base.Controls; } }
+        private List<Control> madeControls { get; set; } = new List<Control>();
 
         private void ShowPage(int currentPage)
         {
-            int length = CustomControls.Count;
+            int length = madeControls.Count;
             int startIndex_thisPage = (currentPage - 1) * Count.X * Count.Y;
             for (int i = 0; i < length; i++)
             {
-                if (! (CustomControls[i] is PartyIndicatorItem)) continue;
-                var control = (CustomControls[i] as PartyIndicatorItem);
+                if (! (madeControls[i] is PartyIndicatorItem)
+                    || i >= PartyList.Count) continue;
+                var control = (madeControls[i] as PartyIndicatorItem);
                 control.UpdateInfo(PartyList[i + startIndex_thisPage]);
             }
         }
@@ -128,9 +129,10 @@ namespace FootccerClient.Footccer.FootccerComponent
             for (int y = 0; y < verticalCount; y++)
             {
                 for (int x = 0; x < horizontalCount; x++)
-                {   
-                    var newItem = CreateNewItem_AsPresetParameters<Label>();
+                {
+                    var newItem = CreateNewItem_AsPresetParameters<Control>();
                     flowLayoutPanel_Base.Controls.Add(newItem);
+                    madeControls.Add(newItem);
                 }
             }
             
@@ -146,7 +148,6 @@ namespace FootccerClient.Footccer.FootccerComponent
             newLabel.TextAlign = ContentAlignment.MiddleCenter;
             int sizeValue = Math.Min(itemSize.Width, itemSize.Height);
             newLabel.Size = new Size(sizeValue, sizeValue);
-
             newLabel.Margin = itemPadding;
 
             if (random.Next(0, 2) == 0)
@@ -160,7 +161,7 @@ namespace FootccerClient.Footccer.FootccerComponent
                 newLabel.BackColor = Color.DarkCyan;
             }
 
-            return newLabel as T;
+            return newItem as T;
         }
 
         private void ResizeItems()

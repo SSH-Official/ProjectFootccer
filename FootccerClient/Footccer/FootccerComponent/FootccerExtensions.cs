@@ -31,8 +31,8 @@ public static class FootccerExtensions
         int Second = int.Parse(timeParts[2]);
 
         string result =
-            (indicateYear ? $"{Year}년 " : string.Empty) +
-            $"{Month}월 {Day}일 {AMPM} {Hour}시 {Minute}분";
+            (indicateYear ? $"{Year}-" : string.Empty) +
+            $"{Month:D2}-{Day:D2} {AMPM} {Hour:D2}:{Minute:D2}";
         return result;
     }
     public static string ParseToString_FromDateTime(this DateTime dt, bool indicateYear)

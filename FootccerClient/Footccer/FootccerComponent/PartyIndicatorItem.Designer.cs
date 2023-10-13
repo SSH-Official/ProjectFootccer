@@ -39,6 +39,8 @@
             // 
             // panel_Base
             // 
+            this.panel_Base.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel_Base.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Base.Controls.Add(this.tableLayoutPanel1);
             this.panel_Base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
@@ -59,25 +61,27 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 63.19444F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.80556F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(144, 144);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(142, 142);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label_Information
             // 
+            this.label_Information.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label_Information.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_Information.Location = new System.Drawing.Point(3, 91);
+            this.label_Information.Location = new System.Drawing.Point(3, 89);
             this.label_Information.Name = "label_Information";
-            this.label_Information.Size = new System.Drawing.Size(138, 53);
+            this.label_Information.Size = new System.Drawing.Size(136, 53);
             this.label_Information.TabIndex = 0;
             this.label_Information.Text = "표시내용";
             this.label_Information.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox_ToShow
             // 
+            this.pictureBox_ToShow.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pictureBox_ToShow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox_ToShow.Location = new System.Drawing.Point(3, 3);
             this.pictureBox_ToShow.Name = "pictureBox_ToShow";
-            this.pictureBox_ToShow.Size = new System.Drawing.Size(138, 85);
+            this.pictureBox_ToShow.Size = new System.Drawing.Size(136, 83);
             this.pictureBox_ToShow.TabIndex = 1;
             this.pictureBox_ToShow.TabStop = false;
             // 

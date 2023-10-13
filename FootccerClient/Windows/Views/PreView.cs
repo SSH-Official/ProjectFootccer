@@ -31,10 +31,9 @@ namespace FootccerClient.Windows.Views
         public override void Refresh_View()
         {
             panel_Base.Controls.Clear();
-            TestObject = new IncidatorSpace(7, 4, panel_Base, 2);
+            TestObject = new IncidatorSpace(5, 3, panel_Base, 5);
             TestObject.PartyList = new TemporaryDAO().ReadAllPartyList();
             TestObject.PageCursor = 1;
-            TestObject.ShowDebugLog();
         }
 
         private void PreView_KeyDown(object sender, KeyEventArgs e)
