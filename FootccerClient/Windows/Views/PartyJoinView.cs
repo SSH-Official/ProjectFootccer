@@ -10,128 +10,172 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FootccerClient.Footccer.DTO;
+using FootccerClient.Footccer.DAO;
 
 namespace FootccerClient.Windows.Views
 {
     public partial class PartyJoinView : MasterView
     {
+        FormationView formationViewA;
+        FormationView formationViewB;
+        List<TeamDTO> TeamListA;
+        List<TeamDTO> TeamListB;
+
+        public static int Pidx { get; set; }
+
         public PartyJoinView()
         {
             InitializeComponent();
-            initializeAllObject();
+        }
+        public override void Refresh_View()
+        {
+            if (formationViewA != null&&formationViewB != null)
+            {
+                formationViewA.Close();
+                formationViewB.Close();
+            }
+            ReadSQL();
+            PartyInfoRead();
+            FormationCreate();
+            List_team();
+        }
+
+
+        public void ReadSQL()
+        {
+            TeamListA = Footccer.App.Instance.DB.Team.ReadMember(Pidx, 'A');
+            TeamListB = Footccer.App.Instance.DB.Team.ReadMember(Pidx, 'B');
+        }
+
+        public void FormationCreate()
+        {
+            char team = rbtn_A.Checked ? 'A' : 'B';
+
+            FormationDTO ATeamformationDTO = App.Instance.DB.PartyJoin.ReadFormationInfo(Pidx, 'A');
+            FormationDTO BTeamformationDTO = App.Instance.DB.PartyJoin.ReadFormationInfo(Pidx, 'B');
+
+            List<int> positionList = new List<int>();
+            List<int> positionList2 = new List<int>();
+
+            foreach (var Team in TeamListA)
+            {
+                int formation = Team.formation;
+                positionList.Add(formation);
+            }
+
+            if (ATeamformationDTO == null)
+            {
+                ATeamformationDTO = new FormationDTO(Pidx, 'A', 3, 3, 4, 1);
+            }
+            if (BTeamformationDTO == null)
+            {
+                BTeamformationDTO = new FormationDTO(Pidx, 'A', 3, 3, 4, 1);
+            }
+
+            this.formationViewA = new FormationView(ATeamformationDTO, positionList);
+            PositionView.Controls.Add(this.formationViewA);
+
+            foreach (var Team in TeamListB)
+            {
+                int formation = Team.formation;
+                positionList2.Add(formation);
+            }
+
+            this.formationViewB = new FormationView(BTeamformationDTO, positionList2);
+            PositionView.Controls.Add(this.formationViewB);
+            if (team.Equals('A'))
+            {
+                formationViewA.Visible = true;
+                formationViewB.Visible = false;
+            }
+            else
+            {
+                formationViewA.Visible = false;
+                formationViewB.Visible = true;
+            }
         }
 
         public void List_team()
         {
-            List<TeamDTO> _dtA = Footccer.App.Instance.DB.Team.Readmember("'A'");
-            Team_A.DataSource = _dtA;
-            a_count.Text = _dtA.Count.ToString();
-
-            List<TeamDTO> _dtB = Footccer.App.Instance.DB.Team.Readmember("'B'");
-            Team_B.DataSource = _dtB;
-            b_count.Text = _dtB.Count.ToString();
+            var list = rbtn_A.Checked? TeamListA : TeamListB;
+            Team.DataSource = list.Select(item => new
+            {
+                유저 = item.UserWithTag,
+                팀 = item.side,
+                ELO = item.elo
+            })
+                .ToList();
         }
-        
-        public void initializeAllObject()
+
+        public void PartyInfoRead()
         {
-            PartyDTO pd = Footccer.App.Instance.DB.Team.readPartyInfo();
+            PartyDTO pd = Footccer.App.Instance.DB.Team.readPartyInfo(Pidx);
             party_name.Text = pd.Parname;
             leader_name.Text = pd.UserWithTag;
             leader_phone.Text = pd.getphone();
             match_kind.Text = pd.Actname;
             match_time.Text = pd.date;
             match_place.Text = pd.PLname;
-
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel16_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void addComboBoxItems(List<string> list, ComboBox cBox)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                cBox.Items.Add(list[i]);
-            }
-        }
-
-        /*private void cbox_position_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbox_position.Items.Clear();
-            cbox_position.Text = string.Empty;
-            int positionIndex = cbox_position.SelectedIndex + 1;
-            List<string> list = App.Instance.DB.CreateParty.getPlaceName(positionIndex);
-            addComboBoxItems(list, cbox_position);
-        }*/
 
         private void btn_join_Click(object sender, EventArgs e)
         {
-            //팝업창 띄워서 팀,포지션 정하게 하기
-            //팀은 radiobox이용
-            //포지션은popup창 이용
+            char team = rbtn_A.Checked ? 'A' : 'B';
+            int position=-1;
+            if (team.Equals('A'))
+            {
+                position = formationViewA.selectedPositionIndex;
+            }
+            else
+            {
+                position = formationViewB.selectedPositionIndex;
+            }
+            ListDTO joinParty = new ListDTO(App.Instance.Session.User.Index, Pidx, team, position);
+            int result=Footccer.App.Instance.DB.PartyJoin.JoinParty(joinParty);
+            if (result > 0)
+            {
+                MessageBox.Show("성공");
+                App.Instance.MainForm.ShowView<MyPartyView>();
+            }
+            else
+            {
+                MessageBox.Show("실패");
+            }
         }
 
-        private void panel27_Paint(object sender, PaintEventArgs e)
+        public void ShowMemberInfo(int idx, int Pidx)
         {
+            var DataRead = App.Instance.DB.PartyJoin.ReadUserInfo(idx, Pidx);
+        }//파티원 정보 읽어오는 코드
 
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            App.Instance.MainForm.ShowView<PartySearchView>();
         }
 
-        private void PartyJoinView_Load(object sender, EventArgs e)
+        private void rbtn_CheckedChanged(object sender, EventArgs e)
         {
+            if (rbtn_A.Checked)
+            {
+                formationViewB.Visible = false;
+                formationViewA.Visible = true;
+                initSelecedPositionIndex(formationViewB, formationViewA);
+            }
+            else
+            {
+                formationViewB.Visible = true;
+                formationViewA.Visible = false;
+                initSelecedPositionIndex(formationViewA, formationViewB);
+            }
             List_team();
         }
-        public void clearMember()
+        private void initSelecedPositionIndex(FormationView dto1, FormationView dto2)
         {
-            mbr_name.Text = "";
-            mbr_gender.Text = "";
-            mbr_email.Text = "";
-            mbr_phone.Text = "";
-            mbr_position.Text = "";
-            mbr_residence.Text = "";
-        }
-        private void Team_A_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            clearMember();
-            if (e.RowIndex >= 0)
+            if (dto1.selectedPositionIndex != -1)
             {
-                TeamDTO selectedPersonnel = (Team_A.DataSource as List<TeamDTO>)[e.RowIndex];
-                ShowMemberInfo(selectedPersonnel.getidx());                
-            }            
+                dto2.initSelectedPositionIndex();
+                dto2.selectedPositionIndex = -1;
+            }
         }
-
-        public void ShowMemberInfo(int idx)
-        {
-            var DataRead = App.Instance.DB.PartyJoin.ReadUserInfo(idx);
-
-            //DataRead.Item1
-            //mbr_name.Text = DataRead.Name;
-
-            // 1. 여기서 쓸 전용 DTO를 만든다...
-            //      1.1 PJDTO -> Name Gender ... 가지게. > 1.1
-            //          PJDTO.Name;
-            //      1.2 PJDTO -> UserInfo, Position
-            //          PJDTO.UserInfo.Name;
-
-            // 2. 튜플로 가져온다
-            //  (UserInfoDTO userinfo, PositionDTO position)
-
-
-
-            // 이름 성별 거주지 연락처 이메일 -> UserInfo DTO에서 읽을 수 있음
-            // 포지션-> 파티에 내가 할당된 포지션.. 다른 DTO(DB테이블)에서..
-
-            // 각각 TextBox에 뿌려야함....
-            //mbr_name.Text = DataRead.Name;
-            // ...
-        }
-
-
     }
 }

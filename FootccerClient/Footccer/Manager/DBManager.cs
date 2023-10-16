@@ -19,7 +19,7 @@ namespace FootccerClient.Footccer.Manager
 
         public Position_DAO Position { get; }
         public LHJDB_DAO LHJDB { get; }
-        public teamDAO Team { get; }
+        public TeamDAO Team { get; }
 
         public PartyJoinDAO PartyJoin { get; }
         public MyParty_DAO MyParty { get; internal set; }
@@ -36,7 +36,7 @@ namespace FootccerClient.Footccer.Manager
             Login = new DBLogin_DAO();
             Position = new Position_DAO();
             LHJDB = new LHJDB_DAO();
-            Team = new teamDAO();
+            Team = new TeamDAO();
             PartyJoin = new PartyJoinDAO();
             MyParty = new MyParty_DAO();
             personalstat = new PersonalStat_DAO();

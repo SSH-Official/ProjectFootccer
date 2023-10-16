@@ -109,6 +109,8 @@
     <Compile Include="Footccer\Component\PartyIndicator.Designer.cs">
       <DependentUpon>PartyIndicator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Footccer\DAO\Base\PartyJoinCRUD.cs" />
+    <Compile Include="Footccer\DAO\Base\teammemberCRUD.cs" />
     <Compile Include="Footccer\DAO\PersonalStat_DAO.cs" />
     <Compile Include="Footccer\DAO\CreateParty_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\LHJDB_DAO.CRUD.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="Footccer\DAO\Position_DAO.cs" />
     <Compile Include="Footccer\DAO\teamDAO.cs" />
     <Compile Include="Footccer\DTO\PersonalStatDTO.cs" />
+    <Compile Include="Footccer\DTO\TeamMemberDTO.cs" />
     <Compile Include="Footccer\DTO\UserCredentialDTO_RegisterUser.cs" />
     <Compile Include="Footccer\DTO\Builder\ActivityDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\Builder\DTOBuilder.cs" />
