@@ -11,7 +11,6 @@ namespace FootccerClient
 {
     internal static class Program
     {
-        // test
         /// <summary>
         /// 해당 애플리케이션의 주 진입점입니다.
         /// </summary>
@@ -21,7 +20,6 @@ namespace FootccerClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(App.Instance.LoginForm);
-            //Application.Run(new ViewPop<PreView>());
         }
     }
 }
