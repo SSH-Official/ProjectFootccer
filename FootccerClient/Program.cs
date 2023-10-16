@@ -20,8 +20,8 @@ namespace FootccerClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(App.Instance.LoginForm);
-            Application.Run(new ViewPop<PreView>());
+            Application.Run(App.Instance.LoginForm);
+            //Application.Run(new ViewPop<PreView>());
         }
     }
 }
