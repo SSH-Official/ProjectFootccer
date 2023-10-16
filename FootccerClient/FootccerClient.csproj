@@ -103,12 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Footccer\App.cs" />
-    <Compile Include="Footccer\Component\PartyIndicator.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Footccer\Component\PartyIndicator.Designer.cs">
-      <DependentUpon>PartyIndicator.cs</DependentUpon>
-    </Compile>
     <Compile Include="Footccer\DAO\Base\PartyJoinCRUD.cs" />
     <Compile Include="Footccer\DAO\Base\teammemberCRUD.cs" />
     <Compile Include="Footccer\DAO\PersonalStat_DAO.cs" />
@@ -126,6 +120,8 @@
     <Compile Include="Footccer\DAO\Position_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\Position_DAO.cs" />
     <Compile Include="Footccer\DAO\teamDAO.cs" />
+    <Compile Include="Footccer\DAO\TemporaryDAO.cs" />
+    <Compile Include="Footccer\DTO\Builder\PartyDTOBuilder.cs" />
     <Compile Include="Footccer\DTO\PersonalStatDTO.cs" />
     <Compile Include="Footccer\DTO\TeamMemberDTO.cs" />
     <Compile Include="Footccer\DTO\UserCredentialDTO_RegisterUser.cs" />
@@ -143,6 +139,25 @@
     <Compile Include="Footccer\DTO\RecordDTO.cs" />
     <Compile Include="Footccer\DTO\StatDTO.cs" />
     <Compile Include="Footccer\DTO\TeamDTO.cs" />
+    <Compile Include="Footccer\FootccerComponent\FootccerExtensions.cs" />
+    <Compile Include="Footccer\FootccerComponent\IncidatorSpace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Footccer\FootccerComponent\IncidatorSpace.Designer.cs">
+      <DependentUpon>IncidatorSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Footccer\FootccerComponent\PartyIndicator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Footccer\FootccerComponent\PartyIndicator.Designer.cs">
+      <DependentUpon>PartyIndicator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Footccer\FootccerComponent\PartyIndicatorItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Footccer\FootccerComponent\PartyIndicatorItem.Designer.cs">
+      <DependentUpon>PartyIndicatorItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Footccer\Manager\DBSettings.cs" />
     <Compile Include="Footccer\DAO\MyParty_DAO.cs" />
     <Compile Include="Windows\Main\LoginForm.cs">
@@ -229,6 +244,18 @@
     <Compile Include="Windows\Views\ELORecordView.Designer.cs">
       <DependentUpon>ELORecordView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Views\FootccerView\MainScreenView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\FootccerView\MainScreenView.Designer.cs">
+      <DependentUpon>MainScreenView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Views\FootccerView\MenuView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\FootccerView\MenuView.Designer.cs">
+      <DependentUpon>MenuView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Views\MyPageView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +326,12 @@
     <Compile Include="Windows\Views\PositionView.Designer.cs">
       <DependentUpon>PositionView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Views\PreView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\PreView.Designer.cs">
+      <DependentUpon>PreView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Views\RecordView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,8 +344,14 @@
     <Compile Include="Windows\Views\FormationView.Designer.cs">
       <DependentUpon>FormationView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Footccer\Component\PartyIndicator.resx">
+    <EmbeddedResource Include="Footccer\FootccerComponent\IncidatorSpace.resx">
+      <DependentUpon>IncidatorSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Footccer\FootccerComponent\PartyIndicator.resx">
       <DependentUpon>PartyIndicator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Footccer\FootccerComponent\PartyIndicatorItem.resx">
+      <DependentUpon>PartyIndicatorItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Main\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -362,6 +401,12 @@
     <EmbeddedResource Include="Windows\Views\ELORecordView.resx">
       <DependentUpon>ELORecordView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\FootccerView\MainScreenView.resx">
+      <DependentUpon>MainScreenView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\FootccerView\MenuView.resx">
+      <DependentUpon>MenuView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\MyPageView.resx">
       <DependentUpon>MyPageView.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PositionView.resx">
       <DependentUpon>PositionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\PreView.resx">
+      <DependentUpon>PreView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\RecordView.resx">
       <DependentUpon>RecordView.cs</DependentUpon>

@@ -69,6 +69,7 @@ namespace FootccerClient.Windows.Views
                 App.Instance.DB.CreateParty.setFormationDTO(teamAFormationDTO);
                 App.Instance.DB.CreateParty.setFormationDTO(teamBFormationDTO);
                 MessageBox.Show("성공");
+                App.Instance.MainForm.ShowView<MyPartyView>();
             }
             else
             {
@@ -105,6 +106,11 @@ namespace FootccerClient.Windows.Views
                 dto2.initSelectedPositionIndex();
                 dto2.selectedPositionIndex = -1;
             }
+        }
+
+        private void btn_regist_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
