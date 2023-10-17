@@ -1,5 +1,7 @@
 ﻿using FootccerClient.Footccer;
 using FootccerClient.Windows.Views;
+using FootccerClient.Windows.Views.FootccerView;
+using FootccerClient.Windows.Views.SubMenu;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;
@@ -15,14 +17,29 @@ namespace FootccerClient
 {
     public partial class MainForm : Form
     {
+        
+
         private List<MasterView> Views { get; set; }
         private List<Label> MenuControls { get; set; }
+
+        private MasterView _CurrentView { get; set; }
+        private MasterView CurrentView 
+        {
+            get => _CurrentView;
+            set
+            {
+                value.Visible = true;
+                value.Refresh_View();
+                _CurrentView = value;
+            }
+        }
         
         
         public MainForm()
         {
             InitializeComponent();
             InitializeViews();
+            this.WindowState = FormWindowState.Maximized;
         }
 
 
@@ -34,7 +51,7 @@ namespace FootccerClient
         private void label_MyParty_Click(object sender, EventArgs e)
         {
             SelectMenu(sender as Label);
-            ShowView<MyPartyView>();
+            ShowView<MyPartyMenuView>();
         }
 
         private void label_FindParty_Click(object sender, EventArgs e)
@@ -60,5 +77,22 @@ namespace FootccerClient
             SelectMenu(sender as Label);
             ShowView<ConfigView>();
         }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (CurrentView is MainScreenView)
+                {
+                    AskLogout();
+                }
+                else
+                {
+                    ShowView<MainScreenView>();
+                }
+                
+            }
+        }
+
     }
 }

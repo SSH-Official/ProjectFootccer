@@ -32,11 +32,11 @@
             this.panel_Base = new System.Windows.Forms.Panel();
             this.panel_ViewSpace = new System.Windows.Forms.Panel();
             this.panel_Top = new System.Windows.Forms.Panel();
+            this.label_Title = new System.Windows.Forms.Label();
             this.panel_Profile = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel_Bottom = new System.Windows.Forms.Panel();
             this.button_BackToMainMenu = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel_Base.SuspendLayout();
             this.panel_Top.SuspendLayout();
             this.panel_Profile.SuspendLayout();
@@ -67,13 +67,23 @@
             // panel_Top
             // 
             this.panel_Top.BackColor = System.Drawing.Color.Cyan;
-            this.panel_Top.Controls.Add(this.label1);
+            this.panel_Top.Controls.Add(this.label_Title);
             this.panel_Top.Controls.Add(this.panel_Profile);
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
             this.panel_Top.Size = new System.Drawing.Size(1127, 100);
             this.panel_Top.TabIndex = 1;
+            // 
+            // label_Title
+            // 
+            this.label_Title.AutoSize = true;
+            this.label_Title.Font = new System.Drawing.Font("배달의민족 도현", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_Title.Location = new System.Drawing.Point(3, 5);
+            this.label_Title.Name = "label_Title";
+            this.label_Title.Size = new System.Drawing.Size(90, 29);
+            this.label_Title.TabIndex = 0;
+            this.label_Title.Text = "메뉴 명";
             // 
             // panel_Profile
             // 
@@ -124,16 +134,6 @@
             this.button_BackToMainMenu.UseVisualStyleBackColor = false;
             this.button_BackToMainMenu.Click += new System.EventHandler(this.button_BackToMainMenu_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 15F);
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "메뉴 명";
-            // 
             // MenuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -162,6 +162,6 @@
         private System.Windows.Forms.Button button_BackToMainMenu;
         private System.Windows.Forms.Panel panel_Profile;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Title;
     }
 }

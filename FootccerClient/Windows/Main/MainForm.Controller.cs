@@ -1,4 +1,7 @@
-﻿using FootccerClient.Windows.Views;
+﻿using FootccerClient.Footccer;
+using FootccerClient.Windows.Views;
+using FootccerClient.Windows.Views.FootccerView;
+using FootccerClient.Windows.Views.SubMenu;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;
@@ -41,9 +44,7 @@ namespace FootccerClient
         {
             HideAllView();
 
-            MasterView view = GetView(aType);
-            view.Visible = true;
-            view.Refresh_View();
+            CurrentView = GetView(aType);
         }
         private void HideAllView()
         {
@@ -57,7 +58,11 @@ namespace FootccerClient
                 if (view.GetType() == aType)
                 { return view; }
             }
-            return null;
+
+            MasterView newview = (MasterView)Activator.CreateInstance(aType);
+            Views.Add(newview);
+            InitializeView(newview);
+            return newview;
         }
 
         private DialogResult ShowPop(Type PopType, ePopMode aPopMode = ePopMode.None, object aParam = null)
@@ -89,14 +94,17 @@ namespace FootccerClient
                 };
 
             Views = new List<MasterView>()
-                {
+                {/*
                     new MyPageView(),
                     new MyPartyView(),
                     new PartyJoinView(),
                     new PartySearchView(),
                     new ConfigView(),
                     new ClubView(),
-                    new PartyCreateView()
+                    new PartyCreateView(),
+                    new MyPartyMenuView(),
+                    new MainScreenView()
+                */
                 };
 
             foreach (MasterView view in this.Views)
@@ -110,6 +118,16 @@ namespace FootccerClient
             view.Parent = panel_ViewSpace;
             view.Dock = DockStyle.Fill;
             view.Visible = false;
+        }
+
+
+        private void AskLogout()
+        {
+            var result = MessageBox.Show("로그아웃 하시겠습니까?", "", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                App.Instance.Session.LogOut();
+            }
         }
     }
 }

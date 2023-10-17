@@ -17,31 +17,54 @@ namespace FootccerClient.Windows.Views
 {
     public partial class MyPartyView : MasterView
     {
-        private List<(PartyDTO, bool)> MyPartyList { get; set; }
+        private List<(PartyDTO, bool)> _MyPartyList { get; set; }
+        private List<(PartyDTO, bool)> MyPartyList
+        {
+            get => _MyPartyList;
+            set
+            {
+                _MyPartyList = value;
+                IndicatorComponent.PartyListData = value;
+            }
+        }
 
-        private int TotalPages { get; set; }
-        private int PageViewCount { get; set; }
+        private int TotalPages { get => 1 + (MyPartyList.Count - 1) / PageViewCount; }
+        private Point _PageCount { get; set; }
+        private Point PageCount 
+        {
+            get => _PageCount;
+            set
+            {
+
+            }
+        }
+        private int PageViewCount { get => PageCount.X * PageCount.Y; }
         private int _CurrentPageNum { get; set; }
 
         private int CurrentPageNum
         {
-            get
-            {
-                return _CurrentPageNum;
-            }
+            get => _CurrentPageNum;
             set
             {
                 _CurrentPageNum = value;
                 label_CurrentPage.Text = $"{_CurrentPageNum}/{TotalPages}";
-                ShowPage(_CurrentPageNum, 20, 40);
+                ShowPage(_CurrentPageNum);
             }
         }
 
-
-        public MyPartyView(int pageCount = 5)
+        public MyPartyView() : this(5, 2) { }
+        public MyPartyView(int pageWidthCount, int pageHeightCount)
         {
-            PageViewCount = pageCount;
+
             InitializeComponent();
+            InitializePartyIndicator(pageWidthCount, pageHeightCount);
+        }
+
+        private void InitializePartyIndicator(int countX, int countY)
+        {
+            PageCount = new Point(countX,countY);
+            panel_MyPartyList.Controls.Clear();
+            IndicatorComponent = new IndicatorSpace(PageCount.X, PageCount.Y, panel_MyPartyList, 5, null, null);
         }
 
         public override void Refresh_View()
@@ -49,25 +72,16 @@ namespace FootccerClient.Windows.Views
             if (App.Instance.Session.Offline) return;
 
             MyPartyList = App.Instance.DB.MyParty.ReadPartyListAsSession();
-            TotalPages = GetTotalPages();
 
-            CurrentPageNum = 1;
+            ShowPage(1);
         }
 
-        private int GetTotalPages() => 1 + (MyPartyList.Count - 1) / PageViewCount;
-
-        private void ShowPage(int pageNum, int heightCategory, int heightItems)
+        private IndicatorSpace IndicatorComponent { get; set; }
+        private void ShowPage(int pageNum)
         {
             ValidatePageNum_InBoundary(pageNum);
 
-            panel_MyPartyList.Controls.Clear();
-            new PartyIndicator(heightCategory, panel_MyPartyList);
-
-            for (int i = GetStartIndex(pageNum), end = GetEndIndex(i); i < end; i++)
-            {
-                var item = MyPartyList[i];
-                new PartyIndicator(heightItems, panel_MyPartyList, party : item.Item1, isSessionUserLeader : item.Item2);
-            }
+            IndicatorComponent.PageCursor = pageNum;
 
             label_Previous.Enabled = IsFirstPage(pageNum) ? false : true;
             label_Next.Enabled = IsLastPage(pageNum) ? false : true;
@@ -80,8 +94,6 @@ namespace FootccerClient.Windows.Views
             }
         }
         private bool IsPageOutOfBoundary(int pageNum) => (pageNum < 1) || (TotalPages < pageNum);
-        private int GetStartIndex(int pageNum) => (pageNum - 1) * PageViewCount;
-        private int GetEndIndex(int startIndex) => Math.Min(MyPartyList.Count, startIndex + PageViewCount);
         private bool IsFirstPage(int pageNum) => (pageNum == 1);
         private bool IsLastPage(int pageNum) => (pageNum == TotalPages);
 

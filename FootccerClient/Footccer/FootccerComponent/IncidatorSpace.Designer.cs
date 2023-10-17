@@ -1,6 +1,6 @@
 ﻿namespace FootccerClient.Footccer.FootccerComponent
 {
-    partial class IncidatorSpace
+    partial class IndicatorSpace
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.

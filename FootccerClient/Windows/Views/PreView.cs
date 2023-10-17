@@ -19,7 +19,7 @@ namespace FootccerClient.Windows.Views
     /// </summary>
     public partial class PreView : MasterView
     {
-        IncidatorSpace TestObject { get; set; }
+        IndicatorSpace TestObject { get; set; }
 
 
         public PreView()
@@ -37,8 +37,12 @@ namespace FootccerClient.Windows.Views
         public override void Refresh_View()
         {
             panel_Base.Controls.Clear();
-            TestObject = new IncidatorSpace(5, 3, panel_Base, 5);
-            TestObject.PartyList = new TemporaryDAO().ReadAllPartyList();
+            List<Image> images = new List<Image>()
+            {
+
+            };
+            TestObject = new IndicatorSpace(5, 3, panel_Base, 5, images);
+            TestObject.PartyListData = new TemporaryDAO().ReadAllPartyList();
             TestObject.PageCursor = 1;
         }
 
