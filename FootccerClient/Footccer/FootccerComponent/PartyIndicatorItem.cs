@@ -1,4 +1,5 @@
 ﻿using FootccerClient.Footccer.DTO;
+using FootccerClient.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,8 +25,44 @@ namespace FootccerClient.Footccer.FootccerComponent
                 if (value == null) { this.Visible = false; return; }
 
                 this.Visible = true;
-                panel_Base.BackColor = GetBorderColor();
+                SetFrameImage();
+                SetDataImage();
                 label_Information.Text = GetInfoText();
+            }
+        }
+
+        PictureBox _PBox_DataImage { get; set; }
+        PictureBox _PBox_Frame { get; set; }
+
+        PictureBox PBox_DataImage 
+        { 
+            get => _PBox_DataImage; 
+            set 
+            {
+                value.BackgroundImageLayout = ImageLayout.Center;
+                value.SizeMode = PictureBoxSizeMode.StretchImage;
+                value.Size = panel_DataImage.Size;
+                value.Location = new Point(0, 0);
+                value.Visible = true;
+
+                _PBox_DataImage = value;
+                
+                panel_DataImage.Controls.Add(value);
+            }
+        }        
+        PictureBox PBox_Frame 
+        {
+            get => _PBox_Frame;
+            set
+            {
+                value.BackgroundImageLayout = ImageLayout.Center;
+                value.SizeMode = PictureBoxSizeMode.StretchImage;
+                value.Size = panel_DataImage.Size;
+                value.Location = new Point(0, 0);
+                value.Visible = true;
+
+                _PBox_Frame = value;
+                panel_DataImage.Controls.Add(value);
             }
         }
 
@@ -33,6 +70,8 @@ namespace FootccerClient.Footccer.FootccerComponent
         {
             InitializeComponent();
             UpdateInfo(null);
+            PBox_DataImage = new PictureBox();
+            PBox_Frame = new PictureBox();
         }
 
         public void UpdateInfo(PartyDTO partyDTO) => Value = partyDTO;
@@ -43,18 +82,76 @@ namespace FootccerClient.Footccer.FootccerComponent
                                         + $"{Value.Parname} ({Value.UserWithTag})";                
         
 
-        private Color GetBorderColor()
+        private void SetFrameImage()
         {
+            PBox_DataImage.Image = Resources.Frame_01;
+            return;
             switch (Value.Actname.Substring(0,2))
             {
                 case "축구":
-                    return Color.YellowGreen;
+                    PBox_Frame.Image = Resources.Frame_01;
+                    PBox_Frame.Invalidate(); break;
                 case "풋살":
-                    return Color.Cyan;
+                    PBox_Frame.Image = Resources.Frame_01;
+                    PBox_Frame.Invalidate(); break;
                 default:
-                    return Color.Magenta;
+                    PBox_Frame.Image = null; PBox_Frame.Invalidate(); break;
             }
         }
 
+        private void SetDataImage()
+        {
+            PBox_DataImage.BackgroundImage = GetPadImage(Resources.Gradation01, PBox_DataImage.Size, 5);
+            PBox_DataImage.Invalidate();
+        }
+
+        private Image GetPadImage(Bitmap originalImage, Size size, int pad) => GetPadImage(originalImage, size, new Padding(pad));
+        private Image GetPadImage(Bitmap originalImage, Size size, Padding padding)
+        {
+            Bitmap resizedImage = new Bitmap(size.Width - padding.Horizontal, size.Height - padding.Vertical);
+            using (Graphics g = Graphics.FromImage(resizedImage))
+            {
+                // 그래픽스 개체를 사용하여 이미지를 리사이즈합니다.
+                g.DrawImage(originalImage, 0, 0, resizedImage.Width, resizedImage.Height);
+            }
+            return resizedImage;
+        }
+
+        private void panel_Base_Resize(object sender, EventArgs e)
+        {
+            Padding padding = new Padding(5);
+            PBox_DataImage.Parent = panel_DataImage;
+            PBox_DataImage.Size = new Size(panel_DataImage.Width - padding.Horizontal, panel_DataImage.Height - padding.Vertical);
+            PBox_DataImage.Location = new Point(padding.Left, padding.Top);
+            PBox_DataImage.ResizeImages();
+
+            PBox_Frame.Parent = panel_DataImage;
+            PBox_Frame.Size = panel_DataImage.Size;
+            PBox_Frame.Location = new Point(0, 0);
+            PBox_Frame.ResizeImages();
+        }
+    }
+
+    public static class PictureBoxExtensions
+    {
+        public static void ResizeImages(this PictureBox pbox)
+        {
+            pbox.Image = pbox.GetPadImage(3, true);
+            pbox.BackgroundImage = pbox.GetPadImage(3, false);
+        }
+
+        public static Image GetPadImage(this PictureBox pbox, int pad, bool isFront) => pbox.GetPadImage((isFront? pbox.Image : pbox.BackgroundImage), new Padding(pad));
+        public static Image GetPadImage(this PictureBox pbox, Image originalImage, Padding padding)
+        {
+            if (originalImage == null) { return null; }
+            var size = pbox.Size;
+            Bitmap resizedImage = new Bitmap(size.Width - padding.Horizontal, size.Height - padding.Vertical);
+            using (Graphics g = Graphics.FromImage(resizedImage))
+            {
+                // 그래픽스 개체를 사용하여 이미지를 리사이즈합니다.
+                g.DrawImage(originalImage, 0, 0, resizedImage.Width, resizedImage.Height);
+            }
+            return resizedImage;
+        }
     }
 }
