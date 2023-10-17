@@ -13,14 +13,14 @@ namespace FootccerClient.Footccer.DAO
 {
     public partial class TemporaryDAO : DAO_Base
     {
-        public List<PartyDTO> ReadAllPartyList() => ExecuteTransaction(new CRUD(), CRUD => CRUD.ReadAllPartyList());
+        public List<(PartyDTO,bool)> ReadAllPartyList() => ExecuteTransaction(new CRUD(), CRUD => CRUD.ReadAllPartyList());
     }
 
     partial class TemporaryDAO
     {
         class CRUD : CRUD_Base
         {
-            public List<PartyDTO> ReadAllPartyList()
+            public List<(PartyDTO, bool)> ReadAllPartyList()
             {
                 cmd.CommandText =
                     "SELECT Par.idx, Act.`name`, Ldui.nickname, Par.`name`,\r\n" +
@@ -39,7 +39,7 @@ namespace FootccerClient.Footccer.DAO
                 {
                     var party = ParseToPartyDTO(rdr);
 
-                    return party;
+                    return (party , false);
                 });
             }
 

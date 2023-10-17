@@ -32,7 +32,7 @@
             this.panel_Base = new System.Windows.Forms.Panel();
             this.panel_ViewSpace = new System.Windows.Forms.Panel();
             this.panel_Top = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_Title = new System.Windows.Forms.Label();
             this.panel_Profile = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel_Bottom = new System.Windows.Forms.Panel();
@@ -52,7 +52,7 @@
             this.panel_Base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
-            this.panel_Base.Size = new System.Drawing.Size(1561, 719);
+            this.panel_Base.Size = new System.Drawing.Size(1127, 719);
             this.panel_Base.TabIndex = 0;
             // 
             // panel_ViewSpace
@@ -61,35 +61,35 @@
             this.panel_ViewSpace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_ViewSpace.Location = new System.Drawing.Point(0, 100);
             this.panel_ViewSpace.Name = "panel_ViewSpace";
-            this.panel_ViewSpace.Size = new System.Drawing.Size(1561, 587);
+            this.panel_ViewSpace.Size = new System.Drawing.Size(1127, 587);
             this.panel_ViewSpace.TabIndex = 2;
             // 
             // panel_Top
             // 
             this.panel_Top.BackColor = System.Drawing.Color.Cyan;
-            this.panel_Top.Controls.Add(this.label1);
+            this.panel_Top.Controls.Add(this.label_Title);
             this.panel_Top.Controls.Add(this.panel_Profile);
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(1561, 100);
+            this.panel_Top.Size = new System.Drawing.Size(1127, 100);
             this.panel_Top.TabIndex = 1;
             // 
-            // label1
+            // label_Title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 15F);
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "메뉴 명";
+            this.label_Title.AutoSize = true;
+            this.label_Title.Font = new System.Drawing.Font("배달의민족 도현", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_Title.Location = new System.Drawing.Point(3, 5);
+            this.label_Title.Name = "label_Title";
+            this.label_Title.Size = new System.Drawing.Size(90, 29);
+            this.label_Title.TabIndex = 0;
+            this.label_Title.Text = "메뉴 명";
             // 
             // panel_Profile
             // 
             this.panel_Profile.Controls.Add(this.button1);
             this.panel_Profile.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel_Profile.Location = new System.Drawing.Point(1361, 0);
+            this.panel_Profile.Location = new System.Drawing.Point(927, 0);
             this.panel_Profile.Name = "panel_Profile";
             this.panel_Profile.Padding = new System.Windows.Forms.Padding(5);
             this.panel_Profile.Size = new System.Drawing.Size(200, 100);
@@ -117,7 +117,7 @@
             this.panel_Bottom.Location = new System.Drawing.Point(0, 687);
             this.panel_Bottom.Name = "panel_Bottom";
             this.panel_Bottom.Padding = new System.Windows.Forms.Padding(3);
-            this.panel_Bottom.Size = new System.Drawing.Size(1561, 32);
+            this.panel_Bottom.Size = new System.Drawing.Size(1127, 32);
             this.panel_Bottom.TabIndex = 0;
             // 
             // button_BackToMainMenu
@@ -126,7 +126,7 @@
             this.button_BackToMainMenu.Dock = System.Windows.Forms.DockStyle.Right;
             this.button_BackToMainMenu.FlatAppearance.BorderSize = 0;
             this.button_BackToMainMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_BackToMainMenu.Location = new System.Drawing.Point(1455, 3);
+            this.button_BackToMainMenu.Location = new System.Drawing.Point(1021, 3);
             this.button_BackToMainMenu.Name = "button_BackToMainMenu";
             this.button_BackToMainMenu.Size = new System.Drawing.Size(103, 26);
             this.button_BackToMainMenu.TabIndex = 0;
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1561, 719);
+            this.ClientSize = new System.Drawing.Size(1127, 719);
             this.Controls.Add(this.panel_Base);
             this.KeyPreview = true;
             this.Name = "MenuView";
@@ -162,6 +162,6 @@
         private System.Windows.Forms.Button button_BackToMainMenu;
         private System.Windows.Forms.Panel panel_Profile;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_Title;
     }
 }

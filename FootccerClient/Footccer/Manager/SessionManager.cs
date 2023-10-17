@@ -1,6 +1,8 @@
 ﻿
 using FootccerClient.Footccer.DTO;
 using FootccerClient.Windows.Views;
+using FootccerClient.Windows.Views.FootccerView;
+using FootccerClient.Windows.Views.SubMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +44,7 @@ namespace FootccerClient.Footccer.Manager
         {
             this.User = user;
             App.Instance.LoginForm.Visible = false;
-            App.Instance.MainForm.ShowView<MyPartyView>();
+            App.Instance.MainForm.ShowView<MainScreenView>();
             App.Instance.MainForm.Visible = true;            
         }
 

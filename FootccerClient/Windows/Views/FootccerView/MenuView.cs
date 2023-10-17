@@ -1,4 +1,5 @@
-﻿using Lib.Frame;
+﻿using FootccerClient.Footccer;
+using Lib.Frame;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,25 +12,34 @@ using System.Windows.Forms;
 
 namespace FootccerClient.Windows.Views.FootccerView
 {
-    public partial class MenuView : MasterView
+    public partial class MenuView : MasterView 
     {
+        MasterView SubView { get; set; }
+
         public MenuView()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
-        public void ShowView<T>() where T : MasterView, new()
+        public override void Refresh_View()
         {
-            T view = new T();
-            view.Dock = DockStyle.Fill;
-            panel_ViewSpace.Controls.Add(view);
-            view.Visible = true;
+            SubView?.Refresh_View();
         }
 
-        public MenuView(Menu menu) 
+        public override void SetTitle(string aTitle)
         {
-            
+            label_Title.Text = aTitle;
         }
+
+        public void ShowView<T>() where T: MasterView, new()
+        {
+            SubView = new T();
+            SubView.Dock = DockStyle.Fill;
+            SubView.Visible = true;
+            panel_ViewSpace.Controls.Add(SubView);
+            SubView.Refresh_View();
+        }
+
         private void button_BackToMainMenu_Click(object sender, EventArgs e)
         {
             GoBackToMainMenu();
@@ -44,9 +54,9 @@ namespace FootccerClient.Windows.Views.FootccerView
             }
         }
 
-        protected void GoBackToMainMenu()
+        public void GoBackToMainMenu()
         {
-            throw new NotImplementedException();
+            App.Instance.MainForm.ShowView<MainScreenView>();
         }
     }
 }

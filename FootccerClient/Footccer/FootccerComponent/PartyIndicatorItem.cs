@@ -13,29 +13,35 @@ namespace FootccerClient.Footccer.FootccerComponent
 {
     public partial class PartyIndicatorItem : UserControl
     {
-        public PartyDTO Value { get; set; }
+        private PartyDTO _value { get; set; }
+        public PartyDTO Value 
+        { 
+            get=>_value; 
+            set 
+            { 
+                _value = value;
+
+                if (value == null) { this.Visible = false; return; }
+
+                this.Visible = true;
+                panel_Base.BackColor = GetBorderColor();
+                label_Information.Text = GetInfoText();
+            }
+        }
+
         public PartyIndicatorItem()
         {
             InitializeComponent();
+            UpdateInfo(null);
         }
 
-        public void UpdateInfo(PartyDTO partyDTO)
-        {
-            Value = partyDTO;
+        public void UpdateInfo(PartyDTO partyDTO) => Value = partyDTO;
 
-            panel_Base.BackColor = GetBorderColor();
-            label_Information.Text = GetInfoText();
-        }
-
-        private string GetInfoText()
-        {
-            return
-                $"{Value.Actname.Substring(0, 2)}\r\n" +
-                $"{Value.date.ParseToString_FromDateString(false)}\r\n" +
-                $"{Value.PLname}\r\n" +
-                $"{Value.Parname} ({Value.UserWithTag})";
-                ;
-        }
+        private string GetInfoText() => $"{Value.Actname.Substring(0, 2)}\r\n"
+                                        + $"{Value.date.ParseToString_FromDateString(false)}\r\n"
+                                        + $"{Value.PLname}\r\n"
+                                        + $"{Value.Parname} ({Value.UserWithTag})";                
+        
 
         private Color GetBorderColor()
         {

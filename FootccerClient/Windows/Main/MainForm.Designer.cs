@@ -97,6 +97,7 @@
             this.panel_Menu.Name = "panel_Menu";
             this.panel_Menu.Size = new System.Drawing.Size(121, 467);
             this.panel_Menu.TabIndex = 0;
+            this.panel_Menu.Visible = false;
             // 
             // panel7
             // 
@@ -222,6 +223,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(971, 39);
             this.panel5.TabIndex = 2;
+            this.panel5.Visible = false;
             // 
             // btn_Logout
             // 
@@ -252,9 +254,11 @@
             this.ClientSize = new System.Drawing.Size(971, 506);
             this.Controls.Add(this.panel_Base);
             this.Font = new System.Drawing.Font("HY견고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.KeyPreview = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Footccer";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.panel_Base.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel_Menu.ResumeLayout(false);

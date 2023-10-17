@@ -292,6 +292,12 @@
     <Compile Include="Windows\Views\PartyJoinView.Designer.cs">
       <DependentUpon>PartyJoinView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Views\SubMenu\MyPartyMenuView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\SubMenu\MyPartyMenuView.Designer.cs">
+      <DependentUpon>MyPartyMenuView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Views\PartySearchView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -424,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartyJoinView.resx">
       <DependentUpon>PartyJoinView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\SubMenu\MyPartyMenuView.resx">
+      <DependentUpon>MyPartyMenuView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartySearchView.resx">
       <DependentUpon>PartySearchView.cs</DependentUpon>
