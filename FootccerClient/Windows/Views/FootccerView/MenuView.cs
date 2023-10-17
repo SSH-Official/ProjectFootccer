@@ -12,32 +12,23 @@ using System.Windows.Forms;
 
 namespace FootccerClient.Windows.Views.FootccerView
 {
-    public partial class MenuView : MasterView 
+    public partial class MenuView : MasterView
     {
-        MasterView SubView { get; set; }
-
         public MenuView()
         {
             InitializeComponent();
         }
 
-        public override void Refresh_View()
-        {
-            SubView?.Refresh_View();
-        }
-
+        public override void Refresh_View() => CurrentView?.Refresh_View();
         public override void SetTitle(string aTitle)
         {
             label_Title.Text = aTitle;
         }
 
-        public void ShowView<T>() where T: MasterView, new()
+        public void ShowView<T>(string aTitle = "") where T : MasterView, new()
         {
-            SubView = new T();
-            SubView.Dock = DockStyle.Fill;
-            SubView.Visible = true;
-            panel_ViewSpace.Controls.Add(SubView);
-            SubView.Refresh_View();
+            this.SetTitle(aTitle);
+            CurrentView = GetView<T>();
         }
 
         private void button_BackToMainMenu_Click(object sender, EventArgs e)

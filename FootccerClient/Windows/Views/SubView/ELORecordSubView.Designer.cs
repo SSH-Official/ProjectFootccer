@@ -2,7 +2,7 @@
 
 namespace FootccerClient.Windows.Views
 {
-    partial class ELORecordView
+    partial class ELORecordSubView
     {
         /// <summary>
         /// Required designer variable.

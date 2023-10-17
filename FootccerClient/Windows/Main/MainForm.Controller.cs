@@ -1,7 +1,6 @@
 ﻿using FootccerClient.Footccer;
 using FootccerClient.Windows.Views;
 using FootccerClient.Windows.Views.FootccerView;
-using FootccerClient.Windows.Views.SubMenu;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;
@@ -15,111 +14,53 @@ namespace FootccerClient
 {
     partial class MainForm
     {
-        public void ShowView(MasterView view)
+        private MasterView _CurrentView { get; set; }
+        private MasterView CurrentView
         {
-            HideAllView();
-            view.Parent = panel_ViewSpace;
-            view.Dock = DockStyle.Fill;
-            view.Visible = true;
-            view.Refresh_View();
-        }
-
-        public void ShowView<T>()
-        {
-            ShowView(typeof(T));
-        }
-
-        public DialogResult ShowPop<T>(ePopMode aPopMode = ePopMode.None, object aParam = null)
-        {
-            return ShowPop(typeof(T), aPopMode, aParam);
-        }
-
-        public MasterView GetView<T>()
-        {
-            return GetView(typeof(T));
-        }
-
-
-        private void ShowView(Type aType)
-        {
-            HideAllView();
-
-            CurrentView = GetView(aType);
-        }
-        private void HideAllView()
-        {
-            foreach (MasterView view in this.Views)
-            { view.Visible = false; }
-        }
-        private MasterView GetView(Type aType)
-        {
-            foreach (MasterView view in this.Views)
+            get => _CurrentView;
+            set
             {
-                if (view.GetType() == aType)
-                { return view; }
-            }
+                if (_CurrentView != null) _CurrentView.Visible = false;
+                value.Visible = true;
+                value.Refresh_View();
 
-            MasterView newview = (MasterView)Activator.CreateInstance(aType);
-            Views.Add(newview);
-            InitializeView(newview);
-            return newview;
+                _CurrentView = value;
+            }
         }
 
-        private DialogResult ShowPop(Type PopType, ePopMode aPopMode = ePopMode.None, object aParam = null)
+        public void Refresh_View()
         {
-            dynamic CurrentPop = Activator.CreateInstance(PopType);
-            return CurrentPop.ShowPop(aPopMode, aParam);
-        }
-
-        private void SelectMenu(Label label)
-        {
-            foreach (Label lab in MenuControls)
-            {
-                lab.BackColor = Color.Transparent;
-            }
-
-            label.BackColor = SystemColors.Control;
-            label.Invalidate();
+            CurrentView?.Refresh_View();
         }
 
         private void InitializeViews()
         {
-            MenuControls = new List<Label>()
-                {
-                    label_Club,
-                    label_Config,
-                    label_MyPage,
-                    label_MyParty,
-                    label_FindParty
-                };
+            MainScreen = new MainScreenView();
+            MenuView = new MenuView();
 
-            Views = new List<MasterView>()
-                {/*
-                    new MyPageView(),
-                    new MyPartyView(),
-                    new PartyJoinView(),
-                    new PartySearchView(),
-                    new ConfigView(),
-                    new ClubView(),
-                    new PartyCreateView(),
-                    new MyPartyMenuView(),
-                    new MainScreenView()
-                */
-                };
+            MainScreen.Parent = panel_ViewSpace;
+            MenuView.Parent = panel_ViewSpace;
+        }
 
-            foreach (MasterView view in this.Views)
+        public void ShowView<T>(string aTitle = "") where T : MasterView, new()
+        {
+            var type = typeof(T);
+            if (type == typeof(MainScreenView))
             {
-                InitializeView(view);
+                CurrentView = MainScreen;
+            }
+            else
+            {
+                CurrentView = MenuView;
+                MenuView.ShowView<T>(aTitle);
             }
         }
 
-        private void InitializeView(MasterView view)
+        public DialogResult ShowPop<T>(ePopMode aPopMode = ePopMode.None, object aParam = null) where T : MasterPop, new()
         {
-            view.Parent = panel_ViewSpace;
-            view.Dock = DockStyle.Fill;
-            view.Visible = false;
+            var CurrentPop = new T();
+            return CurrentPop.ShowPop(aPopMode, aParam);
         }
-
 
         private void AskLogout()
         {

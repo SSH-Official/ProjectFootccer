@@ -1,6 +1,6 @@
 ﻿namespace FootccerClient.Windows.Views
 {
-    partial class PartyInfoView
+    partial class PartyInfoSubView
     {
         /// <summary>
         /// Required designer variable.

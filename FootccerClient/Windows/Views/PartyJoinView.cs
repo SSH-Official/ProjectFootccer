@@ -16,8 +16,8 @@ namespace FootccerClient.Windows.Views
 {
     public partial class PartyJoinView : MasterView
     {
-        FormationView formationViewA;
-        FormationView formationViewB;
+        FormationSubView formationViewA;
+        FormationSubView formationViewB;
         List<TeamDTO> TeamListA;
         List<TeamDTO> TeamListB;
 
@@ -72,7 +72,7 @@ namespace FootccerClient.Windows.Views
                 BTeamformationDTO = new FormationDTO(Pidx, 'A', 3, 3, 4, 1);
             }
 
-            this.formationViewA = new FormationView(ATeamformationDTO, positionList);
+            this.formationViewA = new FormationSubView(ATeamformationDTO, positionList);
             PositionView.Controls.Add(this.formationViewA);
 
             foreach (var Team in TeamListB)
@@ -81,7 +81,7 @@ namespace FootccerClient.Windows.Views
                 positionList2.Add(formation);
             }
 
-            this.formationViewB = new FormationView(BTeamformationDTO, positionList2);
+            this.formationViewB = new FormationSubView(BTeamformationDTO, positionList2);
             PositionView.Controls.Add(this.formationViewB);
             if (team.Equals('A'))
             {
@@ -169,7 +169,7 @@ namespace FootccerClient.Windows.Views
             }
             List_team();
         }
-        private void initSelecedPositionIndex(FormationView dto1, FormationView dto2)
+        private void initSelecedPositionIndex(FormationSubView dto1, FormationSubView dto2)
         {
             if (dto1.selectedPositionIndex != -1)
             {

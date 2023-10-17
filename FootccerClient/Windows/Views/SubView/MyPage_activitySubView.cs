@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace FootccerClient.Windows.Views
 {
-    public partial class MyPage_activityView : MasterView
+    public partial class MyPage_activitySubView : MasterView
     {
         private bool isNew = true;
         public PersonalStatDTO psDTO { get; set; }
-        public MyPage_activityView()
+        public MyPage_activitySubView()
         {
             InitializeComponent();
             InitializeStatic();

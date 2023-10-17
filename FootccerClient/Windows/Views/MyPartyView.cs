@@ -29,15 +29,8 @@ namespace FootccerClient.Windows.Views
         }
 
         private int TotalPages { get => 1 + (MyPartyList.Count - 1) / PageViewCount; }
-        private Point _PageCount { get; set; }
-        private Point PageCount 
-        {
-            get => _PageCount;
-            set
-            {
-
-            }
-        }
+        private Point PageCount { get; set; }
+        
         private int PageViewCount { get => PageCount.X * PageCount.Y; }
         private int _CurrentPageNum { get; set; }
 

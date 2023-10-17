@@ -17,9 +17,9 @@ namespace FootccerClient.Windows.Views
 {
     public partial class PartyCreateView : MasterView
     {
-        PartyInfoView partyInfoView;
-        FormationView formationViewA;
-        FormationView formationViewB;
+        PartyInfoSubView partyInfoView;
+        FormationSubView formationViewA;
+        FormationSubView formationViewB;
 
         public PartyCreateView()
         {
@@ -30,13 +30,13 @@ namespace FootccerClient.Windows.Views
        
         private void createView()
         {
-            this.partyInfoView = new PartyInfoView();
+            this.partyInfoView = new PartyInfoSubView();
             partyInfoSpace.Controls.Add(this.partyInfoView);
             this.partyInfoView.Visible = true;
-            this.formationViewA = new FormationView('A');
+            this.formationViewA = new FormationSubView('A');
             formationSpace.Controls.Add(this.formationViewA);
             this.formationViewA.Visible = true;
-            this.formationViewB = new FormationView('B');
+            this.formationViewB = new FormationSubView('B');
             formationSpace.Controls.Add(this.formationViewB);
             this.formationViewB.Visible = false;
         }
@@ -99,7 +99,7 @@ namespace FootccerClient.Windows.Views
             this.formationViewB.Visible = true;
             initSelecedPositionIndex(formationViewA, formationViewB);
         }
-        private void initSelecedPositionIndex(FormationView dto1, FormationView dto2)
+        private void initSelecedPositionIndex(FormationSubView dto1, FormationSubView dto2)
         {
             if(dto1.selectedPositionIndex != -1)
             {

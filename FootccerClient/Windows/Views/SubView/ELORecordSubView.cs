@@ -13,10 +13,10 @@ using Lib.Frame;
 
 namespace FootccerClient.Windows.Views
 {
-    public partial class ELORecordView : MasterView
+    public partial class ELORecordSubView : MasterView
     {
         DataTable dt = null;
-        public ELORecordView()
+        public ELORecordSubView()
         {
             InitializeComponent();
             initializeChart();

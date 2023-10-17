@@ -52,7 +52,7 @@
             this.panel_Base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
-            this.panel_Base.Size = new System.Drawing.Size(1127, 719);
+            this.panel_Base.Size = new System.Drawing.Size(1146, 717);
             this.panel_Base.TabIndex = 0;
             // 
             // panel_ViewSpace
@@ -61,7 +61,7 @@
             this.panel_ViewSpace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_ViewSpace.Location = new System.Drawing.Point(0, 100);
             this.panel_ViewSpace.Name = "panel_ViewSpace";
-            this.panel_ViewSpace.Size = new System.Drawing.Size(1127, 587);
+            this.panel_ViewSpace.Size = new System.Drawing.Size(1146, 585);
             this.panel_ViewSpace.TabIndex = 2;
             // 
             // panel_Top
@@ -72,7 +72,7 @@
             this.panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Top.Location = new System.Drawing.Point(0, 0);
             this.panel_Top.Name = "panel_Top";
-            this.panel_Top.Size = new System.Drawing.Size(1127, 100);
+            this.panel_Top.Size = new System.Drawing.Size(1146, 100);
             this.panel_Top.TabIndex = 1;
             // 
             // label_Title
@@ -89,7 +89,7 @@
             // 
             this.panel_Profile.Controls.Add(this.button1);
             this.panel_Profile.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel_Profile.Location = new System.Drawing.Point(927, 0);
+            this.panel_Profile.Location = new System.Drawing.Point(946, 0);
             this.panel_Profile.Name = "panel_Profile";
             this.panel_Profile.Padding = new System.Windows.Forms.Padding(5);
             this.panel_Profile.Size = new System.Drawing.Size(200, 100);
@@ -114,10 +114,10 @@
             this.panel_Bottom.BackColor = System.Drawing.Color.Transparent;
             this.panel_Bottom.Controls.Add(this.button_BackToMainMenu);
             this.panel_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_Bottom.Location = new System.Drawing.Point(0, 687);
+            this.panel_Bottom.Location = new System.Drawing.Point(0, 685);
             this.panel_Bottom.Name = "panel_Bottom";
             this.panel_Bottom.Padding = new System.Windows.Forms.Padding(3);
-            this.panel_Bottom.Size = new System.Drawing.Size(1127, 32);
+            this.panel_Bottom.Size = new System.Drawing.Size(1146, 32);
             this.panel_Bottom.TabIndex = 0;
             // 
             // button_BackToMainMenu
@@ -126,7 +126,7 @@
             this.button_BackToMainMenu.Dock = System.Windows.Forms.DockStyle.Right;
             this.button_BackToMainMenu.FlatAppearance.BorderSize = 0;
             this.button_BackToMainMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_BackToMainMenu.Location = new System.Drawing.Point(1021, 3);
+            this.button_BackToMainMenu.Location = new System.Drawing.Point(1040, 3);
             this.button_BackToMainMenu.Name = "button_BackToMainMenu";
             this.button_BackToMainMenu.Size = new System.Drawing.Size(103, 26);
             this.button_BackToMainMenu.TabIndex = 0;
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 719);
+            this.ClientSize = new System.Drawing.Size(1146, 717);
             this.Controls.Add(this.panel_Base);
             this.KeyPreview = true;
             this.Name = "MenuView";

@@ -1,6 +1,6 @@
 ﻿namespace FootccerClient.Windows.Views
 {
-    partial class FormationView
+    partial class FormationSubView
     {
         /// <summary>
         /// Required designer variable.

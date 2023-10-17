@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace FootccerClient.Windows.Views
 {
-    public partial class PartyInfoView : MasterView
+    public partial class PartyInfoSubView : MasterView
     {
         public PartyInfoDTO partyInfoDTO { get; set; }
 
-        public PartyInfoView()
+        public PartyInfoSubView()
         {
             InitializeComponent();
             initializeCBox_city();

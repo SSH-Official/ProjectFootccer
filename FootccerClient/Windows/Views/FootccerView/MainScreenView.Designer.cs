@@ -130,7 +130,7 @@
             this.panel_Base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
-            this.panel_Base.Size = new System.Drawing.Size(1127, 719);
+            this.panel_Base.Size = new System.Drawing.Size(1146, 717);
             this.panel_Base.TabIndex = 3;
             // 
             // label1
@@ -146,11 +146,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 719);
+            this.ClientSize = new System.Drawing.Size(1146, 717);
             this.Controls.Add(this.panel_Base);
             this.Name = "MainScreenView";
             this.Text = "MainScreenView";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainScreenView_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel_MenuButtons.ResumeLayout(false);
             this.panel_Base.ResumeLayout(false);

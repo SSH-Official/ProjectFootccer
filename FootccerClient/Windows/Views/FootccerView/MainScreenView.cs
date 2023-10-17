@@ -1,5 +1,4 @@
 ﻿using FootccerClient.Footccer;
-using FootccerClient.Windows.Views.SubMenu;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;
@@ -20,29 +19,24 @@ namespace FootccerClient.Windows.Views.FootccerView
             InitializeComponent();
         }
 
-        private void MainScreenView_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
         private void button_MyParty_Click(object sender, EventArgs e)
         {
-            App.Instance.MainForm.ShowView<MyPartyMenuView>();
+            App.Instance.MainForm.ShowView<MyPartyView>("내 파티");
         }
 
         private void button_FindParty_Click(object sender, EventArgs e)
         {
-            App.Instance.MainForm.ShowView<MenuView>();
+            App.Instance.MainForm.ShowView<PartySearchView>("파티 검색");
         }
 
         private void button_MyPage_Click(object sender, EventArgs e)
         {
-            App.Instance.MainForm.ShowView<MenuView>();
+            App.Instance.MainForm.ShowView<MyPageView>("마이페이지");
         }
 
         private void button_Config_Click(object sender, EventArgs e)
         {
-            App.Instance.MainForm.ShowView<MenuView>();
+            App.Instance.MainForm.ShowView<PartySearchView>();
         }
     }
 }

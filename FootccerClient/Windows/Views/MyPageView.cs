@@ -46,9 +46,9 @@ namespace FootccerClient.Windows.Views
             my_pic.Tag = userinfo.Image.Tag;
         }
 
-        private MyPage_activityView Createview()
+        private MyPage_activitySubView Createview()
         {
-            MyPage_activityView mpav = new MyPage_activityView();
+            MyPage_activitySubView mpav = new MyPage_activitySubView();
             panel10.Controls.Add(mpav);
             mpav.Visible = true;
             mpav.Dock = DockStyle.Fill;
@@ -57,7 +57,7 @@ namespace FootccerClient.Windows.Views
 
         private void Createview1()
         {
-            ELORecordView erv = new ELORecordView();
+            ELORecordSubView erv = new ELORecordSubView();
             panel8.Controls.Add(erv);
             erv.Visible = true;
             erv.Dock = DockStyle.Fill;

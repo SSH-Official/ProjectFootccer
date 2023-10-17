@@ -238,11 +238,14 @@
     <Compile Include="Windows\Views\ConfigView.Designer.cs">
       <DependentUpon>ConfigView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\ELORecordView.cs">
+    <Compile Include="Windows\Views\FootccerView\MenuView.Controller.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Views\ELORecordView.Designer.cs">
-      <DependentUpon>ELORecordView.cs</DependentUpon>
+    <Compile Include="Windows\Views\SubView\ELORecordSubView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Views\SubView\ELORecordSubView.Designer.cs">
+      <DependentUpon>ELORecordSubView.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Views\FootccerView\MainScreenView.cs">
       <SubType>Form</SubType>
@@ -262,11 +265,11 @@
     <Compile Include="Windows\Views\MyPageView.Designer.cs">
       <DependentUpon>MyPageView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\MyPage_activityView.cs">
+    <Compile Include="Windows\Views\SubView\MyPage_activitySubView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Views\MyPage_activityView.Designer.cs">
-      <DependentUpon>MyPage_activityView.cs</DependentUpon>
+    <Compile Include="Windows\Views\SubView\MyPage_activitySubView.Designer.cs">
+      <DependentUpon>MyPage_activitySubView.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Views\MyPartyView.cs">
       <SubType>Form</SubType>
@@ -280,11 +283,11 @@
     <Compile Include="Windows\Views\PartyCreateView.Designer.cs">
       <DependentUpon>PartyCreateView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\PartyInfoView.cs">
+    <Compile Include="Windows\Views\PartyInfoSubView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Views\PartyInfoView.Designer.cs">
-      <DependentUpon>PartyInfoView.cs</DependentUpon>
+    <Compile Include="Windows\Views\PartyInfoSubView.Designer.cs">
+      <DependentUpon>PartyInfoSubView.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Views\PartyJoinView.cs">
       <SubType>Form</SubType>
@@ -344,11 +347,11 @@
     <Compile Include="Windows\Views\RecordView.Designer.cs">
       <DependentUpon>RecordView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\FormationView.cs">
+    <Compile Include="Windows\Views\FormationSubView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Views\FormationView.Designer.cs">
-      <DependentUpon>FormationView.cs</DependentUpon>
+    <Compile Include="Windows\Views\FormationSubView.Designer.cs">
+      <DependentUpon>FormationSubView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Footccer\FootccerComponent\IncidatorSpace.resx">
       <DependentUpon>IncidatorSpace.cs</DependentUpon>
@@ -404,8 +407,8 @@
     <EmbeddedResource Include="Windows\Views\ConfigView.resx">
       <DependentUpon>ConfigView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\ELORecordView.resx">
-      <DependentUpon>ELORecordView.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\Views\SubView\ELORecordSubView.resx">
+      <DependentUpon>ELORecordSubView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\FootccerView\MainScreenView.resx">
       <DependentUpon>MainScreenView.cs</DependentUpon>
@@ -416,8 +419,8 @@
     <EmbeddedResource Include="Windows\Views\MyPageView.resx">
       <DependentUpon>MyPageView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\MyPage_activityView.resx">
-      <DependentUpon>MyPage_activityView.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\Views\SubView\MyPage_activitySubView.resx">
+      <DependentUpon>MyPage_activitySubView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\MyPartyView.resx">
       <DependentUpon>MyPartyView.cs</DependentUpon>
@@ -425,8 +428,8 @@
     <EmbeddedResource Include="Windows\Views\PartyCreateView.resx">
       <DependentUpon>PartyCreateView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\PartyInfoView.resx">
-      <DependentUpon>PartyInfoView.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\Views\PartyInfoSubView.resx">
+      <DependentUpon>PartyInfoSubView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartyJoinView.resx">
       <DependentUpon>PartyJoinView.cs</DependentUpon>
@@ -452,8 +455,8 @@
     <EmbeddedResource Include="Windows\Views\RecordView.resx">
       <DependentUpon>RecordView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\FormationView.resx">
-      <DependentUpon>FormationView.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\Views\FormationSubView.resx">
+      <DependentUpon>FormationSubView.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Footccer\DAO\DBLogin_DAO.CRUD.cs" />
     <None Include="packages.config" />

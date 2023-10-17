@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace FootccerClient.Windows.Views
 {
-    public partial class FormationView : MasterView
+    public partial class FormationSubView : MasterView
     {
         public FormationDTO formationDTO { get; set; }
         private List<int> positionList = new List<int>();
@@ -26,7 +26,7 @@ namespace FootccerClient.Windows.Views
 
         //기본 생성자에는 컨트롤을 생성하는 매서드가 없습니다.
         //파티 참가에 쓰실 경우 panel7의 visible항목을 false로 해주세요. (panel7에는 FormationDTO를 수정 하는 컨트롤들이 있습니다.)
-        public FormationView()
+        public FormationSubView()
         {
             InitializeComponent();
             selectedPositionIndex = -1;
@@ -35,7 +35,7 @@ namespace FootccerClient.Windows.Views
         {
             placeFormation();
         }*/
-        public FormationView(FormationDTO formationDTO, List<int> positionList) : this()
+        public FormationSubView(FormationDTO formationDTO, List<int> positionList) : this()
         {
             panel7.Visible = false;
             this.formationDTO = formationDTO;
@@ -44,7 +44,7 @@ namespace FootccerClient.Windows.Views
             placeFormation();
             updatePartyPosition();
         }
-        public FormationView(char side) : this()
+        public FormationSubView(char side) : this()
         {
             this.formationDTO = new FormationDTO(side, Int32.Parse(numer_FW.Value.ToString()), Int32.Parse(numer_MF.Value.ToString()), Int32.Parse(numer_DF.Value.ToString()), Int32.Parse(numer_GK.Value.ToString()));
             initializeNumeric();
