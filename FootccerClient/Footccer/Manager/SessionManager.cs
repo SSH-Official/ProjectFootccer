@@ -2,7 +2,6 @@
 using FootccerClient.Footccer.DTO;
 using FootccerClient.Windows.Views;
 using FootccerClient.Windows.Views.FootccerView;
-using FootccerClient.Windows.Views.SubMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;

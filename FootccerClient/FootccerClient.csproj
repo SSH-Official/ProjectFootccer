@@ -226,12 +226,6 @@
     <Compile Include="Windows\Pops\ViewPop.Designer.cs">
       <DependentUpon>ViewPop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\ClubView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Windows\Views\ClubView.Designer.cs">
-      <DependentUpon>ClubView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Views\ConfigView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,10 +277,10 @@
     <Compile Include="Windows\Views\PartyCreateView.Designer.cs">
       <DependentUpon>PartyCreateView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\PartyInfoSubView.cs">
+    <Compile Include="Windows\Views\SubView\PartyInfoSubView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Views\PartyInfoSubView.Designer.cs">
+    <Compile Include="Windows\Views\SubView\PartyInfoSubView.Designer.cs">
       <DependentUpon>PartyInfoSubView.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Views\PartyJoinView.cs">
@@ -294,12 +288,6 @@
     </Compile>
     <Compile Include="Windows\Views\PartyJoinView.Designer.cs">
       <DependentUpon>PartyJoinView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Views\SubMenu\MyPartyMenuView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Windows\Views\SubMenu\MyPartyMenuView.Designer.cs">
-      <DependentUpon>MyPartyMenuView.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Views\PartySearchView.cs">
       <SubType>Form</SubType>
@@ -329,28 +317,16 @@
     </Compile>
     <Compile Include="Footccer\Util\ComboItem.cs" />
     <Compile Include="Footccer\DTO\PartyDTO.cs" />
-    <Compile Include="Windows\Views\PositionView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Windows\Views\PositionView.Designer.cs">
-      <DependentUpon>PositionView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Views\PreView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Windows\Views\PreView.Designer.cs">
-      <DependentUpon>PreView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Views\RecordView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Windows\Views\RecordView.Designer.cs">
       <DependentUpon>RecordView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Views\FormationSubView.cs">
+    <Compile Include="Windows\Views\SubView\FormationSubView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Windows\Views\FormationSubView.Designer.cs">
+    <Compile Include="Windows\Views\SubView\FormationSubView.Designer.cs">
       <DependentUpon>FormationSubView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Footccer\FootccerComponent\IncidatorSpace.resx">
@@ -401,9 +377,6 @@
     <EmbeddedResource Include="Windows\Pops\ViewPop.resx">
       <DependentUpon>ViewPop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\ClubView.resx">
-      <DependentUpon>ClubView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\ConfigView.resx">
       <DependentUpon>ConfigView.cs</DependentUpon>
     </EmbeddedResource>
@@ -428,14 +401,11 @@
     <EmbeddedResource Include="Windows\Views\PartyCreateView.resx">
       <DependentUpon>PartyCreateView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\PartyInfoSubView.resx">
+    <EmbeddedResource Include="Windows\Views\SubView\PartyInfoSubView.resx">
       <DependentUpon>PartyInfoSubView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartyJoinView.resx">
       <DependentUpon>PartyJoinView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\SubMenu\MyPartyMenuView.resx">
-      <DependentUpon>MyPartyMenuView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\PartySearchView.resx">
       <DependentUpon>PartySearchView.cs</DependentUpon>
@@ -446,16 +416,10 @@
     <EmbeddedResource Include="Windows\Pops\UrlRecieverPop.resx">
       <DependentUpon>UrlRecieverPop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\PositionView.resx">
-      <DependentUpon>PositionView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\PreView.resx">
-      <DependentUpon>PreView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\RecordView.resx">
       <DependentUpon>RecordView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\FormationSubView.resx">
+    <EmbeddedResource Include="Windows\Views\SubView\FormationSubView.resx">
       <DependentUpon>FormationSubView.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Footccer\DAO\DBLogin_DAO.CRUD.cs" />
