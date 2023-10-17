@@ -1,5 +1,6 @@
 ﻿using FootccerClient.Footccer;
 using FootccerClient.Windows.Views;
+using FootccerClient.Windows.Views.FootccerView;
 using Lib.Frame;
 using System;
 using System.Collections.Generic;

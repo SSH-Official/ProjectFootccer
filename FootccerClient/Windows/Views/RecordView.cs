@@ -23,6 +23,7 @@ namespace FootccerClient.Windows.Views
         private int currentPage = 0;
         private int pageSize;
         List<Control> CreatedControls { get; set; } = new List<Control>();
+        List<List<Panel>> panelsList = new List<List<Panel>>();
 
         void setRecordTable()
         {
@@ -42,12 +43,13 @@ namespace FootccerClient.Windows.Views
                 if (dt.Rows.Count > startIndex + row)
                 {
                     dr = dt.Rows[startIndex + row];
+                    setPanelBackColor(dr, row);
                 }
                 for (int col = 0; col < 4; col++)
                 {
                     setLabelText(dr, row, col, labels);
                 }
-                buttons[row].Visible = (dr != null);                
+                buttons[row].Visible = (dr != null);
             }
         }
         private void setLabelText(DataRow dr, int row, int col, Label[,] labels)
@@ -74,18 +76,62 @@ namespace FootccerClient.Windows.Views
                 labels[row, col].Text = string.Empty;
             }
         }
-
-
         public RecordView()
         {
             InitializeComponent();
             initializeLabel_ForRecord();
             initializeButton_InputDetail();
+            initializePanelOfBackColor();
             initializePanel();
             setRecordTable();
             updateRecord(currentPage);
             initializePage();
-        }        
+            
+        }
+        private void initializePanelOfBackColor()
+        {
+            List<Panel> list = new List<Panel> { panel5, panel6, panel7, panel12, panel16};
+            panelsList.Add(list);
+            list = new List<Panel> { panel9, panel10, panel11, panel20, panel24 };
+            panelsList.Add(list);
+            list = new List<Panel> { panel13, panel14, panel15, panel28, panel29 };
+            panelsList.Add(list);
+            list = new List<Panel> { panel17, panel18, panel19, panel30, panel31 };
+            panelsList.Add(list);
+            list = new List<Panel> { panel21, panel22, panel23, panel32, panel33 };
+            panelsList.Add(list);
+            foreach(var item in panelsList)
+            {
+                foreach (var panel in item)
+                {
+                    panel.Margin = new Padding(0, 3, 0, 3);
+                }
+            }
+            List<Panel> list2 = new List<Panel> { panel1, panel2, panel3, panel4, panel8 };
+            foreach (var item in list2)
+            {
+                item.Margin = new Padding(0, 3, 0, 3);
+                item.BackColor = Color.DarkGray;
+            }
+        }
+        private void setPanelBackColor(DataRow dr, int row)
+        {
+            foreach (var item in panelsList[row])
+            {
+                if (dr["side"].ToString() == dr["result"].ToString())
+                {
+                    item.BackColor = Color.Aqua;
+                }
+                else if (String.IsNullOrEmpty(dr["result"].ToString()))
+                {
+                    continue;
+                }
+                else if (dr["side"].ToString() != dr["result"].ToString())
+                {
+                    item.BackColor = Color.LightSalmon;
+                }                
+            }            
+        }
         void initializePage()
         {
             label_page.Text = "1 page";
@@ -146,6 +192,7 @@ namespace FootccerClient.Windows.Views
             tableLayoutPanel.Name = "tableLayoutPanle" + row;
             tableLayoutPanel.Location = new Point(0, 0);
             tableLayoutPanel.Dock = DockStyle.Fill;
+            tableLayoutPanel.BackColor = Color.Transparent;
             tableLayoutPanel.RowCount = 3;
             tableLayoutPanel.ColumnCount = 3;
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 20f));

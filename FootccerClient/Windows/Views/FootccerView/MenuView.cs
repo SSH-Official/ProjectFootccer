@@ -15,9 +15,21 @@ namespace FootccerClient.Windows.Views.FootccerView
     {
         public MenuView()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
+        public void ShowView<T>() where T : MasterView, new()
+        {
+            T view = new T();
+            view.Dock = DockStyle.Fill;
+            panel_ViewSpace.Controls.Add(view);
+            view.Visible = true;
+        }
+
+        public MenuView(Menu menu) 
+        {
+            
+        }
         private void button_BackToMainMenu_Click(object sender, EventArgs e)
         {
             GoBackToMainMenu();

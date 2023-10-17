@@ -1,4 +1,5 @@
-﻿using Lib.Frame;
+﻿using FootccerClient.Footccer;
+using Lib.Frame;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,13 @@ namespace FootccerClient.Windows.Views.FootccerView
             {
                 MessageBox.Show("로그아웃?");
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MenuView menuView = new MenuView();
+            
+            //mnekro.ckfjfjgkh
         }
     }
 }
