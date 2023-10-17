@@ -36,7 +36,7 @@ namespace FootccerClient.Windows.Views.FootccerView
 
         private void button_Config_Click(object sender, EventArgs e)
         {
-            App.Instance.MainForm.ShowView<PartySearchView>();
+            App.Instance.MainForm.ShowView<ConfigView>();
         }
     }
 }

@@ -13,24 +13,10 @@ namespace FootccerClient.Footccer.Manager
 {
     public class SessionManager
     {
-        public string ID { get { return User?.ID; } }
+        public string ID { get => User?.ID; }
         public UserDTO User { get; private set; }
-
-        public bool Offline
-        {
-            get 
-            { 
-                return ID == null
-                    || User == null; 
-            }
-        }
-        public bool Online
-        {
-            get
-            {
-                return !Offline;
-            }
-        }
+        public bool Offline { get => ID == null || User == null; }
+        public bool Online { get => !Offline; }
 
 
 
@@ -44,7 +30,8 @@ namespace FootccerClient.Footccer.Manager
             this.User = user;
             App.Instance.LoginForm.Visible = false;
             App.Instance.MainForm.ShowView<MainScreenView>();
-            App.Instance.MainForm.Visible = true;            
+            App.Instance.MainForm.Visible = true;
+            App.Instance.MainForm.SetUserProfile();
         }
 
         public void LogOut()

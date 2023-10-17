@@ -11,35 +11,22 @@ namespace FootccerClient.Footccer.Manager
     public class DBManager
     {
         public DBSettings Settings { get; }
+        public CreateParty_DAO CreateParty { get; } = new CreateParty_DAO();
+        public MyPage_DAO MyPage { get; } = new MyPage_DAO();
+        public PartySearch_DAO PartySearch { get; } = new PartySearch_DAO();
+        public DBLogin_DAO Login { get; } = new DBLogin_DAO();
+        public Position_DAO Position { get; } = new Position_DAO();
+        public LHJDB_DAO LHJDB { get; } = new LHJDB_DAO();
+        public TeamDAO Team { get; } = new TeamDAO();
+        public PartyJoinDAO PartyJoin { get; } = new PartyJoinDAO();
+        public MyParty_DAO MyParty { get; } = new MyParty_DAO();
+        public PersonalStat_DAO personalstat { get; } = new PersonalStat_DAO();
+        public Session_DAO Session { get; } = new Session_DAO();
 
-        public CreateParty_DAO CreateParty { get; }
-        public MyPage_DAO MyPage { get; }
-        public PartySearch_DAO PartySearch { get; }
-        public DBLogin_DAO Login { get; }
-
-        public Position_DAO Position { get; }
-        public LHJDB_DAO LHJDB { get; }
-        public TeamDAO Team { get; }
-
-        public PartyJoinDAO PartyJoin { get; }
-        public MyParty_DAO MyParty { get; internal set; }
-
-        public PersonalStat_DAO personalstat{get;}
 
         public DBManager()
         {
             Settings = DBSettings.KB_Default;
-
-            CreateParty = new CreateParty_DAO();
-            MyPage = new MyPage_DAO();
-            PartySearch = new PartySearch_DAO();
-            Login = new DBLogin_DAO();
-            Position = new Position_DAO();
-            LHJDB = new LHJDB_DAO();
-            Team = new TeamDAO();
-            PartyJoin = new PartyJoinDAO();
-            MyParty = new MyParty_DAO();
-            personalstat = new PersonalStat_DAO();
         }
 
 

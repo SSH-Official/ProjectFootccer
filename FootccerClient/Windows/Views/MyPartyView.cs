@@ -28,12 +28,12 @@ namespace FootccerClient.Windows.Views
             }
         }
 
-        private int TotalPages { get => 1 + (MyPartyList.Count - 1) / PageViewCount; }
-        private Point PageCount { get; set; }
-        
-        private int PageViewCount { get => PageCount.X * PageCount.Y; }
         private int _CurrentPageNum { get; set; }
+        private Point PageCount { get; set; }
 
+        private int TotalPages { get => 1 + ((MyPartyList.Count - 1) / PageViewCount); }
+        private int PageViewCount { get => PageCount.X * PageCount.Y; }
+        
         private int CurrentPageNum
         {
             get => _CurrentPageNum;
@@ -44,32 +44,6 @@ namespace FootccerClient.Windows.Views
                 ShowPage(_CurrentPageNum);
             }
         }
-
-        public MyPartyView() : this(5, 2) { }
-        public MyPartyView(int pageWidthCount, int pageHeightCount)
-        {
-
-            InitializeComponent();
-            InitializePartyIndicator(pageWidthCount, pageHeightCount);
-        }
-
-        private void InitializePartyIndicator(int countX, int countY)
-        {
-            PageCount = new Point(countX,countY);
-            panel_MyPartyList.Controls.Clear();
-            IndicatorComponent = new IndicatorSpace(PageCount.X, PageCount.Y, panel_MyPartyList, 5, null, null);
-        }
-
-        public override void Refresh_View()
-        {
-            if (App.Instance.Session.Offline) return;
-
-            MyPartyList = App.Instance.DB.MyParty.ReadPartyListAsSession();
-
-            ShowPage(1);
-        }
-
-        private IndicatorSpace IndicatorComponent { get; set; }
         private void ShowPage(int pageNum)
         {
             ValidatePageNum_InBoundary(pageNum);
@@ -79,6 +53,31 @@ namespace FootccerClient.Windows.Views
             label_Previous.Enabled = IsFirstPage(pageNum) ? false : true;
             label_Next.Enabled = IsLastPage(pageNum) ? false : true;
         }
+
+
+        public MyPartyView()
+        {
+            InitializeComponent();
+            Refresh_View();
+        }
+
+        public override void Refresh_View()
+        {
+            if (App.Instance.Session.Offline) return;
+
+            PageCount = App.Instance.ProgramSettings.PartyIndicator.Count;
+            panel_MyPartyList.Controls.Clear();
+            IndicatorComponent = new IndicatorSpace(PageCount.X, PageCount.Y, panel_MyPartyList, 5, null, null);
+
+            MyPartyList = App.Instance.DB.MyParty.ReadPartyListAsSession();
+            
+            
+
+            CurrentPageNum = 1;
+        }
+
+        private IndicatorSpace IndicatorComponent { get; set; }
+        
         private void ValidatePageNum_InBoundary(int pageNum)
         {
             if (IsPageOutOfBoundary(pageNum))

@@ -52,5 +52,7 @@ namespace FootccerClient.Windows.Views.FootccerView
             view.Dock = DockStyle.Fill;
             view.Visible = false;
         }
+
+
     }
 }

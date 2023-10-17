@@ -119,6 +119,7 @@
     <Compile Include="Footccer\DAO\PersonalSta_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\Position_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\Position_DAO.cs" />
+    <Compile Include="Footccer\DAO\Session_DAO.CRUD.cs" />
     <Compile Include="Footccer\DAO\teamDAO.cs" />
     <Compile Include="Footccer\DAO\TemporaryDAO.cs" />
     <Compile Include="Footccer\DTO\Builder\PartyDTOBuilder.cs" />
@@ -160,6 +161,8 @@
     </Compile>
     <Compile Include="Footccer\Manager\DBSettings.cs" />
     <Compile Include="Footccer\DAO\MyParty_DAO.cs" />
+    <Compile Include="Footccer\DAO\Session_DAO.cs" />
+    <Compile Include="Footccer\Manager\ProgramSettings.cs" />
     <Compile Include="Windows\Main\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

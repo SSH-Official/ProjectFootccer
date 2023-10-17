@@ -16,8 +16,8 @@ namespace FootccerClient
 {
     public partial class MainForm : Form
     {
-        private MainScreenView MainScreen { get; set; }
-        private MenuView MenuView { get; set; }
+        public MainScreenView MainScreen { get; set; }
+        public MenuView MenuView { get; set; }
 
         public MainForm()
         {
@@ -25,9 +25,6 @@ namespace FootccerClient
             InitializeViews();
             this.WindowState = FormWindowState.Maximized;
         }
-
-
-
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -45,5 +42,9 @@ namespace FootccerClient
             }
         }
 
+        internal void SetUserProfile()
+        {
+            MenuView.SetUserProfile();
+        }
     }
 }

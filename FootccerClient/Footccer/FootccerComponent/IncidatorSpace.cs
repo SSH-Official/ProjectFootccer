@@ -168,6 +168,7 @@ namespace FootccerClient.Footccer.FootccerComponent
         private void ResizeItems()
         {
             if (Count.X == 0 || Count.Y == 0) return;
+            if (Parent == null) return;
 
             int ActualWidth = Parent.Size.Width - ((Count.X * 2) * itemPadding.Horizontal);
             int ActualHeight = Parent.Size.Height - ((Count.Y * 2) * itemPadding.Vertical);

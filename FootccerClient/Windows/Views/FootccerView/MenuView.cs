@@ -28,7 +28,8 @@ namespace FootccerClient.Windows.Views.FootccerView
         public void ShowView<T>(string aTitle = "") where T : MasterView, new()
         {
             this.SetTitle(aTitle);
-            CurrentView = GetView<T>();
+            var view = GetView<T>();
+            CurrentView = view;
         }
 
         private void button_BackToMainMenu_Click(object sender, EventArgs e)
@@ -48,6 +49,13 @@ namespace FootccerClient.Windows.Views.FootccerView
         public void GoBackToMainMenu()
         {
             App.Instance.MainForm.ShowView<MainScreenView>();
+        }
+
+        internal void SetUserProfile()
+        {
+            button_MyPage.BackgroundImage = App.Instance.DB.Session.ReadSessionUserImage();
+            button_MyPage.BackColor = Color.White;
+            button_MyPage.Text = App.Instance.DB.Session.ReadUserName();
         }
     }
 }

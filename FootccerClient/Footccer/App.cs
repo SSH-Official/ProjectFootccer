@@ -57,13 +57,14 @@ namespace FootccerClient.Footccer
         public DBManager  DB { get; }        
         public SessionManager Session { get; }
         public ImageMaker Image { get; }
-        
+        public ProgramSettings ProgramSettings { get; }
 
         public App()
         {
             DB = new DBManager();
             Session = new SessionManager();
             Image = new ImageMaker();
+            ProgramSettings = new ProgramSettings();
         }
 
 
