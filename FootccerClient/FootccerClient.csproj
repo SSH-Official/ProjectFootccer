@@ -364,6 +364,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Windows\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -443,6 +444,15 @@
   <ItemGroup>
     <Folder Include="Lib\DB\" />
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Field.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Field1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\HalfField.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

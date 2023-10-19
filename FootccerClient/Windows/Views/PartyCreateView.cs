@@ -23,7 +23,7 @@ namespace FootccerClient.Windows.Views
 
         public PartyCreateView()
         {
-            InitializeComponent();
+            InitializeComponent();            
             createView();
             connectEvent();
         }
@@ -53,7 +53,6 @@ namespace FootccerClient.Windows.Views
         }        
         private void registParty()
         {
-            //(수정)
             PartyInfoDTO partyInfoDTO = partyInfoView.partyInfoDTO;
             partyInfoDTO.idx = App.Instance.DB.CreateParty.setPartyDTO(partyInfoDTO);
             if (partyInfoDTO.idx != 0)
@@ -106,11 +105,6 @@ namespace FootccerClient.Windows.Views
                 dto2.initSelectedPositionIndex();
                 dto2.selectedPositionIndex = -1;
             }
-        }
-
-        private void btn_regist_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

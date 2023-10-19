@@ -950,7 +950,7 @@
             this.label_previous.Name = "label_previous";
             this.label_previous.Size = new System.Drawing.Size(216, 38);
             this.label_previous.TabIndex = 1;
-            this.label_previous.Text = "label21";
+            this.label_previous.Text = "<<";
             this.label_previous.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_previous.Click += new System.EventHandler(this.label_previous_Click);
             // 
@@ -990,7 +990,7 @@
             this.label_next.Name = "label_next";
             this.label_next.Size = new System.Drawing.Size(216, 38);
             this.label_next.TabIndex = 1;
-            this.label_next.Text = "label22";
+            this.label_next.Text = ">>";
             this.label_next.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_next.Click += new System.EventHandler(this.label_next_Click);
             // 
