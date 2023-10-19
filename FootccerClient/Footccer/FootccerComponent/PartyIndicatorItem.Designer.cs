@@ -49,7 +49,6 @@
             this.panel_Base.Padding = new System.Windows.Forms.Padding(3);
             this.panel_Base.Size = new System.Drawing.Size(663, 627);
             this.panel_Base.TabIndex = 0;
-            this.panel_Base.Resize += new System.EventHandler(this.panel_Base_Resize);
             // 
             // tableLayoutPanel1
             // 
@@ -93,7 +92,6 @@
             this.panel_Frame.Padding = new System.Windows.Forms.Padding(12);
             this.panel_Frame.Size = new System.Drawing.Size(657, 392);
             this.panel_Frame.TabIndex = 0;
-            this.panel_Frame.SizeChanged += new System.EventHandler(this.panel_Frame_SizeChanged);
             // 
             // pictureBox_DataImage
             // 
@@ -114,6 +112,8 @@
             this.Controls.Add(this.panel_Base);
             this.Name = "PartyIndicatorItem";
             this.Size = new System.Drawing.Size(663, 627);
+            this.SizeChanged += new System.EventHandler(this.PartyIndicatorItem_SizeChanged);
+            this.Click += new System.EventHandler(this.PartyIndicatorItem_Click);
             this.panel_Base.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel_Frame.ResumeLayout(false);

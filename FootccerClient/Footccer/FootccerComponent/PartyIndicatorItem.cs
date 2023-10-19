@@ -25,53 +25,31 @@ namespace FootccerClient.Footccer.FootccerComponent
                 if (value == null) { this.Visible = false; return; }
 
                 this.Visible = true;
-                SetFrameImage();
-                SetDataImage();
+                FrameImage = value.FrameImage();
+                DataImage = value.DataImage();
                 label_Information.Text = GetInfoText();
             }
         }
 
-        PictureBox _PBox_DataImage { get; set; }
-        PictureBox _PBox_Frame { get; set; }
-
-        PictureBox PBox_DataImage 
-        { 
-            get => _PBox_DataImage; 
-            set 
-            {
-                value.BackgroundImageLayout = ImageLayout.Center;
-                value.SizeMode = PictureBoxSizeMode.StretchImage;
-                value.Size = panel_Frame.Size;
-                value.Location = new Point(0, 0);
-                value.Visible = true;
-
-                _PBox_DataImage = value;
-                
-                panel_Frame.Controls.Add(value);
-            }
-        }        
-        PictureBox PBox_Frame 
+        Image FrameImage
         {
-            get => _PBox_Frame;
+            get => panel_Frame.BackgroundImage;
+            set => panel_Frame.BackgroundImage = value;
+        }
+        Image DataImage
+        {
+            get => pictureBox_DataImage.BackgroundImage;
             set
             {
-                value.BackgroundImageLayout = ImageLayout.Center;
-                value.SizeMode = PictureBoxSizeMode.StretchImage;
-                value.Size = panel_Frame.Size;
-                value.Location = new Point(0, 0);
-                value.Visible = true;
-
-                _PBox_Frame = value;
-                panel_Frame.Controls.Add(value);
+                pictureBox_DataImage.BackgroundImage = value;
+                //RedrawFramedImage();
             }
         }
 
         public PartyIndicatorItem()
         {
             InitializeComponent();
-            UpdateInfo(null);
-            PBox_DataImage = new PictureBox();
-            PBox_Frame = new PictureBox();
+            UpdateInfo(null);            
         }
 
         public void UpdateInfo(PartyDTO partyDTO) => Value = partyDTO;
@@ -81,84 +59,76 @@ namespace FootccerClient.Footccer.FootccerComponent
                                         + $"{Value.PLname}\r\n"
                                         + $"{Value.Parname} ({Value.UserWithTag})";                
         
-
-        private void SetFrameImage()
+        private void RedrawFramedImage() => RedrawFramedImage(panel_Frame);
+        private void RedrawFramedImage(Control con)
         {
-            PBox_DataImage.Image = Resources.FootccerLogo;
-            return;
-            switch (Value.Actname.Substring(0,2))
-            {
-                case "축구":
-                    PBox_Frame.Image = Resources.FootccerLogo;
-                    PBox_Frame.Invalidate(); break;
-                case "풋살":
-                    PBox_Frame.Image = Resources.FootccerLogo;
-                    PBox_Frame.Invalidate(); break;
-                default:
-                    PBox_Frame.Image = null; PBox_Frame.Invalidate(); break;
-            }
-        }
-
-        private void SetDataImage()
-        {
-            PBox_DataImage.BackgroundImage = GetPadImage(Resources.Gradation01, PBox_DataImage.Size, 5);
-            PBox_DataImage.Invalidate();
-        }
-
-        private Image GetPadImage(Bitmap originalImage, Size size, int pad) => GetPadImage(originalImage, size, new Padding(pad));
-        private Image GetPadImage(Bitmap originalImage, Size size, Padding padding)
-        {
-            Bitmap resizedImage = new Bitmap(size.Width - padding.Horizontal, size.Height - padding.Vertical);
-            using (Graphics g = Graphics.FromImage(resizedImage))
-            {
-                // 그래픽스 개체를 사용하여 이미지를 리사이즈합니다.
-                g.DrawImage(originalImage, 0, 0, resizedImage.Width, resizedImage.Height);
-            }
-            return resizedImage;
-        }
-
-        private void panel_Base_Resize(object sender, EventArgs e)
-        {
-            Padding padding = new Padding(5);
-            PBox_DataImage.Parent = panel_Frame;
-            PBox_DataImage.Size = new Size(panel_Frame.Width - padding.Horizontal, panel_Frame.Height - padding.Vertical);
-            PBox_DataImage.Location = new Point(padding.Left, padding.Top);
-            PBox_DataImage.ResizeImages();
-
-            PBox_Frame.Parent = panel_Frame;
-            PBox_Frame.Size = panel_Frame.Size;
-            PBox_Frame.Location = new Point(0, 0);
-            PBox_Frame.ResizeImages();
-        }
-
-        private void panel_Frame_SizeChanged(object sender, EventArgs e)
-        {
-            var con = (Control)sender;
             con.SetPaddingForFramed();
             con.DrawFramedImage(pictureBox_DataImage);
         }
-    }
 
-    public static class PictureBoxExtensions
-    {
-        public static void ResizeImages(this PictureBox pbox)
+
+        private void PartyIndicatorItem_Click(object sender, EventArgs e)
         {
-            pbox.Image = pbox.GetPadImage(3, true);
-            pbox.BackgroundImage = pbox.GetPadImage(3, false);
+            MessageBox.Show("!!!");
         }
 
-        public static Image GetPadImage(this PictureBox pbox, int pad, bool isFront) => pbox.GetPadImage((isFront? pbox.Image : pbox.BackgroundImage), new Padding(pad));
-        public static Image GetPadImage(this PictureBox pbox, Image originalImage, Padding padding)
+        private void PartyIndicatorItem_SizeChanged(object sender, EventArgs e)
         {
-            if (originalImage == null) { return null; }
-            var size = pbox.Size;
-            Bitmap resizedImage = new Bitmap(size.Width - padding.Horizontal, size.Height - padding.Vertical);
-            using (Graphics g = Graphics.FromImage(resizedImage))
+            RedrawFramedImage();
+        }
+    }
+
+    static class PartyIndicatorItemExtensions
+    {
+        public static Image FrameImage(this PartyDTO party)
+        {
+            //TODO
+            return Resources.Frame_Blue;
+        }
+
+        public static Image DataImage(this PartyDTO party)
+        {
+            //TODO
+            return Resources.Gradation01;
+        }
+
+        public static void SetPaddingForFramed(this Control control)
+        {
+            int padbottom = 3;
+            Point padUnit = new Point(70, 40);
+            Size size = control.Size;
+            int horPad = Math.Max(2, padbottom + (size.Width / padUnit.X));
+            int verPad = Math.Max(2, padbottom + (size.Height / padUnit.Y));
+            control.Padding = new Padding(horPad, verPad, (int)(horPad), (int)(verPad));
+        }
+
+        public static void DrawFramedImage(this Control control, Control child)
+        {
+            if (child == null
+                || control == null
+                || child.Parent != control
+                || control.BackgroundImage == null
+                || child.BackgroundImage == null) { return; }
+
+            Image cldimg = child.BackgroundImage;
+            Image conimg = control.BackgroundImage;
+            Bitmap image = new Bitmap(control.Width, control.Height);
+
+            using (Graphics g = Graphics.FromImage(image))
             {
-                // 그래픽스 개체를 사용하여 이미지를 리사이즈합니다.
-                g.DrawImage(originalImage, 0, 0, resizedImage.Width, resizedImage.Height);
+                Padding pad = control.Padding;
+                Point cldpoint = new Point(pad.Left, pad.Top);
+                Size cldSize = new Size(control.Width - pad.Horizontal, control.Height - pad.Vertical);
+                Point conPoint = control.Location;
+                Size conSize = control.Size;
+
+                g.DrawImage(cldimg, cldpoint.X, cldpoint.Y, cldSize.Width, cldSize.Height);
+                g.DrawImage(conimg, 0, 0, conSize.Width, conSize.Height);
             }
-            return resizedImage;
+
+            control.BackgroundImage = image;
+            control.BackgroundImageLayout = ImageLayout.Stretch;
+            //return (Image)image.Clone();
         }
     }
 }
