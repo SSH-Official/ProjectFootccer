@@ -27,6 +27,7 @@ namespace FootccerClient.Footccer.FootccerComponent
                 this.Visible = true;
                 FrameImage = value.FrameImage();
                 DataImage = value.DataImage();
+                RedrawFramedImage();
                 label_Information.Text = GetInfoText();
             }
         }
@@ -42,7 +43,6 @@ namespace FootccerClient.Footccer.FootccerComponent
             set
             {
                 pictureBox_DataImage.BackgroundImage = value;
-                //RedrawFramedImage();
             }
         }
 
@@ -127,7 +127,6 @@ namespace FootccerClient.Footccer.FootccerComponent
             }
 
             control.BackgroundImage = image;
-            control.BackgroundImageLayout = ImageLayout.Stretch;
             //return (Image)image.Clone();
         }
     }
