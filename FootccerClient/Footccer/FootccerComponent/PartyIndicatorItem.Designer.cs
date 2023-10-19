@@ -31,12 +31,12 @@
             this.panel_Base = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label_Information = new System.Windows.Forms.Label();
-            this.panel_DataImage = new System.Windows.Forms.Panel();
-            this.pictureBox_Frame = new System.Windows.Forms.PictureBox();
+            this.panel_Frame = new System.Windows.Forms.Panel();
+            this.pictureBox_DataImage = new System.Windows.Forms.PictureBox();
             this.panel_Base.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel_DataImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Frame)).BeginInit();
+            this.panel_Frame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DataImage)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Base
@@ -57,7 +57,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label_Information, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel_DataImage, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Frame, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -80,30 +80,32 @@
             this.label_Information.Text = "표시내용";
             this.label_Information.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel_DataImage
+            // panel_Frame
             // 
-            this.panel_DataImage.BackColor = System.Drawing.Color.Transparent;
-            this.panel_DataImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel_DataImage.Controls.Add(this.pictureBox_Frame);
-            this.panel_DataImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_DataImage.Location = new System.Drawing.Point(0, 0);
-            this.panel_DataImage.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_DataImage.Name = "panel_DataImage";
-            this.panel_DataImage.Size = new System.Drawing.Size(657, 392);
-            this.panel_DataImage.TabIndex = 0;
+            this.panel_Frame.BackColor = System.Drawing.Color.Transparent;
+            this.panel_Frame.BackgroundImage = global::FootccerClient.Properties.Resources.Frame_Blue;
+            this.panel_Frame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel_Frame.Controls.Add(this.pictureBox_DataImage);
+            this.panel_Frame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Frame.Location = new System.Drawing.Point(0, 0);
+            this.panel_Frame.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_Frame.Name = "panel_Frame";
+            this.panel_Frame.Padding = new System.Windows.Forms.Padding(12);
+            this.panel_Frame.Size = new System.Drawing.Size(657, 392);
+            this.panel_Frame.TabIndex = 0;
+            this.panel_Frame.SizeChanged += new System.EventHandler(this.panel_Frame_SizeChanged);
             // 
-            // pictureBox_Frame
+            // pictureBox_DataImage
             // 
-            this.pictureBox_Frame.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_Frame.BackgroundImage = global::FootccerClient.Properties.Resources.Gradation01;
-            this.pictureBox_Frame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox_Frame.Image = global::FootccerClient.Properties.Resources.FootccerLogo;
-            this.pictureBox_Frame.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_Frame.Name = "pictureBox_Frame";
-            this.pictureBox_Frame.Size = new System.Drawing.Size(657, 392);
-            this.pictureBox_Frame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_Frame.TabIndex = 23;
-            this.pictureBox_Frame.TabStop = false;
+            this.pictureBox_DataImage.BackgroundImage = global::FootccerClient.Properties.Resources.Gradation01;
+            this.pictureBox_DataImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox_DataImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_DataImage.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox_DataImage.Name = "pictureBox_DataImage";
+            this.pictureBox_DataImage.Size = new System.Drawing.Size(633, 368);
+            this.pictureBox_DataImage.TabIndex = 0;
+            this.pictureBox_DataImage.TabStop = false;
+            this.pictureBox_DataImage.Visible = false;
             // 
             // PartyIndicatorItem
             // 
@@ -114,8 +116,8 @@
             this.Size = new System.Drawing.Size(663, 627);
             this.panel_Base.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel_DataImage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Frame)).EndInit();
+            this.panel_Frame.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_DataImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,7 +127,7 @@
         private System.Windows.Forms.Panel panel_Base;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label_Information;
-        private System.Windows.Forms.Panel panel_DataImage;
-        private System.Windows.Forms.PictureBox pictureBox_Frame;
+        private System.Windows.Forms.Panel panel_Frame;
+        private System.Windows.Forms.PictureBox pictureBox_DataImage;
     }
 }

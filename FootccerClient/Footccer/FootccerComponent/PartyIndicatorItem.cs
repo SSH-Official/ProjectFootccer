@@ -41,13 +41,13 @@ namespace FootccerClient.Footccer.FootccerComponent
             {
                 value.BackgroundImageLayout = ImageLayout.Center;
                 value.SizeMode = PictureBoxSizeMode.StretchImage;
-                value.Size = panel_DataImage.Size;
+                value.Size = panel_Frame.Size;
                 value.Location = new Point(0, 0);
                 value.Visible = true;
 
                 _PBox_DataImage = value;
                 
-                panel_DataImage.Controls.Add(value);
+                panel_Frame.Controls.Add(value);
             }
         }        
         PictureBox PBox_Frame 
@@ -57,12 +57,12 @@ namespace FootccerClient.Footccer.FootccerComponent
             {
                 value.BackgroundImageLayout = ImageLayout.Center;
                 value.SizeMode = PictureBoxSizeMode.StretchImage;
-                value.Size = panel_DataImage.Size;
+                value.Size = panel_Frame.Size;
                 value.Location = new Point(0, 0);
                 value.Visible = true;
 
                 _PBox_Frame = value;
-                panel_DataImage.Controls.Add(value);
+                panel_Frame.Controls.Add(value);
             }
         }
 
@@ -84,15 +84,15 @@ namespace FootccerClient.Footccer.FootccerComponent
 
         private void SetFrameImage()
         {
-            PBox_DataImage.Image = Resources.Frame_01;
+            PBox_DataImage.Image = Resources.FootccerLogo;
             return;
             switch (Value.Actname.Substring(0,2))
             {
                 case "축구":
-                    PBox_Frame.Image = Resources.Frame_01;
+                    PBox_Frame.Image = Resources.FootccerLogo;
                     PBox_Frame.Invalidate(); break;
                 case "풋살":
-                    PBox_Frame.Image = Resources.Frame_01;
+                    PBox_Frame.Image = Resources.FootccerLogo;
                     PBox_Frame.Invalidate(); break;
                 default:
                     PBox_Frame.Image = null; PBox_Frame.Invalidate(); break;
@@ -120,15 +120,22 @@ namespace FootccerClient.Footccer.FootccerComponent
         private void panel_Base_Resize(object sender, EventArgs e)
         {
             Padding padding = new Padding(5);
-            PBox_DataImage.Parent = panel_DataImage;
-            PBox_DataImage.Size = new Size(panel_DataImage.Width - padding.Horizontal, panel_DataImage.Height - padding.Vertical);
+            PBox_DataImage.Parent = panel_Frame;
+            PBox_DataImage.Size = new Size(panel_Frame.Width - padding.Horizontal, panel_Frame.Height - padding.Vertical);
             PBox_DataImage.Location = new Point(padding.Left, padding.Top);
             PBox_DataImage.ResizeImages();
 
-            PBox_Frame.Parent = panel_DataImage;
-            PBox_Frame.Size = panel_DataImage.Size;
+            PBox_Frame.Parent = panel_Frame;
+            PBox_Frame.Size = panel_Frame.Size;
             PBox_Frame.Location = new Point(0, 0);
             PBox_Frame.ResizeImages();
+        }
+
+        private void panel_Frame_SizeChanged(object sender, EventArgs e)
+        {
+            var con = (Control)sender;
+            con.SetPaddingForFramed();
+            con.DrawFramedImage(pictureBox_DataImage);
         }
     }
 

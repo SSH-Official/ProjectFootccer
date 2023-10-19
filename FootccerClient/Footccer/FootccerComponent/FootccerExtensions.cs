@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 public static class FootccerExtensions
 {
@@ -50,6 +52,45 @@ public static class FootccerExtensions
 
         string result = datePart + AMPM + timePart;
         return result;
+    }
+
+    public static void SetPaddingForFramed(this Control control)
+    {
+        int padbottom = 3;
+        Point padUnit = new Point(70, 40);
+        Size size = control.Size;
+        int horPad = Math.Max(2, padbottom + (size.Width / padUnit.X));
+        int verPad = Math.Max(2, padbottom + (size.Height / padUnit.Y));
+        control.Padding = new Padding(horPad, verPad, (int)(horPad), (int)(verPad));
+    }
+
+    public static void DrawFramedImage(this Control control, Control child)
+    {
+        if (child == null
+            || control == null
+            || child.Parent != control
+            || control.BackgroundImage == null
+            || child.BackgroundImage == null) { return; }
+
+        Bitmap cldimg = (Bitmap)child.BackgroundImage;
+        Bitmap conimg = (Bitmap)control.BackgroundImage;
+        Bitmap image = new Bitmap(control.Width, control.Height);
+
+        using (Graphics g = Graphics.FromImage(image))
+        {
+            Padding pad = control.Padding;
+            Point cldpoint = new Point(pad.Left, pad.Top);
+            Size cldSize = new Size(control.Width - pad.Horizontal, control.Height - pad.Vertical);
+            Point conPoint = control.Location;
+            Size conSize = control.Size;
+
+            g.DrawImage(cldimg, cldpoint.X, cldpoint.Y, cldSize.Width, cldSize.Height);
+            g.DrawImage(conimg, 0, 0, conSize.Width, conSize.Height);
+        }
+
+        control.BackgroundImage = image;
+        control.BackgroundImageLayout = ImageLayout.Stretch;
+        //return (Image)image.Clone();
     }
 }
 
