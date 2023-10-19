@@ -456,5 +456,8 @@
   <ItemGroup>
     <None Include="Resources\그라1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\메인 배경.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

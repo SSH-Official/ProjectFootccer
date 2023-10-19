@@ -38,5 +38,19 @@ namespace FootccerClient.Windows.Views.FootccerView
         {
             App.Instance.MainForm.ShowView<ConfigView>();
         }
+
+        private void MainScreenView_SizeChanged(object sender, EventArgs e)
+        {
+            Size size = panel_Base.Size;
+            Size flpSize = flowLayoutPanel_MenuButtons.Size;
+            Size logoSize = pictureBox_Logo.Size;
+
+            int X = (size.Width - flpSize.Width) / 2;
+            int Y = size.Height * 6 / 9;
+            flowLayoutPanel_MenuButtons.Location = new Point(X, Y);
+            int logoX = (size.Width - logoSize.Width) / 2;
+            int logoY = size.Height * 5 / 24;
+            pictureBox_Logo.Location = new Point(logoX, logoY);
+        }
     }
 }
