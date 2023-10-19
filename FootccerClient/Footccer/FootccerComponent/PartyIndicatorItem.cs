@@ -74,7 +74,7 @@ namespace FootccerClient.Footccer.FootccerComponent
 
         private void PartyIndicatorItem_SizeChanged(object sender, EventArgs e)
         {
-            RedrawFramedImage();
+            //RedrawFramedImage();
         }
     }
 
