@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootccerClient.Properties;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,13 +18,17 @@ namespace FootccerClient.Footccer.Util
         public Queue<string> URLQueue { get; set; } = new Queue<string>();
         public int Threshold { get; set; }
 
-        public ImageMaker(int threshold = 5)
+        public ImageMaker(int threshold = 50)
         {
             this.Threshold = threshold;
         }
 
         public Image GetImageFromURL(string url)
         {
+            if (url.Substring(0, 4).ToLower() != "http")
+            {
+                return FindResource(url);
+            }
             using (WebClient client = new WebClient())
             {
                 if (ImageCache.ContainsKey(url)) { return ImageCache[url]; }
@@ -37,6 +42,15 @@ namespace FootccerClient.Footccer.Util
                     return img;
                 }
             }
+        }
+
+        private Image FindResource(string objectName)
+        {
+            Image img = (Image)Properties.Resources.ResourceManager.GetObject(objectName);
+            
+            if (img == null) throw new Exception($"{objectName}이 발견되지 않습니다.");
+
+            return img;
         }
 
         private void EnqueueCache(string url, Image img)

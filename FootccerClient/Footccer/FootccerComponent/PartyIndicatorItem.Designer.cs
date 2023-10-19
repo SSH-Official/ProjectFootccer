@@ -78,6 +78,7 @@
             this.label_Information.TabIndex = 0;
             this.label_Information.Text = "표시내용";
             this.label_Information.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_Information.Click += new System.EventHandler(this.label_Information_Click);
             // 
             // panel_Frame
             // 
@@ -92,6 +93,7 @@
             this.panel_Frame.Padding = new System.Windows.Forms.Padding(12);
             this.panel_Frame.Size = new System.Drawing.Size(657, 392);
             this.panel_Frame.TabIndex = 0;
+            this.panel_Frame.Click += new System.EventHandler(this.panel_Frame_Click);
             // 
             // pictureBox_DataImage
             // 
@@ -112,8 +114,6 @@
             this.Controls.Add(this.panel_Base);
             this.Name = "PartyIndicatorItem";
             this.Size = new System.Drawing.Size(663, 627);
-            this.SizeChanged += new System.EventHandler(this.PartyIndicatorItem_SizeChanged);
-            this.Click += new System.EventHandler(this.PartyIndicatorItem_Click);
             this.panel_Base.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel_Frame.ResumeLayout(false);

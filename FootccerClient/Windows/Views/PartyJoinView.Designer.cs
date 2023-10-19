@@ -469,7 +469,7 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1313, 0);
+            this.panel1.Location = new System.Drawing.Point(854, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(273, 719);
             this.panel1.TabIndex = 7;
@@ -588,7 +588,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(180, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1133, 719);
+            this.panel2.Size = new System.Drawing.Size(674, 719);
             this.panel2.TabIndex = 8;
             // 
             // tableLayoutPanel1
@@ -606,7 +606,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1133, 719);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(674, 719);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // PositionView
@@ -614,7 +614,7 @@
             this.PositionView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PositionView.Location = new System.Drawing.Point(103, 53);
             this.PositionView.Name = "PositionView";
-            this.PositionView.Size = new System.Drawing.Size(1027, 663);
+            this.PositionView.Size = new System.Drawing.Size(568, 663);
             this.PositionView.TabIndex = 3;
             // 
             // panel7
@@ -642,7 +642,7 @@
             this.TeamSelectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TeamSelectPanel.Location = new System.Drawing.Point(103, 3);
             this.TeamSelectPanel.Name = "TeamSelectPanel";
-            this.TeamSelectPanel.Size = new System.Drawing.Size(1027, 44);
+            this.TeamSelectPanel.Size = new System.Drawing.Size(568, 44);
             this.TeamSelectPanel.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -658,14 +658,14 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1027, 44);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(568, 44);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // rbtn_B
             // 
             this.rbtn_B.AutoSize = true;
             this.rbtn_B.Dock = System.Windows.Forms.DockStyle.Left;
-            this.rbtn_B.Location = new System.Drawing.Point(447, 3);
+            this.rbtn_B.Location = new System.Drawing.Point(248, 3);
             this.rbtn_B.Name = "rbtn_B";
             this.rbtn_B.Size = new System.Drawing.Size(31, 38);
             this.rbtn_B.TabIndex = 1;
@@ -730,7 +730,7 @@
             // 
             this.splitter2.BackColor = System.Drawing.Color.Black;
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(1310, 0);
+            this.splitter2.Location = new System.Drawing.Point(851, 0);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(3, 719);
             this.splitter2.TabIndex = 9;
@@ -740,7 +740,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1586, 719);
+            this.ClientSize = new System.Drawing.Size(1127, 719);
             this.Controls.Add(this.splitter2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

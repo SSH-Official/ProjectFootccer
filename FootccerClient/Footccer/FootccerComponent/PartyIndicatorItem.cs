@@ -1,5 +1,6 @@
 ﻿using FootccerClient.Footccer.DTO;
 using FootccerClient.Properties;
+using FootccerClient.Windows.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace FootccerClient.Footccer.FootccerComponent
 {
     public partial class PartyIndicatorItem : UserControl
     {
+        private PartyIndicatorContext Context { get; set; }
+
         private PartyDTO _value { get; set; }
         public PartyDTO Value 
         { 
@@ -32,12 +35,12 @@ namespace FootccerClient.Footccer.FootccerComponent
             }
         }
 
-        Image FrameImage
+        private Image FrameImage
         {
             get => panel_Frame.BackgroundImage;
             set => panel_Frame.BackgroundImage = value;
         }
-        Image DataImage
+        private Image DataImage
         {
             get => pictureBox_DataImage.BackgroundImage;
             set
@@ -49,9 +52,10 @@ namespace FootccerClient.Footccer.FootccerComponent
         public PartyIndicatorItem()
         {
             InitializeComponent();
-            UpdateInfo(null);            
+            UpdateInfo(null);
         }
 
+        public void UpdateContext(PartyIndicatorContext context) => Context = context;
         public void UpdateInfo(PartyDTO partyDTO) => Value = partyDTO;
 
         private string GetInfoText() => $"{Value.Actname.Substring(0, 2)}\r\n"
@@ -65,17 +69,31 @@ namespace FootccerClient.Footccer.FootccerComponent
             con.SetPaddingForFramed();
             con.DrawFramedImage(pictureBox_DataImage);
         }
+        
 
-
-        private void PartyIndicatorItem_Click(object sender, EventArgs e)
+        private void panel_Frame_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("!!!");
+            ClickEvent();
         }
 
-        private void PartyIndicatorItem_SizeChanged(object sender, EventArgs e)
+        private void label_Information_Click(object sender, EventArgs e)
         {
-            //RedrawFramedImage();
+            ClickEvent();
         }
+
+        private void ClickEvent()
+        {
+            if (Context == PartyIndicatorContext.PartySearch)
+            {
+                PartyJoinView.Pidx = Value.idx;
+                App.Instance.MainForm.ShowView<PartyJoinView>("파티 참가");
+            }
+        }
+    }
+
+    public enum PartyIndicatorContext
+    {
+        MyParty, PartySearch, NotFound
     }
 
     static class PartyIndicatorItemExtensions

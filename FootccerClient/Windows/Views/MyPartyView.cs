@@ -67,11 +67,9 @@ namespace FootccerClient.Windows.Views
 
             PageCount = App.Instance.ProgramSettings.PartyIndicator.Count;
             panel_MyPartyList.Controls.Clear();
-            IndicatorComponent = new IndicatorSpace(PageCount.X, PageCount.Y, panel_MyPartyList, 5, null, null);
+            IndicatorComponent = new IndicatorSpace(PageCount.X, PageCount.Y, panel_MyPartyList, 5, null, null, PartyIndicatorContext.MyParty);
 
             MyPartyList = App.Instance.DB.MyParty.ReadPartyListAsSession();
-            
-            
 
             CurrentPageNum = 1;
         }

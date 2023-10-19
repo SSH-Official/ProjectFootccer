@@ -1,4 +1,6 @@
 ﻿using FootccerClient.Footccer.DTO;
+using FootccerClient.Windows.Views;
+using Org.BouncyCastle.Crypto.Operators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +19,11 @@ namespace FootccerClient.Footccer.FootccerComponent
         public Size itemSize { get; set; }
         public Point Count { get; private set; }
         public Padding itemPadding { get; set; }
+        
         private Random random { get; set; } = new Random();
 
+        private PartyIndicatorContext Context { get; set; }
+        public void UpdateContext(PartyIndicatorContext context) => Context = context;
         private List<(PartyDTO, bool)> partyData { get; set; } = null;
         public List<(PartyDTO, bool)> PartyListData 
         {
@@ -64,6 +69,7 @@ namespace FootccerClient.Footccer.FootccerComponent
                     || i >= PartyListData.Count) continue;
                 var control = (madeControls[i] as PartyIndicatorItem);
                 control.UpdateInfo(PartyListData[i + startIndex_thisPage].Item1);
+                control.UpdateContext(this.Context);
             }
         }
 
@@ -101,9 +107,11 @@ namespace FootccerClient.Footccer.FootccerComponent
         /// <param name="itemPadding"></param>
         /// <param name="images"></param>
         /// <exception cref="Exception"></exception>
-        public IndicatorSpace(int horizontalCount, int verticalCount, Control parent, int itemPadding = 5, List<Image> images = null, List<(PartyDTO, bool)> myPartyList = null)
+        public IndicatorSpace(int horizontalCount, int verticalCount, Control parent, int itemPadding = 5, 
+            List<Image> images = null, List<(PartyDTO, bool)> myPartyList = null, PartyIndicatorContext context = PartyIndicatorContext.NotFound)
         {
             InitializeComponent();
+            
 
             if (parent == null) throw new Exception("표시할 영역이 지정되지 않았습니다.");
             if (myPartyList == null) partyData = new List<(PartyDTO,bool)>();
@@ -125,6 +133,7 @@ namespace FootccerClient.Footccer.FootccerComponent
                 flowLayoutPanel_Base.Padding = new Padding(itemPadding);
                 Count = new Point(horizontalCount, verticalCount);
                 this.partyData = myPartyList;
+                this.Context = context;
             }
         }
 
