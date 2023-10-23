@@ -64,3 +64,22 @@ Footccer 프로그램 프로젝트
   <img src="https://img.shields.io/badge/windows 10 이상-0078D6?style=for-the-badge&logo=windows10&logoColor=white">
   <img src="https://img.shields.io/badge/.net framework 4.8 필요-512BD4?style=for-the-badge&logo=dotnet&logoColor=white">
 </div></br>
+
+## 비고
+
+#### 저작권 출처
+
+메인화면 이미지
+<a href="https://kr.freepik.com/free-vector/realistic-soccer-football-stadium-illustration_13399208.htm#query=%EC%B6%95%EA%B5%AC%EC%9E%A5&
+from_query=%EC%B6%95%EA%B5%AC%EA%B2%BD%EA%B8%B0%EC%9E%A5&position=17&from_view=search&track=sph">작가 pikisuperstar</a> 출처 Freepik
+
+로고 축구공 https://www.chosun.com/sports/football/2022/04/01/3KT5MSX4ZNAIXPRJTJEJUKNIAQ/
+
+마이페이지 활동통계 아이콘 https://www.flaticon.com/free-icon/exercise_755258?term=exercise&page=1&position=54&origin=tag&related_id=755258
+
+팀 선택 버튼 아이콘 <a href="https://www.flaticon.com/kr/free-icons/-" title="축구 유니폼 아이콘">
+
+축구 유니폼 아이콘  제작자: Freepik - Flaticon</a>
+
+팀 선택 백그라운드 이미지 https://pin.it/4Zkg0XS
+
