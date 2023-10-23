@@ -31,10 +31,6 @@ namespace FootccerClient.Windows.Views
             InitializeComponent();
             selectedPositionIndex = -1;
         }
-        /*public override void Refresh_View()
-        {
-            placeFormation();
-        }*/
         public FormationSubView(FormationDTO formationDTO, List<int> positionList) : this()
         {
             panel7.Visible = false;
@@ -186,9 +182,9 @@ namespace FootccerClient.Windows.Views
             int cellWidth = this.panel.Width / 6;
             TableLayoutPanel tableLayoutPanel = new TableLayoutPanel();
             tableLayoutPanel.Dock = DockStyle.Top;
+            tableLayoutPanel.BackColor = Color.Transparent;
             tableLayoutPanel.Height = cellHeight;
-            tableLayoutPanel.Width = this.Width;
-            tableLayoutPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutPanel.Width = this.Width;            
             panel.Controls.Add(tableLayoutPanel);
             tableLayoutPanel.RowCount = 1;
             tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 25));

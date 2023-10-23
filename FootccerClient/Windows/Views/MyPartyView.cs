@@ -120,7 +120,7 @@ namespace FootccerClient.Windows.Views
 
         private void btn_NewParty_Click(object sender, EventArgs e)
         {
-            App.Instance.MainForm.ShowView<PartyCreateView>();
+            App.Instance.MainForm.ShowView<PartyCreateView>("파티 생성");
         }
     }
 

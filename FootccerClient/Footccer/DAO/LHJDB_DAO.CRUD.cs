@@ -44,7 +44,8 @@ namespace FootccerClient.Footccer.DAO
                              "from Party p " +
                              "join Record r on p.idx = r.Party_idx " +
                              "join List l on l.Party_idx = p.idx " +
-                             "where l.User_idx = @User_idx and p.date < sysdate() ";
+                             "where l.User_idx = @User_idx and p.date < sysdate() " +
+                             "order by date asc ";
 
                 cmd.CommandText = sql;
                 cmd.Parameters.Add(new MySqlParameter("@User_idx", MySqlDbType.Int32, 10)).Value = testidx;

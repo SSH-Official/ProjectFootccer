@@ -63,6 +63,26 @@ namespace FootccerClient.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap Field {
+            get {
+                object obj = ResourceManager.GetObject("Field", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Field1 {
+            get {
+                object obj = ResourceManager.GetObject("Field1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap FootccerLogo {
             get {
                 object obj = ResourceManager.GetObject("FootccerLogo", resourceCulture);
@@ -86,6 +106,16 @@ namespace FootccerClient.Properties {
         internal static System.Drawing.Bitmap Gradation01 {
             get {
                 object obj = ResourceManager.GetObject("Gradation01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap HalfField {
+            get {
+                object obj = ResourceManager.GetObject("HalfField", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

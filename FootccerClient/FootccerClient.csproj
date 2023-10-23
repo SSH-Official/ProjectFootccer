@@ -459,5 +459,10 @@
   <ItemGroup>
     <None Include="Resources\메인 배경.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Field.png" />
+    <Content Include="Images\Field1.png" />
+    <Content Include="Images\HalfField.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

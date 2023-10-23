@@ -114,6 +114,16 @@ namespace FootccerClient.Windows.Views
                 item.BackColor = Color.DarkGray;
             }
         }
+        private void initializePanelBackColor()
+        {
+            foreach (var item in panelsList)
+            {
+                foreach(var panel in item)
+                {
+                    panel.BackColor = SystemColors.Control;
+                }       
+            }
+        }
         private void setPanelBackColor(DataRow dr, int row)
         {
             foreach (var item in panelsList[row])
@@ -134,9 +144,9 @@ namespace FootccerClient.Windows.Views
         }
         void initializePage()
         {
-            label_page.Text = "1 page";
-            label_previous.Text = 1.ToString();
-            label_next.Text = pageSize.ToString();
+            label_page.Text = $"1/{pageSize}";
+            label_previous.Text = "<<";
+            label_next.Text = ">>";
         }
         void initializeButton_InputDetail()
         {
@@ -235,18 +245,20 @@ namespace FootccerClient.Windows.Views
         }
         private void label_previous_Click(object sender, EventArgs e)
         {
-            if(this.currentPage > 0)
+            if(this.currentPage + 1 > 1)
             {
                 this.currentPage -= 1;
+                initializePanelBackColor();
                 updateRecord(this.currentPage);
                 label_page.Text = (currentPage + 1).ToString() + "/" + pageSize.ToString() + " page";
             }            
         }
         private void label_next_Click(object sender, EventArgs e)
         {
-            if(this.currentPage < pageSize)
+            if(this.currentPage + 1 < pageSize)
             {
                 this.currentPage += 1;
+                initializePanelBackColor();
                 updateRecord(this.currentPage);
                 label_page.Text = (currentPage + 1).ToString() + "/" + pageSize.ToString() + " page";
             }
