@@ -22,12 +22,12 @@ namespace FootccerClient.Footccer.DAO
                 return ReadDataList(rdr => rdr.GetInt32(1));
             }
 
-            public List<(PartyDTO, bool)> ReadPartyList(string userID)
+            public List<PartyDTO> ReadPartyList(string userID)
             {
                 cmd.CommandText =
                     "SELECT Par.idx, Act.`name`, Ldui.nickname, Par.`name`,\r\n" +
                     "Ct.`name`, Plc.`name`, Plc.address, Par.`date`,\r\n" +
-                    "Par.`max`, Par.`count`, Ld.idx, (Ld.idx = U.idx)\r\n" +
+                    "Par.`max`, Par.`count`, Ld.idx\r\n" +
                     "FROM Party AS Par\r\n" +
                     "LEFT JOIN Activity AS Act ON Act.idx = Par.Activity_idx\r\n" +
                     "LEFT JOIN Place AS Plc ON Plc.idx = Par.Place_idx\r\n" +
@@ -41,13 +41,13 @@ namespace FootccerClient.Footccer.DAO
 
                 return ReadDataList((rdr) =>
                 {
-                    (var party, var isLeader) = ParseToPartyDTO(rdr);
+                    var party = ParseToPartyDTO(rdr);
 
-                    return (party, isLeader);
+                    return party;
                 });
             }
 
-            private (PartyDTO, bool) ParseToPartyDTO(MySqlDataReader rdr)
+            private PartyDTO ParseToPartyDTO(MySqlDataReader rdr)
             {
                 var idx = rdr.GetInt32(0);
                 var Actname = rdr.GetString(1);
@@ -60,7 +60,6 @@ namespace FootccerClient.Footccer.DAO
                 var max = rdr.GetInt32(8);
                 var count = rdr.GetInt32(9);
                 var Uidx = rdr.GetInt32(10);
-                var isLeader = rdr.GetBoolean(11);
 
                 var party = new PartyDTOBuilder()
                     .SetIndex(idx)
@@ -75,7 +74,7 @@ namespace FootccerClient.Footccer.DAO
                     .SetCount(count)
                     .SetUidx(Uidx)
                     .Build();
-                return (party, isLeader);
+                return party;
             }
         }
 

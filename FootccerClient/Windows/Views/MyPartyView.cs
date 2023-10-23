@@ -17,23 +17,38 @@ namespace FootccerClient.Windows.Views
 {
     public partial class MyPartyView : MasterView
     {
-        private List<(PartyDTO, bool)> _MyPartyList { get; set; }
-        private List<(PartyDTO, bool)> MyPartyList
+        
+        private IndicatorSpace IndicatorComponent { get; set; }
+
+        private Point PageCount { get => App.Instance.ProgramSettings.PartyIndicator.Count; }
+        private int TotalPages { get => 1 + ((PartyList.Count - 1) / PageViewCount); }
+        private int PageViewCount { get => PageCount.X * PageCount.Y; }
+
+        private List<PartyDTO> _PartyList { get; set; }
+        private List<PartyDTO> PartyList
         {
-            get => _MyPartyList;
+            get => _PartyList;
             set
             {
-                _MyPartyList = value;
+                if (value == null) value = new List<PartyDTO>();                
+
+                _PartyList = value;
                 IndicatorComponent.PartyListData = value;
+
+                if (value.Count == 0) NullPage();
+                else { CurrentPageNum = 1; }
             }
         }
 
-        private int _CurrentPageNum { get; set; }
-        private Point PageCount { get; set; }
+        private void NullPage()
+        {
+            _CurrentPageNum = -1;
+            label_CurrentPage.Text = $"검색결과 없음";
+            label_Previous.Enabled = false;
+            label_Next.Enabled = false;
+        }
 
-        private int TotalPages { get => 1 + ((MyPartyList.Count - 1) / PageViewCount); }
-        private int PageViewCount { get => PageCount.X * PageCount.Y; }
-        
+        private int _CurrentPageNum { get; set; }
         private int CurrentPageNum
         {
             get => _CurrentPageNum;
@@ -53,6 +68,16 @@ namespace FootccerClient.Windows.Views
             label_Previous.Enabled = IsFirstPage(pageNum) ? false : true;
             label_Next.Enabled = IsLastPage(pageNum) ? false : true;
         }
+        private void ValidatePageNum_InBoundary(int pageNum)
+        {
+            if (IsPageOutOfBoundary(pageNum))
+            {
+                throw new Exception($"pageNum out of bound : pageNum was {pageNum} not between (1, {TotalPages})");
+            }
+        }
+        private bool IsPageOutOfBoundary(int pageNum) => (pageNum < 1) || (TotalPages < pageNum);
+        private bool IsFirstPage(int pageNum) => (pageNum == 1);
+        private bool IsLastPage(int pageNum) => (pageNum == TotalPages);
 
 
         public MyPartyView()
@@ -65,27 +90,16 @@ namespace FootccerClient.Windows.Views
         {
             if (App.Instance.Session.Offline) return;
 
-            PageCount = App.Instance.ProgramSettings.PartyIndicator.Count;
             panel_MyPartyList.Controls.Clear();
             IndicatorComponent = new IndicatorSpace(PageCount.X, PageCount.Y, panel_MyPartyList, 5, null, null, PartyIndicatorContext.MyParty);
 
-            MyPartyList = App.Instance.DB.MyParty.ReadPartyListAsSession();
-
-            CurrentPageNum = 1;
+            PartyList = App.Instance.DB.MyParty.ReadPartyListAsSession();
         }
 
-        private IndicatorSpace IndicatorComponent { get; set; }
         
-        private void ValidatePageNum_InBoundary(int pageNum)
-        {
-            if (IsPageOutOfBoundary(pageNum))
-            {
-                throw new Exception($"pageNum out of bound : pageNum was {pageNum} not between (1, {TotalPages})");
-            }
-        }
-        private bool IsPageOutOfBoundary(int pageNum) => (pageNum < 1) || (TotalPages < pageNum);
-        private bool IsFirstPage(int pageNum) => (pageNum == 1);
-        private bool IsLastPage(int pageNum) => (pageNum == TotalPages);
+        
+        
+        
 
 
         private void btn_Record_Click(object sender, EventArgs e)

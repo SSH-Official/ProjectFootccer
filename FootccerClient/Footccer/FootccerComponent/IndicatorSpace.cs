@@ -24,33 +24,42 @@ namespace FootccerClient.Footccer.FootccerComponent
 
         private PartyIndicatorContext Context { get; set; }
         public void UpdateContext(PartyIndicatorContext context) => Context = context;
-        private List<(PartyDTO, bool)> partyData { get; set; } = null;
-        public List<(PartyDTO, bool)> PartyListData 
+        private List<PartyDTO> _PartyListData { get; set; } = new List<PartyDTO>();
+        public List<PartyDTO> PartyListData 
         {
-            get
-            {
-                return partyData;
-            }
+            get => _PartyListData;
             set
             {
-                partyData = value;
-                int PageShowCount = Count.X * Count.Y;
-                
-                _maxPage = PageShowCount == 0? 0 :
-                    (1 + (partyData.Count - 1) / PageShowCount);
+                if (value == null) value = new List<PartyDTO>();
+                if (value.Count == 0) this.Clear();
+
+                _PartyListData = value;
             }
         }
-        
+
+        private void Clear()
+        {
+            for(int i = 0; i < madeControls.Count; i ++)
+            {
+                var control = madeControls[i] as PartyIndicatorItem;
+                control.Clear();
+            }
+        }
+
         private int _currentPage { get; set; }
-        private int _maxPage { get; set; }
+        private int PageShowCount { get => Count.X * Count.Y; }
+        private int MaxPages { get => PageShowCount == 0 ? 0 : 
+                                      PartyListData.Count == 0? 0 : 
+                                      (1 + (PartyListData.Count - 1) / PageShowCount); }
         public int PageCursor 
         {
             get => _currentPage;
             set
             {
-                if (value <= 0 || value > _maxPage)
+                if (MaxPages > 0
+                    && (value <= 0 || value > MaxPages))
                 {
-                    throw new ArgumentOutOfRangeException($"value {value} is Out Of Range [0, {_maxPage}]");
+                    throw new ArgumentOutOfRangeException($"value {value} is Out Of Range [0, {MaxPages}]");
                 }
                 _currentPage = value;
                 ShowPage(_currentPage);
@@ -65,13 +74,19 @@ namespace FootccerClient.Footccer.FootccerComponent
             int startIndex_thisPage = (currentPage - 1) * Count.X * Count.Y;
             for (int i = 0; i < length; i++)
             {
-                if (! (madeControls[i] is PartyIndicatorItem)
-                    || i >= PartyListData.Count) continue;
                 var control = (madeControls[i] as PartyIndicatorItem);
-                control.UpdateInfo(PartyListData[i + startIndex_thisPage].Item1);
+                int index = i + startIndex_thisPage;
+                if (DataNotAvailable(i, index))
+                {
+                    control.Clear(); 
+                    continue;
+                }
+
+                control.UpdateInfo(PartyListData[index]);
                 control.UpdateContext(this.Context);
             }
         }
+        private bool DataNotAvailable(int i, int index) => !(madeControls[i] is PartyIndicatorItem) || index >= PartyListData.Count;
 
         public void ShowDebugLog()
         {
@@ -83,8 +98,8 @@ namespace FootccerClient.Footccer.FootccerComponent
         {
             return 
                 $"CurrentPage : {_currentPage}\r\n" +
-                $"MaxPage : {_maxPage}\r\n" +
-                $"Count : {partyData.Count}";
+                $"MaxPage : {MaxPages}\r\n" +
+                $"Count : {PartyListData.Count}";
         }
 
         private string GetSizeLog()
@@ -108,13 +123,13 @@ namespace FootccerClient.Footccer.FootccerComponent
         /// <param name="images"></param>
         /// <exception cref="Exception"></exception>
         public IndicatorSpace(int horizontalCount, int verticalCount, Control parent, int itemPadding = 5, 
-            List<Image> images = null, List<(PartyDTO, bool)> myPartyList = null, PartyIndicatorContext context = PartyIndicatorContext.NotFound)
+            List<Image> images = null, List<PartyDTO> myPartyList = null, PartyIndicatorContext context = PartyIndicatorContext.NotFound)
         {
             InitializeComponent();
             
 
             if (parent == null) throw new Exception("표시할 영역이 지정되지 않았습니다.");
-            if (myPartyList == null) partyData = new List<(PartyDTO,bool)>();
+            PartyListData = myPartyList;
 
             this.Dock = DockStyle.Fill;
             parent.Controls.Add(this);
@@ -123,7 +138,7 @@ namespace FootccerClient.Footccer.FootccerComponent
             CreateNewItems_ForCount();
             ResizeItems();
 
-            if (_maxPage > 0) PageCursor = 1;
+            if (MaxPages > 0) PageCursor = 1;
 
 
 
@@ -132,7 +147,7 @@ namespace FootccerClient.Footccer.FootccerComponent
                 this.itemPadding = new Padding(itemPadding);
                 flowLayoutPanel_Base.Padding = new Padding(itemPadding);
                 Count = new Point(horizontalCount, verticalCount);
-                this.partyData = myPartyList;
+                this.PartyListData = myPartyList;
                 this.Context = context;
             }
         }

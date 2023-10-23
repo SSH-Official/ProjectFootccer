@@ -89,6 +89,8 @@ namespace FootccerClient.Footccer.FootccerComponent
                 App.Instance.MainForm.ShowView<PartyJoinView>("파티 참가");
             }
         }
+
+        internal void Clear() => this.Value = null;
     }
 
     public enum PartyIndicatorContext
