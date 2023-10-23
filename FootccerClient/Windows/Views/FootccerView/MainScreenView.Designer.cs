@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel_Base = new System.Windows.Forms.Panel();
+            this.pictureBox_Logo = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel_MenuButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.button_MyParty = new System.Windows.Forms.Button();
             this.button_FindParty = new System.Windows.Forms.Button();
             this.button_MyPage = new System.Windows.Forms.Button();
             this.button_Config = new System.Windows.Forms.Button();
-            this.pictureBox_Logo = new System.Windows.Forms.PictureBox();
             this.panel_Base.SuspendLayout();
-            this.flowLayoutPanel_MenuButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logo)).BeginInit();
+            this.flowLayoutPanel_MenuButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_Base
@@ -50,8 +50,19 @@
             this.panel_Base.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
-            this.panel_Base.Size = new System.Drawing.Size(1127, 719);
+            this.panel_Base.Size = new System.Drawing.Size(1289, 696);
             this.panel_Base.TabIndex = 3;
+            // 
+            // pictureBox_Logo
+            // 
+            this.pictureBox_Logo.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_Logo.BackgroundImage = global::FootccerClient.Properties.Resources.FootccerLogo;
+            this.pictureBox_Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox_Logo.Location = new System.Drawing.Point(324, 134);
+            this.pictureBox_Logo.Name = "pictureBox_Logo";
+            this.pictureBox_Logo.Size = new System.Drawing.Size(479, 164);
+            this.pictureBox_Logo.TabIndex = 2;
+            this.pictureBox_Logo.TabStop = false;
             // 
             // flowLayoutPanel_MenuButtons
             // 
@@ -126,29 +137,18 @@
             this.button_Config.UseVisualStyleBackColor = false;
             this.button_Config.Click += new System.EventHandler(this.button_Config_Click);
             // 
-            // pictureBox_Logo
-            // 
-            this.pictureBox_Logo.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_Logo.BackgroundImage = global::FootccerClient.Properties.Resources.FootccerLogo;
-            this.pictureBox_Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox_Logo.Location = new System.Drawing.Point(324, 134);
-            this.pictureBox_Logo.Name = "pictureBox_Logo";
-            this.pictureBox_Logo.Size = new System.Drawing.Size(479, 164);
-            this.pictureBox_Logo.TabIndex = 2;
-            this.pictureBox_Logo.TabStop = false;
-            // 
             // MainScreenView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 719);
+            this.ClientSize = new System.Drawing.Size(1289, 696);
             this.Controls.Add(this.panel_Base);
             this.Name = "MainScreenView";
             this.Text = "MainScreenView";
             this.SizeChanged += new System.EventHandler(this.MainScreenView_SizeChanged);
             this.panel_Base.ResumeLayout(false);
-            this.flowLayoutPanel_MenuButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logo)).EndInit();
+            this.flowLayoutPanel_MenuButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

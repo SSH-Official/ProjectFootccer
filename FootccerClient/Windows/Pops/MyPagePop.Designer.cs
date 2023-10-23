@@ -166,7 +166,7 @@
             // 
             // btn_FindFile
             // 
-            this.btn_FindFile.Location = new System.Drawing.Point(32, 135);
+            this.btn_FindFile.Location = new System.Drawing.Point(32, 159);
             this.btn_FindFile.Name = "btn_FindFile";
             this.btn_FindFile.Size = new System.Drawing.Size(75, 23);
             this.btn_FindFile.TabIndex = 3;
@@ -176,7 +176,7 @@
             // 
             // btn_DeleteFile
             // 
-            this.btn_DeleteFile.Location = new System.Drawing.Point(32, 164);
+            this.btn_DeleteFile.Location = new System.Drawing.Point(32, 188);
             this.btn_DeleteFile.Name = "btn_DeleteFile";
             this.btn_DeleteFile.Size = new System.Drawing.Size(75, 23);
             this.btn_DeleteFile.TabIndex = 3;
@@ -187,9 +187,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(157, 27);
+            this.panel1.Location = new System.Drawing.Point(157, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(263, 411);
+            this.panel1.Size = new System.Drawing.Size(279, 459);
             this.panel1.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -220,16 +220,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(263, 411);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(279, 459);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel15
             // 
             this.panel15.Controls.Add(this.tableLayoutPanel7);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(134, 343);
+            this.panel15.Location = new System.Drawing.Point(142, 383);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(126, 65);
+            this.panel15.Size = new System.Drawing.Size(134, 73);
             this.panel15.TabIndex = 11;
             // 
             // tableLayoutPanel7
@@ -247,24 +247,24 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(126, 65);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(134, 73);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // panel29
             // 
             this.panel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel29.Location = new System.Drawing.Point(3, 50);
+            this.panel29.Location = new System.Drawing.Point(3, 54);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(120, 12);
+            this.panel29.Size = new System.Drawing.Size(128, 16);
             this.panel29.TabIndex = 2;
             // 
             // panel30
             // 
             this.panel30.Controls.Add(this.cBox_City);
             this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel30.Location = new System.Drawing.Point(3, 20);
+            this.panel30.Location = new System.Drawing.Point(3, 24);
             this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(120, 24);
+            this.panel30.Size = new System.Drawing.Size(128, 24);
             this.panel30.TabIndex = 1;
             // 
             // cBox_City
@@ -281,16 +281,16 @@
             this.panel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel31.Location = new System.Drawing.Point(3, 3);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(120, 11);
+            this.panel31.Size = new System.Drawing.Size(128, 15);
             this.panel31.TabIndex = 0;
             // 
             // panel14
             // 
             this.panel14.Controls.Add(this.label6);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(3, 343);
+            this.panel14.Location = new System.Drawing.Point(3, 383);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(125, 65);
+            this.panel14.Size = new System.Drawing.Size(133, 73);
             this.panel14.TabIndex = 10;
             // 
             // label6
@@ -298,7 +298,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(0, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 65);
+            this.label6.Size = new System.Drawing.Size(133, 73);
             this.label6.TabIndex = 1;
             this.label6.Text = "선호 지역";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -307,9 +307,9 @@
             // 
             this.panel13.Controls.Add(this.tableLayoutPanel6);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(134, 275);
+            this.panel13.Location = new System.Drawing.Point(142, 307);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(126, 62);
+            this.panel13.Size = new System.Drawing.Size(134, 70);
             this.panel13.TabIndex = 9;
             // 
             // tableLayoutPanel6
@@ -327,24 +327,24 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(126, 62);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(134, 70);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // panel26
             // 
             this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel26.Location = new System.Drawing.Point(3, 49);
+            this.panel26.Location = new System.Drawing.Point(3, 53);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(120, 10);
+            this.panel26.Size = new System.Drawing.Size(128, 14);
             this.panel26.TabIndex = 2;
             // 
             // panel27
             // 
             this.panel27.Controls.Add(this.cBox_activity);
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel27.Location = new System.Drawing.Point(3, 19);
+            this.panel27.Location = new System.Drawing.Point(3, 23);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(120, 24);
+            this.panel27.Size = new System.Drawing.Size(128, 24);
             this.panel27.TabIndex = 1;
             // 
             // cBox_activity
@@ -361,16 +361,16 @@
             this.panel28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel28.Location = new System.Drawing.Point(3, 3);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(120, 10);
+            this.panel28.Size = new System.Drawing.Size(128, 14);
             this.panel28.TabIndex = 0;
             // 
             // panel12
             // 
             this.panel12.Controls.Add(this.label5);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(3, 275);
+            this.panel12.Location = new System.Drawing.Point(3, 307);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(125, 62);
+            this.panel12.Size = new System.Drawing.Size(133, 70);
             this.panel12.TabIndex = 8;
             // 
             // label5
@@ -378,7 +378,7 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 62);
+            this.label5.Size = new System.Drawing.Size(133, 70);
             this.label5.TabIndex = 1;
             this.label5.Text = "선호 경기";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -387,9 +387,9 @@
             // 
             this.panel11.Controls.Add(this.tableLayoutPanel5);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(134, 207);
+            this.panel11.Location = new System.Drawing.Point(142, 231);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(126, 62);
+            this.panel11.Size = new System.Drawing.Size(134, 70);
             this.panel11.TabIndex = 7;
             // 
             // tableLayoutPanel5
@@ -407,24 +407,24 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(126, 62);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(134, 70);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // panel23
             // 
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel23.Location = new System.Drawing.Point(3, 49);
+            this.panel23.Location = new System.Drawing.Point(3, 53);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(120, 10);
+            this.panel23.Size = new System.Drawing.Size(128, 14);
             this.panel23.TabIndex = 2;
             // 
             // panel24
             // 
             this.panel24.Controls.Add(this.tbox_Email);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel24.Location = new System.Drawing.Point(3, 19);
+            this.panel24.Location = new System.Drawing.Point(3, 23);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(120, 24);
+            this.panel24.Size = new System.Drawing.Size(128, 24);
             this.panel24.TabIndex = 1;
             // 
             // tbox_Email
@@ -432,7 +432,7 @@
             this.tbox_Email.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbox_Email.Location = new System.Drawing.Point(0, 0);
             this.tbox_Email.Name = "tbox_Email";
-            this.tbox_Email.Size = new System.Drawing.Size(120, 21);
+            this.tbox_Email.Size = new System.Drawing.Size(128, 21);
             this.tbox_Email.TabIndex = 4;
             // 
             // panel25
@@ -440,16 +440,16 @@
             this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel25.Location = new System.Drawing.Point(3, 3);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(120, 10);
+            this.panel25.Size = new System.Drawing.Size(128, 14);
             this.panel25.TabIndex = 0;
             // 
             // panel10
             // 
             this.panel10.Controls.Add(this.label4);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(3, 207);
+            this.panel10.Location = new System.Drawing.Point(3, 231);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(125, 62);
+            this.panel10.Size = new System.Drawing.Size(133, 70);
             this.panel10.TabIndex = 6;
             // 
             // label4
@@ -457,7 +457,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 62);
+            this.label4.Size = new System.Drawing.Size(133, 70);
             this.label4.TabIndex = 1;
             this.label4.Text = "이메일";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -466,9 +466,9 @@
             // 
             this.panel9.Controls.Add(this.tableLayoutPanel4);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(134, 139);
+            this.panel9.Location = new System.Drawing.Point(142, 155);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(126, 62);
+            this.panel9.Size = new System.Drawing.Size(134, 70);
             this.panel9.TabIndex = 5;
             // 
             // tableLayoutPanel4
@@ -486,24 +486,24 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(126, 62);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(134, 70);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // panel20
             // 
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(3, 49);
+            this.panel20.Location = new System.Drawing.Point(3, 53);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(120, 10);
+            this.panel20.Size = new System.Drawing.Size(128, 14);
             this.panel20.TabIndex = 2;
             // 
             // panel21
             // 
             this.panel21.Controls.Add(this.tbox_Contact);
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(3, 19);
+            this.panel21.Location = new System.Drawing.Point(3, 23);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(120, 24);
+            this.panel21.Size = new System.Drawing.Size(128, 24);
             this.panel21.TabIndex = 1;
             // 
             // tbox_Contact
@@ -511,7 +511,7 @@
             this.tbox_Contact.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbox_Contact.Location = new System.Drawing.Point(0, 0);
             this.tbox_Contact.Name = "tbox_Contact";
-            this.tbox_Contact.Size = new System.Drawing.Size(120, 21);
+            this.tbox_Contact.Size = new System.Drawing.Size(128, 21);
             this.tbox_Contact.TabIndex = 4;
             // 
             // panel22
@@ -519,16 +519,16 @@
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel22.Location = new System.Drawing.Point(3, 3);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(120, 10);
+            this.panel22.Size = new System.Drawing.Size(128, 14);
             this.panel22.TabIndex = 0;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.label3);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 139);
+            this.panel8.Location = new System.Drawing.Point(3, 155);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(125, 62);
+            this.panel8.Size = new System.Drawing.Size(133, 70);
             this.panel8.TabIndex = 4;
             // 
             // label3
@@ -536,7 +536,7 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 62);
+            this.label3.Size = new System.Drawing.Size(133, 70);
             this.label3.TabIndex = 1;
             this.label3.Text = "연락처";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -545,9 +545,9 @@
             // 
             this.panel7.Controls.Add(this.tableLayoutPanel3);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(134, 71);
+            this.panel7.Location = new System.Drawing.Point(142, 79);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(126, 62);
+            this.panel7.Size = new System.Drawing.Size(134, 70);
             this.panel7.TabIndex = 3;
             // 
             // tableLayoutPanel3
@@ -565,24 +565,24 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(126, 62);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(134, 70);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // panel17
             // 
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(3, 49);
+            this.panel17.Location = new System.Drawing.Point(3, 53);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(120, 10);
+            this.panel17.Size = new System.Drawing.Size(128, 14);
             this.panel17.TabIndex = 2;
             // 
             // panel18
             // 
             this.panel18.Controls.Add(this.tbox_Gender);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(3, 19);
+            this.panel18.Location = new System.Drawing.Point(3, 23);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(120, 24);
+            this.panel18.Size = new System.Drawing.Size(128, 24);
             this.panel18.TabIndex = 1;
             // 
             // tbox_Gender
@@ -590,7 +590,7 @@
             this.tbox_Gender.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbox_Gender.Location = new System.Drawing.Point(0, 0);
             this.tbox_Gender.Name = "tbox_Gender";
-            this.tbox_Gender.Size = new System.Drawing.Size(120, 21);
+            this.tbox_Gender.Size = new System.Drawing.Size(128, 21);
             this.tbox_Gender.TabIndex = 4;
             // 
             // panel19
@@ -598,16 +598,16 @@
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel19.Location = new System.Drawing.Point(3, 3);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(120, 10);
+            this.panel19.Size = new System.Drawing.Size(128, 14);
             this.panel19.TabIndex = 0;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.label2);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 71);
+            this.panel6.Location = new System.Drawing.Point(3, 79);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(125, 62);
+            this.panel6.Size = new System.Drawing.Size(133, 70);
             this.panel6.TabIndex = 2;
             // 
             // label2
@@ -615,7 +615,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 62);
+            this.label2.Size = new System.Drawing.Size(133, 70);
             this.label2.TabIndex = 1;
             this.label2.Text = "성별";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -624,9 +624,9 @@
             // 
             this.panel5.Controls.Add(this.tableLayoutPanel2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(134, 3);
+            this.panel5.Location = new System.Drawing.Point(142, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(126, 62);
+            this.panel5.Size = new System.Drawing.Size(134, 70);
             this.panel5.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -644,24 +644,24 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(126, 62);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(134, 70);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel16
             // 
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(3, 49);
+            this.panel16.Location = new System.Drawing.Point(3, 53);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(120, 10);
+            this.panel16.Size = new System.Drawing.Size(128, 14);
             this.panel16.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.tbox_Name);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 19);
+            this.panel3.Location = new System.Drawing.Point(3, 23);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(120, 24);
+            this.panel3.Size = new System.Drawing.Size(128, 24);
             this.panel3.TabIndex = 1;
             // 
             // tbox_Name
@@ -669,7 +669,7 @@
             this.tbox_Name.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbox_Name.Location = new System.Drawing.Point(0, 0);
             this.tbox_Name.Name = "tbox_Name";
-            this.tbox_Name.Size = new System.Drawing.Size(120, 21);
+            this.tbox_Name.Size = new System.Drawing.Size(128, 21);
             this.tbox_Name.TabIndex = 4;
             // 
             // panel2
@@ -677,7 +677,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(120, 10);
+            this.panel2.Size = new System.Drawing.Size(128, 14);
             this.panel2.TabIndex = 0;
             // 
             // panel4
@@ -686,7 +686,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(125, 62);
+            this.panel4.Size = new System.Drawing.Size(133, 70);
             this.panel4.TabIndex = 0;
             // 
             // label1
@@ -694,7 +694,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 62);
+            this.label1.Size = new System.Drawing.Size(133, 70);
             this.label1.TabIndex = 1;
             this.label1.Text = "이름";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -702,9 +702,9 @@
             // panel_Image
             // 
             this.panel_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_Image.Location = new System.Drawing.Point(32, 27);
+            this.panel_Image.Location = new System.Drawing.Point(12, 15);
             this.panel_Image.Name = "panel_Image";
-            this.panel_Image.Size = new System.Drawing.Size(103, 102);
+            this.panel_Image.Size = new System.Drawing.Size(123, 138);
             this.panel_Image.TabIndex = 1;
             // 
             // panel_Buttons

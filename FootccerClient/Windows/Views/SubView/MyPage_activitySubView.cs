@@ -25,7 +25,7 @@ namespace FootccerClient.Windows.Views
         }
         private void Getactstat()
         {
-            int useridx = 2;
+            int useridx = 1;
             psDTO = App.Instance.DB.personalstat.Getactstat(useridx);
             if (psDTO != null)
             {

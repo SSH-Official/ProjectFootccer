@@ -384,14 +384,14 @@
     <EmbeddedResource Include="Windows\Views\ConfigView.resx">
       <DependentUpon>ConfigView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Views\FootccerView\MenuView.Controller.resx">
+      <DependentUpon>MenuView.Controller.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\SubView\ELORecordSubView.resx">
       <DependentUpon>ELORecordSubView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\FootccerView\MainScreenView.resx">
       <DependentUpon>MainScreenView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Windows\Views\FootccerView\MenuView.resx">
-      <DependentUpon>MenuView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Views\MyPageView.resx">
       <DependentUpon>MyPageView.cs</DependentUpon>
@@ -458,6 +458,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\메인 배경.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\배경.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\배경1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

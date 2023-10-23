@@ -52,7 +52,7 @@ namespace FootccerClient.Footccer.DAO
                         new CityDTO(rdr.GetInt32("CityIdx"), rdr.GetString("CityName")),
                         new ActivityDTO(rdr.GetInt32("ActIdx"), rdr.GetString("ActName"))
                         ))
-                    .SetImage(IM.GetImageFromURL(rdr.GetString("imageurl")))
+                    .SetImage(rdr.IsDBNull(10) ? null : IM.GetImageFromURL(rdr.GetString("imageurl")))
                     .Build();
             }
 

@@ -18,7 +18,6 @@ namespace FootccerClient.Windows.Views
 {
     public partial class MyPageView : MasterView
     {
-        List<MasterView> m_Views = new List<MasterView>();
         UserInfoDTO userinfo;        
         public MyPageView()
         {
@@ -33,6 +32,8 @@ namespace FootccerClient.Windows.Views
             Createview();
             Createview1();
             InitializeGetMyinfo();
+            groupBox1.BackColor = Color.Transparent;
+            groupBox1.Parent = panel_Base;
         }
 
         private void InitializeGetMyinfo()
@@ -49,7 +50,7 @@ namespace FootccerClient.Windows.Views
         private MyPage_activitySubView Createview()
         {
             MyPage_activitySubView mpav = new MyPage_activitySubView();
-            panel10.Controls.Add(mpav);
+            panel8.Controls.Add(mpav);
             mpav.Visible = true;
             mpav.Dock = DockStyle.Fill;
             return mpav;
@@ -58,9 +59,15 @@ namespace FootccerClient.Windows.Views
         private void Createview1()
         {
             ELORecordSubView erv = new ELORecordSubView();
-            panel8.Controls.Add(erv);
+            panel10.Controls.Add(erv);
             erv.Visible = true;
             erv.Dock = DockStyle.Fill;
+            lb_elo.Text = erv.currentELO.ToString();
+            lb_last.Text = "";
+            foreach (var item in erv.list)
+            {
+                lb_last.Text += item.ToString();
+            }
         }
 
 
@@ -72,6 +79,11 @@ namespace FootccerClient.Windows.Views
         private void btn_MyPage_Click_1(object sender, EventArgs e)
         {
             App.Instance.MainForm.ShowPop<MyPagePop>();
+        }
+
+        private void panel9_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

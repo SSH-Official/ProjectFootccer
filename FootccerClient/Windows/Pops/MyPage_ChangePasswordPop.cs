@@ -27,7 +27,7 @@ namespace FootccerClient.Windows.Pops
 
         private void btn_Apply_Click(object sender, EventArgs e)
         {
-            UserDTO user = new UserDTO(1, "ssh");
+            UserDTO user = new UserDTO(1, "admin");
             string oldPwd = tbox_OldPwd.Text;
             string newPwd = tbox_NewPwd.Text;
             bool isClear = isVailidPassword(oldPwd) && isVailidPassword(newPwd);

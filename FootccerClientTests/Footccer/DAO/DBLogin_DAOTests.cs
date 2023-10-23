@@ -16,7 +16,7 @@ namespace FootccerClient.Footccer.DAO.Tests
         [TestMethod()]
         public void CheckLoginSuccessTest()
         {
-            string testID = "ssh";
+            string testID = "admin";
             string testPassword = "1234";
             var user = new UserCredentialDTO(testID, testPassword);
 
