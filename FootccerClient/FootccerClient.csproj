@@ -463,6 +463,7 @@
     <Content Include="Images\Field.png" />
     <Content Include="Images\Field1.png" />
     <Content Include="Images\HalfField.png" />
+    <None Include="Resources\로고2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

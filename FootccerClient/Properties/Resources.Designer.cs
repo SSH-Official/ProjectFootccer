@@ -93,6 +93,16 @@ namespace FootccerClient.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap FootccerLogo_WhiteBase {
+            get {
+                object obj = ResourceManager.GetObject("FootccerLogo_WhiteBase", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap Frame_Blue {
             get {
                 object obj = ResourceManager.GetObject("Frame_Blue", resourceCulture);
