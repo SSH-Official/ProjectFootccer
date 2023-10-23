@@ -15,7 +15,7 @@ namespace FootccerClient.Windows.Views
 {
     public partial class ELORecordSubView : MasterView
     {
-        DataTable dt = null;
+        public DataTable dt = null;
         public ELORecordSubView()
         {
             InitializeComponent();
@@ -27,27 +27,36 @@ namespace FootccerClient.Windows.Views
         {
             chart1.Titles.Add("ELO 변경");
             chart1.Series[0].Name = "ELO";
-            /*ChartArea chartArea = new ChartArea();
-            chart1.ChartAreas.Add(chartArea);
-            chartArea.AxisX.Minimum = 0;
-            chartArea.AxisX.Maximum = 4;
-            chartArea.AxisY.Minimum = 0;
-            chartArea.AxisY.Maximum = 25;*/
-            
+            chart1.ChartAreas[0].AxisY.Minimum = 2150;
+            chart1.ChartAreas[0].AxisY.Maximum = 2300;
+/*
+            var validRows = dt.AsEnumerable().Where(row => row.Field<DateTime?>("date") != null);
+
+
+            chart1.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
+            chart1.ChartAreas[0].AxisX.Interval = 1;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM-dd";
+*/
+
             dt = App.Instance.DB.LHJDB.getELORecordTable();
             
-            if (dt.Rows.Count == 0) return;
-
-            DataRow dr = dt.Rows[0];
-            int currentELO = Int32.Parse(dr["elo"].ToString());
-            for(int i = 1; i < dt.Rows.Count; i++)
+            if (dt.Rows.Count != 0)
             {
-                dr = dt.Rows[i];
-                char side = Convert.ToChar(dr["side"]);
-                char result = Convert.ToChar(dr["result"]);
-                int alterELO = Int32.Parse(dr["alter_elo"].ToString());
-                alterELO = ((side == result) ? 1 : -1) * alterELO;
-                dt.Rows[i][1] = currentELO - alterELO;
+                DataRow dr = dt.Rows[0];
+                int currentELO = Int32.Parse(dr["elo"].ToString());
+                for (int i = 1; i < dt.Rows.Count; i++)
+                {
+                    dr = dt.Rows[i];
+                    char side = Convert.ToChar(dr["side"]);
+                    char result = Convert.ToChar(dr["result"]);
+                    int alterELO = Int32.Parse(dr["alter_elo"].ToString());
+                    alterELO = ((side == result) ? 1 : -1) * alterELO;
+                    dt.Rows[i][1] = currentELO - alterELO;
+                }
+            }
+            else
+            {
+                chart1.Visible = false;
             }
         }
 

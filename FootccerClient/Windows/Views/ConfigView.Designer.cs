@@ -48,7 +48,7 @@
             this.panel_Base.Location = new System.Drawing.Point(0, 0);
             this.panel_Base.Name = "panel_Base";
             this.panel_Base.Padding = new System.Windows.Forms.Padding(5);
-            this.panel_Base.Size = new System.Drawing.Size(0, 0);
+            this.panel_Base.Size = new System.Drawing.Size(1561, 719);
             this.panel_Base.TabIndex = 0;
             // 
             // groupBox1
@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(0, 0);
+            this.ClientSize = new System.Drawing.Size(1561, 719);
             this.Controls.Add(this.panel_Base);
             this.Name = "ConfigView";
             this.Text = "ConfigView";

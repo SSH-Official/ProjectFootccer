@@ -64,6 +64,20 @@ namespace FootccerClient.Windows.Views
             panel8.Controls.Add(erv);
             erv.Dock = DockStyle.Fill;
             erv.Visible = true;
+            lb_elo.Text = erv.dt.Rows[0]["elo"].ToString();
+            lb_last.Text = "";
+            for(int i = 0; i < 5; i++)
+            {
+                if (erv.dt.Rows[i]["result"].ToString() == erv.dt.Rows[i]["side"].ToString())
+                {
+                    lb_last.Text += "W";
+                }
+                else
+                {
+                    lb_last.Text += "L";
+                };
+
+            }
             
         }
 

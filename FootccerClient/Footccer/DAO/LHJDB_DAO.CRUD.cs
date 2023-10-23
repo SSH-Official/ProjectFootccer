@@ -139,7 +139,7 @@ namespace FootccerClient.Footccer.DAO
 
             public DataTable getELORecordTable()
             {
-                int testidx = 2; // App.Instance.Session.User.Index;
+                int testidx = App.Instance.Session.User.Index;
 
                 string sql = "select p.date, u.elo, l.side, r.result, r.alter_elo " +
                              "from UserInfo u " +

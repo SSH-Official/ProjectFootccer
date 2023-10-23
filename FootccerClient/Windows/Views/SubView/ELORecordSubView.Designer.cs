@@ -39,10 +39,11 @@ namespace FootccerClient.Windows.Views
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            chartArea1.AxisX.IntervalType = DateTimeIntervalType.Months;
-            chartArea1.AxisX.Interval = 1;
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Weeks;
             chartArea1.AxisX.LabelStyle.Format = "MM/dd";
+            chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
@@ -58,13 +59,13 @@ namespace FootccerClient.Windows.Views
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // ELORecordView
+            // ELORecordSubView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1561, 719);
             this.Controls.Add(this.chart1);
-            this.Name = "ELORecordView";
+            this.Name = "ELORecordSubView";
             this.Text = "ELORecordView";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);

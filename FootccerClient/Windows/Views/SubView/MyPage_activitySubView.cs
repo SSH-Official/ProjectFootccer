@@ -25,7 +25,7 @@ namespace FootccerClient.Windows.Views
         }
         private void Getactstat()
         {
-            int useridx = 2;
+            int useridx = App.Instance.Session.User.Index;
             psDTO = App.Instance.DB.personalstat.Getactstat(useridx);
             if (psDTO != null)
             {
@@ -34,7 +34,7 @@ namespace FootccerClient.Windows.Views
                 lb_maxdis.Text = psDTO.Maxdis.ToString();
                 lb_avgpoint.Text = psDTO.Getavgpoint().ToString();
                 lb_maxpoint.Text = psDTO.Getmaxpoint().ToString();
-                lb_vicrecord.Text =psDTO.Getvictory().ToString();
+                lb_vicrecord.Text = psDTO.Getvictory().ToString("N2");
             }
         }
         private void InitializeStatic()
