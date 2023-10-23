@@ -331,13 +331,13 @@
             this.Search_kind.TabIndex = 0;
             this.Search_kind.SelectedIndexChanged += new System.EventHandler(this.Search_kind_SelectedIndexChanged);
             // 
-            // PartySearchView_Renewal
+            // PartySearchView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 719);
             this.Controls.Add(this.panel_Base);
-            this.Name = "PartySearchView_Renewal";
+            this.Name = "PartySearchView";
             this.Text = "PartySearchView_Renewal";
             this.panel_Base.ResumeLayout(false);
             this.panel_PageControls.ResumeLayout(false);

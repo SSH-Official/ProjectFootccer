@@ -35,6 +35,9 @@ namespace FootccerClient.Windows.Views
             chartArea.AxisY.Maximum = 25;*/
             
             dt = App.Instance.DB.LHJDB.getELORecordTable();
+            
+            if (dt.Rows.Count == 0) return;
+
             DataRow dr = dt.Rows[0];
             int currentELO = Int32.Parse(dr["elo"].ToString());
             for(int i = 1; i < dt.Rows.Count; i++)

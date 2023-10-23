@@ -39,16 +39,19 @@ namespace FootccerClient.Windows.Views
         {
             PersonalStatDTO dto = Createview().psDTO;
 
-            lb_game.Text = dto.Game.ToString();
-            lb_victory.Text = dto.Victory.ToString();
+            lb_game.Text = dto?.Game.ToString()?? "없음";
+            lb_victory.Text = dto?.Victory.ToString()?? "없음";
             my_pic.BackgroundImage = userinfo.Image;
             my_pic.BackgroundImageLayout = ImageLayout.Stretch;
-            my_pic.Tag = userinfo.Image.Tag;
+            my_pic.Tag = userinfo.Image?.Tag;
         }
 
+        private MyPage_activitySubView _mpav;
         private MyPage_activitySubView Createview()
         {
-            MyPage_activitySubView mpav = new MyPage_activitySubView();
+            MyPage_activitySubView mpav = _mpav == null? new MyPage_activitySubView() : _mpav;
+            _mpav = mpav;
+
             panel10.Controls.Add(mpav);
             mpav.Visible = true;
             mpav.Dock = DockStyle.Fill;
@@ -59,14 +62,9 @@ namespace FootccerClient.Windows.Views
         {
             ELORecordSubView erv = new ELORecordSubView();
             panel8.Controls.Add(erv);
-            erv.Visible = true;
             erv.Dock = DockStyle.Fill;
-        }
-
-
-        private void panel9_Paint_1(object sender, EventArgs e)
-        {
-
+            erv.Visible = true;
+            
         }
 
         private void btn_MyPage_Click_1(object sender, EventArgs e)
