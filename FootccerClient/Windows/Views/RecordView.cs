@@ -15,7 +15,7 @@ using Lib.Frame;
 namespace FootccerClient.Windows.Views
 {
     public partial class RecordView : MasterView
-    {        
+    {
         private List<Button> buttons = new List<Button>();
         private Label[,] labels = new Label[5, 4];
         private List<Panel> panels = new List<Panel>();
@@ -58,8 +58,8 @@ namespace FootccerClient.Windows.Views
             {
                 labels[row, col].Visible = true;
                 labels[row, col].Text = dr[col].ToString();
-                if (col == 3 &&  String.IsNullOrEmpty(dr["result"].ToString()))
-                {                                        
+                if (col == 3 && String.IsNullOrEmpty(dr["result"].ToString()))
+                {
                     if (Convert.ToInt32(dr["Leader_idx"].ToString()) != App.Instance.Session.User.Index)
                     {
                         labels[row, col].Text = "입력대기중";
@@ -68,7 +68,7 @@ namespace FootccerClient.Windows.Views
                     {
                         labels[row, col].Visible = false;
                         createButton(row, col);
-                    }                    
+                    }
                 }
             }
             else
@@ -86,11 +86,11 @@ namespace FootccerClient.Windows.Views
             setRecordTable();
             updateRecord(currentPage);
             initializePage();
-            
+
         }
         private void initializePanelOfBackColor()
         {
-            List<Panel> list = new List<Panel> { panel5, panel6, panel7, panel12, panel16};
+            List<Panel> list = new List<Panel> { panel5, panel6, panel7, panel12, panel16 };
             panelsList.Add(list);
             list = new List<Panel> { panel9, panel10, panel11, panel20, panel24 };
             panelsList.Add(list);
@@ -100,7 +100,7 @@ namespace FootccerClient.Windows.Views
             panelsList.Add(list);
             list = new List<Panel> { panel21, panel22, panel23, panel32, panel33 };
             panelsList.Add(list);
-            foreach(var item in panelsList)
+            foreach (var item in panelsList)
             {
                 foreach (var panel in item)
                 {
@@ -118,10 +118,10 @@ namespace FootccerClient.Windows.Views
         {
             foreach (var item in panelsList)
             {
-                foreach(var panel in item)
+                foreach (var panel in item)
                 {
                     panel.BackColor = SystemColors.Control;
-                }       
+                }
             }
         }
         private void setPanelBackColor(DataRow dr, int row)
@@ -139,8 +139,8 @@ namespace FootccerClient.Windows.Views
                 else if (dr["side"].ToString() != dr["result"].ToString())
                 {
                     item.BackColor = Color.LightSalmon;
-                }                
-            }            
+                }
+            }
         }
         void initializePage()
         {
@@ -150,29 +150,29 @@ namespace FootccerClient.Windows.Views
         }
         void initializeButton_InputDetail()
         {
-            for(int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 5; i++)
             {
                 string buttonName = "button" + i;
                 Button button = this.Controls.Find(buttonName, true).FirstOrDefault() as Button;
-                if( button != null )
+                if (button != null)
                 {
                     button.Tag = i - 1;
                     button.Click += statBtn_Click;
                     button.Visible = true;
                     buttons.Add(button);
-                    
+
                 }
             }
         }
         void initializeLabel_ForRecord()
         {
-            for(int row = 0; row < 5; row++)
+            for (int row = 0; row < 5; row++)
             {
-                for(int col = 0; col < 4; col++)
+                for (int col = 0; col < 4; col++)
                 {
                     string labelName = "label" + (row * 4 + col + 1);
                     Label label = this.Controls.Find(labelName, true).FirstOrDefault() as Label;
-                    if(label != null)
+                    if (label != null)
                     {
                         labels[row, col] = label;
                         label.Text = string.Empty;
@@ -188,7 +188,7 @@ namespace FootccerClient.Windows.Views
             panels.Add(panel30);
             panels.Add(panel32);
         }
-        
+
 
 
         //팀원인데 결과 없으면 label text 변경
@@ -230,7 +230,8 @@ namespace FootccerClient.Windows.Views
             int alterElo = dto.calculator();
 
             InsertResultPop pop = new InsertResultPop(Party_idx, alterElo);
-            if (pop.ShowDialog() == DialogResult.OK) {
+            if (pop.ShowDialog() == DialogResult.OK)
+            {
                 this.setRecordTable();
                 this.updateRecord(this.currentPage);
             }
@@ -245,17 +246,17 @@ namespace FootccerClient.Windows.Views
         }
         private void label_previous_Click(object sender, EventArgs e)
         {
-            if(this.currentPage + 1 > 1)
+            if (this.currentPage + 1 > 1)
             {
                 this.currentPage -= 1;
                 initializePanelBackColor();
                 updateRecord(this.currentPage);
                 label_page.Text = (currentPage + 1).ToString() + "/" + pageSize.ToString() + " page";
-            }            
+            }
         }
         private void label_next_Click(object sender, EventArgs e)
         {
-            if(this.currentPage + 1 < pageSize)
+            if (this.currentPage + 1 < pageSize)
             {
                 this.currentPage += 1;
                 initializePanelBackColor();

@@ -104,6 +104,8 @@ namespace FootccerClient.Windows.Views
 
         private void btn_Record_Click(object sender, EventArgs e)
         {
+            App.Instance.MainForm.ShowView<RecordView>("파티 기록");
+            return;
             ViewPop<RecordView> pop = new ViewPop<RecordView>();
             pop.ShowDialog();
         }
